@@ -1,0 +1,1795 @@
+/* ============================================================
+   FELICE ACADEMY · KIT GESTÃO F4 — página de vendas (protótipo)
+   Estilos isolados desta rota. NÃO usa o design system do ROI.
+   Identidade: dark #0B0B0D + dourado metálico
+   Display: Poppins (bold) · Body: Lato (leve)
+   ============================================================ */
+
+.felice {
+  --ink: #0b0b0d;
+  --ink-2: #101013;
+  --card: #141417;
+  --card-2: #191920;
+  --line: rgba(232, 180, 71, 0.16);
+  --line-soft: rgba(255, 255, 255, 0.07);
+
+  --gold: #e8b447;
+  --gold-bright: #f5cd47;
+  --gold-deep: #b8821e;
+  --grad-gold: linear-gradient(135deg, #f8da74 0%, #e8b447 45%, #b8821e 100%);
+
+  --cream: #f4efe4;
+  --text: #edeae2;
+  --muted: #9c9aa0;
+  --muted-2: #76747b;
+
+  --r: 18px;
+  --r-lg: 26px;
+  --maxw: 1140px;
+  --pad: clamp(20px, 5vw, 40px);
+  --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  --glow: 0 0 0 1px rgba(232, 180, 71, 0.25), 0 18px 50px -18px rgba(232, 180, 71, 0.4);
+
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-felice-body), 'Lato', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.felice *,
+.felice *::before,
+.felice *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.felice img {
+  max-width: 100%;
+  display: block;
+}
+.felice a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.felice .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+/* ---------- Type ---------- */
+.felice .display {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.felice h1 {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5.2vw, 4rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+.felice h2 {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.8vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+.felice h3 {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.15;
+}
+.felice .gold {
+  color: var(--gold-bright);
+}
+.felice .gold-grad {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice .lead {
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.felice .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.felice .eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+/* ---------- F4 mark ---------- */
+.felice .f4 {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 18px;
+  height: 18px;
+  vertical-align: -2px;
+}
+.felice .f4 span {
+  background: rgba(232, 180, 71, 0.3);
+  border-radius: 2px;
+}
+.felice .f4 span:first-child {
+  background: var(--gold-bright);
+}
+
+/* ---------- Buttons ---------- */
+.felice .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 30px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  position: relative;
+}
+.felice .btn-primary {
+  background: var(--grad-gold);
+  color: #231701;
+  box-shadow: 0 14px 34px -12px rgba(232, 180, 71, 0.65);
+}
+.felice .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 46px -12px rgba(232, 180, 71, 0.8);
+}
+.felice .btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-soft);
+}
+.felice .btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-2px);
+}
+.felice .btn-lg {
+  padding: 20px 40px;
+  font-size: 1.08rem;
+}
+.felice .btn-block {
+  width: 100%;
+}
+
+.felice .btn-primary .arrow {
+  transition: transform 0.25s ease;
+}
+.felice .btn-primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Shimmer sweep nos CTAs primários.
+   Anima `transform` (composição na GPU) em vez de `background-position`
+   (que força repaint no main thread a cada frame). Ciclo longo com gap
+   ocioso: o brilho cruza o botão e fica ~6s parado fora dele — chama
+   atenção sem custo contínuo de repaint (melhor INP/bateria no mobile). */
+.felice .btn-primary {
+  overflow: hidden;
+}
+.felice .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.55) 45%, transparent 70%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  transform: translateX(-180%);
+  animation: felice-sweep 7s ease-in-out infinite;
+}
+@keyframes felice-sweep {
+  0%,
+  55% {
+    transform: translateX(-180%);
+  }
+  85%,
+  100% {
+    transform: translateX(360%);
+  }
+}
+
+/* ---------- Header ---------- */
+.felice .felice-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.felice .felice-header.scrolled {
+  background: rgba(11, 11, 13, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.felice .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.felice .brand small {
+  display: block;
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.34em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+.felice .brand .badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--grad-gold);
+  color: #231701;
+  font-weight: 800;
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-size: 0.95rem;
+}
+.felice .nav .btn {
+  padding: 11px 22px;
+  font-size: 0.92rem;
+}
+@media (max-width: 640px) {
+  .felice .nav .btn-ghost {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+.felice .hero {
+  position: relative;
+  /* padding-bottom reserva espaço p/ a esteira fixa no rodapé não cobrir o conteúdo */
+  padding: 200px 0 110px;
+  overflow: hidden;
+}
+/* Fundo preto com grid de pontos suave + brilho dourado ambiente. */
+.felice .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--ink);
+  background-image: radial-gradient(rgba(232, 180, 71, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: center;
+}
+.felice .hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: 8%;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.16), rgba(232, 180, 71, 0.04) 40%, transparent 65%);
+  filter: blur(20px);
+  animation: felice-breathe 9s ease-in-out infinite;
+}
+/* Vinheta: clareia o centro e escurece as bordas + base, dando profundidade
+   ao grid e garantindo contraste do texto. */
+.felice .hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 30%, transparent 0%, rgba(11, 11, 13, 0.55) 70%, var(--ink) 100%),
+    linear-gradient(180deg, transparent 60%, var(--ink) 100%);
+}
+@keyframes felice-breathe {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* Desktop: duas colunas — texto à esquerda, produto à direita. */
+.felice .hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 54px;
+  align-items: center;
+  text-align: left;
+}
+.felice .hero-copy {
+  max-width: 600px;
+}
+
+.felice .hero h1 {
+  margin: 22px 0 20px;
+  text-transform: none;
+  font-size: clamp(1.8rem, 4.4vw, 3.3rem);
+}
+.felice .hero .lead {
+  margin-bottom: 30px;
+}
+.felice .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.felice .hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* hero — coluna do produto */
+.felice .hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.felice .hero-product {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  border-radius: var(--r-lg);
+  /* a imagem é escura; a moldura dourada destaca-a do fundo preto */
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow), 0 0 60px -18px rgba(232, 180, 71, 0.4);
+}
+
+/* Mobile: empilha e centraliza; o produto vai para baixo do texto. */
+@media (max-width: 900px) {
+  .felice .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    justify-items: center;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .felice .hero-copy {
+    margin: 0 auto;
+  }
+  .felice .hero .lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .felice .hero-cta,
+  .felice .hero-trust {
+    justify-content: center;
+  }
+  /* No mobile, a imagem volta a ser o fundo da hero (não a coluna). */
+  .felice .hero-visual {
+    display: none;
+  }
+  .felice .hero-bg {
+    /* AVIF (38KB) com fallback PNG p/ navegadores antigos. No mobile a imagem
+       é o fundo da hero (a coluna next/image fica display:none), então é AQUI
+       que mora o peso do LCP no celular — onde cai o tráfego de Meta Ads. */
+    /* fallback p/ navegadores sem image-set (ordem importa: vence a última suportada) */
+    background-image: url('/images/background-hero-box-4-books.png');
+    background-image: image-set(
+      url('/images/background-hero-box-4-books.avif') type('image/avif'),
+      url('/images/background-hero-box-4-books.png') type('image/png')
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  /* O brilho dourado lateral (posicionado p/ desktop) sai no mobile. */
+  .felice .hero-bg::before {
+    display: none;
+  }
+  /* Gradiente de legibilidade: transparente no topo, escurecendo até a base. */
+  .felice .hero-bg::after {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 11, 13, 0.45) 0%,
+      rgba(11, 11, 13, 0.7) 45%,
+      rgba(11, 11, 13, 0.92) 80%,
+      var(--ink) 100%
+    );
+  }
+}
+.felice .hero-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.felice .hero-trust svg {
+  flex: none;
+}
+
+/* indicador "role para descobrir" no rodapé da hero */
+.felice .hero-scroll {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 64px auto 0;
+  color: var(--muted-2);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.felice .hero-scroll:hover {
+  color: var(--gold);
+}
+.felice .hero-scroll svg {
+  animation: felice-scroll-bob 1.8s ease-in-out infinite;
+}
+@keyframes felice-scroll-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+/* Esteira (marquee) dourada no rodapé do hero: o kit + os 4 materiais
+   desfilam infinitamente. Duas cópias idênticas + translateX(-50%) =
+   loop sem emenda. */
+.felice .hero-marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--grad-gold);
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 12px 0;
+}
+.felice .hero-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: felice-marquee 28s linear infinite;
+}
+.felice .hero-marquee-group {
+  display: flex;
+  flex: none;
+}
+.felice .hero-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  color: #231701;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.felice .hero-marquee-sep {
+  color: rgba(35, 23, 1, 0.55);
+  font-size: 0.7rem;
+}
+@keyframes felice-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .felice .hero-marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------- Section shells ---------- */
+.felice section {
+  position: relative;
+}
+.felice .sec {
+  padding: clamp(70px, 9vw, 120px) 0;
+}
+
+/* ---------- Números da oferta (logo abaixo da hero) ---------- */
+.felice .numeros {
+  padding: clamp(40px, 6vw, 70px) 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, var(--ink), #0d0c0a);
+}
+.felice .numeros-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 760px) {
+  .felice .numeros-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+}
+.felice .numeros-item {
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+}
+.felice .numeros-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 46px;
+  background: var(--line-soft);
+}
+@media (max-width: 760px) {
+  .felice .numeros-item::after {
+    display: none;
+  }
+}
+.felice .numeros-item b {
+  display: block;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice .numeros-item span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+.felice .sec-head {
+  max-width: 680px;
+  margin-bottom: 54px;
+}
+.felice .sec-head.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.felice .sec-head h2 {
+  margin: 18px 0 16px;
+}
+
+.felice .divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+/* ---------- Problem ---------- */
+.felice .problem {
+  background: linear-gradient(180deg, var(--ink) 0%, #0d0c0a 100%);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .pains {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 720px) {
+  .felice .pains {
+    grid-template-columns: 1fr;
+  }
+}
+.felice .pain {
+  display: flex;
+  gap: 14px;
+  padding: 22px 24px;
+  border-radius: var(--r);
+  /* fundo dourado em gradiente p/ destacar os pontos de dor */
+  background: linear-gradient(150deg, #f8da74 0%, #e8b447 50%, #c8922a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px -18px rgba(232, 180, 71, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.felice .pain:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 50px -18px rgba(232, 180, 71, 0.65);
+}
+.felice .pain .x {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(35, 23, 1, 0.16);
+  color: #231701;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.felice .pain p {
+  font-size: 0.98rem;
+  color: rgba(35, 23, 1, 0.82);
+}
+.felice .pain p b {
+  color: #231701;
+}
+.felice .turn {
+  text-align: center;
+  margin-top: 48px;
+}
+.felice .turn .display {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+}
+
+/* ---------- Method (F4) ---------- */
+.felice .pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 720px) {
+  .felice .pillars {
+    grid-template-columns: 1fr;
+  }
+}
+.felice .pillar {
+  position: relative;
+  padding: 30px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.felice .pillar:hover {
+  transform: translateY(-6px);
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+.felice .pillar .num {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.felice .pillar .ico {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin: 6px 0 16px;
+  background: rgba(232, 180, 71, 0.1);
+  border: 1px solid var(--line);
+  color: var(--gold-bright);
+}
+.felice .pillar h3 {
+  margin-bottom: 8px;
+  color: var(--cream);
+}
+.felice .pillar p {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+.felice .pillar::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.14), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.felice .pillar:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Components (alternating) ---------- */
+.felice .comp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 64px;
+}
+.felice .comp:last-child {
+  margin-bottom: 0;
+}
+.felice .comp.rev .comp-media {
+  order: 2;
+}
+@media (max-width: 820px) {
+  .felice .comp {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-bottom: 48px;
+  }
+  .felice .comp.rev .comp-media {
+    order: 0;
+  }
+}
+.felice .comp-media {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, #1a160e, #0e0e11);
+  aspect-ratio: 16 / 11;
+  position: relative;
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+}
+.felice .comp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* A imagem do book preenche o card encostando no topo e nas laterais
+   (sem respiro). `cover` evita faixas vazias; a base pode cortar de leve. */
+.felice .comp-media .comp-book {
+  object-fit: cover;
+  object-position: top center;
+}
+.felice .comp-media .ph {
+  text-align: center;
+  padding: 24px;
+}
+.felice .comp-media .ph .f4mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 14px;
+}
+.felice .comp-media .ph .f4mark i {
+  border-radius: 5px;
+  background: rgba(232, 180, 71, 0.18);
+}
+.felice .comp-media .ph .f4mark i.on {
+  background: var(--grad-gold);
+}
+.felice .comp-media .ph span {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: var(--cream);
+}
+.felice .comp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.felice .comp h3 {
+  margin-bottom: 14px;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+.felice .comp p {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.felice .comp ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.felice .comp li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--text);
+  font-size: 0.96rem;
+}
+.felice .comp li svg {
+  flex: none;
+  margin-top: 3px;
+}
+.felice .comp .val {
+  margin-top: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--muted-2);
+}
+.felice .comp .val b {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Authority ---------- */
+.felice .authority {
+  background: linear-gradient(180deg, #0d0c0a, var(--ink));
+  border-top: 1px solid var(--line-soft);
+}
+.felice .auth-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 50px;
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .felice .auth-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+.felice .auth-photo {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  background: linear-gradient(160deg, #1a160e, #0c0c0e);
+  aspect-ratio: 4 / 4.6;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+}
+.felice .auth-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.felice .auth-photo .ph {
+  text-align: center;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+  padding: 24px;
+}
+.felice .auth-photo .ph .ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+}
+.felice .auth-grid blockquote {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.3;
+  color: var(--cream);
+  margin: 14px 0 24px;
+}
+.felice .creds {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+.felice .creds li {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+.felice .creds li svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--gold);
+}
+.felice .auth-name {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: var(--gold-bright);
+}
+.felice .auth-role {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* ---------- Testimonials ---------- */
+/* Carrossel horizontal: cards numa única linha que desliza (swipe no mobile,
+   arraste/scroll no desktop) com snap. O último card "vaza" à direita,
+   sinalizando que há mais para deslizar. */
+.felice .testi {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--pad);
+  /* sangra até as bordas da viewport p/ o card poder vazar suavemente */
+  margin: 0 calc(-1 * var(--pad));
+  padding: 6px var(--pad) 20px;
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+.felice .testi::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+.felice .quote {
+  flex: 0 0 clamp(290px, 78vw, 420px);
+  scroll-snap-align: start;
+  padding: 28px;
+  border-radius: var(--r-lg);
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.felice .quote:hover {
+  border-color: var(--line);
+}
+.felice .stars {
+  color: var(--gold-bright);
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+.felice .quote p {
+  color: var(--text);
+  font-size: 0.98rem;
+  margin-bottom: 18px;
+}
+.felice .quote .who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.felice .quote .av {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--grad-gold);
+  display: grid;
+  place-items: center;
+  color: #231701;
+  font-weight: 700;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+}
+.felice .quote .who b {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--cream);
+}
+.felice .quote .who small {
+  color: var(--muted-2);
+  font-size: 0.8rem;
+}
+
+/* ---------- Offer ---------- */
+.felice .offer {
+  background: radial-gradient(circle at 50% 0%, rgba(232, 180, 71, 0.1), transparent 55%), var(--ink);
+  border-top: 1px solid var(--line-soft);
+}
+.felice .offer-card {
+  max-width: 620px;
+  margin: 0 auto;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, #17140d, #101013);
+  box-shadow: var(--glow), var(--shadow);
+  position: relative;
+}
+.felice .offer-card .ribbon {
+  background: var(--grad-gold);
+  color: #231701;
+  text-align: center;
+  padding: 11px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.felice .offer-body {
+  padding: clamp(28px, 5vw, 44px);
+}
+.felice .offer-body h3 {
+  text-align: center;
+  margin-bottom: 6px;
+}
+.felice .offer-body .sub {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 26px;
+  font-size: 0.95rem;
+}
+.felice .stack-list {
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  margin-bottom: 6px;
+}
+.felice .stack-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.felice .stack-list li .it {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--text);
+  font-size: 0.96rem;
+}
+.felice .stack-list li .it svg {
+  color: var(--gold);
+}
+.felice .stack-list li .pr {
+  color: var(--muted-2);
+  text-decoration: line-through;
+  font-size: 0.92rem;
+}
+.felice .total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  margin-top: 0;
+}
+.felice .total-row .lbl {
+  font-weight: 600;
+  color: var(--cream);
+}
+.felice .total-row .old {
+  color: var(--muted-2);
+  text-decoration: line-through;
+}
+
+.felice .price-box {
+  text-align: center;
+  margin: 22px 0 8px;
+}
+.felice .price-box .small {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.felice .price-box .big {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 13vw, 6rem);
+  line-height: 1;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* flex para centralizar o "R$" verticalmente com o "97" */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12em;
+  position: relative;
+}
+.felice .price-box .cur {
+  font-size: 0.34em; /* relativo ao tamanho do "97" */
+  line-height: 1;
+  color: var(--gold);
+}
+.felice .price-box .note {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+
+.felice .offer-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.felice .offer-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ---------- Guarantee ---------- */
+.felice .guarantee {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 34px;
+  align-items: center;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 36px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, var(--card-2), var(--card));
+  border: 1px solid var(--line);
+}
+@media (max-width: 640px) {
+  .felice .guarantee {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+}
+/* Selo de garantia: anéis concêntricos, texto curvo girando ao redor e
+   núcleo com escudo + "7 DIAS". Inspirado em selos de medalha premium. */
+.felice .seal {
+  position: relative;
+  width: 176px;
+  height: 176px;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+.felice .seal-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.felice .seal-ring {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.felice .seal-ring--inner {
+  stroke: rgba(232, 180, 71, 0.1);
+}
+.felice .seal-text {
+  fill: var(--gold);
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+/* gira o grupo (mais estável cross-browser do que animar <text> direto) */
+.felice .seal-rotor {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+  animation: felice-spin 26s linear infinite;
+}
+.felice .seal-core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(232, 180, 71, 0.06), transparent 70%);
+}
+.felice .seal-shield {
+  width: 38px;
+  height: 38px;
+  color: var(--gold-bright);
+  filter: drop-shadow(0 0 12px rgba(232, 180, 71, 0.4));
+}
+.felice .seal-core b {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+@keyframes felice-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.felice .guarantee h3 {
+  margin-bottom: 8px;
+}
+.felice .guarantee p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* ---------- FAQ ---------- */
+.felice .faq {
+  max-width: 780px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+}
+.felice .acc {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.felice .acc.open {
+  border-color: var(--line);
+}
+.felice .acc-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  text-align: left;
+}
+.felice .acc-q .ic {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--gold);
+  transition: transform 0.3s, background 0.3s;
+}
+.felice .acc.open .acc-q .ic {
+  transform: rotate(45deg);
+  background: var(--gold);
+  color: #231701;
+  border-color: transparent;
+}
+.felice .acc-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.felice .acc-a p {
+  padding: 0 24px 22px;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+/* ---------- Final CTA ---------- */
+.felice .final {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(180deg, var(--ink), #0d0c0a);
+}
+.felice .final::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.16), transparent 60%);
+  filter: blur(10px);
+}
+.felice .final .inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.felice .final h2 {
+  margin: 16px 0 18px;
+}
+.felice .final .lead {
+  margin: 0 auto 30px;
+}
+
+/* ---------- Footer ---------- */
+.felice .felice-footer {
+  border-top: 1px solid var(--line-soft);
+  padding: 54px 0 70px;
+  background: #08080a;
+}
+.felice .foot-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.felice .legal {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+.felice .legal b {
+  color: var(--muted);
+}
+.felice .foot-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.felice .copy {
+  text-align: center;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+  margin-top: 18px;
+}
+
+/* ---------- WhatsApp float ---------- */
+.felice .wpp {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: transform 0.25s;
+  animation: felice-pulse 2.6s ease-in-out infinite;
+}
+.felice .wpp:hover {
+  transform: scale(1.08);
+}
+@keyframes felice-pulse {
+  0%,
+  100% {
+    box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  }
+  50% {
+    box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6), 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+/* ---------- Reveal anim ---------- */
+.felice .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.felice .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.felice .reveal.d1 {
+  transition-delay: 0.08s;
+}
+.felice .reveal.d2 {
+  transition-delay: 0.16s;
+}
+.felice .reveal.d3 {
+  transition-delay: 0.24s;
+}
+.felice .reveal.d4 {
+  transition-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .felice * {
+    animation: none !important;
+  }
+  .felice .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   URGÊNCIA / PROVA SOCIAL
+   - .countdown        → contador regressivo da oferta
+   - .live-viewers     → "X pessoas vendo agora"
+   - .purchase-toast   → avisos fake "Fulano comprou!"
+   ============================================================ */
+
+/* ---------- Countdown ---------- */
+.felice .countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 18px;
+  background: rgba(232, 76, 76, 0.08);
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--cream);
+  font-size: 0.86rem;
+}
+.felice .countdown svg {
+  color: var(--gold-bright);
+  flex: none;
+}
+.felice .countdown-label {
+  letter-spacing: 0.02em;
+}
+.felice .countdown-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+}
+.felice .countdown-clock b {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--gold-bright);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+.felice .countdown-clock i {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ---------- Live viewers ---------- */
+.felice .offer-live {
+  display: flex;
+  justify-content: center;
+  padding: 12px 18px 0;
+}
+.felice .live-viewers {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.felice .live-viewers b {
+  color: var(--cream);
+}
+.felice .live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3fd17a;
+  box-shadow: 0 0 0 0 rgba(63, 209, 122, 0.6);
+  animation: felice-livedot 2s ease-out infinite;
+}
+@keyframes felice-livedot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(63, 209, 122, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(63, 209, 122, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(63, 209, 122, 0);
+  }
+}
+
+/* ---------- Purchase toasts ---------- */
+.felice .purchase-toast-wrap {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 60;
+  pointer-events: none;
+}
+.felice .purchase-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 230px;
+  padding: 12px 16px 12px 12px;
+  border-radius: 14px;
+  /* fundo âmbar/laranja quente — destaca no preto e chama atenção */
+  background: linear-gradient(135deg, #ffb454 0%, #f59324 55%, #e07d12 100%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 40px -12px rgba(245, 147, 36, 0.55), var(--shadow);
+  /* começa fora de tela (embaixo, invisível) até receber a classe de entrada */
+  opacity: 0;
+  transform: translateY(28px);
+}
+/* entra de baixo p/ cima com fade e dá uma "tremidinha" ao parar */
+.felice .purchase-toast.is-in {
+  animation: felice-toast-in 0.5s cubic-bezier(0.18, 0.9, 0.25, 1) forwards,
+    felice-toast-shake 0.5s 0.5s ease-in-out;
+}
+/* sai para baixo com fade */
+.felice .purchase-toast.is-out {
+  animation: felice-toast-out 0.4s ease-in forwards;
+}
+.felice .purchase-toast-ico {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  /* círculo escuro com check claro, contrastando com o fundo quente */
+  background: #231701;
+}
+.felice .purchase-toast-body {
+  font-size: 0.86rem;
+  color: rgba(35, 23, 1, 0.85);
+  line-height: 1.35;
+}
+.felice .purchase-toast-body b {
+  display: block;
+  color: #1a1102;
+}
+.felice .purchase-toast-msg {
+  display: block;
+}
+.felice .purchase-toast-body small {
+  display: block;
+  margin-top: 2px;
+  color: rgba(35, 23, 1, 0.62);
+  font-size: 0.74rem;
+}
+@keyframes felice-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* tremidinha lateral curta logo após a entrada */
+@keyframes felice-toast-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+@keyframes felice-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@media (max-width: 480px) {
+  .felice .purchase-toast-wrap {
+    left: 12px;
+    /* deixa folga para não encostar no botão flutuante do WhatsApp */
+    right: 92px;
+    bottom: 16px;
+  }
+  .felice .purchase-toast {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .felice .live-dot,
+  .felice .purchase-toast {
+    animation: none !important;
+  }
+  /* sem animação, o toast precisa ficar visível e parado */
+  .felice .purchase-toast {
+    opacity: 1;
+    transform: none;
+  }
+  .felice .purchase-toast.is-out {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   BARRA DE URGÊNCIA FIXA (topo) — contador + viewers sempre visíveis
+   ============================================================ */
+.felice {
+  /* Fallback inicial = altura real da barra (min-height 38px + padding 2×7px
+     + 1px de borda ≈ 53px). Deixar o default casado com a altura medida pelo
+     ResizeObserver evita que o header/hero pulem (CLS) no primeiro paint,
+     antes do JS hidratar. */
+  --urgency-h: 53px;
+}
+
+.felice .urgency-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 55; /* acima do header (50) */
+  /* fundo dourado com texto escuro para máximo destaque */
+  background: var(--grad-gold);
+  color: #231701;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+.felice .urgency-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  /* altura natural fixa — NÃO referenciar --urgency-h aqui (evita loop
+     de realimentação com o ResizeObserver que mede a barra) */
+  min-height: 38px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.felice .urgency-sep {
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Cores adaptadas ao fundo dourado */
+.felice .urgency-bar .countdown,
+.felice .urgency-bar .countdown-label,
+.felice .urgency-bar .live-viewers,
+.felice .urgency-bar .live-viewers b {
+  color: #231701;
+}
+.felice .urgency-bar .countdown-clock i {
+  color: #231701;
+}
+.felice .urgency-bar .countdown-clock b {
+  background: #231701;
+  border-color: rgba(0, 0, 0, 0.35);
+  color: var(--gold-bright);
+}
+.felice .urgency-bar .live-dot {
+  background: #1f8a4c;
+}
+
+/* Quando a barra existe, o header e o hero descem para não sobrepor */
+.felice.has-urgency-bar .felice-header {
+  top: var(--urgency-h);
+}
+.felice.has-urgency-bar .hero {
+  padding-top: calc(200px + var(--urgency-h));
+}
+
+/* Dentro da barra o contador perde o fundo/borda de bloco */
+.felice .urgency-bar .countdown {
+  padding: 0;
+  background: none;
+  border: none;
+}
+.felice .urgency-bar .countdown svg {
+  color: #231701;
+}
+
+/* ---------- Barra de urgência no mobile/tablet ----------
+   Mantém tudo em UMA linha e compacto. A altura real da barra é medida
+   por JS (--urgency-h via ResizeObserver), então mesmo que algo quebre o
+   header desce sozinho — estas regras só deixam o visual mais enxuto. */
+@media (max-width: 820px) {
+  .felice .urgency-bar-inner {
+    flex-wrap: nowrap;
+    gap: 0 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  /* impede a quebra interna do contador (rótulo em cima, relógio embaixo) */
+  .felice .urgency-bar .countdown {
+    flex-wrap: nowrap;
+    gap: 6px;
+    font-size: 0.74rem;
+  }
+  .felice .urgency-bar .countdown-label,
+  .felice .live-viewers {
+    white-space: nowrap;
+  }
+  .felice .urgency-sep {
+    height: 16px;
+  }
+  .felice .urgency-bar .countdown svg {
+    display: none;
+  }
+  .felice .urgency-bar .countdown-clock b {
+    padding: 2px 5px;
+    font-size: 0.9rem;
+  }
+  .felice .live-viewers {
+    font-size: 0.72rem;
+  }
+}
+
+/* Telas estreitas: encurta os rótulos para caber numa linha só. */
+@media (max-width: 560px) {
+  .felice .urgency-bar .countdown-label {
+    /* "Esta oferta termina em" -> "Termina em" */
+    font-size: 0;
+  }
+  .felice .urgency-bar .countdown-label::after {
+    content: 'Termina em';
+    font-size: 0.72rem;
+  }
+  .felice .live-viewers {
+    font-size: 0;
+  }
+  .felice .live-viewers b {
+    font-size: 0.72rem;
+  }
+  .felice .live-viewers b::after {
+    content: ' pessoas online';
+    font-size: 0.72rem;
+    color: rgba(35, 23, 1, 0.75);
+    font-weight: 400;
+  }
+}

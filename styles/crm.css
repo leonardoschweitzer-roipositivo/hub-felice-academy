@@ -1,0 +1,89 @@
+/* ============================================================
+   FELICE CRM · landing de vendas
+   Reusa felice.css (carregado antes). Aqui só os ajustes do CRM:
+   - neutralizar o fundo de hero específico da F4 (caixa de livros)
+   - estilizar o mockup-placeholder do dashboard
+   Tudo escopado em .felice-crm.
+   ============================================================ */
+
+/* A F4 usa uma imagem de fundo no hero (caixa de 4 livros). O CRM não tem
+   esse asset — então no mobile mantemos só o grid de pontos + brilho. */
+.felice-crm .hero-bg {
+  background-image: radial-gradient(rgba(232, 180, 71, 0.08) 1px, transparent 1px) !important;
+  background-size: 26px 26px !important;
+}
+.felice-crm .hero-bg::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  width: 80vw;
+  height: 80vw;
+  max-width: 900px;
+  max-height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.14), transparent 60%);
+  pointer-events: none;
+}
+
+/* Sem marquee no rodapé do hero — recupera o respiro inferior. */
+.felice-crm .hero {
+  padding-bottom: clamp(60px, 8vw, 90px);
+}
+
+/* ---------- Mockup-placeholder do dashboard ----------
+   ⚠️ Substituir por print/mockup real do Felice CRM (NEXUS ROI white-label). */
+.felice-crm .crm-mock {
+  width: 100%;
+  max-width: 460px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow), 0 0 60px -18px rgba(232, 180, 71, 0.4);
+}
+.felice-crm .crm-mock-bar {
+  display: flex;
+  gap: 7px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+.felice-crm .crm-mock-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.felice-crm .crm-mock-bar span:first-child {
+  background: var(--gold-bright);
+}
+.felice-crm .crm-mock-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.felice-crm .crm-mock-line {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(232, 180, 71, 0.22), rgba(255, 255, 255, 0.05));
+}
+.felice-crm .crm-mock-line--lg {
+  height: 22px;
+  width: 70%;
+}
+.felice-crm .crm-mock-line--sm {
+  width: 45%;
+}
+.felice-crm .crm-mock-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.felice-crm .crm-mock-tile {
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.03);
+}
