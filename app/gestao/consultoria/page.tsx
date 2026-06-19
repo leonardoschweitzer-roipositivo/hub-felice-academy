@@ -4,6 +4,7 @@ import '@/styles/felice.css';
 import '@/styles/obrigado.css';
 import '@/styles/consultoria.css';
 import { ConsultoriaQuiz } from '@/components/felice/consultoria/ConsultoriaQuiz';
+import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function ConsultoriaPage() {
   return (
     <div className={`felice ${poppins.variable} ${lato.variable}`}>
       <ConsultoriaQuiz />
+      <RevealOnScroll />
     </div>
   );
 }

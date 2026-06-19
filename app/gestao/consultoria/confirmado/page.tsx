@@ -3,6 +3,7 @@ import { Poppins, Lato } from 'next/font/google';
 import '@/styles/felice.css';
 import '@/styles/obrigado.css';
 import { ConfirmacaoHero } from '@/components/felice/consultoria/ConfirmacaoHero';
+import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function ConfirmadoPage() {
   return (
     <div className={`felice ${poppins.variable} ${lato.variable}`}>
       <ConfirmacaoHero />
+      <RevealOnScroll />
     </div>
   );
 }
