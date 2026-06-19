@@ -32,8 +32,22 @@ export function Funnel5N() {
           <strong>Objetivo:</strong> {level.objetivo}
         </p>
         <p>
+          <strong>Direção:</strong> {level.direcao}
+        </p>
+        <p>
+          <strong>Abordagem:</strong> {level.abordagem}
+        </p>
+        <p>
+          <strong>Foco:</strong> {level.foco}
+        </p>
+        <p>
           <strong>Tipo de vídeo:</strong> {level.tipoVideo}
         </p>
+        {level.ctaExemplo && (
+          <p>
+            <strong>Exemplo de CTA:</strong> <em>{level.ctaExemplo}</em>
+          </p>
+        )}
       </div>
     </div>
   );
