@@ -343,12 +343,27 @@
   z-index: 1;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 54px;
+  gap: 12px 54px;
   align-items: center;
   text-align: left;
 }
-.felice .hero-copy {
+/* Desktop: head e copy empilhados na coluna 1; carrossel na coluna 2,
+   centralizado verticalmente abrangendo as duas linhas. */
+.felice .hero-head {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
   max-width: 600px;
+}
+.felice .hero-copy {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  max-width: 600px;
+}
+.felice .hero-visual {
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .felice .hero h1 {
@@ -395,10 +410,11 @@
   /* topo mais curto no celular para o CTA caber na primeira dobra
      (no desktop os 200px reservam espaço p/ header + brilho ambiente). */
   .felice .hero {
-    padding: 120px 0 80px;
+    padding: 96px 0 80px;
   }
+  /* header fixo (72px) + barra de urgência + pequeno respiro. */
   .felice.has-urgency-bar .hero {
-    padding-top: calc(96px + var(--urgency-h));
+    padding-top: calc(72px + var(--urgency-h) + 20px);
   }
   .felice .hero-grid {
     grid-template-columns: 1fr;
@@ -408,7 +424,25 @@
     max-width: 760px;
     margin: 0 auto;
   }
+  /* zera o posicionamento explícito do desktop; usa order na coluna única.
+     Ordem no mobile: eyebrow + título → carrossel → restante da copy/CTA. */
+  .felice .hero-head,
+  .felice .hero-copy,
+  .felice .hero-visual {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  .felice .hero-head {
+    order: 1;
+    margin: 0 auto;
+  }
+  .felice .hero-visual {
+    order: 2;
+  }
   .felice .hero-copy {
+    order: 3;
     margin: 0 auto;
   }
   .felice .hero .lead {
@@ -418,13 +452,6 @@
   .felice .hero-cta,
   .felice .hero-trust {
     justify-content: center;
-  }
-  /* No mobile, o carrossel de mockups vai ACIMA do título (não mais o
-     box de livros como fundo). O grid já é 1 coluna; usamos order para
-     colocar a coluna visual antes da copy sem mexer no HTML. */
-  .felice .hero-visual {
-    order: -1;
-    width: 100%;
   }
   /* O brilho dourado lateral (posicionado p/ desktop) sai no mobile. */
   .felice .hero-bg::before {

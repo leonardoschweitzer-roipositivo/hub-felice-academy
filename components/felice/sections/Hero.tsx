@@ -18,7 +18,9 @@ export function Hero() {
     <section className="hero" id="topo">
       <div className="hero-bg" />
       <div className="wrap hero-grid">
-        <div className="hero-copy">
+        {/* eyebrow + título: no mobile ficam ACIMA do carrossel (order).
+            No desktop seguem no topo da coluna de copy, à esquerda. */}
+        <div className="hero-head">
           <span className="eyebrow reveal">
             <span className="f4">
               <span />
@@ -32,6 +34,9 @@ export function Hero() {
             SAIA DA OPERAÇÃO E DEIXE SUA CLÍNICA{' '}
             <span className="gold-grad">ATENDENDO, AGENDANDO E VENDENDO</span> NO AUTOMÁTICO.
           </h1>
+        </div>
+
+        <div className="hero-copy">
           <p className="lead reveal d2">
             Uma plataforma interativa com{' '}
             <b style={{ color: 'var(--cream)' }}>POPs</b>,{' '}
