@@ -1,8 +1,7 @@
 import { CtaConsultoria } from './Cta';
-import { PRAZO_DIAS } from './config';
 
-/* Urgência atrelada à garantia: a janela de 7 dias é o melhor momento
-   para agendar e tirar o máximo do kit desde o início. */
+/* Escassez: uma hora comigo valeria R$ 500; nesta semana liberei alguns
+   horários gratuitos para quem acabou de entrar no Kit. */
 export function PrazoGarantia() {
   return (
     <section className="sec obg-prazo-sec">
@@ -13,16 +12,23 @@ export function PrazoGarantia() {
               <circle cx="12" cy="13" r="8" />
               <path d="M12 9v4l2 2M9 2h6" />
             </svg>
-            Sua garantia de {PRAZO_DIAS} dias começou hoje
+            Vagas gratuitas só nesta semana
           </span>
           <h2>
-            Agende nos próximos {PRAZO_DIAS} dias e comece a aplicar o método{' '}
-            <span className="gold-grad">desde o primeiro dia</span>.
+            Normalmente, uma hora comigo custa R$ 500. Nesta semana,{' '}
+            <span className="gold-grad">é por minha conta</span>.
           </h2>
+          <div className="obg-prazo-price">
+            <span className="old">
+              R$ 500<small>/hora</small>
+            </span>
+            <span className="sep">→</span>
+            <span className="now">Gratuito</span>
+          </div>
           <p>
-            Quanto antes você estruturar a implementação, mais cedo a sua clínica sente o resultado
-            — e você aproveita o período de garantia com tudo já rodando. Minha agenda é limitada,
-            então garanta o seu horário agora.
+            Como você acabou de entrar no Kit Gestão F4, abri uma quantidade limitada de horários
+            gratuitos na minha agenda esta semana para te ajudar a implementar tudo do jeito certo.
+            Quando essas vagas acabarem, a consultoria volta a ser paga — então garanta a sua agora.
           </p>
           <CtaConsultoria size="lg" />
         </div>
