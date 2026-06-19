@@ -1,0 +1,280 @@
+/* ============================================================
+   Página de Obrigado · Kit Gestão F4
+   Estilos específicos. Reusa os tokens e classes de felice.css
+   (.wrap, .sec, .sec-head, .btn, .numeros*, .auth-grid, .faq…).
+   Tudo escopado em .felice para herdar tema/tipografia.
+   ============================================================ */
+
+/* ---------- Hero de sucesso ---------- */
+.felice .obg-hero {
+  position: relative;
+  padding: clamp(72px, 12vw, 130px) 0 clamp(48px, 7vw, 84px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .obg-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 70% at 50% 0%, rgba(232, 180, 71, 0.16), transparent 70%),
+    radial-gradient(100% 60% at 50% 120%, rgba(0, 0, 0, 0.6), transparent 60%),
+    linear-gradient(180deg, var(--ink-2), var(--ink));
+}
+.felice .obg-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(70% 60% at 50% 30%, #000, transparent 75%);
+}
+.felice .obg-hero-inner {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.felice .obg-hero h1 {
+  margin: 18px auto 0;
+  max-width: 16ch;
+}
+.felice .obg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #8ef0b0;
+  background: rgba(60, 200, 120, 0.1);
+  border: 1px solid rgba(80, 210, 140, 0.35);
+}
+.felice .obg-lead {
+  max-width: 60ch;
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.1vw, 1.18rem);
+  line-height: 1.6;
+}
+.felice .obg-lead-strong {
+  max-width: 56ch;
+  margin: 16px auto 0;
+  color: var(--text);
+  font-size: clamp(1.08rem, 2.4vw, 1.32rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+.felice .obg-cta-row {
+  margin-top: 34px;
+}
+.felice .obg-sublink {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.felice .obg-sublink:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+}
+.felice .obg-video {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 34px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.felice .obg-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- A virada ---------- */
+.felice .obg-virada-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.felice .obg-virada-cols p {
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+.felice .obg-virada-cols strong {
+  color: var(--text);
+}
+@media (max-width: 760px) {
+  .felice .obg-virada-cols {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ---------- Benefícios da consultoria ---------- */
+.felice .obg-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.felice .obg-benefit {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.felice .obg-benefit:hover {
+  border-color: var(--line);
+  transform: translateY(-3px);
+}
+.felice .obg-benefit-ic {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: #231701;
+  background: var(--grad-gold);
+}
+.felice .obg-benefit h3 {
+  font-size: 1.08rem;
+  margin: 2px 0 6px;
+}
+.felice .obg-benefit p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+.felice .obg-center-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+@media (max-width: 760px) {
+  .felice .obg-benefits {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Como funciona (3 passos) ---------- */
+.felice .obg-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.felice .obg-step {
+  position: relative;
+  padding: 30px 24px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  text-align: center;
+}
+.felice .obg-step-n {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.1);
+  border: 1px solid var(--line);
+}
+.felice .obg-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.felice .obg-step p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+@media (max-width: 760px) {
+  .felice .obg-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Prazo / urgência ---------- */
+.felice .obg-prazo-sec {
+  padding-top: 0;
+}
+.felice .obg-prazo {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(34px, 5vw, 56px);
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, var(--card-2), var(--card));
+  border: 1px solid var(--line);
+  box-shadow: var(--glow);
+}
+.felice .obg-prazo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.1);
+  border: 1px solid var(--line);
+}
+.felice .obg-prazo h2 {
+  margin: 18px 0 14px;
+}
+.felice .obg-prazo p {
+  max-width: 56ch;
+  margin: 0 auto 28px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- CTA final ---------- */
+.felice .obg-final {
+  background: linear-gradient(180deg, var(--ink), #0d0c0a);
+  border-top: 1px solid var(--line-soft);
+}
+.felice .obg-final-card {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.felice .obg-final-card h2 {
+  margin: 16px 0 14px;
+}
+.felice .obg-final-card p {
+  max-width: 54ch;
+  margin: 0 auto 28px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.felice .obg-final-card .obg-sublink {
+  display: block;
+  margin-top: 20px;
+}
