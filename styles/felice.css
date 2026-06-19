@@ -411,16 +411,10 @@
 
 /* Mobile: empilha e centraliza; o carrossel vai ACIMA do texto. */
 @media (max-width: 900px) {
-  /* topo mais curto no celular para o CTA caber na primeira dobra
-     (no desktop os 200px reservam espaço p/ header + brilho ambiente). */
+  /* rodapé do hero mais curto no celular (o padding-top real é definido
+     pela regra .has-urgency-bar .hero mais abaixo no arquivo). */
   .felice .hero {
-    padding: 80px 0 80px;
-  }
-  /* Reduz ~pela metade o vão entre topo e eyebrow: o header (72px) tem
-     fundo transparente antes do scroll, então o conteúdo pode subir para
-     dentro dessa faixa. Reserva só metade da altura do header + a barra. */
-  .felice.has-urgency-bar .hero {
-    padding-top: calc(var(--urgency-h) + 36px);
+    padding-bottom: 80px;
   }
   /* título mais colado ao eyebrow no mobile */
   .felice .hero h1 {
@@ -1823,6 +1817,14 @@
 }
 .felice.has-urgency-bar .hero {
   padding-top: calc(200px + var(--urgency-h));
+}
+/* Override mobile: precisa vir DEPOIS da regra acima (mesma
+   especificidade) para vencer a cascata. No celular o conteúdo encosta
+   logo abaixo do header fixo (72px) + barra de urgência. */
+@media (max-width: 900px) {
+  .felice.has-urgency-bar .hero {
+    padding-top: calc(72px + var(--urgency-h) + 8px);
+  }
 }
 
 /* Dentro da barra o contador perde o fundo/borda de bloco */
