@@ -61,7 +61,7 @@ export function FeliceLanding() {
       <Footer />
 
       {/* Flutuantes / urgência */}
-      <WhatsappFloat />
+      <WhatsappFloat href="https://wa.me/5588981391199?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Kit%20Gest%C3%A3o%20F4%2C%20por%20favor." />
       <PurchaseToasts />
 
       {/* Ativa as animações de scroll em todos os .reveal */}
