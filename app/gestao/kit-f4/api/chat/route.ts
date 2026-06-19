@@ -60,10 +60,10 @@ function rolePlaySystem(mode: 'patient' | 'phone') {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: 'IA indisponível: ANTHROPIC_API_KEY não configurada.' },
+      { error: 'IA indisponível: GEMINI_API_KEY não configurada.' },
       { status: 503 },
     );
   }
@@ -97,22 +97,35 @@ export async function POST(req: Request) {
     system = rolePlaySystem(mode);
   }
 
-  const { default: Anthropic } = await import('@anthropic-ai/sdk');
-  const client = new Anthropic({ apiKey });
-  const model = process.env.KITF4_CHAT_MODEL || 'claude-haiku-4-5';
+  const { GoogleGenerativeAI } = await import('@google/generative-ai');
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const modelName = process.env.KITF4_CHAT_MODEL || 'gemini-2.0-flash';
+  const model = genAI.getGenerativeModel({
+    model: modelName,
+    systemInstruction: system,
+  });
+
+  // Gemini usa 'model' no lugar de 'assistant'. A última mensagem (do usuário)
+  // é enviada separadamente; o restante vira o histórico da conversa.
+  const history = messages.slice(0, -1).map((m) => ({
+    role: m.role === 'assistant' ? ('model' as const) : ('user' as const),
+    parts: [{ text: m.content }],
+  }));
+  const lastMessage = messages[messages.length - 1]?.content ?? '';
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
-        const aiStream = await client.messages.stream({
-          model,
-          max_tokens: 1024,
-          system,
-          messages: messages.map((m) => ({ role: m.role, content: m.content })),
+        const chat = model.startChat({
+          history,
+          generationConfig: { maxOutputTokens: 1024 },
         });
-        aiStream.on('text', (text) => controller.enqueue(encoder.encode(text)));
-        await aiStream.finalMessage();
+        const result = await chat.sendMessageStream(lastMessage);
+        for await (const chunk of result.stream) {
+          const text = chunk.text();
+          if (text) controller.enqueue(encoder.encode(text));
+        }
         controller.close();
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'Erro na IA.';
