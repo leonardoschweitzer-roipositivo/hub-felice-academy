@@ -99,7 +99,7 @@ export async function POST(req: Request) {
 
   const { GoogleGenerativeAI } = await import('@google/generative-ai');
   const genAI = new GoogleGenerativeAI(apiKey);
-  const modelName = process.env.KITF4_CHAT_MODEL || 'gemini-2.0-flash';
+  const modelName = process.env.KITF4_CHAT_MODEL || 'gemini-flash-latest';
   const model = genAI.getGenerativeModel({
     model: modelName,
     systemInstruction: system,
