@@ -20,5 +20,6 @@ export const WHATSAPP_URL =
 /** Prazo, em dias, alinhado à garantia incondicional. Usado na copy de urgência. */
 export const PRAZO_DIAS = 7;
 
-/** Opcional: URL de um vídeo de boas-vindas (embed). Vazio = esconde o slot. */
-export const VIDEO_URL = '';
+/** Opcional: URL de um vídeo de boas-vindas (embed iframe). Vazio = esconde o slot.
+    Wistia media ufbdtd0dj4 (embed por iframe, equivalente ao web-component). */
+export const VIDEO_URL = 'https://fast.wistia.net/embed/iframe/ufbdtd0dj4';
