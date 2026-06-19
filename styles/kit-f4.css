@@ -1364,6 +1364,9 @@
 .felice-kit.kit-index .kit-index-hero {
   padding-top: 30px;
 }
+.felice-kit.kit-index .kit-index-hero h1 {
+  text-transform: uppercase;
+}
 .felice-kit .kit-doccard-progress {
   display: flex;
   align-items: center;
