@@ -35,16 +35,6 @@ import { UrgencyBar } from './ui/UrgencyBar';
 export function FeliceLanding() {
   return (
     <div className="felice has-urgency-bar">
-      {/* No mobile a imagem de fundo do hero é o maior peso do LCP e só seria
-          descoberta após o parse do CSS. O preload condicional inicia o
-          download já no <head>, apenas em telas onde ela é usada. */}
-      <link
-        rel="preload"
-        as="image"
-        href="/images/background-hero-box-4-books.avif"
-        type="image/avif"
-        media="(max-width: 900px)"
-      />
       <UrgencyBar />
       <Header />
 

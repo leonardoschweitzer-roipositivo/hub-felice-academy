@@ -390,11 +390,19 @@
   box-shadow: var(--shadow), 0 0 60px -18px rgba(232, 180, 71, 0.4);
 }
 
-/* Mobile: empilha e centraliza; o produto vai para baixo do texto. */
+/* Mobile: empilha e centraliza; o carrossel vai ACIMA do texto. */
 @media (max-width: 900px) {
+  /* topo mais curto no celular para o CTA caber na primeira dobra
+     (no desktop os 200px reservam espaço p/ header + brilho ambiente). */
+  .felice .hero {
+    padding: 120px 0 80px;
+  }
+  .felice.has-urgency-bar .hero {
+    padding-top: calc(96px + var(--urgency-h));
+  }
   .felice .hero-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 26px;
     justify-items: center;
     text-align: center;
     max-width: 760px;
@@ -411,37 +419,16 @@
   .felice .hero-trust {
     justify-content: center;
   }
-  /* No mobile, a imagem volta a ser o fundo da hero (não a coluna). */
+  /* No mobile, o carrossel de mockups vai ACIMA do título (não mais o
+     box de livros como fundo). O grid já é 1 coluna; usamos order para
+     colocar a coluna visual antes da copy sem mexer no HTML. */
   .felice .hero-visual {
-    display: none;
-  }
-  .felice .hero-bg {
-    /* AVIF (38KB) com fallback PNG p/ navegadores antigos. No mobile a imagem
-       é o fundo da hero (a coluna next/image fica display:none), então é AQUI
-       que mora o peso do LCP no celular — onde cai o tráfego de Meta Ads. */
-    /* fallback p/ navegadores sem image-set (ordem importa: vence a última suportada) */
-    background-image: url('/images/background-hero-box-4-books.png');
-    background-image: image-set(
-      url('/images/background-hero-box-4-books.avif') type('image/avif'),
-      url('/images/background-hero-box-4-books.png') type('image/png')
-    );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    order: -1;
+    width: 100%;
   }
   /* O brilho dourado lateral (posicionado p/ desktop) sai no mobile. */
   .felice .hero-bg::before {
     display: none;
-  }
-  /* Gradiente de legibilidade: transparente no topo, escurecendo até a base. */
-  .felice .hero-bg::after {
-    background: linear-gradient(
-      180deg,
-      rgba(11, 11, 13, 0.45) 0%,
-      rgba(11, 11, 13, 0.7) 45%,
-      rgba(11, 11, 13, 0.92) 80%,
-      var(--ink) 100%
-    );
   }
 }
 .felice .hero-trust span {
@@ -3019,4 +3006,75 @@
   border-radius: 99px;
   background: var(--grad-gold);
   border-color: transparent;
+}
+
+/* Mobile: o carrossel aparece acima do título (order:-1) e fica mais
+   BAIXO e largo, para o CTA "Quero o Kit" caber na primeira dobra.
+   Mantém o detalhe das telas, mas: esconde a sidebar, reduz alturas e
+   compacta os blocos mais altos (eco/steps/bars). */
+@media (max-width: 900px) {
+  .felice .heroc {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .felice .heroc-body {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .felice .heroc-side {
+    display: none;
+  }
+  .felice .heroc-main {
+    padding: 16px 16px 18px;
+    gap: 9px;
+    text-align: left;
+  }
+  /* o conteúdo de cada tela em 2 colunas: à esquerda título+ferramenta,
+     à direita o "miolo" (chat/etapas/barras). Distribui na horizontal
+     para reduzir a altura total no celular. */
+  .felice .heroc-h {
+    font-size: 1.05rem;
+  }
+  .felice .heroc-eco {
+    flex-direction: row;
+    gap: 6px;
+  }
+  .felice .heroc-eco-layer {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 9px 10px;
+  }
+  .felice .heroc-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  /* nas telas com script sob a etapa, esconde a linha de exemplo p/ encurtar */
+  .felice .heroc-step-txt i {
+    display: none;
+  }
+  .felice .heroc-bars {
+    height: 78px;
+  }
+  /* chat: limita a 2 balões visíveis + indicador, evita empurrar o título */
+  .felice .heroc-chat .heroc-bubble:nth-child(n + 3) {
+    display: none;
+  }
+  .felice .heroc-cal-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .felice .heroc-cal-cell:nth-child(n + 5) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .felice .heroc-eco {
+    flex-direction: column;
+  }
+  .felice .heroc-eco-layer {
+    flex-direction: row;
+    align-items: center;
+  }
 }
