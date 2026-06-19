@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { DocId } from '../../content/types';
 import { useChatStream, type ChatMode } from './useChatStream';
 
@@ -15,6 +15,13 @@ type Props = {
 export function ChatPanel({ mode, docId, placeholder, emptyHint }: Props) {
   const { messages, pending, unavailable, error, send, reset } = useChatStream(mode, docId);
   const [input, setInput] = useState('');
+  const logRef = useRef<HTMLDivElement>(null);
+
+  // Mantém o log rolado para a mensagem mais recente, como nos chats de IA.
+  useEffect(() => {
+    const el = logRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [messages, pending]);
 
   if (unavailable) {
     return (
@@ -33,7 +40,7 @@ export function ChatPanel({ mode, docId, placeholder, emptyHint }: Props) {
 
   return (
     <div className="kit-chat">
-      <div className="kit-chat-log">
+      <div className="kit-chat-log" ref={logRef}>
         {messages.length === 0 && <p className="kit-chat-empty">{emptyHint}</p>}
         {messages.map((m, i) => (
           <div key={i} className={`kit-chat-msg kit-chat-msg--${m.role}`}>
@@ -43,23 +50,25 @@ export function ChatPanel({ mode, docId, placeholder, emptyHint }: Props) {
         {error && <p className="kit-chat-error">{error}</p>}
       </div>
 
-      <form className="kit-chat-form" onSubmit={submit}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder={placeholder}
-          aria-label={placeholder}
-          disabled={pending}
-        />
-        <button type="submit" className="btn btn-primary" disabled={pending || !input.trim()}>
-          {pending ? '…' : 'Enviar'}
-        </button>
-      </form>
-      {messages.length > 0 && (
-        <button type="button" className="kit-link-btn" onClick={reset}>
-          Limpar conversa
-        </button>
-      )}
+      <div className="kit-chat-footer">
+        <form className="kit-chat-form" onSubmit={submit}>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={placeholder}
+            aria-label={placeholder}
+            disabled={pending}
+          />
+          <button type="submit" className="btn btn-primary" disabled={pending || !input.trim()}>
+            {pending ? '…' : 'Enviar'}
+          </button>
+        </form>
+        {messages.length > 0 && (
+          <button type="button" className="kit-link-btn" onClick={reset}>
+            Limpar conversa
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export const ATENDIMENTO_DOC: DocModel = {
     'A Arte de Receber: atendimento ético e humanizado na recepção, com scripts prontos, FAQs traduzidas e protocolos para situações delicadas.',
   eyebrow: 'Kit F4 · Atendimento',
   readingMinutes: 18,
+  updatedAt: '2026-06-19',
   sections: [
     {
       id: 'principios',

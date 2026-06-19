@@ -12,6 +12,7 @@ export const POP_DOC: DocModel = {
     'O mapa estratégico e operacional da clínica: como cada cargo opera com excelência dentro do Ecossistema de Excelência Clínica.',
   eyebrow: 'Kit F4 · Gestão',
   readingMinutes: 28,
+  updatedAt: '2026-06-19',
   sections: [
     {
       id: 'introducao',

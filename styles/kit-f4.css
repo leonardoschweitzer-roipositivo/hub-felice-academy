@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   padding-top: 14px;
   padding-bottom: 14px;
 }
@@ -31,6 +31,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 0 0 auto;
   font-family: var(--font-felice-display), sans-serif;
   font-weight: 700;
 }
@@ -54,12 +55,16 @@
 .felice-kit .kit-topbar-actions {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
   gap: 14px;
 }
 .felice-kit .kit-search-trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
+  /* Largura maior, parecendo uma barra de busca; o espaço extra cresce à esquerda. */
+  min-width: min(280px, 38vw);
   padding: 8px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -73,15 +78,6 @@
   border-color: var(--gold);
   color: var(--text);
 }
-.felice-kit .kit-topbar-back {
-  font-size: 0.85rem;
-  color: var(--muted);
-  transition: color 0.2s;
-}
-.felice-kit .kit-topbar-back:hover {
-  color: var(--gold);
-}
-
 /* ---------- Barra de progresso de leitura ---------- */
 .felice-kit .kit-readbar {
   position: fixed;
@@ -123,22 +119,32 @@
 }
 
 /* ---------- Abas dos documentos ---------- */
+/* Menu de documentos dentro da barra do topo. */
 .felice-kit .kit-doctabs {
   display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.felice-kit .kit-doctabs::-webkit-scrollbar {
+  display: none;
 }
 .felice-kit .kit-doctab {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  flex: 0 0 auto;
+  padding: 7px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--card);
   color: var(--muted);
   font-size: 0.85rem;
+  white-space: nowrap;
   transition: all 0.2s;
 }
 .felice-kit .kit-doctab:hover {
@@ -158,6 +164,18 @@
 }
 .felice-kit .kit-doctab.is-active .kit-doctab-num {
   opacity: 0.85;
+}
+/* Em telas estreitas, a barra do topo quebra: marca + busca na 1ª linha,
+   menu de documentos ocupando a linha inteira abaixo, rolando na horizontal. */
+@media (max-width: 920px) {
+  .felice-kit .kit-topbar-inner {
+    flex-wrap: wrap;
+  }
+  .felice-kit .kit-doctabs {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
 }
 @media (max-width: 560px) {
   .felice-kit .kit-doctab-label {
@@ -180,6 +198,10 @@
   margin-top: 12px;
   font-size: 0.85rem;
   color: var(--muted-2);
+}
+.felice-kit .kit-doc-updated {
+  color: var(--gold);
+  white-space: nowrap;
 }
 
 /* ---------- Grid de 2 colunas (sidebar + leitura) ---------- */
@@ -444,6 +466,17 @@
   padding: 22px;
   overflow-y: auto;
   transition: transform 0.28s ease;
+}
+/* Drawer de ferramentas vira coluna flex para o chat poder ocupar a altura. */
+.felice-kit .kit-panel-drawer {
+  display: flex;
+  flex-direction: column;
+}
+.felice-kit .kit-panel-tools {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 .felice-kit .kit-panel-drawer {
   right: 0;
@@ -1229,6 +1262,25 @@
 }
 
 /* Chat de IA */
+/* Quando o painel contém um chat, ele ocupa toda a altura disponível do drawer
+   e só o log rola — como nos chats do Gemini/Claude. */
+.felice-kit .kit-tool--panel:has(.kit-chat) {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.felice-kit .kit-tool--panel:has(.kit-chat) .kit-tool-title {
+  flex: 0 0 auto;
+}
+.felice-kit .kit-chat {
+  display: flex;
+  flex-direction: column;
+}
+.felice-kit .kit-tool--panel:has(.kit-chat) .kit-chat {
+  flex: 1;
+  min-height: 0;
+}
 .felice-kit .kit-chat-log {
   display: flex;
   flex-direction: column;
@@ -1236,6 +1288,20 @@
   max-height: 320px;
   overflow-y: auto;
   margin-bottom: 12px;
+  padding-right: 4px;
+}
+/* No drawer, o log cresce e ocupa toda a altura, sem teto fixo. */
+.felice-kit .kit-tool--panel:has(.kit-chat) .kit-chat-log {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+}
+/* Rodapé do chat: campo + botão ficam fixos na base, abaixo do log. */
+.felice-kit .kit-chat-footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .felice-kit .kit-chat-empty {
   font-size: 0.85rem;

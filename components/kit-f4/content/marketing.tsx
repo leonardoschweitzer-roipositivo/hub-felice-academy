@@ -12,6 +12,7 @@ export const MARKETING_DOC: DocModel = {
     'Vídeos para Instagram em clínicas de saúde: pilares 40/40/20, calendário editorial, fórmulas de roteiro e o funil 5Ns para tráfego pago.',
   eyebrow: 'Kit F4 · Marketing',
   readingMinutes: 16,
+  updatedAt: '2026-06-19',
   sections: [
     {
       id: 'pilares',

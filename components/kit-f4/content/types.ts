@@ -51,6 +51,8 @@ export type DocModel = {
   panelTools: ToolRef[];
   /** minutos estimados de leitura */
   readingMinutes: number;
+  /** data da última atualização do material (ISO: AAAA-MM-DD) */
+  updatedAt: string;
 };
 
 /** Metadados leves para os cards do índice + navegação anterior/próximo. */

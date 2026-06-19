@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { DOC_META, DOC_ORDER } from './content';
 import type { DocId } from './content/types';
 
-/** Abas no topo para acessar rapidamente os 4 documentos do Kit. */
+/** Menu de navegação no topo para acessar os 4 documentos do Kit. */
 export function DocTabs({ current }: { current: DocId }) {
   return (
-    <nav className="kit-doctabs wrap" aria-label="Documentos do Kit F4">
+    <nav className="kit-doctabs" aria-label="Documentos do Kit F4">
       {DOC_ORDER.map((id) => {
         const doc = DOC_META[id];
         const active = id === current;

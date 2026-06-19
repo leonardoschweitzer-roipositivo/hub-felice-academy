@@ -18,6 +18,12 @@ import { DocPrevNext } from './DocPrevNext';
 import { DocToolsPanel } from './DocToolsPanel';
 import { SearchModal } from './search/SearchModal';
 
+/** Formata a data ISO (AAAA-MM-DD) em dd/mm/aaaa, sem depender de timezone. */
+function formatUpdatedAt(iso: string): string {
+  const [y, m, d] = iso.split('-');
+  return d && m && y ? `${d}/${m}/${y}` : iso;
+}
+
 /** Casca de documento interativo do Kit F4: header + 3 colunas + footer. */
 export function DocLayout({ doc }: { doc: DocModel }) {
   const sectionIds = useMemo(() => doc.sections.map((s) => s.id), [doc.sections]);
@@ -50,26 +56,33 @@ export function DocLayout({ doc }: { doc: DocModel }) {
               Felice<small>Academy</small>
             </span>
           </Link>
+
+          <DocTabs current={doc.id} />
+
           <div className="kit-topbar-actions">
             <button type="button" className="kit-search-trigger" onClick={() => setSearchOpen(true)}>
               <span aria-hidden="true">⌕</span> Buscar no Kit
             </button>
-            <Link href="/gestao" className="kit-topbar-back">
-              Página do Kit F4
-            </Link>
           </div>
         </div>
       </header>
 
       <DocBreadcrumb docTitle={doc.title} />
-      <DocTabs current={doc.id} />
 
       <main className="kit-doc-main wrap">
         <div className="kit-doc-head">
           <span className="eyebrow">{doc.eyebrow}</span>
           <h1 className="display">{doc.title}</h1>
           <p className="lead">{doc.subtitle}</p>
-          <p className="kit-doc-meta">⏱ {doc.readingMinutes} min de leitura · {doc.sections.length} seções</p>
+          <p className="kit-doc-meta">
+            ⏱ {doc.readingMinutes} min de leitura · {doc.sections.length} seções
+            {doc.updatedAt && (
+              <>
+                {' · '}
+                <span className="kit-doc-updated">Atualizado em {formatUpdatedAt(doc.updatedAt)}</span>
+              </>
+            )}
+          </p>
         </div>
 
         <div className="kit-doc-grid">

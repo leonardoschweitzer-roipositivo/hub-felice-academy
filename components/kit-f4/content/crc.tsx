@@ -12,6 +12,7 @@ export const CRC_DOC: DocModel = {
     'A Voz da Clínica: o guião tático da Central de Relacionamento para a chamada perfeita, gestão de objeções e a regra dos 5 minutos.',
   eyebrow: 'Kit F4 · Comercial',
   readingMinutes: 20,
+  updatedAt: '2026-06-19',
   sections: [
     {
       id: 'voz',
