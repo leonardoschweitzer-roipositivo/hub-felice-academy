@@ -126,6 +126,13 @@
   border: 0;
 }
 
+/* Página de confirmação (só HERO): centraliza vertical na viewport. */
+.felice .obg-hero.cons-confirma {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
 /* ---------- A virada ---------- */
 .felice .obg-virada-cols {
   display: grid;

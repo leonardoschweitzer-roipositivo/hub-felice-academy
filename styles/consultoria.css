@@ -1,0 +1,177 @@
+/* ============================================================
+   Questionário de qualificação · /gestao/consultoria
+   Reusa tokens de felice.css e o fundo de pontinhos (.obg-hero-bg).
+   ============================================================ */
+
+.felice .cons-page {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(56px, 9vw, 96px) 0 clamp(64px, 9vw, 110px);
+  overflow: hidden;
+}
+.felice .cons-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.felice .cons-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(28px, 4vw, 44px);
+}
+.felice .cons-head .eyebrow {
+  justify-content: center;
+}
+.felice .cons-head h1 {
+  margin: 14px 0 14px;
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+}
+.felice .cons-lead {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.felice .cons-form {
+  display: grid;
+  gap: 16px;
+}
+
+/* ---------- Pergunta (card) ---------- */
+.felice .cons-q {
+  border: 1px solid var(--line-soft);
+  background: var(--card);
+  border-radius: var(--r);
+  padding: 22px 24px;
+  margin: 0;
+  min-width: 0;
+}
+.felice .cons-q legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 16px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+.felice .cons-q-n {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  vertical-align: -6px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.1);
+  border: 1px solid var(--line);
+}
+
+.felice .cons-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.felice .cons-chip {
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--card-2);
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+.felice .cons-chip:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.felice .cons-chip.selected {
+  color: #231701;
+  background: var(--grad-gold);
+  border-color: transparent;
+}
+
+/* ---------- Contato ---------- */
+.felice .cons-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) {
+  .felice .cons-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.felice .cons-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.felice .cons-field span {
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.felice .cons-field input {
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--ink-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 13px 15px;
+  transition: border-color 0.2s ease;
+}
+.felice .cons-field input::placeholder {
+  color: var(--muted-2);
+}
+.felice .cons-field input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* ---------- Envio ---------- */
+.felice .cons-error {
+  color: #ff8f8f;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.felice .cons-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+.felice .cons-progress {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+.felice .cons-submit .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.felice .cons-skip {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--line-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.felice .cons-skip:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+}

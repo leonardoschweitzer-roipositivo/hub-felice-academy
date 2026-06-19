@@ -3,9 +3,12 @@
    Edite SÓ aqui os links/parâmetros da página de obrigado.
    ============================================================ */
 
-/** ⚠️ PREENCHER: link de agendamento da consultoria (Calendly, etc.).
-    Todos os CTAs primários apontam para cá. */
-export const CONSULTORIA_URL = 'https://AGENDAR.EXEMPLO.COM';
+/** Rota do questionário de qualificação — para onde os CTAs "Agendar
+    consultoria" levam. O lead responde e é direcionado à confirmação. */
+export const QUESTIONARIO_URL = '/gestao/consultoria';
+
+/** Rota da página de confirmação (recebimento dos dados). */
+export const CONFIRMACAO_URL = '/gestao/consultoria/confirmado';
 
 /** Acesso aos 4 documentos do Kit (link secundário, discreto). */
 export const DOCS_URL = '/gestao/kit-f4';

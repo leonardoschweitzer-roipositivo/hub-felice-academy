@@ -1,6 +1,7 @@
-import { CONSULTORIA_URL } from './config';
+import Link from 'next/link';
+import { QUESTIONARIO_URL } from './config';
 
-/* Botão primário reutilizável: leva sempre ao agendamento da consultoria.
+/* Botão primário reutilizável: leva ao questionário de qualificação.
    Mantém o objetivo único da página em todos os pontos de conversão. */
 export function CtaConsultoria({
   label = 'Agendar minha consultoria gratuita',
@@ -15,8 +16,8 @@ export function CtaConsultoria({
     .filter(Boolean)
     .join(' ');
   return (
-    <a href={CONSULTORIA_URL} target="_blank" rel="noopener noreferrer" className={cls}>
+    <Link href={QUESTIONARIO_URL} className={cls}>
       {label} <span className="arrow">→</span>
-    </a>
+    </Link>
   );
 }
