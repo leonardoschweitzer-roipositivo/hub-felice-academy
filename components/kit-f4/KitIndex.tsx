@@ -45,7 +45,7 @@ export function KitIndex() {
             </nav>
             <span className="eyebrow reveal">Felice Academy · Gestão</span>
             <h1 className="reveal d1">
-              Kit Sistema de <span className="gold-grad">Gestão F4</span>
+              Kit Sistema<br />de <span className="gold-grad">Gestão F4</span>
             </h1>
             <p className="lead reveal d2">
               Os 4 documentos do Kit, agora vivos e interativos: leia, marque o progresso, copie
