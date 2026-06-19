@@ -13,7 +13,12 @@ export function FinalCta() {
           dias. Tudo por <b style={{ color: 'var(--cream)' }}>R$ 97</b> — menos do que você perde com
           um único paciente que não agendou.
         </p>
-        <a href="#checkout" className="btn btn-primary btn-lg">
+        <a
+          href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary btn-lg"
+        >
           Liberar Acesso por R$ 97 <span className="arrow">→</span>
         </a>
       </div>

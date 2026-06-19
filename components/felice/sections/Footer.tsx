@@ -12,7 +12,9 @@ export function Footer() {
         </div>
         <div className="foot-links">
           <a href="#metodo">O método</a>
-          <a href="#checkout">Comprar</a>
+          <a href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU" target="_blank" rel="noopener noreferrer">
+            Comprar
+          </a>
           <a href="/privacidade">Política de Privacidade</a>
           <a href="/termos">Termos de Uso</a>
         </div>

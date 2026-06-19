@@ -60,7 +60,13 @@ export function Oferta() {
               <div className="note">ou parcelado no cartão · acesso imediato</div>
             </div>
 
-            <a href="#" className="btn btn-primary btn-lg btn-block" style={{ marginTop: 8 }}>
+            <a
+              href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-lg btn-block"
+              style={{ marginTop: 8 }}
+            >
               Liberar Acesso Agora <span className="arrow">→</span>
             </a>
 
