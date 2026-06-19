@@ -1,6 +1,6 @@
 const STATS = [
   { num: '+1.200', label: 'Dentistas usando o método' },
-  { num: '4', label: 'Entregas prontas para implementar' },
+  { num: '4', label: 'Áreas, agora interativas' },
   { num: '7 dias', label: 'Garantia incondicional' },
   { num: 'R$ 97', label: 'Acesso imediato e vitalício' },
 ];

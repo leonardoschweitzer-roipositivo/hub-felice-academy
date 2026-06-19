@@ -23,8 +23,8 @@ const ENTREGAS: Entrega[] = [
     descricao:
       'Estruture os processos da sua clínica com clareza e padronização. O POP ajuda sua equipe a executar cada função com eficiência e segurança.',
     bullets: [
-      'Reduz erros e retrabalho no dia a dia',
-      'Dá previsibilidade à operação',
+      'Gerador de POP personalizado, pronto para imprimir e assinar',
+      'Matriz de responsabilidades e checklists com progresso salvo',
       'Libera você da dependência da equipe',
     ],
     marca: 0,
@@ -37,9 +37,9 @@ const ENTREGAS: Entrega[] = [
     descricao:
       'Estruture um atendimento humanizado, estratégico e profissional. Com scripts bem definidos, sua equipe conduz conversas com mais segurança.',
     bullets: [
-      'Gera conexão e confiança desde o primeiro contato',
-      'Padroniza a experiência do paciente',
-      'Eleva a percepção de valor da clínica',
+      'Scripts copiáveis para usar na hora, sem decorar',
+      'Simulador de role-play com IA para treinar a recepção',
+      'Padroniza a experiência e eleva a percepção de valor',
     ],
     marca: 1,
     rev: true,
@@ -52,9 +52,9 @@ const ENTREGAS: Entrega[] = [
     descricao:
       'Transforme contatos em consultas agendadas com mais eficiência. Os scripts conduzem a conversa de forma clara, organizada e persuasiva.',
     bullets: [
-      'Reduz a perda de oportunidades',
-      'Aumenta a taxa de conversão da agenda',
-      'Profissionaliza o primeiro contato',
+      'Roteiro de chamada passo a passo e banco de objeções',
+      'Simulador de ligação com IA para treinar a CRC',
+      'Aumenta a conversão da agenda e profissionaliza o contato',
     ],
     marca: 2,
     img: '/images/book-script-de-agendamento.avif',
@@ -66,9 +66,9 @@ const ENTREGAS: Entrega[] = [
     descricao:
       'Planeje conteúdos estratégicos para atrair, engajar e fortalecer a autoridade da sua clínica nas redes sociais — com constância e intenção.',
     bullets: [
-      'Direciona ações com objetivo claro',
-      'Mantém presença constante nas redes',
-      'Constrói autoridade e atrai pacientes',
+      'Calendário editorial editável e pronto para imprimir',
+      'Calculadora de conteúdo 40/40/20 para equilibrar os posts',
+      'Mantém presença constante e constrói autoridade',
     ],
     marca: 3,
     rev: true,

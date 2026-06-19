@@ -20,7 +20,7 @@ export function Oferta() {
             A oferta
           </span>
           <h2>
-            Desbloqueie <span className="gold-grad">todos os documentos</span>
+            Desbloqueie a <span className="gold-grad">plataforma completa</span>
           </h2>
         </div>
 
@@ -39,6 +39,12 @@ export function Oferta() {
                   <span className="pr">R$ 97</span>
                 </li>
               ))}
+              <li>
+                <span className="it">
+                  <ItemCheck /> Busca, IA e simuladores na plataforma
+                </span>
+                <span className="pr">Grátis</span>
+              </li>
             </ul>
             <div className="total-row">
               <span className="lbl">Valor total</span>

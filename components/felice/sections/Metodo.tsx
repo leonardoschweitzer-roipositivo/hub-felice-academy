@@ -10,8 +10,9 @@ export function Metodo() {
             Metodologia <span className="gold-grad">Gestão F4</span>
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
-            Quatro pilares que transformam o caos em processo. Documentos prontos, desenvolvidos
-            para clínicas que querem organização, produtividade e resultado.
+            Quatro pilares que transformam o caos em processo — agora numa plataforma interativa,
+            com busca, IA e ferramentas, feita para clínicas que querem organização, produtividade e
+            resultado.
           </p>
         </div>
         <div className="pillars">
@@ -34,7 +35,7 @@ export function Metodo() {
               </svg>
             </div>
             <h3>Atendimento</h3>
-            <p>Scripts que conduzem cada conversa com segurança, gerando conexão e confiança.</p>
+            <p>Scripts copiáveis e simulador de treino que conduzem cada conversa com segurança, gerando conexão e confiança.</p>
           </div>
           <div className="pillar reveal d2">
             <div className="num">03</div>
@@ -45,7 +46,7 @@ export function Metodo() {
               </svg>
             </div>
             <h3>Agendamento</h3>
-            <p>Roteiros que transformam contatos em consultas marcadas — sem perder oportunidade.</p>
+            <p>Roteiro de chamada passo a passo e banco de objeções que transformam contatos em consultas marcadas.</p>
           </div>
           <div className="pillar reveal d3">
             <div className="num">04</div>

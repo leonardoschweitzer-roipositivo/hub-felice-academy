@@ -6,6 +6,7 @@ import { Numeros } from './sections/Numeros';
 import { Problema } from './sections/Problema';
 import { Metodo } from './sections/Metodo';
 import { Componentes } from './sections/Componentes';
+import { Plataforma } from './sections/Plataforma';
 import { Autoridade } from './sections/Autoridade';
 import { Depoimentos } from './sections/Depoimentos';
 import { Oferta } from './sections/Oferta';
@@ -58,6 +59,7 @@ export function FeliceLanding() {
         </div>
 
         <Componentes />
+        <Plataforma />
         <Autoridade />
         <Depoimentos />
         <Oferta />

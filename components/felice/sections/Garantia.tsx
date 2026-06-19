@@ -43,7 +43,7 @@ export function Garantia() {
           <div>
             <h3>Risco zero para você</h3>
             <p>
-              Compre, baixe e aplique. Se em até 7 dias você sentir que o Kit Gestão F4 não é para a
+              Compre, acesse e aplique. Se em até 7 dias você sentir que o Kit Gestão F4 não é para a
               sua clínica, devolvemos 100% do seu investimento — sem perguntas, sem burocracia. Toda
               a responsabilidade do resultado fica com a gente.
             </p>

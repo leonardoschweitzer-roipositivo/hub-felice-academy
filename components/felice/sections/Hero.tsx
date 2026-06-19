@@ -8,6 +8,9 @@ const MARQUEE_ITEMS = [
   'Scripts de Atendimento',
   'Scripts de Agendamento',
   'Calendário de Marketing',
+  'Busca instantânea',
+  'IA do Kit',
+  'Simulador de treino',
 ];
 
 export function Hero() {
@@ -30,12 +33,13 @@ export function Hero() {
             <span className="gold-grad">ATENDENDO, AGENDANDO E VENDENDO</span> NO AUTOMÁTICO.
           </h1>
           <p className="lead reveal d2">
-            Quatro entregas:{' '}
+            Uma plataforma interativa com{' '}
             <b style={{ color: 'var(--cream)' }}>POPs</b>,{' '}
             <b style={{ color: 'var(--cream)' }}>scripts de atendimento</b>,{' '}
             <b style={{ color: 'var(--cream)' }}>scripts de agendamento</b> e{' '}
-            <b style={{ color: 'var(--cream)' }}>calendário de marketing</b>. Sua equipe ganha
-            direcionamento, você sai da operação.
+            <b style={{ color: 'var(--cream)' }}>calendário de marketing</b> — com busca instantânea,
+            IA que responde sobre o material e simulador para treinar sua equipe. Você sai da
+            operação; a clínica ganha método.
           </p>
           <div className="hero-cta reveal d3">
             <a href="#checkout" className="btn btn-primary btn-lg">
@@ -46,7 +50,7 @@ export function Hero() {
             <span>{check} Acesso imediato</span>
             <span>{check} Garantia de 7 dias</span>
             <span>{check} Pagamento seguro</span>
-            <span>{check} 100% digital</span>
+            <span>{check} Busca + IA inclusas</span>
           </div>
         </div>
 

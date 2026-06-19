@@ -5,11 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 const PERGUNTAS: { q: string; a: string }[] = [
   {
     q: 'Como eu recebo o material?',
-    a: 'O acesso é liberado imediatamente após a confirmação do pagamento. É 100% digital: você baixa e já começa a usar hoje mesmo.',
+    a: 'O acesso é liberado imediatamente após a confirmação do pagamento. Você entra na plataforma online pelo navegador e já começa a usar hoje mesmo — nada para baixar ou instalar, e o acesso é vitalício.',
+  },
+  {
+    q: 'Funciona no celular? Preciso de internet?',
+    a: 'Sim, funciona no computador, tablet ou celular — basta um navegador e conexão com a internet. Você acessa de qualquer lugar: na recepção, no consultório ou em casa.',
   },
   {
     q: 'Preciso de algum sistema ou ferramenta paga?',
-    a: 'Não. São documentos prontos para usar e editar. Você aplica direto na rotina da clínica, sem precisar de software adicional.',
+    a: 'Não. Está tudo dentro da plataforma, sem custo extra nem software adicional — inclusive a busca, a IA que responde sobre o material e os simuladores de treino já vêm incluídos.',
   },
   {
     q: 'Serve para qualquer clínica odontológica?',
