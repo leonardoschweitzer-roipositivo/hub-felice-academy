@@ -1380,6 +1380,74 @@
   margin-top: 18px;
 }
 
+/* ---------- Páginas legais (Privacidade / Termos) ---------- */
+.felice .legal-page {
+  min-height: 100vh;
+  background: var(--ink);
+}
+.felice .legal-topbar {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 20px 0;
+}
+.felice .legal-topbar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.felice .legal-back {
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+.felice .legal-back:hover {
+  color: var(--gold);
+}
+.felice .legal-doc {
+  padding: 56px 0 96px;
+}
+.felice .legal-doc .doc-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.felice .legal-doc h1 {
+  margin-bottom: 8px;
+}
+.felice .legal-doc .doc-updated {
+  color: var(--muted-2);
+  font-size: 0.85rem;
+  margin-bottom: 40px;
+}
+.felice .legal-doc h2 {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  color: var(--cream);
+  margin: 40px 0 14px;
+}
+.felice .legal-doc p,
+.felice .legal-doc li {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.felice .legal-doc p {
+  margin-bottom: 14px;
+}
+.felice .legal-doc ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+.felice .legal-doc li {
+  margin-bottom: 8px;
+}
+.felice .legal-doc a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+.felice .legal-doc strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 /* ---------- WhatsApp float ---------- */
 .felice .wpp {
   position: fixed;

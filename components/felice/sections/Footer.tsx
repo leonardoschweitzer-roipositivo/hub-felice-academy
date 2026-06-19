@@ -13,7 +13,8 @@ export function Footer() {
         <div className="foot-links">
           <a href="#metodo">O método</a>
           <a href="#checkout">Comprar</a>
-          <a href="#">Privacidade</a>
+          <a href="/privacidade">Política de Privacidade</a>
+          <a href="/termos">Termos de Uso</a>
         </div>
         <p className="legal">
           <b>CNPJ: 25.307.550/0001-89.</b> Aviso legal: este produto não garante a obtenção de
