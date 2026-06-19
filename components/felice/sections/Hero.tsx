@@ -34,9 +34,7 @@ export function Hero() {
             SAIA DA OPERAÇÃO E DEIXE SUA CLÍNICA{' '}
             <span className="gold-grad">ATENDENDO, AGENDANDO E VENDENDO</span> NO AUTOMÁTICO.
           </h1>
-        </div>
-
-        <div className="hero-copy">
+          {/* lead junto do título: no mobile fica acima do carrossel. */}
           <p className="lead reveal d2">
             Uma plataforma interativa com{' '}
             <b style={{ color: 'var(--cream)' }}>POPs</b>,{' '}
@@ -46,6 +44,9 @@ export function Hero() {
             IA que responde sobre o material e simulador para treinar sua equipe. Você sai da
             operação; a clínica ganha método.
           </p>
+        </div>
+
+        <div className="hero-copy">
           <div className="hero-cta reveal d3">
             <a href="#checkout" className="btn btn-primary btn-lg">
               Quero o Kit por R$ 97 <span className="arrow">→</span>
