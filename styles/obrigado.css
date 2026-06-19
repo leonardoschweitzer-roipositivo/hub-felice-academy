@@ -12,21 +12,37 @@
   overflow: hidden;
   border-bottom: 1px solid var(--line-soft);
 }
+/* Mesmo fundo da página de vendas: grid de pontos dourados + brilho
+   dourado ambiente (felice-breathe, definido em felice.css) + vinheta. */
 .felice .obg-hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(60% 70% at 50% 0%, rgba(232, 180, 71, 0.16), transparent 70%),
-    radial-gradient(100% 60% at 50% 120%, rgba(0, 0, 0, 0.6), transparent 60%),
-    linear-gradient(180deg, var(--ink-2), var(--ink));
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--ink);
+  background-image: radial-gradient(rgba(232, 180, 71, 0.16) 1.3px, transparent 1.3px);
+  background-size: 26px 26px;
+  background-position: center;
 }
 .felice .obg-hero-bg::before {
   content: '';
   position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.16), rgba(232, 180, 71, 0.04) 40%, transparent 65%);
+  filter: blur(20px);
+  animation: felice-breathe 9s ease-in-out infinite;
+}
+.felice .obg-hero-bg::after {
+  content: '';
+  position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(70% 60% at 50% 30%, #000, transparent 75%);
+  background: radial-gradient(120% 80% at 50% 30%, transparent 0%, rgba(11, 11, 13, 0.55) 70%, var(--ink) 100%),
+    linear-gradient(180deg, transparent 60%, var(--ink) 100%);
 }
 .felice .obg-hero-inner {
   position: relative;
