@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { check } from '../ui/icons';
+import { KitMockup, type KitMockupId } from './KitMockup';
 
 /* Entregas do kit. Para incluir/remover um item, edite este array. */
 type Entrega = {
@@ -9,10 +9,10 @@ type Entrega = {
   bullets: string[];
   /* posição do quadrado aceso no selo F4 (0..3) */
   marca: 0 | 1 | 2 | 3;
-  /* mídia invertida (imagem à direita) */
+  /* mídia invertida (mockup à direita) */
   rev?: boolean;
-  /* imagem do book (AVIF otimizado em /public/images/book-*) */
-  img: string;
+  /* qual tela da plataforma exibir no mockup */
+  mock: KitMockupId;
   valor?: string;
 };
 
@@ -28,7 +28,7 @@ const ENTREGAS: Entrega[] = [
       'Libera você da dependência da equipe',
     ],
     marca: 0,
-    img: '/images/book-procedimento-operacional-padrao.avif',
+    mock: 'pop',
     valor: 'R$ 97',
   },
   {
@@ -43,7 +43,7 @@ const ENTREGAS: Entrega[] = [
     ],
     marca: 1,
     rev: true,
-    img: '/images/book-script-de-atendimento.avif',
+    mock: 'atendimento',
     valor: 'R$ 97',
   },
   {
@@ -57,7 +57,7 @@ const ENTREGAS: Entrega[] = [
       'Aumenta a conversão da agenda e profissionaliza o contato',
     ],
     marca: 2,
-    img: '/images/book-script-de-agendamento.avif',
+    mock: 'crc',
     valor: 'R$ 97',
   },
   {
@@ -72,7 +72,7 @@ const ENTREGAS: Entrega[] = [
     ],
     marca: 3,
     rev: true,
-    img: '/images/book-calendario-de-marketing.avif',
+    mock: 'marketing',
     valor: 'R$ 97',
   },
 ];
@@ -93,15 +93,7 @@ export function Componentes() {
         {ENTREGAS.map((e) => (
           <div key={e.titulo} className={`comp reveal${e.rev ? ' rev' : ''}`}>
             <div className="comp-media">
-              <Image
-                src={e.img}
-                alt={e.titulo}
-                width={692}
-                height={685}
-                quality={72}
-                sizes="(max-width: 820px) 90vw, 520px"
-                className="comp-book"
-              />
+              <KitMockup id={e.mock} />
             </div>
             <div>
               <span className="comp-tag">{e.tag}</span>

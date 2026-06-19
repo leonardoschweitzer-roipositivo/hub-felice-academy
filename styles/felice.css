@@ -2244,3 +2244,254 @@
   background: var(--grad-gold);
   border-color: transparent;
 }
+
+/* ---------- "O que você recebe" · mockup por documento ---------- */
+/* quando o card de mídia contém um mockup, ele vira a moldura externa:
+   damos um respiro interno e deixamos o .kitm preencher. */
+.felice .comp-media:has(.kitm) {
+  padding: 18px;
+  background: linear-gradient(160deg, #16130d, #0d0d10);
+}
+.felice .kitm {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding-bottom: 16px;
+}
+.felice .kitm-chrome {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 13px;
+  background: var(--ink-2);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .kitm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.felice .kitm-dot:first-child {
+  background: rgba(232, 180, 71, 0.55);
+}
+.felice .kitm-url {
+  margin-left: 10px;
+  flex: 1;
+  font-size: 0.7rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.felice .kitm-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 14px;
+  padding: 7px 11px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--muted-2);
+  font-size: 0.78rem;
+}
+.felice .kitm-search svg {
+  color: var(--gold);
+}
+.felice .kitm-kbd {
+  margin-left: auto;
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--line-soft);
+}
+.felice .kitm-tag {
+  margin: 0 14px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.86rem;
+  color: var(--cream);
+}
+.felice .kitm-tag + * {
+  margin: 0 14px;
+}
+
+/* POP · matriz */
+.felice .kitm-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.felice .kitm-row {
+  display: grid;
+  grid-template-columns: 1fr 52px 52px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  font-size: 0.78rem;
+  color: var(--text);
+}
+.felice .kitm-row--head {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted-2);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-bottom: 0;
+}
+.felice .kitm-row--head span:not(:first-child),
+.felice .kitm-cell {
+  justify-self: center;
+}
+.felice .kitm-cell {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1px solid var(--line-soft);
+}
+.felice .kitm-cell.on {
+  background: var(--grad-gold);
+  border-color: transparent;
+}
+
+/* Atendimento · script copiável */
+.felice .kitm-script {
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: rgba(232, 180, 71, 0.05);
+  padding: 12px 14px;
+}
+.felice .kitm-script-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.felice .kitm-script-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+.felice .kitm-copy {
+  font-size: 0.72rem;
+  color: var(--cream);
+  padding: 3px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+.felice .kitm-script p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.felice .kitm-script em {
+  font-style: normal;
+  color: var(--gold-bright);
+}
+
+/* CRC · banco de objeções */
+.felice .kitm-obj {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.felice .kitm-obj-q {
+  align-self: flex-start;
+  max-width: 80%;
+  font-size: 0.82rem;
+  padding: 9px 13px;
+  border-radius: 13px;
+  border-bottom-left-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line-soft);
+  color: var(--cream);
+}
+.felice .kitm-obj-a {
+  align-self: flex-end;
+  display: flex;
+  gap: 8px;
+  max-width: 88%;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 9px 13px;
+  border-radius: 13px;
+  border-bottom-right-radius: 4px;
+  background: rgba(232, 180, 71, 0.12);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.felice .kitm-ai-ico {
+  color: var(--gold-bright);
+  flex-shrink: 0;
+}
+.felice .kitm-obj-tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.felice .kitm-obj-tags span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+}
+
+/* Marketing · calendário editorial */
+.felice .kitm-cal {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.felice .kitm-day {
+  min-height: 58px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-soft);
+  padding: 8px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.felice .kitm-day.has {
+  background: rgba(232, 180, 71, 0.06);
+  border-color: var(--line);
+}
+.felice .kitm-day-d {
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.felice .kitm-day-k {
+  font-size: 0.72rem;
+  color: var(--cream);
+  padding: 3px 8px;
+  border-radius: 7px;
+  align-self: flex-start;
+  background: rgba(232, 180, 71, 0.18);
+  border: 1px solid var(--line);
+}
+.felice .kitm-day-k.k-conversão {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--line-soft);
+  color: var(--muted);
+}
