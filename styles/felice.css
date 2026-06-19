@@ -2495,3 +2495,528 @@
   border-color: var(--line-soft);
   color: var(--muted);
 }
+
+/* ---------- HERO · carrossel vertical (apenas desktop) ---------- */
+.felice .heroc {
+  width: 100%;
+  max-width: 440px;
+}
+.felice .heroc-win {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  box-shadow: var(--shadow), 0 0 70px -20px rgba(232, 180, 71, 0.45);
+}
+.felice .heroc-chrome {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 15px;
+  background: var(--ink-2);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .heroc-cdot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.felice .heroc-cdot:first-child {
+  background: rgba(232, 180, 71, 0.6);
+}
+.felice .heroc-url {
+  margin-left: 10px;
+  flex: 1;
+  font-size: 0.72rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  padding: 4px 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.felice .heroc-body {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  min-height: 560px;
+}
+.felice .heroc-side {
+  padding: 18px 13px;
+  border-right: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.felice .heroc-side-eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.felice .heroc-side-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: var(--muted);
+  padding: 7px 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  line-height: 1.25;
+}
+.felice .heroc-side-item i {
+  font-style: normal;
+  font-size: 0.62rem;
+  color: var(--muted-2);
+}
+.felice .heroc-side-item.is-active {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.1);
+  border-color: var(--line);
+}
+.felice .heroc-side-item.is-active i {
+  color: var(--gold);
+}
+.felice .heroc-side-prog {
+  margin-top: auto;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.felice .heroc-side-prog span {
+  display: block;
+  height: 100%;
+  background: var(--grad-gold);
+  transition: width 0.5s ease;
+}
+.felice .heroc-main {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  animation: platFade 0.5s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .felice .heroc-main {
+    animation: none;
+  }
+}
+.felice .heroc-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--muted-2);
+  font-size: 0.76rem;
+}
+.felice .heroc-search svg {
+  color: var(--gold);
+}
+.felice .heroc-kbd {
+  margin-left: auto;
+  font-size: 0.66rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-eyebrow {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+.felice .heroc-h {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-top: -4px;
+}
+
+/* POP · ecossistema em camadas */
+.felice .heroc-eco {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.felice .heroc-eco-layer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.78rem;
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.04);
+}
+.felice .heroc-eco-layer.l0 {
+  background: rgba(232, 180, 71, 0.14);
+  border-color: var(--line);
+}
+.felice .heroc-eco-layer.l1 {
+  background: rgba(232, 180, 71, 0.08);
+}
+.felice .heroc-eco-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--grad-gold);
+  flex-shrink: 0;
+}
+.felice .heroc-eco-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.felice .heroc-eco-txt b {
+  font-weight: 700;
+  color: var(--cream);
+}
+.felice .heroc-eco-txt i {
+  font-style: normal;
+  font-size: 0.66rem;
+  color: var(--muted-2);
+}
+
+/* chips de cargo / respostas rápidas / tipos de conteúdo */
+.felice .heroc-roles,
+.felice .heroc-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.felice .heroc-chip,
+.felice .heroc-replies span {
+  font-size: 0.68rem;
+  color: var(--muted);
+  padding: 4px 9px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-chip.on {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.14);
+  border-color: var(--line);
+}
+
+/* Atendimento · jornada (trilha de etapas) */
+.felice .heroc-journey {
+  display: flex;
+  gap: 5px;
+}
+.felice .heroc-jstep {
+  flex: 1;
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--muted-2);
+  padding: 5px 2px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-jstep.done {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.12);
+  border-color: var(--line);
+}
+
+/* CRC · linha de script sob a etapa + barra mini do timer */
+.felice .heroc-step-txt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.3;
+}
+.felice .heroc-step-txt i {
+  font-style: normal;
+  font-size: 0.66rem;
+  color: var(--muted-2);
+}
+.felice .heroc-bar-mini {
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.felice .heroc-bar-mini span {
+  display: block;
+  height: 100%;
+  background: var(--grad-gold);
+}
+
+/* Marketing · grade do calendário (3 col) */
+.felice .heroc-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.felice .heroc-cal-cell {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--muted-2);
+  padding: 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-cal-cell.has {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.1);
+  border-color: var(--line);
+}
+
+/* ferramenta genérica (caixinha com topo) */
+.felice .heroc-tool {
+  border-radius: 10px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 11px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.felice .heroc-tool-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--cream);
+}
+.felice .heroc-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #2a1c00;
+  background: var(--grad-gold);
+  padding: 3px 9px;
+  border-radius: 7px;
+}
+.felice .heroc-timer {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: var(--gold-bright);
+}
+.felice .heroc-field {
+  height: 9px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.felice .heroc-field.short {
+  width: 60%;
+}
+
+/* Atendimento · chat */
+.felice .heroc-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.felice .heroc-bubble {
+  max-width: 86%;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  padding: 8px 11px;
+  border-radius: 13px;
+}
+.felice .heroc-bubble.user {
+  align-self: flex-end;
+  background: rgba(232, 180, 71, 0.14);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  border-bottom-right-radius: 4px;
+}
+.felice .heroc-bubble.ai {
+  align-self: flex-start;
+  display: flex;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+.felice .heroc-ai {
+  color: var(--gold-bright);
+  flex-shrink: 0;
+}
+.felice .heroc-typing {
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+  padding: 9px 13px;
+  border-radius: 13px;
+  border-bottom-left-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: herocBlink 1.2s infinite ease-in-out;
+}
+.felice .heroc-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.felice .heroc-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes herocBlink {
+  0%,
+  60%,
+  100% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .felice .heroc-typing span {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* CRC · etapas verticais */
+.felice .heroc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.felice .heroc-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 8px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.03);
+}
+.felice .heroc-step b {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+  flex-shrink: 0;
+}
+.felice .heroc-step.done {
+  color: var(--text);
+}
+.felice .heroc-step.done b {
+  background: var(--grad-gold);
+  color: #2a1c00;
+}
+.felice .heroc-step.now {
+  background: rgba(232, 180, 71, 0.12);
+  border-color: var(--line);
+  color: var(--cream);
+}
+
+/* Marketing · barras + legenda + semana */
+.felice .heroc-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 96px;
+}
+.felice .heroc-bar {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 7px;
+  border-radius: 10px 10px 7px 7px;
+  background: linear-gradient(180deg, rgba(232, 180, 71, 0.34), rgba(232, 180, 71, 0.1));
+  border: 1px solid var(--line);
+}
+.felice .heroc-bar.soft {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border-color: var(--line-soft);
+}
+.felice .heroc-bar em {
+  font-style: normal;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  color: var(--gold-bright);
+}
+.felice .heroc-bar.soft em {
+  color: var(--muted);
+}
+.felice .heroc-legend {
+  display: flex;
+  gap: 12px;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.felice .heroc-legend span {
+  flex: 1;
+  text-align: center;
+}
+.felice .heroc-legend span.soft {
+  color: var(--muted-2);
+}
+.felice .heroc-week {
+  display: flex;
+  gap: 6px;
+}
+.felice .heroc-week span {
+  flex: 1;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted-2);
+  padding: 8px 0;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-soft);
+}
+.felice .heroc-week span.on {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.14);
+  border-color: var(--line);
+}
+
+/* dots do hero */
+.felice .heroc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 18px;
+}
+.felice .heroc-pip {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.25s, width 0.25s;
+}
+.felice .heroc-pip.is-active {
+  width: 24px;
+  border-radius: 99px;
+  background: var(--grad-gold);
+  border-color: transparent;
+}

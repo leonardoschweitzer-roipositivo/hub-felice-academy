@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { check } from '../ui/icons';
+import { HeroCarousel } from './HeroCarousel';
 
 /* Itens que desfilam na esteira do rodapé do hero. */
 const MARQUEE_ITEMS = [
@@ -54,19 +54,11 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Desktop: carrossel de telas da plataforma (formato vertical).
+            No mobile, .hero-visual é display:none e a imagem de fundo
+            (background-hero-box-4-books) continua valendo — intocado. */}
         <div className="hero-visual reveal d2">
-          {/* Sem `priority`: no desktop o LCP é o H1 (texto), não esta imagem;
-              e no mobile ela fica display:none. O priority gerava um preload
-              sem media que baixava a imagem à toa no celular. */}
-          <Image
-            src="/images/background-hero-box-4-books.avif"
-            alt="Kit Gestão F4 — caixa com os 4 materiais"
-            width={450}
-            height={800}
-            quality={70}
-            sizes="450px"
-            className="hero-product"
-          />
+          <HeroCarousel />
         </div>
       </div>
 
