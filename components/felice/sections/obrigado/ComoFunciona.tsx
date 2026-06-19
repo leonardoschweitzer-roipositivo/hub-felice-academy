@@ -7,12 +7,12 @@ const PASSOS = [
   {
     n: '2',
     t: 'Receba a confirmação',
-    d: 'Você recebe os detalhes da reunião e um espaço para nos contar rapidamente sobre sua clínica.',
+    d: 'Você recebe os detalhes da reunião e um espaço para me contar rapidamente sobre a sua clínica.',
   },
   {
     n: '3',
-    t: 'Reunião de 1 hora, online',
-    d: 'No horário marcado, conversa direta com o Dr. Sócrates para montar seu plano de implementação.',
+    t: 'Conversamos por 1 hora, online',
+    d: 'No horário marcado, eu falo diretamente com você para montarmos o seu plano de implementação.',
   },
 ];
 
@@ -25,7 +25,7 @@ export function ComoFunciona() {
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
             Como funciona
           </span>
-          <h2>Simples, rápido e sem custo</h2>
+          <h2>É simples, rápido e sem custo nenhum pra você</h2>
         </div>
 
         <div className="obg-steps">

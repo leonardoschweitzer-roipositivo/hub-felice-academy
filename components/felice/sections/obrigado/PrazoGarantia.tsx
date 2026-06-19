@@ -20,9 +20,9 @@ export function PrazoGarantia() {
             <span className="gold-grad">desde o primeiro dia</span>.
           </h2>
           <p>
-            Quanto antes você estruturar a implementação, mais cedo a clínica sente o resultado — e
-            você aproveita o período de garantia com tudo já rodando. As agendas do Dr. Sócrates são
-            limitadas; garanta a sua agora.
+            Quanto antes você estruturar a implementação, mais cedo a sua clínica sente o resultado
+            — e você aproveita o período de garantia com tudo já rodando. Minha agenda é limitada,
+            então garanta o seu horário agora.
           </p>
           <CtaConsultoria size="lg" />
         </div>
