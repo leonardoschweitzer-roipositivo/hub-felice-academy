@@ -10,20 +10,21 @@ export function Virada() {
           </span>
           <h2>
             Os documentos são o mapa. <br />
-            <span className="gold-grad">A consultoria é quem te ajuda a percorrer.</span>
+            <span className="gold-grad">Na consultoria, eu te ajudo a percorrer.</span>
           </h2>
         </div>
 
         <div className="obg-virada-cols reveal d1">
           <p>
-            A maioria das clínicas que compra um material como esse trava no mesmo ponto:
+            Pela minha experiência, a maioria das clínicas que compra um material como esse trava no
+            mesmo ponto:
             <strong> “ótimo conteúdo… mas por onde eu começo?”</strong>. POPs, scripts e calendário
-            só viram resultado quando entram na rotina da equipe — e cada clínica tem uma realidade
-            diferente.
+            só viram resultado quando entram na rotina da equipe — e eu sei que cada clínica tem uma
+            realidade diferente.
           </p>
           <p>
-            Na consultoria, o Dr. Sócrates olha para a <strong>sua</strong> operação, define as
-            prioridades e te entrega um caminho claro de implementação. É a diferença entre “ter o
+            Por isso, na consultoria eu olho para a <strong>sua</strong> operação, defino com você as
+            prioridades e te entrego um caminho claro de implementação. É a diferença entre “ter o
             kit” e <strong>colocar o kit para rodar</strong>.
           </p>
         </div>

@@ -13,11 +13,11 @@ export function CtaFinal() {
           </span>
           <h2>
             Não deixe o Kit parado. <br />
-            <span className="gold-grad">Agende sua consultoria gratuita de 1 hora.</span>
+            <span className="gold-grad">Vamos marcar a sua consultoria gratuita de 1 hora?</span>
           </h2>
           <p>
-            Em uma conversa você sai com um plano claro de como aplicar tudo na sua clínica — com a
-            orientação de quem validou o método na própria operação.
+            Em uma conversa, eu te entrego um plano claro de como aplicar tudo na sua clínica — com a
+            orientação de quem validou esse método na própria operação. Te espero lá.
           </p>
           <CtaConsultoria size="lg" />
           <a className="obg-sublink" href={DOCS_URL}>

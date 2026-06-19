@@ -2,20 +2,20 @@ import { CtaConsultoria } from './Cta';
 
 const GANHOS = [
   {
-    t: 'Por onde começar',
-    d: 'Um diagnóstico rápido da sua clínica para definir as 2 ou 3 prioridades que dão resultado mais rápido.',
+    t: 'Por onde você começa',
+    d: 'Eu faço um diagnóstico rápido da sua clínica e definimos juntos as 2 ou 3 prioridades que dão resultado mais rápido.',
   },
   {
-    t: 'Plano de implementação sob medida',
-    d: 'Como aplicar os POPs e scripts na sua realidade — equipe, agenda e estrutura — sem travar a operação.',
+    t: 'Seu plano de implementação sob medida',
+    d: 'Eu te mostro como aplicar os POPs e scripts na sua realidade — equipe, agenda e estrutura — sem travar a operação.',
   },
   {
-    t: 'Tire todas as dúvidas dos 4 pilares',
-    d: 'POP, Atendimento, Agendamento e Marketing: leve suas perguntas e saia com respostas práticas.',
+    t: 'Suas dúvidas dos 4 pilares, resolvidas',
+    d: 'Você traz suas perguntas sobre POP, Atendimento, Agendamento e Marketing, e eu respondo na prática.',
   },
   {
-    t: 'Engajar a sua equipe',
-    d: 'Como apresentar o método para o time para que todos sigam o mesmo padrão — e você saia da operação.',
+    t: 'Sua equipe engajada',
+    d: 'Eu te ensino a apresentar o método para o time, para que todos sigam o mesmo padrão — e você saia da operação.',
   },
 ];
 
@@ -27,9 +27,9 @@ export function OConsultoria() {
       <div className="wrap">
         <div className="sec-head center reveal">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            O que você resolve em 1 hora
+            O que eu resolvo com você em 1 hora
           </span>
-          <h2>Uma conversa que vale por semanas de tentativa e erro</h2>
+          <h2>Em uma conversa, eu te poupo semanas de tentativa e erro</h2>
         </div>
 
         <div className="obg-benefits">

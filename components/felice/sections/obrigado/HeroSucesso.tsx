@@ -17,13 +17,14 @@ export function HeroSucesso() {
         </span>
 
         <h1 className="reveal d1">
-          Parabéns! Seu acesso ao <span className="gold-grad">Kit Gestão F4</span> está liberado.
+          Parabéns! Eu já liberei seu acesso ao <span className="gold-grad">Kit Gestão F4</span>.
         </h1>
 
         <p className="obg-lead reveal d2">
-          Você acaba de dar o primeiro passo para tirar sua clínica do improviso. Mas o material
-          sozinho não muda a rotina — <strong>quem aplica é você e sua equipe</strong>. Por isso,
-          incluímos o passo mais importante:
+          Você acaba de dar o primeiro passo para tirar sua clínica do improviso. Mas deixa eu te
+          falar uma verdade: o material sozinho não muda a rotina —{' '}
+          <strong>quem aplica é você e sua equipe</strong>. Por isso, eu incluí o passo mais
+          importante:
         </p>
 
         {VIDEO_URL ? (
@@ -38,9 +39,11 @@ export function HeroSucesso() {
         ) : null}
 
         <p className="obg-lead-strong reveal d3">
-          uma <span className="gold-grad">consultoria gratuita de 1 hora</span> com o Dr. Sócrates
-          para montar, junto com você, o plano de implementação na sua clínica.
+          &ldquo;Quero te ajudar pessoalmente. Em uma{' '}
+          <span className="gold-grad">consultoria gratuita de 1 hora</span>, vamos montar juntos o
+          plano de implementação do método na sua clínica.&rdquo;
         </p>
+        <p className="obg-quote-by reveal d3">— Dr. Sócrates Tavares</p>
 
         <div className="obg-cta-row reveal d3">
           <CtaConsultoria size="lg" />

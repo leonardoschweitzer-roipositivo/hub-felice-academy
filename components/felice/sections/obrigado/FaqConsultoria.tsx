@@ -6,11 +6,11 @@ import { PRAZO_DIAS } from './config';
 const PERGUNTAS: { q: string; a: string }[] = [
   {
     q: 'A consultoria é mesmo gratuita?',
-    a: `Sim. Ela é um bônus para quem adquiriu o Kit Gestão F4 — não há nenhum custo adicional. É a nossa forma de garantir que você realmente coloque o método em prática.`,
+    a: `É sim. Ela é um bônus meu para quem adquiriu o Kit Gestão F4 — você não paga nada a mais. É a forma que encontrei de garantir que você realmente coloque o método em prática.`,
   },
   {
     q: 'Quanto tempo dura?',
-    a: 'É uma reunião de 1 hora, focada na sua clínica: diagnóstico, prioridades e plano de implementação.',
+    a: 'É uma hora comigo, focada na sua clínica: eu faço o diagnóstico, definimos as prioridades e montamos o seu plano de implementação.',
   },
   {
     q: 'É online ou presencial?',
@@ -18,15 +18,15 @@ const PERGUNTAS: { q: string; a: string }[] = [
   },
   {
     q: 'Preciso preparar alguma coisa antes?',
-    a: 'Não precisa. Ajuda se você já tiver dado uma olhada nos documentos, mas pode chegar só com as suas dúvidas e o cenário atual da clínica.',
+    a: 'Não precisa. Ajuda se você já tiver dado uma olhada nos documentos, mas pode chegar só com as suas dúvidas e o cenário atual da clínica que a gente resolve juntos.',
   },
   {
     q: 'Posso participar com a minha equipe?',
-    a: 'Pode, e até recomendamos. Quem vai executar os POPs e scripts no dia a dia aproveita muito a conversa.',
+    a: 'Pode, e eu até recomendo. Quem vai executar os POPs e scripts no dia a dia aproveita muito a nossa conversa.',
   },
   {
     q: 'Tenho prazo para agendar?',
-    a: `O ideal é agendar nos primeiros ${PRAZO_DIAS} dias, enquanto sua garantia corre, para já começar a implementar. As agendas do Dr. Sócrates são limitadas, então quanto antes, melhor.`,
+    a: `O ideal é agendar nos primeiros ${PRAZO_DIAS} dias, enquanto sua garantia corre, para já começar a implementar. Minha agenda é limitada, então quanto antes, melhor.`,
   },
 ];
 
