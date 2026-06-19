@@ -4,20 +4,20 @@ import { usePersistentState } from '../usePersistentState';
 
 const DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 const STORIES_DEFAULT: Record<string, string> = {
-  Seg: 'Bastidor / rotina da clínica',
-  Ter: 'Dica rápida (autoridade)',
-  Qua: 'Enquete / interação',
-  Qui: 'Mito x verdade',
-  Sex: 'Depoimento ou case (com ética)',
-  Sáb: 'Conexão / leveza',
-  Dom: 'Convite para agendar (CTA)',
+  Seg: 'Começo de semana com energia: abertura da clínica, recepção pronta e equipe se preparando, com texto motivacional.',
+  Ter: 'Caixa de perguntas com um tema específico; depois responda às 3–5 mais relevantes em vídeos de até 1 min.',
+  Qua: 'Bastidores e equipe: apresente um profissional, mostre a rotina dele e um detalhe pessoal (hobby, livro, paixão).',
+  Qui: 'Mito vs. verdade: vídeo curto (máx. 30s) desmentindo um boato comum, com o especialista no tema.',
+  Sex: 'Dica de bem-estar + CTA sutil (alongamento, hidratação, pele) e reminder: "Agende sua avaliação pelo link da bio".',
+  Sáb: 'Conexão leve: estilo de vida saudável — equipe praticando esporte, cozinhando algo saudável, lendo.',
+  Dom: 'Conexão leve: continue o conteúdo de estilo de vida, mostrando que a equipe vive o que prega.',
 };
 const SEMANAS = ['Semana 1 · Atração', 'Semana 2 · Autoridade', 'Semana 3 · Conexão', 'Semana 4 · Conversão'];
 const FEED_DEFAULT: Record<string, string> = {
-  'Semana 1 · Atração': 'Vídeo de gancho forte para alcançar novos perfis',
-  'Semana 2 · Autoridade': 'Conteúdo educativo que demonstra expertise',
-  'Semana 3 · Conexão': 'História/bastidor que aproxima do público',
-  'Semana 4 · Conversão': 'Convite claro para agendar / oferta ética',
+  'Semana 1 · Atração': 'Reels dinâmico (15–30s): "3 sinais de que seu corpo está pedindo uma avaliação com [especialidade]" — texto na tela e cortes rápidos.',
+  'Semana 2 · Autoridade': 'Carrossel (até 5 slides) ou vídeo de 1 min: "Como funciona o tratamento com [tecnologia X] na nossa clínica? Passo a passo e benefícios."',
+  'Semana 3 · Conexão': 'Vídeo (30–45s): "Conheça o Dr. [nome]" — o que o levou a se especializar e por que ele ama o que faz.',
+  'Semana 4 · Conversão': 'Vídeo tour (45–60s): "Veja como é chegar na nossa clínica: recepção acolhedora, agendamento online e conforto."',
 };
 
 /** Calendário editorial: Stories (semanal) + Feed (mensal), editável e exportável. */

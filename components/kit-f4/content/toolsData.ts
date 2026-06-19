@@ -327,21 +327,72 @@ export const CALL_PHASES: CallPhase[] = [
 ];
 
 /* ---------- Funil 5Ns (Marketing) ---------- */
-export type FunnelLevel = { nivel: string; nome: string; objetivo: string; tipoVideo: string };
+export type FunnelLevel = {
+  nivel: string;
+  nome: string;
+  objetivo: string;
+  direcao: string;
+  abordagem: string;
+  foco: string;
+  tipoVideo: string;
+  ctaExemplo?: string;
+};
 export const FUNNEL_5N: FunnelLevel[] = [
-  { nivel: 'N1', nome: 'Inconsciente', objetivo: 'Chamar atenção de quem nem sabe que tem o problema.', tipoVideo: 'Conteúdo de conexão e curiosidade (dores do dia a dia).' },
-  { nivel: 'N2', nome: 'Consciente do problema', objetivo: 'Mostrar que o problema tem nome e solução.', tipoVideo: 'Educativo: "você sabia que…", mitos e verdades.' },
-  { nivel: 'N3', nome: 'Consciente da solução', objetivo: 'Apresentar o tipo de tratamento como caminho.', tipoVideo: 'Autoridade: como funciona o tratamento, bastidores.' },
-  { nivel: 'N4', nome: 'Consciente do produto', objetivo: 'Mostrar por que a sua clínica é a escolha certa.', tipoVideo: 'Prova: casos, depoimentos, diferenciais (com ética).' },
-  { nivel: 'N5', nome: 'Totalmente consciente', objetivo: 'Levar à ação agora.', tipoVideo: 'Conversão: convite claro para agendar, CTA direto.' },
+  {
+    nivel: 'N1',
+    nome: 'Inconsciente',
+    objetivo: 'Chamar a atenção de quem ainda não sabe que tem um problema.',
+    direcao: 'Mostrar um sintoma visível, cotidiano ou incômodo.',
+    abordagem: 'Vídeo educativo e ilustrativo, sem vender no início.',
+    foco: 'Despertar curiosidade e fazer a pessoa pensar: "isso acontece comigo".',
+    tipoVideo: 'Conteúdo de conexão e curiosidade (dores do dia a dia).',
+  },
+  {
+    nivel: 'N2',
+    nome: 'Consciente do problema',
+    objetivo: 'Fazer a pessoa reconhecer o problema e o impacto dele.',
+    direcao: 'Focar na dor emocional, na identificação e na qualidade de vida.',
+    abordagem: 'Ilustrar situações reais da rotina, autoestima ou segurança.',
+    foco: 'Mostrar que o problema não deve ser ignorado ou adiado.',
+    tipoVideo: 'Educativo: "você sabia que…", mitos e verdades.',
+  },
+  {
+    nivel: 'N3',
+    nome: 'Consciente da solução',
+    objetivo: 'Apresentar a solução como caminho para resolver o problema.',
+    direcao: 'Conectar a dor com a solução de forma simples e direta.',
+    abordagem: 'Explicar o tratamento, técnica ou procedimento de modo educativo.',
+    foco: 'Mostrar o benefício principal e a transformação possível após o cuidado.',
+    tipoVideo: 'Autoridade: como funciona o tratamento, bastidores.',
+  },
+  {
+    nivel: 'N4',
+    nome: 'Consciente do produto (a clínica)',
+    objetivo: 'Mostrar por que esse tratamento ou serviço na sua clínica é a escolha certa.',
+    direcao: 'Explicar como funciona o seu atendimento e destacar seus diferenciais.',
+    abordagem: 'Evidenciar a equipe, tecnologia, estrutura, método e autoridade.',
+    foco: 'Gerar confiança e posicionar a clínica como a escolha mais segura.',
+    tipoVideo: 'Prova: casos, depoimentos, diferenciais (com ética).',
+  },
+  {
+    nivel: 'N5',
+    nome: 'Totalmente consciente',
+    objetivo: 'Gerar ação direta (conversão).',
+    direcao: 'Vídeo curto, direto e focado na facilidade de agendamento.',
+    abordagem: 'Unir problema, solução, autoridade e uma chamada para ação (CTA) clara.',
+    foco: 'Conduzir para a ação final.',
+    tipoVideo: 'Conversão: convite claro para agendar, CTA direto.',
+    ctaExemplo:
+      '"Você já sabe qual é o problema, entende a solução e agora o próximo passo é agir. Clique no link e fale com nossa recepção."',
+  },
 ];
 
 /* ---------- Checklist de produção (Marketing) ---------- */
 export const PRODUCTION_ITEMS = [
-  'Luz: filme de frente para a janela ou use luz suave; evite contraluz.',
-  'Áudio: ambiente silencioso; teste o som antes de gravar tudo.',
-  'Legendas: adicione sempre — a maioria assiste sem som.',
-  'Gravação em lote: separe um dia e grave vários vídeos de uma vez.',
-  'Gancho nos primeiros 5 segundos: comece pela parte mais forte.',
-  'Ética: sem promessa de resultado, sem antes/depois sensacionalista, respeite a LGPD do paciente.',
+  'Roteirização em 3 etapas (Gancho + Conteúdo + CTA): comece com uma frase que pare o scroll, entregue a informação principal em 20–40s e encerre com uma chamada sutil.',
+  'Iluminação básica: luz natural (janela à frente) ou ring light de LED com temperatura ajustável (5.000K a 5.500K). Evite luz mista (natural + fluorescente).',
+  'Áudio limpo: invista em um microfone de lapela sem fio (modelos a partir de R$ 150) — o eco de corredores e equipamentos arruína o som do celular.',
+  'Legendas automáticas: use CapCut ou InShot para legendas sincronizadas. Mais de 70% do público assiste sem som; legendas dinâmicas aumentam a retenção.',
+  'Gravação em lote: reserve 1 hora por mês para gravar todos os vídeos do feed com cada profissional, com tripé e local fixo bem iluminado.',
+  'Mantenha a ética: nunca prometa resultados, não use antes/depois sem autorização expressa do paciente e respeite a LGPD. Foque em informar e acolher.',
 ];
