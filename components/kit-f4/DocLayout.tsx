@@ -11,6 +11,7 @@ import { useScrollSpy } from './useScrollSpy';
 import { useReadingProgress } from './useReadingProgress';
 import { ReadingProgressBar } from './ReadingProgressBar';
 import { DocBreadcrumb } from './DocBreadcrumb';
+import { DocTabs } from './DocTabs';
 import { DocSidebar } from './DocSidebar';
 import { DocSection } from './DocSection';
 import { DocPrevNext } from './DocPrevNext';
@@ -61,6 +62,7 @@ export function DocLayout({ doc }: { doc: DocModel }) {
       </header>
 
       <DocBreadcrumb docTitle={doc.title} />
+      <DocTabs current={doc.id} />
 
       <main className="kit-doc-main wrap">
         <div className="kit-doc-head">

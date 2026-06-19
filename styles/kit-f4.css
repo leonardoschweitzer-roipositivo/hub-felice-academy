@@ -122,6 +122,49 @@
   color: var(--text);
 }
 
+/* ---------- Abas dos documentos ---------- */
+.felice-kit .kit-doctabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.felice-kit .kit-doctab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--muted);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.felice-kit .kit-doctab:hover {
+  border-color: var(--gold);
+  color: var(--text);
+}
+.felice-kit .kit-doctab.is-active {
+  background: var(--grad-gold);
+  border-color: transparent;
+  color: #1a1205;
+  font-weight: 700;
+}
+.felice-kit .kit-doctab-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  opacity: 0.65;
+}
+.felice-kit .kit-doctab.is-active .kit-doctab-num {
+  opacity: 0.85;
+}
+@media (max-width: 560px) {
+  .felice-kit .kit-doctab-label {
+    display: none;
+  }
+}
+
 /* ---------- Cabeçalho do documento ---------- */
 .felice-kit .kit-doc-main {
   padding-bottom: 80px;
