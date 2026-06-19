@@ -61,7 +61,7 @@ export function Oferta() {
             </div>
 
             <a href="#" className="btn btn-primary btn-lg btn-block" style={{ marginTop: 8 }}>
-              Comprar agora <span className="arrow">→</span>
+              Liberar Acesso Agora <span className="arrow">→</span>
             </a>
 
             <div className="offer-foot">

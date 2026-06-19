@@ -14,7 +14,7 @@ export function FinalCta() {
           um único paciente que não agendou.
         </p>
         <a href="#checkout" className="btn btn-primary btn-lg">
-          Garantir meu Kit por R$ 97 <span className="arrow">→</span>
+          Liberar Acesso por R$ 97 <span className="arrow">→</span>
         </a>
       </div>
     </section>

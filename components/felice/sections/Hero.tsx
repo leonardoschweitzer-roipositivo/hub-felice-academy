@@ -49,7 +49,7 @@ export function Hero() {
         <div className="hero-copy">
           <div className="hero-cta reveal d3">
             <a href="#checkout" className="btn btn-primary btn-lg">
-              Quero o Kit por R$ 97 <span className="arrow">→</span>
+              Liberar Acesso por R$ 97 <span className="arrow">→</span>
             </a>
           </div>
           <div className="hero-trust reveal d4">
