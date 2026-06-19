@@ -645,6 +645,19 @@
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
 }
+.felice .problem-photo {
+  margin: 0 auto 36px;
+  max-width: 720px;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+}
+.felice .problem-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .felice .pains {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

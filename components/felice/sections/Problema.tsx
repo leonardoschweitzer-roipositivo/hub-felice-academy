@@ -14,6 +14,21 @@ export function Problema() {
             falta de método.
           </p>
         </div>
+        <div className="problem-photo reveal d1">
+          <picture>
+            <source
+              media="(max-width: 720px)"
+              srcSet="/images/dentista-cansado-mobile.jpg"
+            />
+            <img
+              src="/images/dentista-cansado-desktop.jpg"
+              alt="Dentista cansado e sobrecarregado com a gestão da clínica"
+              width={1000}
+              height={545}
+              loading="lazy"
+            />
+          </picture>
+        </div>
         <div className="pains">
           <div className="pain reveal">
             <div className="x">✕</div>
