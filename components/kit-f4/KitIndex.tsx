@@ -27,9 +27,6 @@ export function KitIndex() {
             <button type="button" className="kit-search-trigger" onClick={() => setSearchOpen(true)}>
               <span aria-hidden="true">⌕</span> Buscar no Kit
             </button>
-            <Link href="/gestao" className="kit-topbar-back">
-              Página de vendas
-            </Link>
           </div>
         </div>
       </header>
