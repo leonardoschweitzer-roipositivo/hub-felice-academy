@@ -6,7 +6,7 @@ import { PRAZO_DIAS } from './config';
 const PERGUNTAS: { q: string; a: string }[] = [
   {
     q: 'A consultoria é mesmo gratuita?',
-    a: `É sim. Ela é um bônus meu para quem adquiriu o Kit Gestão F4 — você não paga nada a mais. É a forma que encontrei de garantir que você realmente coloque o método em prática.`,
+    a: `É sim. Normalmente eu cobro R$ 500 por uma hora de consultoria, mas nesta semana liberei alguns horários gratuitos para quem acabou de adquirir o Kit Gestão F4. É a forma que encontrei de garantir que você realmente coloque o método em prática.`,
   },
   {
     q: 'Quanto tempo dura?',
