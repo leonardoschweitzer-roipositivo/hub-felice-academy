@@ -8,7 +8,8 @@
 /* ---------- Hero de sucesso ---------- */
 .felice .obg-hero {
   position: relative;
-  padding: clamp(72px, 12vw, 130px) 0 clamp(48px, 7vw, 84px);
+  /* padding-bottom reserva espaço p/ a esteira fixa no rodapé não cobrir o conteúdo */
+  padding: clamp(72px, 12vw, 130px) 0 clamp(96px, 11vw, 140px);
   overflow: hidden;
   border-bottom: 1px solid var(--line-soft);
 }

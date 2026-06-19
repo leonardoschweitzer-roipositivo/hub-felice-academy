@@ -1,6 +1,18 @@
 import { CtaConsultoria } from './Cta';
 import { DOCS_URL, VIDEO_URL } from './config';
 
+/* Benefícios (2 palavras) que desfilam na esteira do rodapé do hero. */
+const MARQUEE_ITEMS = [
+  'Consultoria gratuita',
+  'Plano personalizado',
+  'Implementação guiada',
+  'Dúvidas resolvidas',
+  'Equipe alinhada',
+  'Acesso liberado',
+  'Mentoria direta',
+  'Resultado real',
+];
+
 /* Hero pós-compra: parabeniza, confirma o acesso e direciona ao
    único objetivo da página — agendar a consultoria. O acesso aos
    documentos fica como link secundário discreto. */
@@ -51,6 +63,21 @@ export function HeroSucesso() {
         <a className="obg-sublink reveal d3" href={DOCS_URL}>
           Prefiro acessar meus documentos primeiro →
         </a>
+      </div>
+
+      <div className="hero-marquee" aria-hidden="true">
+        <div className="hero-marquee-track">
+          {[0, 1].map((g) => (
+            <div className="hero-marquee-group" key={g}>
+              {MARQUEE_ITEMS.map((item, i) => (
+                <span className="hero-marquee-item" key={`${g}-${i}`}>
+                  {item}
+                  <span className="hero-marquee-sep">◇</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </header>
   );
