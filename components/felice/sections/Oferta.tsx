@@ -28,7 +28,7 @@ export function Oferta() {
           <div className="ribbon">Pacote completo · economize R$ 291</div>
 
           <div className="offer-body">
-            <h3>Kit Sistema de Gestão F4</h3>
+            <h3>Kit Sistema<br />de Gestão F4</h3>
             
             <ul className="stack-list">
               {ITENS.map((item) => (
