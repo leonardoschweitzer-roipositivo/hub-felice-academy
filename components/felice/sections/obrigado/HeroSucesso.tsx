@@ -26,11 +26,6 @@ export function HeroSucesso() {
           incluímos o passo mais importante:
         </p>
 
-        <p className="obg-lead-strong reveal d2">
-          uma <span className="gold-grad">consultoria gratuita de 1 hora</span> com o Dr. Sócrates
-          para montar, junto com você, o plano de implementação na sua clínica.
-        </p>
-
         {VIDEO_URL ? (
           <div className="obg-video reveal d3">
             <iframe
@@ -41,6 +36,11 @@ export function HeroSucesso() {
             />
           </div>
         ) : null}
+
+        <p className="obg-lead-strong reveal d3">
+          uma <span className="gold-grad">consultoria gratuita de 1 hora</span> com o Dr. Sócrates
+          para montar, junto com você, o plano de implementação na sua clínica.
+        </p>
 
         <div className="obg-cta-row reveal d3">
           <CtaConsultoria size="lg" />
