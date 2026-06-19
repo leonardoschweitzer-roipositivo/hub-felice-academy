@@ -1339,3 +1339,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Grid de documentos: 2 por linha (2x2) ----------
+   Sobrescreve o .hub-grid (3 colunas) só nesta página. */
+.felice-kit .hub-grid--docs {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 760px;
+  margin-inline: auto;
+}
+@media (max-width: 600px) {
+  .felice-kit .hub-grid--docs {
+    grid-template-columns: 1fr;
+  }
+}

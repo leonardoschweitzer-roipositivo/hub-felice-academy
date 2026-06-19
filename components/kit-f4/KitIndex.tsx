@@ -63,7 +63,7 @@ export function KitIndex() {
               <p className="lead">Seu progresso de leitura fica salvo automaticamente neste dispositivo.</p>
             </div>
 
-            <div className="hub-grid">
+            <div className="hub-grid hub-grid--docs">
               {DOC_ORDER.map((id, i) => (
                 <div key={id} className={`reveal d${(i % 4) + 1}`}>
                   <KitDocCard doc={DOC_META[id]} index={i} />

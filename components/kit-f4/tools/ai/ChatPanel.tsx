@@ -20,7 +20,7 @@ export function ChatPanel({ mode, docId, placeholder, emptyHint }: Props) {
     return (
       <div className="kit-chat kit-chat--off">
         <p>🔒 Recurso de IA indisponível: a chave de API ainda não foi configurada.</p>
-        <p className="kit-chat-hint">Configure <code>ANTHROPIC_API_KEY</code> para ativar este assistente.</p>
+        <p className="kit-chat-hint">Configure <code>GEMINI_API_KEY</code> para ativar este assistente.</p>
       </div>
     );
   }
