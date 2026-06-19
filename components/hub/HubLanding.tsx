@@ -3,10 +3,11 @@ import '@/styles/hub.css';
 
 import { HubHeader } from './HubHeader';
 import { ProductCard } from './ProductCard';
+import { MaterialCard } from './MaterialCard';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { PRODUTOS, STATS } from './content';
+import { PRODUTOS, MATERIAIS, STATS } from './content';
 
 /* ============================================================
    HUB INSTITUCIONAL · Felice Academy
@@ -88,6 +89,30 @@ export function HubLanding() {
               {PRODUTOS.map((p, i) => (
                 <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
                   <ProductCard produto={p} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Conteúdos / materiais gratuitos */}
+        <section className="hub-materiais sec" id="conteudos">
+          <div className="wrap">
+            <div className="sec-head center reveal">
+              <span className="eyebrow">Conteúdos</span>
+              <h2>
+                Materiais para <span className="gold-grad">aplicar hoje</span>
+              </h2>
+              <p className="lead">
+                Scripts de agendamento, planilhas, PDFs e checklists — recursos práticos para
+                organizar a clínica e acelerar resultados. Novos materiais entram aqui sempre.
+              </p>
+            </div>
+
+            <div className="hub-grid hub-grid--materiais">
+              {MATERIAIS.map((m, i) => (
+                <div key={m.titulo} className={`reveal d${(i % 4) + 1}`}>
+                  <MaterialCard material={m} />
                 </div>
               ))}
             </div>

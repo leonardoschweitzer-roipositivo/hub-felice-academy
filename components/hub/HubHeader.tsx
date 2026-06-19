@@ -27,6 +27,9 @@ export function HubHeader() {
           <a href="#produtos" className="btn btn-ghost">
             Produtos
           </a>
+          <a href="#conteudos" className="btn btn-ghost">
+            Conteúdos
+          </a>
           <a href="#contato" className="btn btn-primary">
             Falar com a equipe
           </a>

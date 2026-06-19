@@ -1553,6 +1553,12 @@
   opacity: 0;
   transform: translateY(28px);
 }
+/* no desktop, o banner fica mais largo para dar mais respiro ao texto */
+@media (min-width: 769px) {
+  .felice .purchase-toast {
+    max-width: 340px;
+  }
+}
 /* entra de baixo p/ cima com fade e dá uma "tremidinha" ao parar */
 .felice .purchase-toast.is-in {
   animation: felice-toast-in 0.5s cubic-bezier(0.18, 0.9, 0.25, 1) forwards,

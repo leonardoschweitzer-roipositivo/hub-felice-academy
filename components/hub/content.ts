@@ -85,6 +85,63 @@ export const PRODUTOS: Produto[] = [
   },
 ];
 
+/* ============================================================
+   Materiais / Conteúdos gratuitos (scripts, planilhas, PDFs…)
+   ⚠️ Validar com o cliente: títulos, formatos e os links de
+   download/cadastro de cada material.
+   ============================================================ */
+
+export type Formato = 'Script' | 'Planilha' | 'PDF' | 'Checklist' | 'Template';
+
+export type Material = {
+  titulo: string;
+  descricao: string;
+  formato: Formato;
+  /** Destino do download/cadastro. Use '#' enquanto não houver link. */
+  href: string;
+  /** true quando href é uma rota interna deste app (usa <Link>). */
+  interno?: boolean;
+  /** Texto do CTA. Default: "Baixar". */
+  cta?: string;
+  /** Disponível para download agora, ou ainda em produção. */
+  disponivel?: boolean;
+};
+
+export const MATERIAIS: Material[] = [
+  {
+    titulo: 'Scripts de agendamento',
+    descricao: 'Roteiros prontos de WhatsApp e telefone para marcar, confirmar e reduzir faltas.',
+    formato: 'Script',
+    href: '#',
+    cta: 'Baixar',
+    disponivel: false,
+  },
+  {
+    titulo: 'Planilha de fluxo de caixa',
+    descricao: 'Controle de entradas, saídas e faturamento da clínica, mês a mês.',
+    formato: 'Planilha',
+    href: '#',
+    cta: 'Baixar',
+    disponivel: false,
+  },
+  {
+    titulo: 'Guia de POPs da clínica',
+    descricao: 'PDF com procedimentos operacionais padrão para organizar a rotina da equipe.',
+    formato: 'PDF',
+    href: '#',
+    cta: 'Baixar',
+    disponivel: false,
+  },
+  {
+    titulo: 'Checklist de primeira consulta',
+    descricao: 'Passo a passo para padronizar o atendimento e elevar a conversão de planos.',
+    formato: 'Checklist',
+    href: '#',
+    cta: 'Baixar',
+    disponivel: false,
+  },
+];
+
 export type Stat = { num: string; label: string };
 
 // ⚠️ Números a confirmar com o cliente.
