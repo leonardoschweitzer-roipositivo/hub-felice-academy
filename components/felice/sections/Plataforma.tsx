@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { PlatformCarousel } from './PlatformCarousel';
 
 /* Recursos da plataforma interativa. É o coração do reposicionamento:
    comunica que o Kit não é um PDF, é uma plataforma viva. Reutiliza o
@@ -97,6 +98,8 @@ export function Plataforma() {
             use as ferramentas — direto do navegador, no consultório ou no celular.
           </p>
         </div>
+
+        <PlatformCarousel />
 
         <div className="pillars">
           {RECURSOS.map((r, i) => (

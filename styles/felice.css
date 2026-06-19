@@ -1870,3 +1870,377 @@
     font-weight: 400;
   }
 }
+
+/* ---------- Plataforma · mockup de navegador ---------- */
+.felice .plat-mock {
+  max-width: 920px;
+  margin: 0 auto 48px;
+  perspective: 1600px;
+}
+.felice .plat-win {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  box-shadow: var(--shadow), var(--glow);
+}
+.felice .plat-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  background: var(--ink-2);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice .plat-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.felice .plat-dot:first-child {
+  background: rgba(232, 180, 71, 0.55);
+}
+.felice .plat-url {
+  margin-left: 14px;
+  flex: 1;
+  font-size: 0.78rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.felice .plat-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 320px;
+}
+@media (max-width: 640px) {
+  .felice .plat-body {
+    grid-template-columns: 1fr;
+  }
+  .felice .plat-side {
+    display: none;
+  }
+}
+.felice .plat-side {
+  padding: 22px 18px;
+  border-right: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  background: rgba(0, 0, 0, 0.18);
+}
+.felice .plat-side-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.felice .plat-side-item {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.felice .plat-side-item.is-active {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.1);
+  border-color: var(--line);
+}
+.felice .plat-progress {
+  margin-top: auto;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.felice .plat-progress span {
+  display: block;
+  height: 100%;
+  background: var(--grad-gold);
+}
+.felice .plat-main {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.felice .plat-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}
+.felice .plat-search svg {
+  color: var(--gold);
+}
+.felice .plat-kbd {
+  margin-left: auto;
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.04);
+}
+.felice .plat-tag {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  color: var(--cream);
+  margin-top: 4px;
+}
+.felice .plat-line {
+  height: 9px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.felice .plat-line.w-100 {
+  width: 100%;
+}
+.felice .plat-line.w-90 {
+  width: 90%;
+}
+.felice .plat-line.w-70 {
+  width: 70%;
+}
+.felice .plat-chat {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.felice .plat-bubble {
+  max-width: 82%;
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.felice .plat-bubble--user {
+  align-self: flex-end;
+  background: rgba(232, 180, 71, 0.14);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  border-bottom-right-radius: 4px;
+}
+.felice .plat-bubble--ai {
+  align-self: flex-start;
+  display: flex;
+  gap: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+.felice .plat-ai-ico {
+  color: var(--gold-bright);
+  flex-shrink: 0;
+}
+
+/* anima a troca de tela do carrossel (key={i} remonta .plat-main) */
+.felice .plat-main {
+  animation: platFade 0.5s ease both;
+}
+@keyframes platFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .felice .plat-main {
+    animation: none;
+  }
+}
+
+/* slide: home — grid de cards dos 4 documentos */
+.felice .plat-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.felice .plat-card {
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.felice .plat-card-num {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+.felice .plat-card-title {
+  font-size: 0.86rem;
+  color: var(--cream);
+}
+
+/* slide: POP — campos do gerador + botão */
+.felice .plat-fields {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.felice .plat-field {
+  flex: 1;
+  min-width: 130px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+}
+.felice .plat-btn {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #2a1c00;
+  background: var(--grad-gold);
+  padding: 9px 16px;
+  border-radius: 10px;
+}
+
+/* slide: CRC — etapas da chamada */
+.felice .plat-steps {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.felice .plat-step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 7px 11px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+}
+.felice .plat-step b {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+}
+.felice .plat-step.is-active {
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.12);
+  border-color: var(--line);
+}
+.felice .plat-step.is-active b {
+  background: var(--grad-gold);
+  color: #2a1c00;
+}
+.felice .plat-tag-soft {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* slide: Marketing — barras da calculadora 40/40/20 */
+.felice .plat-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 130px;
+  padding-top: 8px;
+}
+.felice .plat-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-radius: 12px 12px 8px 8px;
+  background: linear-gradient(180deg, rgba(232, 180, 71, 0.32), rgba(232, 180, 71, 0.1));
+  border: 1px solid var(--line);
+  font-size: 0.74rem;
+  color: var(--cream);
+}
+.felice .plat-bar--soft {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border-color: var(--line-soft);
+  color: var(--muted);
+}
+.felice .plat-bar em {
+  font-style: normal;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  color: var(--gold-bright);
+}
+.felice .plat-bar--soft em {
+  color: var(--muted);
+}
+
+/* controles do carrossel */
+.felice .plat-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+.felice .plat-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--cream);
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s, color 0.25s;
+}
+.felice .plat-arrow:hover {
+  color: var(--gold-bright);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.felice .plat-dots {
+  display: flex;
+  gap: 9px;
+}
+.felice .plat-pip {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s, width 0.25s;
+}
+.felice .plat-pip.is-active {
+  width: 24px;
+  border-radius: 99px;
+  background: var(--grad-gold);
+  border-color: transparent;
+}
