@@ -15,6 +15,21 @@ export function Metodo() {
             resultado.
           </p>
         </div>
+        <div className="problem-photo reveal d1">
+          <picture>
+            <source
+              media="(max-width: 720px)"
+              srcSet="/images/dentista-feliz-desktop-mobile.jpg"
+            />
+            <img
+              src="/images/dentista-feliz-desktop-desktop.jpg"
+              alt="Dentista realizado e tranquilo com a clínica organizada"
+              width={1271}
+              height={701}
+              loading="lazy"
+            />
+          </picture>
+        </div>
         <div className="pillars">
           <div className="pillar reveal">
             <div className="num">01</div>
