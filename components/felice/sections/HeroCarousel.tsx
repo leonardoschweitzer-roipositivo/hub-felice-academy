@@ -217,7 +217,7 @@ export function HeroCarousel() {
           <span className="heroc-cdot" />
           <span className="heroc-cdot" />
           <span className="heroc-cdot" />
-          <span className="heroc-url">felice.academy/gestao/{cur.url}</span>
+          <span className="heroc-url">felice.academy/produtos/kitgestaof4/{cur.url}</span>
         </div>
 
         <div className="heroc-body">

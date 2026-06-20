@@ -3,7 +3,7 @@ import type { IconName } from '../icons';
 
 /* ============================================================
    Biblioteca de MATERIAIS (mock). O Kit Gestão F4 é o item-âncora
-   e aponta para o sistema interativo já existente (/gestao/kit-f4).
+   e aponta para o sistema interativo já existente (/produtos/kitgestaof4/kit-f4).
    Os demais usam um leitor/detalhe genérico em /plataforma/materiais/[slug].
    ============================================================ */
 
@@ -45,7 +45,7 @@ export const MATERIAIS: MaterialItem[] = [
     pilar: 'gestao',
     tamanho: '4 documentos',
     selo: 'novo',
-    href: '/gestao/kit-f4',
+    href: '/produtos/kitgestaof4/kit-f4',
     interno: true,
     destaque: true,
   },

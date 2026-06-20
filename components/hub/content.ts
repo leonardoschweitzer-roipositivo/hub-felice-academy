@@ -15,7 +15,7 @@ export type Produto = {
   descricao: string;
   categoria: Categoria;
   estado: Estado;
-  /** Destino do CTA. Use rota interna (/gestao, /crm) ou URL externa. */
+  /** Destino do CTA. Use rota interna (/produtos/kitgestaof4, /crm) ou URL externa. */
   href: string;
   /** true quando href é uma rota interna deste app (usa <Link>). */
   interno?: boolean;
@@ -40,28 +40,29 @@ export const PRODUTOS: Produto[] = [
     titulo: 'Zigomático',
     descricao: 'Formação técnica em implantes zigomáticos do básico ao avançado.',
     categoria: 'Curso',
-    estado: 'em-breve',
-    href: '#',
-    cta: 'Em breve',
+    estado: 'disponivel',
+    href: '/produtos/maestria-zigomatica',
+    interno: true,
+    cta: 'Acessar',
   },
   {
     num: '03',
     titulo: 'Mentoria',
     descricao: 'Acompanhamento direto para escalar carreira e clínica.',
     categoria: 'Mentoria',
-    estado: 'em-breve',
-    href: '#',
-    cta: 'Em breve',
+    estado: 'disponivel',
+    href: '/produtos/mentoria-gestao-f4',
+    interno: true,
+    cta: 'Acessar',
   },
   {
     num: '04',
     titulo: 'Gestão F4',
     descricao: 'O sistema de gestão para dentistas: POPs, scripts e calendário de marketing.',
     categoria: 'Curso',
-    estado: 'disponivel',
-    href: '/gestao',
-    interno: true,
-    cta: 'Acessar',
+    estado: 'em-breve',
+    href: '#',
+    cta: 'Em breve',
   },
   {
     num: '05',
@@ -91,7 +92,16 @@ export const PRODUTOS: Produto[] = [
    download/cadastro de cada material.
    ============================================================ */
 
-export type Formato = 'Script' | 'Planilha' | 'PDF' | 'Checklist' | 'Template';
+export type Formato =
+  | 'Script'
+  | 'Planilha'
+  | 'PDF'
+  | 'Checklist'
+  | 'Template'
+  | 'Gestão'
+  | 'Atendimento'
+  | 'Comercial'
+  | 'Marketing';
 
 export type Material = {
   titulo: string;
@@ -107,38 +117,47 @@ export type Material = {
   disponivel?: boolean;
 };
 
+// Os 4 materiais do Kit Gestão F4. Todos levam para a página do Kit.
 export const MATERIAIS: Material[] = [
   {
-    titulo: 'Scripts de agendamento',
-    descricao: 'Roteiros prontos de WhatsApp e telefone para marcar, confirmar e reduzir faltas.',
-    formato: 'Script',
-    href: '#',
-    cta: 'Baixar',
-    disponivel: false,
+    titulo: 'POP — Procedimento Operacional Padrão',
+    descricao:
+      'O mapa estratégico e operacional da clínica: o Ecossistema de Excelência Clínica e os POPs de cada cargo.',
+    formato: 'Gestão',
+    href: '/produtos/kitgestaof4',
+    interno: true,
+    cta: 'Acessar',
+    disponivel: true,
   },
   {
-    titulo: 'Planilha de fluxo de caixa',
-    descricao: 'Controle de entradas, saídas e faturamento da clínica, mês a mês.',
-    formato: 'Planilha',
-    href: '#',
-    cta: 'Baixar',
-    disponivel: false,
+    titulo: 'Manual de Atendimento — Recepção',
+    descricao:
+      'A Arte de Receber: atendimento ético e humanizado na recepção, com scripts, FAQs e protocolos.',
+    formato: 'Atendimento',
+    href: '/produtos/kitgestaof4',
+    interno: true,
+    cta: 'Acessar',
+    disponivel: true,
   },
   {
-    titulo: 'Guia de POPs da clínica',
-    descricao: 'PDF com procedimentos operacionais padrão para organizar a rotina da equipe.',
-    formato: 'PDF',
-    href: '#',
-    cta: 'Baixar',
-    disponivel: false,
+    titulo: 'Manual da CRC — Agendamento',
+    descricao:
+      'A Voz da Clínica: o guião tático para a chamada perfeita, gestão de objeções e a regra dos 5 minutos.',
+    formato: 'Comercial',
+    href: '/produtos/kitgestaof4',
+    interno: true,
+    cta: 'Acessar',
+    disponivel: true,
   },
   {
-    titulo: 'Checklist de primeira consulta',
-    descricao: 'Passo a passo para padronizar o atendimento e elevar a conversão de planos.',
-    formato: 'Checklist',
-    href: '#',
-    cta: 'Baixar',
-    disponivel: false,
+    titulo: 'Guia Estratégico de Marketing',
+    descricao:
+      'Vídeos para Instagram em clínicas: pilares 40/40/20, calendário editorial, roteiros e o funil 5Ns.',
+    formato: 'Marketing',
+    href: '/produtos/kitgestaof4',
+    interno: true,
+    cta: 'Acessar',
+    disponivel: true,
   },
 ];
 

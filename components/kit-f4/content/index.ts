@@ -10,7 +10,7 @@ import { MARKETING_DOC } from './marketing';
    ============================================================ */
 
 /** Base da rota do Kit. next.config usa trailingSlash:true. */
-export const KIT_BASE = '/gestao/kit-f4';
+export const KIT_BASE = '/produtos/kitgestaof4/kit-f4';
 
 /** Ordem de leitura/navegação dos 4 documentos. */
 export const DOC_ORDER: DocId[] = ['pop', 'atendimento', 'crc', 'marketing'];

@@ -19,7 +19,7 @@ type Screen = { url: string; tag: string; body: ReactNode };
 
 const SCREENS: Record<KitMockupId, Screen> = {
   pop: {
-    url: 'felice.academy/gestao/kit-f4/pop',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/pop',
     tag: 'Matriz de responsabilidades',
     body: (
       <div className="kitm-matrix">
@@ -43,7 +43,7 @@ const SCREENS: Record<KitMockupId, Screen> = {
     ),
   },
   atendimento: {
-    url: 'felice.academy/gestao/kit-f4/atendimento',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/atendimento',
     tag: 'Script de acolhimento',
     body: (
       <div className="kitm-script">
@@ -59,7 +59,7 @@ const SCREENS: Record<KitMockupId, Screen> = {
     ),
   },
   crc: {
-    url: 'felice.academy/gestao/kit-f4/crc',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/crc',
     tag: 'Banco de objeções',
     body: (
       <div className="kitm-obj">
@@ -80,7 +80,7 @@ const SCREENS: Record<KitMockupId, Screen> = {
     ),
   },
   marketing: {
-    url: 'felice.academy/gestao/kit-f4/marketing',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/marketing',
     tag: 'Calendário editorial',
     body: (
       <div className="kitm-cal">

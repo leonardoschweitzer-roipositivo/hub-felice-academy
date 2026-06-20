@@ -39,7 +39,7 @@ const SIDE_ITEMS = ['Procedimento Operacional', 'Atendimento — Recepção', 'C
 const SLIDES: Slide[] = [
   {
     label: 'Início do Kit',
-    url: 'felice.academy/gestao/kit-f4',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4',
     active: null,
     body: (
       <>
@@ -61,7 +61,7 @@ const SLIDES: Slide[] = [
   },
   {
     label: 'POP',
-    url: 'felice.academy/gestao/kit-f4/pop',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/pop',
     active: 0,
     body: (
       <>
@@ -79,7 +79,7 @@ const SLIDES: Slide[] = [
   },
   {
     label: 'Atendimento',
-    url: 'felice.academy/gestao/kit-f4/atendimento',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/atendimento',
     active: 1,
     body: (
       <>
@@ -100,7 +100,7 @@ const SLIDES: Slide[] = [
   },
   {
     label: 'CRC',
-    url: 'felice.academy/gestao/kit-f4/crc',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/crc',
     active: 2,
     body: (
       <>
@@ -121,7 +121,7 @@ const SLIDES: Slide[] = [
   },
   {
     label: 'Marketing',
-    url: 'felice.academy/gestao/kit-f4/marketing',
+    url: 'felice.academy/produtos/kitgestaof4/kit-f4/marketing',
     active: 3,
     body: (
       <>
