@@ -17,6 +17,7 @@ import { DocSection } from './DocSection';
 import { DocPrevNext } from './DocPrevNext';
 import { DocToolsPanel } from './DocToolsPanel';
 import { SearchModal } from './search/SearchModal';
+import { AutoridadeMentor } from '@/components/felice/sections/obrigado/AutoridadeMentor';
 import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
 
 /** Formata a data ISO (AAAA-MM-DD) em dd/mm/aaaa, sem depender de timezone. */
@@ -120,6 +121,7 @@ export function DocLayout({ doc }: { doc: DocModel }) {
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
 
+      <AutoridadeMentor />
       <ConsultoriaCtaSection />
 
       <Footer />
