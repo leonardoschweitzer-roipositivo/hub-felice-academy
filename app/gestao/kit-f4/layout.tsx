@@ -3,6 +3,7 @@ import { Poppins, Lato } from 'next/font/google';
 import '@/styles/felice.css';
 import '@/styles/hub.css';
 import '@/styles/kit-f4.css';
+import '@/styles/consultoria-cta.css';
 
 /* Fontes do tema Felice (mesmas variáveis usadas em felice.css). */
 const poppins = Poppins({
