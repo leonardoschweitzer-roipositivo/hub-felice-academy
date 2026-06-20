@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { Icon } from '../icons';
-import { FORMATOS, MATERIAIS, type Formato } from '../data/materiais';
+import { FORMATOS, type Formato } from '../data/materiais';
+import { useStore } from '../store/PlatformStore';
 import { MaterialCard } from './MaterialCard';
 
 export function MaterialLibrary() {
   const [filtro, setFiltro] = useState<'Todos' | Formato>('Todos');
+  const { materiais } = useStore();
 
-  const itens = filtro === 'Todos' ? MATERIAIS : MATERIAIS.filter((m) => m.formato === filtro);
+  const itens = filtro === 'Todos' ? materiais : materiais.filter((m) => m.formato === filtro);
 
   return (
     <>
