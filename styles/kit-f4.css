@@ -435,8 +435,8 @@
 /* Botão flutuante (todas as larguras) */
 .felice-kit .kit-panel-fab {
   position: fixed;
-  right: 22px;
-  bottom: 92px; /* acima do float do WhatsApp */
+  right: 90px; /* à esquerda do float do WhatsApp (58px + respiro) */
+  bottom: 27px; /* alinhado verticalmente ao centro do botão do WhatsApp */
   z-index: 45;
   display: inline-flex;
   align-items: center;
