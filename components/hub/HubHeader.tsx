@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export function HubHeader() {
   const headerRef = useRef<HTMLElement>(null);
@@ -30,9 +31,9 @@ export function HubHeader() {
           <a href="#conteudos" className="btn btn-ghost">
             Conteúdos
           </a>
-          <a href="#contato" className="btn btn-primary">
-            Falar com a equipe
-          </a>
+          <Link href="/plataforma" className="btn btn-primary">
+            Entrar na plataforma
+          </Link>
         </div>
       </div>
     </header>
