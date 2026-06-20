@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { Icon } from '../icons';
 import { ALUNO } from '../data/aluno';
 import { PILARES, getPilar } from '../data/pilares';
-import { CURSOS, getCurso, getAula } from '../data/cursos';
-import { ENCONTROS, statusEncontro } from '../data/mentoria';
-import { MATERIAIS } from '../data/materiais';
+import { getAula } from '../data/cursos';
+import { statusEncontro } from '../data/mentoria';
 import { useProgress } from '../useProgress';
+import { useStore } from '../store/PlatformStore';
 import { ProgressRing } from '../ProgressRing';
 import { Countdown } from '../Countdown';
 import { CourseCard } from '../cursos/CourseCard';
@@ -15,6 +15,7 @@ import { MaterialCard } from '../materiais/MaterialCard';
 import { styleVars } from '../util';
 
 export function HomeDashboard() {
+  const { cursos, getCurso, encontros, materiais } = useStore();
   const { cursoProgressoBySlug, cursoProgresso, pilarProgresso, isFavorito, toggleFavorito } =
     useProgress();
 
@@ -25,16 +26,16 @@ export function HomeDashboard() {
   const pilarAtual = cursoAtual ? getPilar(cursoAtual.pilar) : null;
 
   // Próximo ao vivo (prioriza o que está ao vivo agora)
-  const aoVivo = ENCONTROS.find((e) => statusEncontro(e) === 'ao-vivo');
+  const aoVivo = encontros.find((e) => statusEncontro(e) === 'ao-vivo');
   const proximo =
     aoVivo ??
-    ENCONTROS.filter((e) => statusEncontro(e) === 'agendado').sort(
-      (a, b) => a.offsetMin - b.offsetMin,
-    )[0];
+    encontros
+      .filter((e) => statusEncontro(e) === 'agendado')
+      .sort((a, b) => a.offsetMin - b.offsetMin)[0];
   const proximoPilar = proximo ? getPilar(proximo.pilar) : null;
 
   // Recomendados (em alta + novos)
-  const recomendados = CURSOS.filter((c) => c.selo).slice(0, 4);
+  const recomendados = cursos.filter((c) => c.selo).slice(0, 4);
   const xpPct = Math.round((ALUNO.xp / ALUNO.xpProximoNivel) * 100);
 
   return (
@@ -206,7 +207,7 @@ export function HomeDashboard() {
           </Link>
         </div>
         <div className="plat-row">
-          {MATERIAIS.slice(0, 4).map((m) => (
+          {materiais.slice(0, 4).map((m) => (
             <MaterialCard key={m.slug} mat={m} />
           ))}
         </div>

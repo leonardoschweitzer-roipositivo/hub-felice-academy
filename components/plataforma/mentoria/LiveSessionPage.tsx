@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { Icon } from '../icons';
 import { getPilar } from '../data/pilares';
-import { getEncontro, statusEncontro } from '../data/mentoria';
-import { MATERIAIS } from '../data/materiais';
+import { statusEncontro } from '../data/mentoria';
+import { useStore } from '../store/PlatformStore';
 import { Countdown } from '../Countdown';
 import { styleVars } from '../util';
 
@@ -16,6 +16,7 @@ const CHAT = [
 ];
 
 export function LiveSessionPage({ id }: { id: string }) {
+  const { getEncontro, materiais } = useStore();
   const encontro = getEncontro(id);
 
   if (!encontro) {
@@ -32,7 +33,7 @@ export function LiveSessionPage({ id }: { id: string }) {
   const pilar = getPilar(encontro.pilar);
   const status = statusEncontro(encontro);
   const aoVivo = status === 'ao-vivo';
-  const materiais = MATERIAIS.filter((m) => m.pilar === encontro.pilar).slice(0, 2);
+  const materiaisDoEncontro = materiais.filter((m) => m.pilar === encontro.pilar).slice(0, 2);
 
   return (
     <div style={styleVars({ '--acc': pilar.cor })}>
@@ -104,11 +105,11 @@ export function LiveSessionPage({ id }: { id: string }) {
           </div>
           <div className="player-panel">
             <p>{encontro.descricao}</p>
-            {materiais.length > 0 && (
+            {materiaisDoEncontro.length > 0 && (
               <>
                 <h4 style={{ color: 'var(--cream)', margin: '18px 0 10px' }}>Materiais de apoio</h4>
                 <ul className="aside-list" style={{ gap: 12 }}>
-                  {materiais.map((m) => (
+                  {materiaisDoEncontro.map((m) => (
                     <li key={m.slug}>
                       <Link href={m.href ?? `/plataforma/materiais/${m.slug}`}>
                         <Icon name="download" size={16} /> {m.titulo}

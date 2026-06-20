@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Icon } from '../icons';
 import { getPilar } from '../data/pilares';
 import {
-  ENCONTROS,
   EXCLUSIVOS,
   GRAVACOES,
   MENTORES,
@@ -13,6 +12,7 @@ import {
   CATEGORIAS_COMUNIDADE,
   statusEncontro,
 } from '../data/mentoria';
+import { useStore } from '../store/PlatformStore';
 import { Countdown } from '../Countdown';
 import { styleVars } from '../util';
 
@@ -31,14 +31,17 @@ const RANKING = [
 
 export function MentoriaRoom() {
   const [cat, setCat] = useState<(typeof CATEGORIAS_COMUNIDADE)[number]>('Todos');
+  const { encontros } = useStore();
 
-  const aoVivo = ENCONTROS.find((e) => statusEncontro(e) === 'ao-vivo');
-  const agendados = ENCONTROS.filter((e) => statusEncontro(e) === 'agendado').sort(
-    (a, b) => a.offsetMin - b.offsetMin,
-  );
+  const aoVivo = encontros.find((e) => statusEncontro(e) === 'ao-vivo');
+  const agendados = encontros
+    .filter((e) => statusEncontro(e) === 'agendado')
+    .sort((a, b) => a.offsetMin - b.offsetMin);
   const destaque = aoVivo ?? agendados[0];
   const destaquePilar = destaque ? getPilar(destaque.pilar) : null;
-  const outros = ENCONTROS.filter((e) => e.id !== destaque?.id && statusEncontro(e) !== 'encerrado');
+  const outros = encontros.filter(
+    (e) => e.id !== destaque?.id && statusEncontro(e) !== 'encerrado',
+  );
 
   const postsFiltrados = cat === 'Todos' ? POSTS : POSTS.filter((p) => p.categoria === cat);
 

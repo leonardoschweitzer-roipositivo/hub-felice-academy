@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Icon } from '../icons';
 import { getPilar } from '../data/pilares';
-import { aulasDoCurso, getAula, getCurso } from '../data/cursos';
-import { MATERIAIS } from '../data/materiais';
+import { aulasDoCurso, getAula } from '../data/cursos';
 import { useProgress } from '../useProgress';
+import { useStore } from '../store/PlatformStore';
 import { usePersistentState } from '../usePersistentState';
 import { styleVars } from '../util';
 
@@ -22,6 +22,7 @@ export function LessonPlayer({ cursoSlug, aulaSlug }: { cursoSlug: string; aulaS
   const router = useRouter();
   const [tab, setTab] = useState<Tab>('conteudo');
   const { isConcluida, toggleConcluida } = useProgress();
+  const { getCurso, materiais } = useStore();
 
   const curso = getCurso(cursoSlug);
   const aula = curso ? getAula(curso, aulaSlug) : undefined;
@@ -44,7 +45,7 @@ export function LessonPlayer({ cursoSlug, aulaSlug }: { cursoSlug: string; aulaS
   const prev = idx > 0 ? aulas[idx - 1] : null;
   const next = idx < aulas.length - 1 ? aulas[idx + 1] : null;
   const done = isConcluida(curso.slug, aula.slug);
-  const materiais = MATERIAIS.filter((m) => m.pilar === curso.pilar).slice(0, 3);
+  const materiaisDaAula = materiais.filter((m) => m.pilar === curso.pilar).slice(0, 3);
 
   const concluirEAvancar = () => {
     toggleConcluida(curso.slug, aula.slug, true);
@@ -153,7 +154,7 @@ export function LessonPlayer({ cursoSlug, aulaSlug }: { cursoSlug: string; aulaS
 
             {tab === 'materiais' && (
               <ul className="aside-list" style={{ gap: 12 }}>
-                {materiais.map((m) => (
+                {materiaisDaAula.map((m) => (
                   <li key={m.slug}>
                     <Link href={m.href ?? `/plataforma/materiais/${m.slug}`}>
                       <Icon name="download" size={16} /> {m.titulo}{' '}

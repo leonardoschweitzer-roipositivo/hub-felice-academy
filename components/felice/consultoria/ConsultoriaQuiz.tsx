@@ -85,7 +85,7 @@ export function ConsultoriaQuiz() {
         origem: 'kit-f4-gestao/obrigado',
       };
       // barra final: o projeto usa trailingSlash, evita 308 no POST
-      const res = await fetch('/gestao/consultoria/api/lead/', {
+      const res = await fetch('/produtos/kitgestaof4/consultoria/api/lead/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

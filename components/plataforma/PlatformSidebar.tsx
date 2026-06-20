@@ -64,10 +64,19 @@ export function PlatformSidebar({ open, onClose }: { open: boolean; onClose: () 
       </div>
 
       <Link
-        href="/"
+        href="/plataforma/admin"
         className="plat-nav-item"
         onClick={onClose}
         style={{ marginTop: 8, fontSize: '0.85rem' }}
+      >
+        <Icon name="gestao" size={18} />
+        <span>Administração</span>
+      </Link>
+      <Link
+        href="/"
+        className="plat-nav-item"
+        onClick={onClose}
+        style={{ fontSize: '0.85rem' }}
       >
         <Icon name="chevron-left" size={18} />
         <span>Voltar ao site</span>

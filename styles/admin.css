@@ -1,0 +1,584 @@
+/* ============================================================
+   FELICE ACADEMY · CONSOLE ADMIN
+   Reusa o layout/tokens de plataforma.css (.plataforma) e felice.css.
+   Adiciona: badge ADMIN, tabelas, toolbar, drawer (slide-over), forms,
+   métricas e o editor de curso (repeater de módulos/aulas).
+   ============================================================ */
+
+.plataforma.admin .plat-content {
+  max-width: 1280px;
+}
+
+/* marca com selo ADMIN na sidebar */
+.plataforma.admin .brand .badge {
+  background: linear-gradient(135deg, #f5cd47, #b8821e);
+}
+.plataforma .admin-tag {
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #2a1a00;
+  background: var(--grad-gold);
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: 2px;
+}
+.plataforma .admin-topbar-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--cream);
+}
+
+/* cabeçalho de página admin */
+.plataforma .admin-page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.plataforma .admin-page-head h1 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+.plataforma .admin-page-head p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+/* ---------------- Métricas (dashboard) ---------------- */
+.plataforma .metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.plataforma .metric-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+}
+.plataforma .metric-card .mc-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  background: rgba(232, 180, 71, 0.12);
+  border: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+.plataforma .metric-card .mc-num {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: var(--cream);
+  line-height: 1;
+}
+.plataforma .metric-card .mc-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.plataforma .admin-cols {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 22px;
+  margin-top: 28px;
+  align-items: start;
+}
+.plataforma .panel {
+  border: 1px solid var(--line-soft);
+  border-radius: 18px;
+  background: var(--card);
+  overflow: hidden;
+}
+.plataforma .panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .panel-head h3 {
+  font-size: 1.02rem;
+}
+.plataforma .panel-body {
+  padding: 8px 0;
+}
+.plataforma .quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------------- Toolbar ---------------- */
+.plataforma .admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.plataforma .admin-toolbar .at-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  color: var(--muted-2);
+  flex: 1;
+  max-width: 320px;
+}
+.plataforma .admin-toolbar .at-search input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.plataforma .admin-toolbar .at-spacer {
+  margin-left: auto;
+}
+
+/* ---------------- Tabela ---------------- */
+.plataforma .table-wrap {
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+}
+.plataforma table.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.plataforma .admin-table thead th {
+  text-align: left;
+  padding: 13px 18px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--line-soft);
+  white-space: nowrap;
+}
+.plataforma .admin-table tbody td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--text);
+  vertical-align: middle;
+}
+.plataforma .admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.plataforma .admin-table tbody tr:hover {
+  background: rgba(232, 180, 71, 0.04);
+}
+.plataforma .admin-table .cell-title {
+  font-weight: 600;
+  color: var(--cream);
+}
+.plataforma .admin-table .cell-sub {
+  font-size: 0.78rem;
+  color: var(--muted-2);
+}
+.plataforma .td-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+.plataforma .cell-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.plataforma .cell-user .post-avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 0.72rem;
+}
+
+/* botões de ação por linha */
+.plataforma .icon-btn-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.plataforma .icon-btn-sm + .icon-btn-sm {
+  margin-left: 6px;
+}
+.plataforma .icon-btn-sm:hover {
+  color: var(--gold);
+  border-color: var(--line);
+}
+.plataforma .icon-btn-sm.danger:hover {
+  color: #ff6b6b;
+  border-color: rgba(255, 80, 80, 0.4);
+}
+
+/* ---------------- Status badges ---------------- */
+.plataforma .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.plataforma .status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.plataforma .st-ativo,
+.plataforma .st-ao-vivo {
+  color: #57c97f;
+  background: rgba(60, 180, 100, 0.12);
+  border-color: rgba(60, 180, 100, 0.3);
+}
+.plataforma .st-pendente,
+.plataforma .st-agendado {
+  color: #f0b45a;
+  background: rgba(232, 180, 71, 0.12);
+  border-color: rgba(232, 180, 71, 0.3);
+}
+.plataforma .st-inativo,
+.plataforma .st-encerrado {
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--line-soft);
+}
+
+/* ---------------- Drawer (slide-over) ---------------- */
+.plataforma .drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  animation: drawer-fade 0.2s ease;
+}
+.plataforma .drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 81;
+  width: min(560px, 94vw);
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-2);
+  border-left: 1px solid var(--line);
+  box-shadow: -30px 0 80px -30px rgba(0, 0, 0, 0.8);
+  animation: drawer-in 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes drawer-in {
+  from {
+    transform: translateX(40px);
+    opacity: 0.6;
+  }
+}
+@keyframes drawer-fade {
+  from {
+    opacity: 0;
+  }
+}
+.plataforma .drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .drawer-head h3 {
+  font-size: 1.15rem;
+}
+.plataforma .drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px 24px;
+}
+.plataforma .drawer-foot {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---------------- Forms ---------------- */
+.plataforma .form-field {
+  display: block;
+  margin-bottom: 16px;
+}
+.plataforma .form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.plataforma .form-input {
+  width: 100%;
+  background: var(--ink);
+  border: 1px solid var(--line-soft);
+  border-radius: 11px;
+  padding: 11px 13px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color 0.18s ease;
+}
+.plataforma .form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.plataforma select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 18px, calc(100% - 13px) 18px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.plataforma .form-textarea {
+  min-height: 92px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.plataforma .form-hint {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--muted-2);
+  margin-top: 6px;
+}
+.plataforma .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+.plataforma .form-section-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 22px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---------------- Editor de curso (repeater) ---------------- */
+.plataforma .editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items: start;
+}
+.plataforma .editor-aside {
+  position: sticky;
+  top: calc(var(--tb) + 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.plataforma .module-edit {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  background: var(--card);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.plataforma .module-edit-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .module-edit-head input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cream);
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.plataforma .aula-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .aula-edit-row:last-child {
+  border-bottom: none;
+}
+.plataforma .aula-edit-row .ae-grip {
+  color: var(--muted-2);
+}
+.plataforma .aula-edit-row input.ae-title {
+  flex: 1;
+  background: var(--ink);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+}
+.plataforma .aula-edit-row input.ae-dur {
+  width: 74px;
+  background: var(--ink);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.82rem;
+  text-align: center;
+}
+.plataforma .add-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px dashed var(--line);
+  background: transparent;
+  color: var(--gold-bright);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.plataforma .add-row:hover {
+  background: rgba(232, 180, 71, 0.06);
+}
+
+/* swatch de cor do thumb */
+.plataforma .swatch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.plataforma .swatch {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}
+.plataforma .thumb-preview {
+  height: 120px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border: 1px solid var(--line);
+}
+
+/* vazio */
+.plataforma .empty-admin {
+  text-align: center;
+  padding: 56px 20px;
+  color: var(--muted);
+  border: 1px dashed var(--line-soft);
+  border-radius: 16px;
+}
+
+/* listas simples em panel */
+.plataforma .mini-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .mini-row:last-child {
+  border-bottom: none;
+}
+.plataforma .mini-row .mr-ico {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: var(--acc, var(--gold));
+  background: color-mix(in srgb, var(--acc, var(--gold)) 14%, transparent);
+  flex-shrink: 0;
+}
+.plataforma .mini-row .mr-body {
+  flex: 1;
+  min-width: 0;
+}
+.plataforma .mini-row .mr-body b {
+  font-size: 0.9rem;
+  color: var(--cream);
+  display: block;
+}
+.plataforma .mini-row .mr-body span {
+  font-size: 0.78rem;
+  color: var(--muted-2);
+}
+
+/* ---------------- Responsivo ---------------- */
+@media (max-width: 1080px) {
+  .plataforma .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plataforma .admin-cols,
+  .plataforma .editor-grid {
+    grid-template-columns: 1fr;
+  }
+  .plataforma .editor-aside {
+    position: static;
+  }
+}
+@media (max-width: 720px) {
+  .plataforma .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .plataforma .table-wrap {
+    overflow-x: auto;
+  }
+  .plataforma table.admin-table {
+    min-width: 640px;
+  }
+}
+@media (max-width: 560px) {
+  .plataforma .metric-grid {
+    grid-template-columns: 1fr;
+  }
+}

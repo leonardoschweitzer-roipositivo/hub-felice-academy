@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Icon } from '../icons';
 import { PILARES, type PilarSlug } from '../data/pilares';
-import { cursosByPilar } from '../data/cursos';
 import { useProgress } from '../useProgress';
+import { useStore } from '../store/PlatformStore';
 import { styleVars } from '../util';
 import { CourseCard } from './CourseCard';
 
@@ -12,6 +12,7 @@ type Filtro = 'todos' | PilarSlug;
 
 export function CoursesIndex() {
   const [filtro, setFiltro] = useState<Filtro>('todos');
+  const { cursosByPilar } = useStore();
   const { cursoProgressoBySlug, isFavorito, toggleFavorito } = useProgress();
 
   const pilaresVisiveis = filtro === 'todos' ? PILARES : PILARES.filter((p) => p.slug === filtro);

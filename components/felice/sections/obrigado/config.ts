@@ -5,13 +5,13 @@
 
 /** Rota do questionário de qualificação — para onde os CTAs "Agendar
     consultoria" levam. O lead responde e é direcionado à confirmação. */
-export const QUESTIONARIO_URL = '/gestao/consultoria';
+export const QUESTIONARIO_URL = '/produtos/kitgestaof4/consultoria';
 
 /** Rota da página de confirmação (recebimento dos dados). */
-export const CONFIRMACAO_URL = '/gestao/consultoria/confirmado';
+export const CONFIRMACAO_URL = '/produtos/kitgestaof4/consultoria/confirmado';
 
 /** Acesso aos 4 documentos do Kit (link secundário, discreto). */
-export const DOCS_URL = '/gestao/kit-f4';
+export const DOCS_URL = '/produtos/kitgestaof4/kit-f4';
 
 /** WhatsApp de suporte (botão flutuante). */
 export const WHATSAPP_URL =

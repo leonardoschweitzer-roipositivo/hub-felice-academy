@@ -2,16 +2,18 @@
 
 import { useCallback } from 'react';
 import { usePersistentState } from './usePersistentState';
-import { CURSOS, aulaKey, aulasDoCurso, cursosByPilar, getCurso, type Curso } from './data/cursos';
+import { aulaKey, aulasDoCurso, type Curso } from './data/cursos';
+import { useStore } from './store/PlatformStore';
 import { type PilarSlug } from './data/pilares';
 
 type Flags = Record<string, boolean>;
 
 /**
  * Estado de progresso do aluno (aulas concluídas + favoritos), persistido
- * localmente. Reaproveita `usePersistentState` (mesmo padrão do Kit F4).
+ * localmente. Os cursos vêm do store (refletem edições do admin).
  */
 export function useProgress() {
+  const { cursos, getCurso, cursosByPilar } = useStore();
   const [concluidas, setConcluidas, hydrated] = usePersistentState<Flags>('aulas-concluidas', {});
   const [favoritos, setFavoritos] = usePersistentState<Flags>('favoritos', {});
 
@@ -49,26 +51,25 @@ export function useProgress() {
       const curso = getCurso(slug);
       return curso ? cursoProgresso(curso) : { done: 0, total: 0, pct: 0 };
     },
-    [cursoProgresso],
+    [cursoProgresso, getCurso],
   );
 
   const pilarProgresso = useCallback(
     (pilar: PilarSlug) => {
-      const cursos = cursosByPilar(pilar);
       let done = 0;
       let total = 0;
-      cursos.forEach((c) => {
+      cursosByPilar(pilar).forEach((c) => {
         const p = cursoProgresso(c);
         done += p.done;
         total += p.total;
       });
       return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
     },
-    [cursoProgresso],
+    [cursoProgresso, cursosByPilar],
   );
 
   const totalConcluidas = Object.keys(concluidas).length;
-  const totalAulasGeral = CURSOS.reduce((acc, c) => acc + aulasDoCurso(c).length, 0);
+  const totalAulasGeral = cursos.reduce((acc, c) => acc + aulasDoCurso(c).length, 0);
 
   const isFavorito = useCallback((slug: string) => !!favoritos[slug], [favoritos]);
   const toggleFavorito = useCallback(

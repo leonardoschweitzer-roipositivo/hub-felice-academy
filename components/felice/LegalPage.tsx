@@ -16,13 +16,13 @@ export function LegalPage({ title, updatedAt, children }: LegalPageProps) {
     <div className="felice legal-page">
       <header className="legal-topbar">
         <div className="wrap">
-          <a className="brand" href="/gestao">
+          <a className="brand" href="/produtos/kitgestaof4">
             <span className="badge">F</span>
             <span>
               Felice<small>Academy</small>
             </span>
           </a>
-          <a className="legal-back" href="/gestao">
+          <a className="legal-back" href="/produtos/kitgestaof4">
             ← Voltar
           </a>
         </div>

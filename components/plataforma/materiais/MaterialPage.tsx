@@ -3,10 +3,12 @@
 import Link from 'next/link';
 import { Icon } from '../icons';
 import { getPilar } from '../data/pilares';
-import { FORMATO_ICON, getMaterial } from '../data/materiais';
+import { FORMATO_ICON } from '../data/materiais';
+import { useStore } from '../store/PlatformStore';
 import { styleVars } from '../util';
 
 export function MaterialPage({ slug }: { slug: string }) {
+  const { getMaterial } = useStore();
   const mat = getMaterial(slug);
 
   if (!mat) {

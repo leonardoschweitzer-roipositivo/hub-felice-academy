@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { Icon } from '../icons';
 import { getPilar } from '../data/pilares';
-import { aulasDoCurso, getCurso, totalAulas } from '../data/cursos';
-import { MATERIAIS } from '../data/materiais';
+import { aulasDoCurso, totalAulas } from '../data/cursos';
 import { useProgress } from '../useProgress';
+import { useStore } from '../store/PlatformStore';
 import { ProgressRing } from '../ProgressRing';
 import { styleVars } from '../util';
 
 export function CoursePage({ cursoSlug }: { cursoSlug: string }) {
+  const { getCurso, materiais } = useStore();
   const curso = getCurso(cursoSlug);
   const { isConcluida, cursoProgresso } = useProgress();
 
@@ -29,7 +30,7 @@ export function CoursePage({ cursoSlug }: { cursoSlug: string }) {
   const prog = cursoProgresso(curso);
   const proxima = aulas.find((a) => !isConcluida(curso.slug, a.slug)) ?? aulas[0];
   const concluido = prog.pct === 100;
-  const materiaisDoCurso = MATERIAIS.filter((m) => m.pilar === curso.pilar).slice(0, 2);
+  const materiaisDoCurso = materiais.filter((m) => m.pilar === curso.pilar).slice(0, 2);
 
   let aulaCounter = 0;
 
