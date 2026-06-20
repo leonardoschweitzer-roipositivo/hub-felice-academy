@@ -1,12 +1,23 @@
+import Image from 'next/image';
+import { Check } from '../ui/icons';
 import { CtaConsultoria } from '../sections/obrigado/Cta';
 
-/* Seção de CTA reutilizável: estimula o usuário (que já está dentro do
-   Kit) a agendar a consultoria gratuita. Usada na índice do Kit F4 e nas
-   4 páginas de documento, sempre antes do footer. */
+/* Seção de CTA reutilizável (índice do Kit F4 + 4 documentos). Funde a
+   autoridade do Dr. Sócrates (foto + credenciais + fala) com a oferta da
+   consultoria, para criar coerência de narrativa: quem é ele → como ele
+   te ajuda → benefícios → preço → agendar. */
+const CREDS = [
+  'Especialista em Cirurgia e Traumatologia Bucomaxilofacial — UEPB',
+  'Especialista em Periodontia — FACOP/Bauru',
+  'Mestre em Implantodontia — SLM/SP',
+  'Mestre em Periodontia — SLM/SP',
+  'Diretor clínico da Felice Odontologia · Professor na Felice Academy',
+];
+
 const BENEFICIOS = [
   {
     t: 'Plano sob medida',
-    d: 'O Dr. Sócrates define com você as prioridades de implementação para a realidade da sua clínica.',
+    d: 'Defino com você as prioridades de implementação para a realidade da sua clínica.',
   },
   {
     t: 'Dúvidas resolvidas',
@@ -14,7 +25,7 @@ const BENEFICIOS = [
   },
   {
     t: 'Equipe alinhada',
-    d: 'Descubra como engajar o time no método para sair da operação de vez.',
+    d: 'Te mostro como engajar o time no método para você sair da operação de vez.',
   },
 ];
 
@@ -28,17 +39,35 @@ export function ConsultoriaCtaSection() {
   return (
     <section className="cta-consult">
       <div className="wrap cta-consult-inner">
-        <div className="cta-consult-head reveal">
-          <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            Próximo passo · Consultoria gratuita
-          </span>
-          <h2>
-            Você já tem o método. <span className="gold-grad">Falta colocá-lo para rodar.</span>
-          </h2>
-          <p className="cta-consult-sub">
-            Agende uma consultoria gratuita de 1 hora com o Dr. Sócrates e saia com um plano de
-            implementação sob medida para a sua clínica.
-          </p>
+        <div className="cta-consult-mentor">
+          <div className="cta-consult-photo reveal">
+            <Image
+              src="/images/dr-socrates-tavares.avif"
+              alt="Dr. Sócrates Tavares"
+              width={560}
+              height={650}
+              quality={70}
+              sizes="(max-width: 760px) 80vw, 320px"
+            />
+          </div>
+          <div className="cta-consult-intro reveal d1">
+            <span className="eyebrow">Próximo passo · Consultoria gratuita</span>
+            <h2>
+              Deixe quem criou o método <span className="gold-grad">te ajudar a aplicá-lo</span>
+            </h2>
+            <p className="cta-consult-sub">
+              Sou o Dr. Sócrates. Validei esse sistema na minha própria clínica e, em uma consultoria
+              gratuita de 1 hora, vou montar com você o plano de implementação sob medida para a sua
+              realidade.
+            </p>
+            <ul className="creds">
+              {CREDS.map((c) => (
+                <li key={c}>
+                  <Check size={18} stroke="currentColor" /> {c}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="cta-consult-cards">
