@@ -1,0 +1,128 @@
+/* ============================================================
+   Seção de CTA da consultoria — usada na índice do Kit F4 e nas
+   4 páginas de documento (antes do footer). Escopo em .felice.
+   ============================================================ */
+
+.felice .cta-consult {
+  position: relative;
+  padding: clamp(56px, 8vw, 100px) 0;
+  background: linear-gradient(180deg, #0d0c0a, var(--ink));
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.felice .cta-consult::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 780px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 71, 0.14), transparent 65%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.felice .cta-consult-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.felice .cta-consult-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(28px, 4vw, 44px);
+}
+.felice .cta-consult-head h2 {
+  margin: 14px 0 14px;
+}
+.felice .cta-consult-sub {
+  color: var(--muted);
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  line-height: 1.6;
+}
+
+.felice .cta-consult-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 940px;
+  margin: 0 auto clamp(30px, 4vw, 44px);
+}
+@media (max-width: 760px) {
+  .felice .cta-consult-cards {
+    grid-template-columns: 1fr;
+  }
+}
+.felice .cta-consult-card {
+  padding: 26px 24px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  text-align: center;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.felice .cta-consult-card:hover {
+  border-color: var(--line);
+  transform: translateY(-3px);
+}
+.felice .cta-consult-ic {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 14px;
+  border-radius: 13px;
+  color: #231701;
+  background: var(--grad-gold);
+}
+.felice .cta-consult-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 7px;
+}
+.felice .cta-consult-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.felice .cta-consult-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.felice .cta-consult-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+}
+.felice .cta-consult-price .old {
+  color: var(--muted-2);
+  text-decoration: line-through;
+  text-decoration-color: rgba(156, 154, 160, 0.6);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+.felice .cta-consult-price .old small {
+  font-size: 0.62em;
+  text-decoration: none;
+}
+.felice .cta-consult-price .sep {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+.felice .cta-consult-price .now {
+  font-size: 1.9rem;
+  font-weight: 800;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice .cta-consult-note {
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}

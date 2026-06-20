@@ -17,6 +17,7 @@ import { DocSection } from './DocSection';
 import { DocPrevNext } from './DocPrevNext';
 import { DocToolsPanel } from './DocToolsPanel';
 import { SearchModal } from './search/SearchModal';
+import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
 
 /** Formata a data ISO (AAAA-MM-DD) em dd/mm/aaaa, sem depender de timezone. */
 function formatUpdatedAt(iso: string): string {
@@ -118,6 +119,8 @@ export function DocLayout({ doc }: { doc: DocModel }) {
       {navOpen && <div className="kit-panel-scrim" onClick={() => setNavOpen(false)} aria-hidden="true" />}
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+
+      <ConsultoriaCtaSection />
 
       <Footer />
       <WhatsappFloat />

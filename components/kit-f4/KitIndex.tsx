@@ -8,6 +8,7 @@ import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { DOC_META, DOC_ORDER } from './content';
 import { KitDocCard } from './KitDocCard';
 import { SearchModal } from './search/SearchModal';
+import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
 
 /** Página índice do Kit F4: 4 cards (um por documento) com progresso. */
 export function KitIndex() {
@@ -69,6 +70,7 @@ export function KitIndex() {
             </div>
           </div>
         </section>
+        <ConsultoriaCtaSection />
       </main>
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
