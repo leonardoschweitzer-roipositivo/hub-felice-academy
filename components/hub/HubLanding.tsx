@@ -46,7 +46,7 @@ export function HubLanding() {
               </span>
             </a>
             <h1 className="reveal d1">
-              O ecossistema completo que a sua clínica precisa para{' '}
+              O ecossistema que a sua clínica precisa para{' '}
               <span className="gold-grad">sair do improviso e escalar de verdade.</span>
             </h1>
             <p className="lead reveal d2">
