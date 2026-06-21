@@ -65,16 +65,16 @@ export const PRODUTOS: Produto[] = [
     num: '03',
     titulo: 'Mentoria',
     descricao:
-      'Acompanhamento direto para escalar carreira e clínica, com método, metas claras e suporte a cada etapa.',
+      'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
     categoria: 'Mentoria',
     estado: 'disponivel',
-    href: '/produtos/mentoria-gestao-f4',
+    href: '/produtos/mentorias',
     interno: true,
-    cta: 'Acessar',
+    cta: 'Ver as mentorias',
     detalhes: [
-      'Acompanhamento individual e direto',
-      'Plano de crescimento personalizado',
-      'Sessões ao vivo e suporte contínuo',
+      'Duas trilhas: Gestão F4 e Zigomático',
+      'Plataforma, encontros ao vivo e suporte',
+      'Acompanhamento individual e em grupo',
     ],
   },
   {

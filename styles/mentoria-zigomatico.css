@@ -1,0 +1,15 @@
+/* ============================================================
+   MENTORIA DE ZIGOMÁTICO — ajustes específicos da landing.
+   Reusa felice.css + maestria.css + mentoria-gestao.css. Só o que
+   é exclusivo desta página.
+   ============================================================ */
+
+/* Os 3 encontros presenciais lado a lado (a grade .mz-bonus é 2 colunas). */
+.felice-maestria .mz-bonus.mz-presencial {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .felice-maestria .mz-bonus.mz-presencial {
+    grid-template-columns: 1fr;
+  }
+}
