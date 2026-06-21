@@ -32,17 +32,18 @@ export type Produto = {
 export const PRODUTOS: Produto[] = [
   {
     num: '01',
-    titulo: 'Masterclass',
+    titulo: 'Masterclass Zigomático Descomplicado',
     descricao:
-      'Aulas avançadas para elevar autoridade e domínio clínico — do diagnóstico ao plano de tratamento de alta complexidade.',
+      'Domine os princípios dos implantes zigomáticos em poucas horas e transforme casos impossíveis em faturamento real — sem encaminhar o paciente.',
     categoria: 'Curso',
-    estado: 'em-breve',
-    href: '#',
-    cta: 'Em breve',
+    estado: 'disponivel',
+    href: '/produtos/masterclass-zigomatico',
+    interno: true,
+    cta: 'Assistir',
     detalhes: [
-      'Casos clínicos reais comentados',
-      'Protocolos passo a passo',
-      'Acesso à comunidade Felice',
+      'Planejamento e protocolos passo a passo',
+      'Casos reais comentados pelo Dr. Sócrates',
+      'Bônus aceleradores + garantia de 7 dias',
     ],
   },
   {
