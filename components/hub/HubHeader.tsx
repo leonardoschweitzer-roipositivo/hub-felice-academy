@@ -25,9 +25,9 @@ export function HubHeader() {
           </span>
         </a>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <a href="#produtos" className="btn btn-ghost">
+          <Link href="/produtos" className="btn btn-ghost">
             Produtos
-          </a>
+          </Link>
           <a href="#conteudos" className="btn btn-ghost">
             Conteúdos
           </a>
