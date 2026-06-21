@@ -21,8 +21,8 @@ export function CrmHero() {
         <div className="hero-copy">
           <span className="eyebrow reveal">Felice CRM · software para clínicas</span>
           <h1 className="reveal d1">
-            PARE DE GERENCIAR SUA CLÍNICA{' '}
-            <span className="gold-grad">NO IMPROVISO E NAS PLANILHAS.</span>
+            Pare de gerenciar sua clínica{' '}
+            <span className="gold-grad">no improviso e nas planilhas.</span>
           </h1>
           <p className="lead reveal d2">
             O Felice CRM organiza{' '}

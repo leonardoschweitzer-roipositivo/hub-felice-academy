@@ -31,8 +31,8 @@ export function Hero() {
             Método Gestão F4 · para dentistas
           </span>
           <h1 className="reveal d1">
-            SAIA DA OPERAÇÃO E DEIXE SUA CLÍNICA{' '}
-            <span className="gold-grad">ATENDENDO, AGENDANDO E VENDENDO</span> NO AUTOMÁTICO.
+            Saia da operação e deixe sua clínica{' '}
+            <span className="gold-grad">atendendo, agendando e vendendo</span> no automático.
           </h1>
           {/* lead junto do título: no mobile fica acima do carrossel. */}
           <p className="lead reveal d2">
