@@ -339,3 +339,28 @@
   display: block;
   margin-top: 20px;
 }
+
+/* ============================================================
+   Masterclass · obrigado — headline em 3 linhas e subheadline em 3
+   linhas no desktop. Escopado em .obg-mc para não afetar Kit/Maestria.
+   ============================================================ */
+.felice .obg-mc .obg-hero h1 {
+  max-width: 26ch;                          /* ~2 palavras por linha */
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);  /* garante caber na coluna */
+  text-wrap: balance;                        /* 3 linhas equilibradas */
+}
+.felice .obg-mc .obg-lead {
+  max-width: 84ch;                          /* 246 chars / 3 ≈ 82 por linha */
+  text-wrap: balance;
+}
+
+/* Mobile: mantém o comportamento original das demais obrigados. */
+@media (max-width: 760px) {
+  .felice .obg-mc .obg-hero h1 {
+    max-width: 16ch;
+    font-size: clamp(2.1rem, 5.2vw, 4rem);
+  }
+  .felice .obg-mc .obg-lead {
+    max-width: 60ch;
+  }
+}

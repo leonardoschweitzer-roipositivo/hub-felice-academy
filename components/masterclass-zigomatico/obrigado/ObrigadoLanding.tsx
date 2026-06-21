@@ -28,7 +28,7 @@ import { WHATSAPP_URL } from './config';
 
 export function ObrigadoLanding() {
   return (
-    <div className="felice obg">
+    <div className="felice obg obg-mc">
       <main>
         <HeroSucesso />
         <Prova />
