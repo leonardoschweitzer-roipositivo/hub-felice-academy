@@ -30,8 +30,8 @@ export function HeroSucesso() {
         </span>
 
         <h1 className="reveal d1">
-          Pronto! Seu acesso à{' '}
-          <span className="gold-grad">Masterclass Zigomático Descomplicado</span> está liberado.
+          Seu acesso à{' '}
+          <span className="gold-grad">Masterclass Zigomático Descomplicado</span> liberou!
         </h1>
 
         <p className="obg-lead reveal d2">
