@@ -25,5 +25,6 @@ export const WHATSAPP_URL =
 export const PRAZO_DIAS = 7;
 
 /** Opcional: URL de um vídeo de boas-vindas (embed iframe). Vazio = esconde o slot.
-    ⚠️ Ainda não há vídeo de boas-vindas específico da Maestria — adicionar quando houver. */
-export const VIDEO_URL = '';
+    ⚠️ Provisório: reusa o mesmo embed Wistia do Kit Gestão F4 (ufbdtd0dj4).
+    Trocar pelo vídeo de boas-vindas específico da Maestria quando houver. */
+export const VIDEO_URL = 'https://fast.wistia.net/embed/iframe/ufbdtd0dj4';
