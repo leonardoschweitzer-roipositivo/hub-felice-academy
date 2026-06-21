@@ -82,15 +82,16 @@ export const PRODUTOS: Produto[] = [
     num: '04',
     titulo: 'Gestão F4',
     descricao:
-      'O sistema de gestão para dentistas: padronize processos, equipe e marketing para crescer com previsibilidade.',
+      'O curso em vídeo dos 4 pilares da gestão para dentistas: aprenda, no seu ritmo, a fazer a clínica atender, agendar e vender no automático.',
     categoria: 'Curso',
-    estado: 'em-breve',
-    href: '#',
-    cta: 'Em breve',
+    estado: 'disponivel',
+    href: '/produtos/gestao-f4',
+    interno: true,
+    cta: 'Acessar',
     detalhes: [
-      'POPs e manuais operacionais por cargo',
-      'Scripts de agendamento e atendimento',
-      'Calendário e estratégia de marketing',
+      'Atendimento, Agendamento, Marketing e Gestão',
+      '4 módulos passo a passo, 100% online',
+      'POPs, scripts e calendário inclusos',
     ],
   },
   {

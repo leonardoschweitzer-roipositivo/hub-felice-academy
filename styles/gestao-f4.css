@@ -1,0 +1,20 @@
+/* ============================================================
+   CURSO GESTÃO F4 — ajustes específicos da landing.
+   Reaproveita 100% de felice.css + maestria.css (escopo .felice
+   .felice-maestria). Aqui só o que é exclusivo desta página.
+   ============================================================ */
+
+/* Os 4 pilares lado a lado (a regra base .pillars da Maestria é 3 colunas). */
+.felice-maestria .pillars.mz-pillars-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 980px) {
+  .felice-maestria .pillars.mz-pillars-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .felice-maestria .pillars.mz-pillars-4 {
+    grid-template-columns: 1fr;
+  }
+}
