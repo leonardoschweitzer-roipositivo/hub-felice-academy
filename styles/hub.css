@@ -36,11 +36,11 @@
 .felice-hub .hub-hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 860px;
+  max-width: 1040px;
 }
 .felice-hub .hub-hero h1 {
   margin: 20px auto 0;
-  max-width: 18ch;
+  max-width: 24ch;
 }
 .felice-hub .hub-hero .lead {
   margin: 22px auto 0;
@@ -52,6 +52,498 @@
   gap: 14px;
   justify-content: center;
   margin-top: 36px;
+}
+
+/* Pill de anúncio (topo do hero) */
+.felice-hub .hub-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  padding: 6px 7px 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(232, 180, 71, 0.06);
+  backdrop-filter: blur(6px);
+  font-size: 0.82rem;
+  color: var(--muted);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.felice-hub .hub-hero-pill:hover {
+  border-color: var(--gold);
+  background: rgba(232, 180, 71, 0.1);
+}
+.felice-hub .hub-hero-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 0 4px rgba(232, 180, 71, 0.18);
+}
+.felice-hub .hub-hero-pill-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--gold-bright);
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+}
+.felice-hub .hub-hero-pill:hover .hub-hero-pill-cta .arrow {
+  display: inline-block;
+  transform: translateX(2px);
+  transition: transform 0.2s ease;
+}
+
+/* Mockup da plataforma no hero (glow + fade preto -> transparente) */
+.felice-hub .hub-hero-mockup {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: clamp(50px, 7vw, 92px) auto 0;
+  padding: 0 6px;
+}
+.felice-hub .hub-hero-mockup-glow {
+  position: absolute;
+  left: 50%;
+  top: -16%;
+  width: 92%;
+  height: 64%;
+  transform: translateX(-50%);
+  background: radial-gradient(60% 60% at 50% 40%, rgba(232, 180, 71, 0.3), transparent 70%);
+  filter: blur(34px);
+  pointer-events: none;
+  z-index: 0;
+}
+.felice-hub .hub-hero-mockup .pm-frame {
+  position: relative;
+  z-index: 1;
+}
+.felice-hub .hub-hero-mockup-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 58%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--ink) 6%,
+    rgba(11, 11, 13, 0.72) 38%,
+    transparent 100%
+  );
+}
+
+/* ---------- Mockup da plataforma de cursos (decorativo) ---------- */
+.felice-hub .pm-frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--ink-2);
+  box-shadow: 0 44px 120px -40px rgba(0, 0, 0, 0.92), 0 0 0 1px rgba(232, 180, 71, 0.12);
+  text-align: left;
+}
+.felice-hub .pm-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+.felice-hub .pm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+.felice-hub .pm-bar-title {
+  margin-left: 12px;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+}
+.felice-hub .pm-body {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  min-height: 420px;
+}
+
+/* Sidebar */
+.felice-hub .pm-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 14px;
+  border-right: 1px solid var(--line-soft);
+  background: rgba(0, 0, 0, 0.22);
+}
+.felice-hub .pm-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.felice-hub .pm-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+}
+.felice-hub .pm-brand-name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--cream);
+}
+.felice-hub .pm-brand-name small {
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--muted-2);
+}
+.felice-hub .pm-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.felice-hub .pm-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.felice-hub .pm-nav-item::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1.5px solid currentColor;
+  opacity: 0.5;
+}
+.felice-hub .pm-nav-item--active {
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(232, 180, 71, 0.1);
+  box-shadow: inset 2px 0 0 var(--gold);
+}
+.felice-hub .pm-nav-item--active::before {
+  border-color: var(--gold);
+  opacity: 1;
+}
+.felice-hub .pm-badge-live {
+  margin-left: auto;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.14);
+}
+.felice-hub .pm-side-card {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: rgba(232, 180, 71, 0.05);
+}
+.felice-hub .pm-side-card-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+.felice-hub .pm-side-card-sub {
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: var(--muted-2);
+}
+.felice-hub .pm-side-card-btn {
+  margin-top: 4px;
+  padding: 7px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+}
+
+/* Conteúdo */
+.felice-hub .pm-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 22px 22px;
+}
+.felice-hub .pm-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.felice-hub .pm-search {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.02);
+}
+.felice-hub .pm-streak {
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+  border: 1px solid rgba(232, 180, 71, 0.3);
+  background: rgba(232, 180, 71, 0.08);
+  white-space: nowrap;
+}
+.felice-hub .pm-avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+}
+.felice-hub .pm-greet {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.felice-hub .pm-eyebrow {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.felice-hub .pm-greet-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+.felice-hub .pm-gold {
+  color: var(--gold-bright);
+}
+.felice-hub .pm-greet-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.felice-hub .pm-xp {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: var(--card);
+}
+.felice-hub .pm-xp-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--cream);
+  white-space: nowrap;
+}
+.felice-hub .pm-xp-track {
+  flex: 1;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.felice-hub .pm-xp-fill {
+  display: block;
+  width: 82%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+}
+.felice-hub .pm-xp-num {
+  font-size: 0.7rem;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+/* Card "Continuar assistindo" */
+.felice-hub .pm-continue {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  background: var(--card);
+}
+.felice-hub .pm-continue-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 6px 6px 0;
+}
+.felice-hub .pm-continue-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--cream);
+}
+.felice-hub .pm-continue-sub {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.felice-hub .pm-continue-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+}
+
+/* Thumbnail (vídeo) */
+.felice-hub .pm-thumb {
+  position: relative;
+  min-height: 120px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.felice-hub .pm-thumb--clinica {
+  background: linear-gradient(140deg, #2f7d6e, #14352f 80%);
+}
+.felice-hub .pm-thumb--gestao {
+  background: linear-gradient(140deg, #b8821e, #3a2a0c 80%);
+}
+.felice-hub .pm-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.92);
+}
+.felice-hub .pm-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 7px 0 7px 11px;
+  border-color: transparent transparent transparent #111;
+}
+
+/* Recomendados */
+.felice-hub .pm-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.felice-hub .pm-section-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cream);
+}
+.felice-hub .pm-section-link {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+}
+.felice-hub .pm-courses {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.felice-hub .pm-course {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.felice-hub .pm-course .pm-thumb {
+  min-height: 84px;
+}
+.felice-hub .pm-course .pm-play {
+  width: 30px;
+  height: 30px;
+}
+.felice-hub .pm-course .pm-play::after {
+  border-width: 5px 0 5px 8px;
+}
+.felice-hub .pm-course-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+.felice-hub .pm-course-aulas {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.5);
+}
+.felice-hub .pm-course-title {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  color: var(--cream);
+}
+
+@media (max-width: 720px) {
+  .felice-hub .pm-side {
+    display: none;
+  }
+  .felice-hub .pm-body {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .felice-hub .pm-continue {
+    grid-template-columns: 1fr;
+  }
+  .felice-hub .pm-courses {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---------- Autoridade (resumo) ---------- */
@@ -229,6 +721,154 @@
   display: inline-block;
   transform: translateX(3px);
   transition: transform 0.25s ease;
+}
+
+/* ---------- Vitrine em linha (um produto por linha) ---------- */
+.felice-hub .hub-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.felice-hub .hub-row {
+  display: grid;
+  grid-template-columns: clamp(240px, 34%, 380px) 1fr;
+  align-items: stretch;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+.felice-hub a.hub-row:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: var(--glow);
+}
+.felice-hub .hub-row--featured {
+  border-color: var(--line);
+  background: var(--card-2);
+}
+.felice-hub .hub-row--soon {
+  opacity: 0.66;
+}
+
+/* Coluna de imagem / visual */
+.felice-hub .hub-row-media {
+  position: relative;
+  min-height: 220px;
+  background: linear-gradient(135deg, #15130f, #0c0b09);
+  border-right: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+.felice-hub .hub-row-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.felice-hub a.hub-row:hover .hub-row-media img {
+  transform: scale(1.04);
+}
+.felice-hub .hub-row-media-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.4rem, 9vw, 5.4rem);
+  color: rgba(232, 180, 71, 0.16);
+}
+.felice-hub .hub-row-num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 4px 11px;
+  backdrop-filter: blur(4px);
+}
+
+/* Coluna de conteúdo */
+.felice-hub .hub-row-body {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 2.6vw, 32px) clamp(22px, 2.8vw, 34px);
+}
+.felice-hub .hub-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.felice-hub .hub-row-head .hub-tag {
+  margin-bottom: 0;
+}
+.felice-hub .hub-row-body h3 {
+  margin-bottom: 10px;
+}
+.felice-hub .hub-row-body > p {
+  color: var(--muted);
+  font-size: 0.97rem;
+  max-width: 64ch;
+}
+.felice-hub .hub-row-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px 24px;
+}
+.felice-hub .hub-row-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.felice-hub .hub-row-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.felice-hub .hub-row-foot {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.felice-hub .hub-row--soon .hub-card-cta {
+  color: var(--muted-2);
+}
+.felice-hub a.hub-row:hover .hub-card-cta .arrow {
+  display: inline-block;
+  transform: translateX(3px);
+  transition: transform 0.25s ease;
+}
+
+@media (max-width: 720px) {
+  .felice-hub .hub-row {
+    grid-template-columns: 1fr;
+  }
+  .felice-hub .hub-row-media {
+    min-height: 170px;
+    border-right: none;
+    border-bottom: 1px solid var(--line-soft);
+  }
 }
 
 /* ---------- Conteúdos / materiais ---------- */

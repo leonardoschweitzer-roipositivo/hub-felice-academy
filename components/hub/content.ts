@@ -23,66 +23,106 @@ export type Produto = {
   cta?: string;
   /** Destaca o card (ex.: Felice CRM, produto-foco). */
   destaque?: boolean;
+  /** Imagem à esquerda do card (rota em /public). Sem imagem → fallback visual. */
+  imagem?: string;
+  /** Destaques/detalhes do produto, exibidos como lista no card. */
+  detalhes?: string[];
 };
 
 export const PRODUTOS: Produto[] = [
   {
     num: '01',
     titulo: 'Masterclass',
-    descricao: 'Aulas avançadas para elevar autoridade e domínio clínico.',
+    descricao:
+      'Aulas avançadas para elevar autoridade e domínio clínico — do diagnóstico ao plano de tratamento de alta complexidade.',
     categoria: 'Curso',
     estado: 'em-breve',
     href: '#',
     cta: 'Em breve',
+    detalhes: [
+      'Casos clínicos reais comentados',
+      'Protocolos passo a passo',
+      'Acesso à comunidade Felice',
+    ],
   },
   {
     num: '02',
     titulo: 'Zigomático',
-    descricao: 'Formação técnica em implantes zigomáticos do básico ao avançado.',
+    descricao:
+      'Formação técnica completa em implantes zigomáticos, do básico ao avançado, com base científica e prática cirúrgica.',
     categoria: 'Curso',
     estado: 'disponivel',
     href: '/produtos/maestria-zigomatica',
     interno: true,
     cta: 'Acessar',
+    detalhes: [
+      'Do planejamento à instalação do implante',
+      'Anatomia, técnica e manejo de complicações',
+      'Reabilitação da maxila atrófica',
+    ],
   },
   {
     num: '03',
     titulo: 'Mentoria',
-    descricao: 'Acompanhamento direto para escalar carreira e clínica.',
+    descricao:
+      'Acompanhamento direto para escalar carreira e clínica, com método, metas claras e suporte a cada etapa.',
     categoria: 'Mentoria',
     estado: 'disponivel',
     href: '/produtos/mentoria-gestao-f4',
     interno: true,
     cta: 'Acessar',
+    detalhes: [
+      'Acompanhamento individual e direto',
+      'Plano de crescimento personalizado',
+      'Sessões ao vivo e suporte contínuo',
+    ],
   },
   {
     num: '04',
     titulo: 'Gestão F4',
-    descricao: 'O sistema de gestão para dentistas: POPs, scripts e calendário de marketing.',
+    descricao:
+      'O sistema de gestão para dentistas: padronize processos, equipe e marketing para crescer com previsibilidade.',
     categoria: 'Curso',
     estado: 'em-breve',
     href: '#',
     cta: 'Em breve',
+    detalhes: [
+      'POPs e manuais operacionais por cargo',
+      'Scripts de agendamento e atendimento',
+      'Calendário e estratégia de marketing',
+    ],
   },
   {
     num: '05',
     titulo: 'Gengiva',
-    descricao: 'Curso técnico de cirurgia e estética gengival.',
+    descricao:
+      'Curso técnico de cirurgia e estética gengival, para resultados harmônicos e previsíveis no sorriso.',
     categoria: 'Curso',
     estado: 'em-breve',
     href: '#',
     cta: 'Em breve',
+    detalhes: [
+      'Cirurgia plástica periodontal',
+      'Recobrimento radicular e aumento de coroa',
+      'Previsibilidade estética',
+    ],
   },
   {
     num: '06',
     titulo: 'Felice CRM',
-    descricao: 'O software que organiza pacientes, agenda, vendas e faturamento da clínica.',
+    descricao:
+      'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
     categoria: 'Software',
     estado: 'disponivel',
     href: '/crm',
     interno: true,
     cta: 'Conhecer',
     destaque: true,
+    detalhes: [
+      'Agenda, pacientes e funil de vendas',
+      'Faturamento e indicadores da clínica',
+      'Automação de follow-up e confirmações',
+    ],
   },
 ];
 

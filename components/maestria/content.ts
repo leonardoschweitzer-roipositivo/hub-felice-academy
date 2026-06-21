@@ -244,10 +244,12 @@ export const MENTOR = {
   quote:
     'Reabilitação total de maxila atrófica não pode depender de sorte. Esse é o protocolo guiado que eu validei na minha própria clínica — e que ensino aqui, do diagnóstico ao hands-on.',
   creds: [
-    'Cirurgião-dentista — UFPB',
-    'Especialista em Cirurgia e Traumatologia Bucomaxilofacial — UEPB',
-    'Especialista em Periodontia — FACOP/Bauru',
-    'Mestre em Implantodontia — SLM/SP',
+    'Cirurgião-dentista graduado pela UFPB (2007)',
+    'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
+    'Especialista em Periodontia pela FACOP/Bauru',
+    'Mestre em Implantodontia pela SLM/SP',
+    'Mestre em Periodontia pela SLM/SP',
+    'Diretor-Clínico da Felice Odontologia',
     'Professor de cursos de especialização na Felice Academy',
   ],
 };

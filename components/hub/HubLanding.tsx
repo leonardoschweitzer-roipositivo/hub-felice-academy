@@ -4,10 +4,22 @@ import '@/styles/hub.css';
 import { HubHeader } from './HubHeader';
 import { ProductCard } from './ProductCard';
 import { MaterialCard } from './MaterialCard';
+import { PlatformMockup } from './PlatformMockup';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { Check } from '@/components/felice/ui/icons';
 import { PRODUTOS, MATERIAIS, STATS } from './content';
+
+const CREDS = [
+  'Cirurgião-dentista graduado pela UFPB (2007)',
+  'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
+  'Especialista em Periodontia pela FACOP/Bauru',
+  'Mestre em Implantodontia pela SLM/SP',
+  'Mestre em Periodontia pela SLM/SP',
+  'Diretor-Clínico da Felice Odontologia',
+  'Professor de cursos de especialização na Felice Academy',
+];
 
 /* ============================================================
    HUB INSTITUCIONAL · Felice Academy
@@ -25,10 +37,17 @@ export function HubLanding() {
         <section className="hub-hero">
           <div className="hub-hero-bg" aria-hidden="true" />
           <div className="wrap hub-hero-inner">
-            <span className="eyebrow reveal">Felice Academy</span>
+            <a href="/crm" className="hub-hero-pill reveal">
+              <span className="hub-hero-pill-dot" aria-hidden="true" />
+              <span>Felice CRM já está no ar</span>
+              <span className="hub-hero-pill-cta">
+                Conhecer
+                <span className="arrow">→</span>
+              </span>
+            </a>
             <h1 className="reveal d1">
-              Educação e ferramentas para o dentista{' '}
-              <span className="gold-grad">evoluir clínica e carreira.</span>
+              O ecossistema completo que a sua clínica precisa para{' '}
+              <span className="gold-grad">sair do improviso e escalar de verdade.</span>
             </h1>
             <p className="lead reveal d2">
               Um só lugar para dominar a técnica, organizar a gestão e escalar resultados — do
@@ -43,6 +62,13 @@ export function HubLanding() {
                 Falar com a equipe
               </a>
             </div>
+          </div>
+
+          {/* Mockup da plataforma */}
+          <div className="hub-hero-mockup reveal d4">
+            <div className="hub-hero-mockup-glow" aria-hidden="true" />
+            <PlatformMockup />
+            <div className="hub-hero-mockup-fade" aria-hidden="true" />
           </div>
         </section>
 
@@ -69,6 +95,13 @@ export function HubLanding() {
                 real em método. A Felice Academy nasce dessa experiência: ensinar dentistas a
                 crescer com técnica, gestão e organização.
               </p>
+              <ul className="creds">
+                {CREDS.map((c) => (
+                  <li key={c}>
+                    <Check size={18} stroke="currentColor" /> {c}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -85,7 +118,7 @@ export function HubLanding() {
               </p>
             </div>
 
-            <div className="hub-grid">
+            <div className="hub-rows">
               {PRODUTOS.map((p, i) => (
                 <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
                   <ProductCard produto={p} />

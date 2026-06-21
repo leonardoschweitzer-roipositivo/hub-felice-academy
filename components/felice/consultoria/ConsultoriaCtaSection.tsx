@@ -7,11 +7,13 @@ import { CtaConsultoria } from '../sections/obrigado/Cta';
    consultoria, para criar coerência de narrativa: quem é ele → como ele
    te ajuda → benefícios → preço → agendar. */
 const CREDS = [
-  'Especialista em Cirurgia e Traumatologia Bucomaxilofacial — UEPB',
-  'Especialista em Periodontia — FACOP/Bauru',
-  'Mestre em Implantodontia — SLM/SP',
-  'Mestre em Periodontia — SLM/SP',
-  'Diretor clínico da Felice Odontologia · Professor na Felice Academy',
+  'Cirurgião-dentista graduado pela UFPB (2007)',
+  'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
+  'Especialista em Periodontia pela FACOP/Bauru',
+  'Mestre em Implantodontia pela SLM/SP',
+  'Mestre em Periodontia pela SLM/SP',
+  'Diretor-Clínico da Felice Odontologia',
+  'Professor de cursos de especialização na Felice Academy',
 ];
 
 const BENEFICIOS = [
