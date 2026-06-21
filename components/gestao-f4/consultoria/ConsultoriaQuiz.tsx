@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, CURSO_URL } from '../obrigado/config';
 
 /* Questionário de qualificação do lead vindo do Curso Gestão F4. As
@@ -79,10 +80,13 @@ export function ConsultoriaQuiz() {
     setSubmitting(true);
     setError('');
     try {
+      // Dispara o SubmitApplication no browser e ecoa o tracking ao servidor (dedup).
+      const tracking = fireApplication('gestao-f4', 'post_purchase');
       const payload = {
         contato: { nome: nome.trim(), whatsapp: whatsapp.trim(), email: email.trim(), cidade: cidade.trim() },
         qualificacao: answers,
         origem: 'gestao-f4/obrigado',
+        tracking,
       };
       // barra final: o projeto usa trailingSlash, evita 308 no POST
       const res = await fetch('/produtos/gestao-f4/consultoria/api/lead/', {

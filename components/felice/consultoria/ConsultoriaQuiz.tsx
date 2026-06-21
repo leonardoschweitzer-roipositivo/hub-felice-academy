@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, DOCS_URL } from '../sections/obrigado/config';
 
 /* Questionário de qualificação do lead. Não pergunta faturamento —
@@ -79,10 +80,13 @@ export function ConsultoriaQuiz() {
     setSubmitting(true);
     setError('');
     try {
+      // Dispara o SubmitApplication no browser e ecoa o tracking ao servidor (dedup).
+      const tracking = fireApplication('kitgestaof4', 'post_purchase');
       const payload = {
         contato: { nome: nome.trim(), whatsapp: whatsapp.trim(), email: email.trim(), cidade: cidade.trim() },
         qualificacao: answers,
         origem: 'kit-f4-gestao/obrigado',
+        tracking,
       };
       // barra final: o projeto usa trailingSlash, evita 308 no POST
       const res = await fetch('/produtos/kitgestaof4/consultoria/api/lead/', {

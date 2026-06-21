@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { sendApplicationEvent } from '@/lib/tracking/lead';
 
 export const runtime = 'nodejs';
 
@@ -18,6 +19,7 @@ type Lead = {
   contato?: { nome?: string; whatsapp?: string; email?: string; cidade?: string };
   qualificacao?: Record<string, string>;
   origem?: string;
+  tracking?: { eventId?: string; fbp?: string; fbc?: string; visitor_id?: string };
 };
 
 /* Recebe o lead do questionário e repassa a um webhook configurável
@@ -58,6 +60,31 @@ export async function POST(req: Request) {
     }
   } else {
     console.log('[lead] LEAD_WEBHOOK_URL não definido. Lead recebido:', JSON.stringify(lead));
+  }
+
+  // SubmitApplication ao Meta CAPI (adicional; não bloqueia o lead).
+  // O slug vem do path /produtos/{slug}/consultoria/api/lead/.
+  const tracking = body.tracking;
+  if (tracking?.eventId) {
+    const slug = new URL(req.url).pathname.split('/')[2] || 'kitgestaof4';
+    try {
+      await sendApplicationEvent({
+        slug,
+        leadType: 'post_purchase',
+        eventId: tracking.eventId,
+        identity: {
+          email: body.contato?.email,
+          phone: body.contato?.whatsapp,
+          visitorId: tracking.visitor_id,
+          fbp: tracking.fbp,
+          fbc: tracking.fbc,
+          ip: ip === 'anon' ? null : ip,
+          userAgent: req.headers.get('user-agent'),
+        },
+      });
+    } catch (err) {
+      console.error('[lead] CAPI SubmitApplication falhou:', err);
+    }
   }
 
   return NextResponse.json({ ok: true });

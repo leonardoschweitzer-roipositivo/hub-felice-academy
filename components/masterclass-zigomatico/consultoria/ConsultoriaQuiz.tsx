@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, ACESSO_URL } from '../obrigado/config';
 
 /* Questionário de qualificação do lead vindo da Masterclass Zigomático
@@ -84,10 +85,13 @@ export function ConsultoriaQuiz() {
     setSubmitting(true);
     setError('');
     try {
+      // Dispara o SubmitApplication no browser e ecoa o tracking ao servidor (dedup).
+      const tracking = fireApplication('masterclass-zigomatico', 'post_purchase');
       const payload = {
         contato: { nome: nome.trim(), whatsapp: whatsapp.trim(), email: email.trim(), cidade: cidade.trim() },
         qualificacao: answers,
         origem: 'masterclass-zigomatico/obrigado',
+        tracking,
       };
       // barra final: o projeto usa trailingSlash, evita 308 no POST
       const res = await fetch('/produtos/masterclass-zigomatico/consultoria/api/lead/', {

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { FeliceLanding } from '@/components/felice/FeliceLanding';
+import { ViewContent } from '@/components/tracking/ViewContent';
 
 // Fontes próprias deste protótipo (independentes do design system do ROI).
 // Títulos: Poppins (negrito). Corpo: Lato.
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 export default function GestaoPage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
+      <ViewContent slug="kitgestaof4" />
       <FeliceLanding />
     </div>
   );
