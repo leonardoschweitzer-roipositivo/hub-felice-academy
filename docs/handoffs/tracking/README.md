@@ -50,7 +50,9 @@
    - `GREEN_WEBHOOK_TOKEN` — um segredo que você define.
    - `META_TEST_EVENT_CODE` — só durante o teste; **esvaziar depois**.
    - opcionais (têm default): `SITE_URL`, `GRAPH_VERSION`, `NEXT_PUBLIC_META_PIXEL_ID`.
-2. **No Green:** apontar o webhook de venda para `https://<domínio>/api/webhooks/green/?token=<GREEN_WEBHOOK_TOKEN>` (ou header `x-green-token`). Atualizar também a **URL de obrigado**.
+2. **No Green:** apontar o webhook de venda para **`https://www.feliceacademy.com.br/api/webhooks/green/?token=<GREEN_WEBHOOK_TOKEN>`** (ou header `x-green-token`). Atualizar também a **URL de obrigado**.
+   - ⚠️ **USAR `www`** — o apex `feliceacademy.com.br` faz **308 → www** e webhook sender que não segue redirect em POST falha silenciosamente. `SITE_URL` (canônico) já é o `www`.
+   - ✅ **Endpoint validado por curl em 2026-06-24** (token + `GREEN_WEBHOOK_TOKEN` setado na Vercel): payload de venda paga do Kit (`offer.hash=4iIlqU`) → `{"ok":true,"event_id":"purchase_...","sent":true}` e Purchase do **Servidor** no Test Events. Falta só a venda-teste REAL pra mapear o payload do Green e confirmar `transaction_id (redirect) == sale.id (webhook)`.
 3. **🔑 VALIDAR O DEDUP (crítico):** fazer 1 venda de teste e confirmar no **Events Manager → Test Events** que o `transaction_id` que o Green devolve na URL de obrigado é **IGUAL ao `sale.id`** do webhook. Se forem ids diferentes, o Purchase **conta em dobro**.
    - Ajustar a extração em `app/api/webhooks/green/route.ts` (`parseGreenWebhook`, marcado com TODO) e a lista `TX_KEYS` em `components/tracking/PurchasePixel.tsx` conforme o payload/redirect REAL do Green.
 4. Esvaziar `META_TEST_EVENT_CODE` quando validado.
