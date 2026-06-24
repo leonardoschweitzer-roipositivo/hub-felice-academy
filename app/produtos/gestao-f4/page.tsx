@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { GestaoF4Landing } from '@/components/gestao-f4/GestaoF4Landing';
+import { ViewContent } from '@/components/tracking/ViewContent';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
 export default function GestaoF4Page() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
+      <ViewContent slug="gestao-f4" />
       <GestaoF4Landing />
     </div>
   );

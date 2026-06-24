@@ -40,7 +40,7 @@
 
 ## 4. O QUE ESTÁ NO AR vs DORMENTE (pós-deploy)
 
-- **NO AR (browser):** PageView (hub), ViewContent/Purchase no Kit, SubmitApplication-browser nas consultorias. Disparam em tráfego real assim que o build sobe.
+- **NO AR (browser):** PageView (hub), ViewContent/Purchase no Kit **e em Maestria/Masterclass/Gestão F4** (Fase 2 browser-side concluída — `<ViewContent/>` nas 4 páginas de vendas + `<PurchasePixel/>` nos 4 obrigados), SubmitApplication-browser nas consultorias. Disparam em tráfego real assim que o build sobe.
 - **DORMENTE (server-side):** o webhook responde **401** sem `GREEN_WEBHOOK_TOKEN`; o CAPI **não envia** sem `META_CAPI_TOKEN` (e não quebra o lead). Ou seja, nada server-side dispara até as envs serem setadas → deploy é seguro.
 
 ## 5. ⏭️ PRÓXIMOS PASSOS (retomar por aqui)
@@ -75,7 +75,7 @@
 
 ## 8. Backlog (fases seguintes)
 
-- **Fase 2** (Maestria/Masterclass/Gestão F4): preencher `offer` em `funnels.ts` + montar `<ViewContent/>`/`<PurchasePixel/>` nas páginas. O webhook já roteia por oferta.
+- **Fase 2** (Maestria/Masterclass/Gestão F4): ✅ browser-side feito — `<ViewContent/>`/`<PurchasePixel/>` montados (slug já tem value/contentName em `funnels.ts`). ⏳ **Falta só preencher `offer`** dos 3 em `funnels.ts` quando o link Green real existir → aí o webhook roteia o Purchase server-side por oferta (hoje cai na atribuição neutra por value do payload).
 - **Supabase** (stitching/idempotência/retry/dashboard) — só se o match exigir.
 - **Consentimento LGPD** — recomendado antes de escalar tráfego pago (Pixel hoje dispara sem banner).
 - **Migração de domínio** p/ `feliceacademy.com.br` (cookies + verificação no Meta dependem do domínio final; código já é domínio-agnóstico via `SITE_URL`).

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { MasterclassLanding } from '@/components/masterclass-zigomatico/MasterclassLanding';
+import { ViewContent } from '@/components/tracking/ViewContent';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
 export default function MasterclassZigomaticoPage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
+      <ViewContent slug="masterclass-zigomatico" />
       <MasterclassLanding />
     </div>
   );

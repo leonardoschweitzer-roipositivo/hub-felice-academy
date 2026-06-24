@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { ObrigadoLanding } from '@/components/gestao-f4/obrigado/ObrigadoLanding';
+import { PurchasePixel } from '@/components/tracking/PurchasePixel';
 
 // Mesmas fontes da landing de vendas (Poppins display / Lato body).
 const poppins = Poppins({
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
 export default function ObrigadoPage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
+      <PurchasePixel slug="gestao-f4" />
       <ObrigadoLanding />
     </div>
   );
