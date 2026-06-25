@@ -79,17 +79,31 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'invalid_json' }, { status: 400 });
   }
 
+  // TODO TEMP DEBUG — remover após mapear o payload real do Green.
+  // Loga o corpo cru + o resultado do parse p/ ajustar parseGreenWebhook/PAID_STATUSES.
+  console.log('[green-webhook] RAW', JSON.stringify(raw));
+
   const sale = parseGreenWebhook(raw);
+
+  // TODO TEMP DEBUG
+  console.log('[green-webhook] PARSED', JSON.stringify(sale));
+  const _debug = {
+    type: sale.type,
+    status: sale.status,
+    transactionId: sale.transactionId,
+    offer: sale.offer,
+    topKeys: raw && typeof raw === 'object' ? Object.keys(raw as object) : null,
+  };
 
   // 3. Só venda paga dispara (senão 200 silencioso, p/ o Green não reenviar)
   if (sale.type !== 'sale' && sale.type !== 'purchase') {
-    return NextResponse.json({ ok: true, ignored: 'type' });
+    return NextResponse.json({ ok: true, ignored: 'type', _debug });
   }
   if (!PAID_STATUSES.includes(sale.status)) {
-    return NextResponse.json({ ok: true, ignored: 'status' });
+    return NextResponse.json({ ok: true, ignored: 'status', _debug });
   }
   if (!sale.transactionId) {
-    return NextResponse.json({ ok: true, ignored: 'no_transaction_id' });
+    return NextResponse.json({ ok: true, ignored: 'no_transaction_id', _debug });
   }
 
   // 4. Rotear produto pela oferta. Oferta não mapeada → atribuição genérica
