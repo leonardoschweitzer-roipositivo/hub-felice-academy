@@ -23,8 +23,8 @@
   --muted: #9c9aa0;
   --muted-2: #76747b;
 
-  --r: 18px;
-  --r-lg: 26px;
+  --r: 13px;
+  --r-lg: 18px;
   --maxw: 1140px;
   --pad: clamp(20px, 5vw, 40px);
   --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
@@ -267,7 +267,7 @@
 .felice .brand .badge {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   background: var(--grad-gold);
@@ -745,7 +745,7 @@
 .felice .pillar .ico {
   width: 54px;
   height: 54px;
-  border-radius: 14px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
   margin: 6px 0 16px;
@@ -836,7 +836,7 @@
   margin: 0 auto 14px;
 }
 .felice .comp-media .ph .f4mark i {
-  border-radius: 5px;
+  border-radius: 4px;
   background: rgba(232, 180, 71, 0.18);
 }
 .felice .comp-media .ph .f4mark i.on {
@@ -1583,7 +1583,7 @@
   min-width: 2ch;
   text-align: center;
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--ink);
   border: 1px solid var(--line);
   color: var(--gold-bright);
@@ -1646,7 +1646,7 @@
   gap: 12px;
   max-width: 230px;
   padding: 12px 16px 12px 12px;
-  border-radius: 14px;
+  border-radius: 10px;
   /* fundo âmbar/laranja quente — destaca no preto e chama atenção */
   background: linear-gradient(135deg, #ffb454 0%, #f59324 55%, #e07d12 100%);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -1947,7 +1947,7 @@
   color: var(--muted-2);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 5px 12px;
   white-space: nowrap;
   overflow: hidden;
@@ -1985,7 +1985,7 @@
   font-size: 0.85rem;
   color: var(--muted);
   padding: 7px 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid transparent;
 }
 .felice .plat-side-item.is-active {
@@ -2016,7 +2016,7 @@
   align-items: center;
   gap: 9px;
   padding: 9px 13px;
-  border-radius: 10px;
+  border-radius: 7px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
   color: var(--muted-2);
@@ -2029,7 +2029,7 @@
   margin-left: auto;
   font-size: 0.72rem;
   padding: 2px 7px;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.04);
 }
@@ -2062,7 +2062,7 @@
 .felice .plat-bubble {
   max-width: 82%;
   padding: 11px 14px;
-  border-radius: 14px;
+  border-radius: 10px;
   font-size: 0.86rem;
   line-height: 1.5;
 }
@@ -2115,7 +2115,7 @@
 }
 .felice .plat-card {
   padding: 13px 14px;
-  border-radius: 12px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
   display: flex;
@@ -2144,7 +2144,7 @@
   font-size: 0.8rem;
   color: var(--muted);
   padding: 9px 12px;
-  border-radius: 9px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
 }
@@ -2155,7 +2155,7 @@
   color: #2a1c00;
   background: var(--grad-gold);
   padding: 9px 16px;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* slide: CRC — etapas da chamada */
@@ -2215,7 +2215,7 @@
   align-items: center;
   gap: 6px;
   padding-bottom: 8px;
-  border-radius: 12px 12px 8px 8px;
+  border-radius: 8px 8px 6px 6px;
   background: linear-gradient(180deg, rgba(232, 180, 71, 0.32), rgba(232, 180, 71, 0.1));
   border: 1px solid var(--line);
   font-size: 0.74rem;
@@ -2293,7 +2293,7 @@
 }
 .felice .kitm {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: linear-gradient(165deg, var(--card-2), var(--card));
@@ -2327,7 +2327,7 @@
   color: var(--muted-2);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
-  border-radius: 7px;
+  border-radius: 5px;
   padding: 4px 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -2339,7 +2339,7 @@
   gap: 8px;
   margin: 0 14px;
   padding: 7px 11px;
-  border-radius: 9px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
   color: var(--muted-2);
@@ -2352,7 +2352,7 @@
   margin-left: auto;
   font-size: 0.68rem;
   padding: 2px 6px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid var(--line-soft);
 }
 .felice .kitm-tag {
@@ -2377,7 +2377,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 11px;
-  border-radius: 9px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
   font-size: 0.78rem;
@@ -2399,7 +2399,7 @@
 .felice .kitm-cell {
   width: 16px;
   height: 16px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid var(--line-soft);
 }
 .felice .kitm-cell.on {
@@ -2409,7 +2409,7 @@
 
 /* Atendimento · script copiável */
 .felice .kitm-script {
-  border-radius: 11px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   background: rgba(232, 180, 71, 0.05);
   padding: 12px 14px;
@@ -2430,7 +2430,7 @@
   font-size: 0.72rem;
   color: var(--cream);
   padding: 3px 10px;
-  border-radius: 7px;
+  border-radius: 5px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
 }
@@ -2455,7 +2455,7 @@
   max-width: 80%;
   font-size: 0.82rem;
   padding: 9px 13px;
-  border-radius: 13px;
+  border-radius: 9px;
   border-bottom-left-radius: 4px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line-soft);
@@ -2469,7 +2469,7 @@
   font-size: 0.82rem;
   line-height: 1.5;
   padding: 9px 13px;
-  border-radius: 13px;
+  border-radius: 9px;
   border-bottom-right-radius: 4px;
   background: rgba(232, 180, 71, 0.12);
   border: 1px solid var(--line);
@@ -2502,7 +2502,7 @@
 }
 .felice .kitm-day {
   min-height: 58px;
-  border-radius: 10px;
+  border-radius: 7px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line-soft);
   padding: 8px 9px;
@@ -2524,7 +2524,7 @@
   font-size: 0.72rem;
   color: var(--cream);
   padding: 3px 8px;
-  border-radius: 7px;
+  border-radius: 5px;
   align-self: flex-start;
   background: rgba(232, 180, 71, 0.18);
   border: 1px solid var(--line);
@@ -2571,7 +2571,7 @@
   color: var(--muted-2);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
-  border-radius: 7px;
+  border-radius: 5px;
   padding: 4px 11px;
   white-space: nowrap;
   overflow: hidden;
@@ -2604,7 +2604,7 @@
   font-size: 0.74rem;
   color: var(--muted);
   padding: 7px 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid transparent;
   line-height: 1.25;
 }
@@ -2651,7 +2651,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 11px;
-  border-radius: 9px;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
   color: var(--muted-2);
@@ -2664,7 +2664,7 @@
   margin-left: auto;
   font-size: 0.66rem;
   padding: 2px 6px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid var(--line-soft);
 }
 .felice .heroc-eyebrow {
@@ -2695,7 +2695,7 @@
   font-size: 0.78rem;
   color: var(--text);
   padding: 9px 12px;
-  border-radius: 9px;
+  border-radius: 6px;
   border: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.04);
 }
@@ -2761,7 +2761,7 @@
   font-size: 0.62rem;
   color: var(--muted-2);
   padding: 5px 2px;
-  border-radius: 7px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line-soft);
 }
@@ -2810,7 +2810,7 @@
   font-size: 0.62rem;
   color: var(--muted-2);
   padding: 4px;
-  border-radius: 6px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line-soft);
 }
@@ -2822,7 +2822,7 @@
 
 /* ferramenta genérica (caixinha com topo) */
 .felice .heroc-tool {
-  border-radius: 10px;
+  border-radius: 7px;
   border: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.03);
   padding: 11px 12px;
@@ -2843,7 +2843,7 @@
   color: #2a1c00;
   background: var(--grad-gold);
   padding: 3px 9px;
-  border-radius: 7px;
+  border-radius: 5px;
 }
 .felice .heroc-timer {
   font-family: var(--font-felice-display), 'Poppins', sans-serif;
@@ -2870,7 +2870,7 @@
   font-size: 0.78rem;
   line-height: 1.45;
   padding: 8px 11px;
-  border-radius: 13px;
+  border-radius: 9px;
 }
 .felice .heroc-bubble.user {
   align-self: flex-end;
@@ -2897,7 +2897,7 @@
   display: flex;
   gap: 5px;
   padding: 9px 13px;
-  border-radius: 13px;
+  border-radius: 9px;
   border-bottom-left-radius: 4px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
@@ -2945,7 +2945,7 @@
   font-size: 0.78rem;
   color: var(--muted);
   padding: 8px 11px;
-  border-radius: 9px;
+  border-radius: 6px;
   border: 1px solid var(--line-soft);
   background: rgba(255, 255, 255, 0.03);
 }
@@ -2986,7 +2986,7 @@
   align-items: flex-start;
   justify-content: center;
   padding-top: 7px;
-  border-radius: 10px 10px 7px 7px;
+  border-radius: 7px 7px 5px 5px;
   background: linear-gradient(180deg, rgba(232, 180, 71, 0.34), rgba(232, 180, 71, 0.1));
   border: 1px solid var(--line);
 }
@@ -3026,7 +3026,7 @@
   font-size: 0.7rem;
   color: var(--muted-2);
   padding: 8px 0;
-  border-radius: 7px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line-soft);
 }

@@ -36,14 +36,14 @@
 }
 .plataforma .vendas-kpi {
   padding: 18px;
-  border-radius: 16px;
+  border-radius: 11px;
   background: var(--card);
   border: 1px solid var(--line-soft);
 }
 .plataforma .vendas-kpi .vk-ico {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -129,7 +129,7 @@
   align-items: center;
   gap: 11px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -141,7 +141,7 @@
 .plataforma .atalho-card .atalho-ico {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -179,7 +179,7 @@
   width: 256px;
   background: rgba(255, 255, 255, 0.018);
   border: 1px solid var(--line-soft);
-  border-radius: 16px;
+  border-radius: 11px;
   padding: 12px 10px;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
@@ -233,7 +233,7 @@
   text-align: center;
   padding: 14px 0;
   border: 1px dashed var(--line-soft);
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* card do kanban */
@@ -241,7 +241,7 @@
   position: relative;
   background: var(--card);
   border: 1px solid var(--line-soft);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 11px 12px;
   cursor: grab;
   transition: border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
@@ -336,7 +336,7 @@
   height: 22px;
   display: grid;
   place-items: center;
-  border-radius: 7px;
+  border-radius: 5px;
   color: var(--muted-2);
   background: transparent;
   border: 1px solid transparent;
@@ -360,7 +360,7 @@
   list-style: none;
   background: var(--ink-2);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 6px;
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
 }
@@ -378,7 +378,7 @@
   width: 100%;
   text-align: left;
   padding: 7px 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: transparent;
   border: none;
   color: var(--text);
@@ -465,7 +465,7 @@
   height: calc(100vh - var(--tb) - 230px);
   min-height: 460px;
   border: 1px solid var(--line-soft);
-  border-radius: 18px;
+  border-radius: 13px;
   overflow: hidden;
   background: var(--card);
 }
@@ -619,7 +619,7 @@
 .plataforma .wa-bubble {
   max-width: 76%;
   padding: 9px 12px;
-  border-radius: 14px;
+  border-radius: 10px;
   font-size: 0.86rem;
   line-height: 1.4;
   position: relative;
@@ -705,7 +705,7 @@
   max-height: 120px;
   background: var(--ink);
   border: 1px solid var(--line-soft);
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 11px 14px;
   color: var(--text);
   font-family: inherit;
@@ -781,7 +781,7 @@
   display: flex;
   flex-direction: column;
   padding: 18px;
-  border-radius: 16px;
+  border-radius: 11px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   transition: border-color 0.2s ease, opacity 0.2s ease;
@@ -798,7 +798,7 @@
 .plataforma .ac-ico {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -853,7 +853,7 @@
   line-height: 1.5;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line-soft);
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 10px 12px;
   margin-bottom: 12px;
 }
