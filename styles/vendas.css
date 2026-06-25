@@ -1,0 +1,959 @@
+/* ============================================================
+   FELICE ACADEMY · MÓDULO VENDAS (CRM)
+   Pipeline (Kanban) · Leads · Clientes · Atendimento (WhatsApp) ·
+   Automação. Reusa tokens de felice.css e primitivos de admin.css
+   (tabela, drawer, forms, status-badge, métricas). Escopo .plataforma.
+   Acento do módulo = --acc coral (#E8825A), definido no layout.
+   ============================================================ */
+
+/* ---------------- Cabeçalho com ação à direita ---------------- */
+.plataforma .vendas-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.plataforma .vendas-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--acc);
+}
+.plataforma .vendas-del {
+  margin-right: auto;
+  color: #ff6b6b;
+}
+
+/* ---------------- KPIs (Visão Geral) ---------------- */
+.plataforma .vendas-kpis {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.plataforma .vendas-kpi {
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+}
+.plataforma .vendas-kpi .vk-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--acc);
+  background: color-mix(in srgb, var(--acc) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--acc) 30%, transparent);
+  margin-bottom: 12px;
+}
+.plataforma .vendas-kpi .vk-num {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.55rem;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.plataforma .vendas-kpi .vk-label {
+  font-size: 0.82rem;
+  color: var(--text);
+  margin-top: 4px;
+}
+.plataforma .vendas-kpi .vk-sub {
+  font-size: 0.74rem;
+  color: var(--muted-2);
+  margin-top: 2px;
+}
+
+/* ---------------- Visão Geral: colunas funil + atividade ---------------- */
+.plataforma .vendas-overview-cols {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+  margin-bottom: 26px;
+  align-items: start;
+}
+.plataforma .funil-body {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.plataforma .funil-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+}
+.plataforma .funil-nome {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.plataforma .funil-bar-wrap {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+.plataforma .funil-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--c);
+  min-width: 4px;
+  transition: width 0.4s ease;
+}
+.plataforma .funil-qtd {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-align: right;
+}
+.plataforma .mini-row .mr-data {
+  font-size: 0.74rem;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+/* atalhos */
+.plataforma .vendas-atalhos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.plataforma .atalho-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.plataforma .atalho-card:hover {
+  border-color: color-mix(in srgb, var(--acc) 40%, transparent);
+  transform: translateY(-2px);
+}
+.plataforma .atalho-card .atalho-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--acc);
+  background: color-mix(in srgb, var(--acc) 14%, transparent);
+  flex-shrink: 0;
+}
+.plataforma .atalho-card > div {
+  flex: 1;
+  min-width: 0;
+}
+.plataforma .atalho-card b {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--cream);
+}
+.plataforma .atalho-card span {
+  font-size: 0.74rem;
+  color: var(--muted-2);
+}
+.plataforma .atalho-card > svg {
+  color: var(--muted-2);
+  flex-shrink: 0;
+}
+
+/* ---------------- Pipeline (Kanban) ---------------- */
+.plataforma .kanban-board {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  align-items: flex-start;
+}
+.plataforma .kanban-col {
+  flex: 0 0 256px;
+  width: 256px;
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  padding: 12px 10px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.plataforma .kanban-col.is-over {
+  border-color: var(--c);
+  background: color-mix(in srgb, var(--c) 9%, transparent);
+}
+.plataforma .kanban-col-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+}
+.plataforma .kanban-col-head .kch-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.plataforma .kanban-col-head .kch-nome {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--cream);
+}
+.plataforma .kanban-col-head .kch-count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 8px;
+  border-radius: 999px;
+}
+.plataforma .kanban-col-soma {
+  font-size: 0.72rem;
+  color: var(--muted-2);
+  padding: 0 6px 8px;
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 8px;
+}
+.plataforma .kanban-col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 40px;
+}
+.plataforma .kanban-empty {
+  font-size: 0.78rem;
+  color: var(--muted-2);
+  text-align: center;
+  padding: 14px 0;
+  border: 1px dashed var(--line-soft);
+  border-radius: 10px;
+}
+
+/* card do kanban */
+.plataforma .kanban-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 11px 12px;
+  cursor: grab;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+.plataforma .kanban-card:hover {
+  border-color: var(--line);
+}
+.plataforma .kanban-card.is-dragging {
+  opacity: 0.45;
+  cursor: grabbing;
+}
+.plataforma .kanban-card .kc-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.plataforma .kanban-card .kc-nome {
+  flex: 1;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.25;
+  padding-right: 18px;
+}
+.plataforma .kanban-card .kc-temp {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--t);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t) 22%, transparent);
+}
+.plataforma .kanban-card .kc-interesse {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.plataforma .kanban-card .kc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+}
+.plataforma .kanban-card .kc-valor {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--acc);
+}
+.plataforma .kanban-card .kc-origem {
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.plataforma .kanban-card .kc-foot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+}
+.plataforma .kanban-card .kc-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--cream);
+  background: linear-gradient(135deg, #2a2a30, #17171b);
+  border: 1px solid var(--line-soft);
+}
+.plataforma .kanban-card .kc-tag {
+  font-size: 0.64rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+.plataforma .kc-main {
+  outline: none;
+}
+.plataforma .kc-move-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--muted-2);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.plataforma .kc-move-btn:hover {
+  color: var(--acc);
+  background: rgba(255, 255, 255, 0.05);
+}
+.plataforma .kc-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+.plataforma .kc-menu {
+  position: absolute;
+  top: 32px;
+  right: 8px;
+  z-index: 41;
+  width: 178px;
+  list-style: none;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+}
+.plataforma .kc-menu-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  padding: 6px 8px 4px;
+}
+.plataforma .kc-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 7px 8px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.plataforma .kc-menu button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.plataforma .kc-menu-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+/* ---------------- Pills (tabela de leads) ---------------- */
+.plataforma .etapa-pill,
+.plataforma .temp-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.plataforma .etapa-pill {
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 32%, transparent);
+}
+.plataforma .temp-pill {
+  color: var(--t);
+  background: color-mix(in srgb, var(--t) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--t) 32%, transparent);
+}
+.plataforma .vendas-filter {
+  width: auto;
+  min-width: 150px;
+  height: 40px;
+  padding: 0 36px 0 13px;
+  font-size: 0.85rem;
+}
+
+/* ---------------- Clientes ---------------- */
+.plataforma .cli-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 280px;
+}
+.plataforma .cli-produto-tag {
+  font-size: 0.68rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.plataforma .cli-ltv {
+  color: var(--acc);
+  font-size: 0.92rem;
+}
+
+/* ---------------- Atendimento (WhatsApp inbox) ---------------- */
+.plataforma .wa-demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #57c97f;
+  background: rgba(60, 180, 100, 0.1);
+  border: 1px solid rgba(60, 180, 100, 0.28);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.plataforma .wa-inbox {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  height: calc(100vh - var(--tb) - 230px);
+  min-height: 460px;
+  border: 1px solid var(--line-soft);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--card);
+}
+.plataforma .wa-list {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line-soft);
+  min-height: 0;
+}
+.plataforma .wa-list-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--muted-2);
+}
+.plataforma .wa-list-search input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+}
+.plataforma .wa-list-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+.plataforma .wa-conv {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+.plataforma .wa-conv:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.plataforma .wa-conv.is-active {
+  background: color-mix(in srgb, var(--acc) 10%, transparent);
+}
+.plataforma .wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cream);
+  background: linear-gradient(135deg, #2a2a30, #17171b);
+  border: 1px solid var(--line-soft);
+  flex-shrink: 0;
+}
+.plataforma .wa-conv-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.plataforma .wa-conv-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.plataforma .wa-conv-top b {
+  font-size: 0.86rem;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.plataforma .wa-conv-hora {
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  flex-shrink: 0;
+}
+.plataforma .wa-conv-prev {
+  font-size: 0.76rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.plataforma .wa-unread {
+  flex-shrink: 0;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #57c97f;
+  color: #07210f;
+  font-size: 0.66rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+/* thread */
+.plataforma .wa-thread-wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.plataforma .wa-thread-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.plataforma .wa-thread-head .wa-avatar {
+  width: 36px;
+  height: 36px;
+}
+.plataforma .wa-thread-id {
+  flex: 1;
+  min-width: 0;
+}
+.plataforma .wa-thread-id b {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--cream);
+}
+.plataforma .wa-thread-id span {
+  font-size: 0.74rem;
+  color: var(--muted-2);
+}
+.plataforma .wa-thread {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent);
+}
+.plataforma .wa-bubble {
+  max-width: 76%;
+  padding: 9px 12px;
+  border-radius: 14px;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.plataforma .wa-from-cliente {
+  align-self: flex-start;
+  background: var(--card-2);
+  border: 1px solid var(--line-soft);
+  border-bottom-left-radius: 5px;
+  color: var(--text);
+}
+.plataforma .wa-from-nos {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #1f3d34, #16302a);
+  border: 1px solid rgba(91, 198, 184, 0.25);
+  border-bottom-right-radius: 5px;
+  color: #eafaf5;
+}
+.plataforma .wa-bubble-txt {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.plataforma .wa-bubble-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-end;
+  font-size: 0.64rem;
+  color: var(--muted-2);
+}
+.plataforma .wa-from-nos .wa-bubble-meta {
+  color: rgba(234, 250, 245, 0.6);
+}
+.plataforma .wa-auto-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--acc);
+  opacity: 0.9;
+}
+
+/* composer */
+.plataforma .wa-composer {
+  border-top: 1px solid var(--line-soft);
+  padding: 10px 14px 12px;
+}
+.plataforma .wa-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+.plataforma .wa-quick-chip {
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.plataforma .wa-quick-chip:hover {
+  color: var(--acc);
+  border-color: color-mix(in srgb, var(--acc) 40%, transparent);
+}
+.plataforma .wa-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+}
+.plataforma .wa-input {
+  flex: 1;
+  resize: none;
+  max-height: 120px;
+  background: var(--ink);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.plataforma .wa-input:focus {
+  outline: none;
+  border-color: var(--acc);
+}
+.plataforma .wa-send {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #07210f;
+  background: #57c97f;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.plataforma .wa-send:hover {
+  transform: scale(1.05);
+}
+.plataforma .wa-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* janela fechada */
+.plataforma .wa-closed {
+  border-top: 1px solid var(--line-soft);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.plataforma .wa-closed-msg {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.plataforma .wa-closed-msg svg {
+  color: #f0b45a;
+  flex-shrink: 0;
+}
+.plataforma .wa-closed-msg strong {
+  color: var(--text);
+}
+.plataforma .wa-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--muted-2);
+}
+
+/* ---------------- Automação ---------------- */
+.plataforma .automacao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 16px;
+}
+.plataforma .automacao-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+.plataforma .automacao-card.is-paused {
+  opacity: 0.66;
+}
+.plataforma .automacao-card .ac-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 12px;
+}
+.plataforma .ac-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--acc);
+  background: color-mix(in srgb, var(--acc) 14%, transparent);
+  flex-shrink: 0;
+}
+.plataforma .ac-title {
+  flex: 1;
+  min-width: 0;
+}
+.plataforma .ac-title b {
+  display: block;
+  font-size: 0.94rem;
+  color: var(--cream);
+}
+.plataforma .ac-title span {
+  font-size: 0.74rem;
+  color: var(--muted-2);
+}
+.plataforma .ac-switch {
+  flex-shrink: 0;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line-soft);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0;
+}
+.plataforma .ac-switch.on {
+  background: #57c97f;
+  border-color: #57c97f;
+}
+.plataforma .ac-switch .ac-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+.plataforma .ac-switch.on .ac-knob {
+  transform: translateX(18px);
+}
+.plataforma .ac-corpo {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.plataforma .ac-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.plataforma .ac-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.plataforma .ac-tag.ac-cond {
+  color: var(--acc);
+  border-color: color-mix(in srgb, var(--acc) 30%, transparent);
+}
+.plataforma .ac-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+.plataforma .ac-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.plataforma .ac-stat-num {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+.plataforma .ac-stat-label {
+  font-size: 0.66rem;
+  color: var(--muted-2);
+}
+.plataforma .ac-stat-bar {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.plataforma .ac-stat-bar span {
+  display: block;
+  height: 100%;
+  background: var(--acc);
+  border-radius: 999px;
+}
+.plataforma .ac-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-end;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--acc);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------------- Responsivo ---------------- */
+@media (max-width: 1100px) {
+  .plataforma .vendas-kpis {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .plataforma .vendas-overview-cols {
+    grid-template-columns: 1fr;
+  }
+  .plataforma .vendas-atalhos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .plataforma .wa-inbox {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .plataforma .wa-list {
+    max-height: 280px;
+  }
+}
+@media (max-width: 560px) {
+  .plataforma .vendas-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plataforma .vendas-atalhos {
+    grid-template-columns: 1fr;
+  }
+  .plataforma .funil-row {
+    grid-template-columns: 96px 1fr 24px;
+  }
+}

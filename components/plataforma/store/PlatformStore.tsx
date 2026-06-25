@@ -6,6 +6,20 @@ import { ENCONTROS, type Encontro } from '../data/mentoria';
 import { MATERIAIS, type MaterialItem } from '../data/materiais';
 import { ALUNOS, type AdminAluno } from '../data/alunos';
 import type { PilarSlug } from '../data/pilares';
+import {
+  LEADS,
+  CLIENTES,
+  CONVERSAS,
+  AUTOMACOES,
+  calcKpis,
+  type Lead,
+  type Cliente,
+  type Conversa,
+  type Mensagem,
+  type Automacao,
+  type EtapaPipeline,
+  type VendasKpis,
+} from '../data/vendas';
 
 /* ============================================================
    PlatformStore — camada de dados ÚNICA (repositório reativo).
@@ -15,18 +29,32 @@ import type { PilarSlug } from '../data/pilares';
    implementação (mesma interface StoreValue), sem mexer nas telas.
    ============================================================ */
 
-const STORAGE_KEY = 'feliceplat:dataset:v1';
+// v2: inclui as coleções do módulo Vendas (leads, clientes, conversas, automações).
+const STORAGE_KEY = 'feliceplat:dataset:v2';
 
 type Dataset = {
   cursos: Curso[];
   encontros: Encontro[];
   materiais: MaterialItem[];
   alunos: AdminAluno[];
+  leads: Lead[];
+  clientes: Cliente[];
+  conversas: Conversa[];
+  automacoes: Automacao[];
 };
 
 const seed = (): Dataset =>
   JSON.parse(
-    JSON.stringify({ cursos: CURSOS, encontros: ENCONTROS, materiais: MATERIAIS, alunos: ALUNOS }),
+    JSON.stringify({
+      cursos: CURSOS,
+      encontros: ENCONTROS,
+      materiais: MATERIAIS,
+      alunos: ALUNOS,
+      leads: LEADS,
+      clientes: CLIENTES,
+      conversas: CONVERSAS,
+      automacoes: AUTOMACOES,
+    }),
   ) as Dataset;
 
 /** Upsert por chave: substitui se existir, senão insere no topo. */
@@ -55,6 +83,24 @@ export type StoreValue = Dataset & {
   deleteMaterial: (slug: string) => void;
   saveAluno: (a: AdminAluno) => void;
   deleteAluno: (id: string) => void;
+  // --- Vendas (CRM) ---
+  // seletores
+  getLead: (id: string) => Lead | undefined;
+  leadsByEtapa: (e: EtapaPipeline) => Lead[];
+  getCliente: (id: string) => Cliente | undefined;
+  getConversa: (id: string) => Conversa | undefined;
+  getAutomacao: (id: string) => Automacao | undefined;
+  vendasKpis: () => VendasKpis;
+  // mutations
+  saveLead: (l: Lead) => void;
+  deleteLead: (id: string) => void;
+  moveLeadEtapa: (id: string, etapa: EtapaPipeline) => void;
+  saveCliente: (c: Cliente) => void;
+  deleteCliente: (id: string) => void;
+  enviarMensagem: (conversaId: string, msg: Mensagem) => void;
+  marcarLido: (conversaId: string) => void;
+  saveAutomacao: (a: Automacao) => void;
+  toggleAutomacao: (id: string) => void;
   resetData: () => void;
 };
 
@@ -107,6 +153,49 @@ export function PlatformDataProvider({ children }: { children: React.ReactNode }
       saveAluno: (a) => setData((d) => ({ ...d, alunos: upsert(d.alunos, a, (x) => x.id) })),
       deleteAluno: (id) =>
         setData((d) => ({ ...d, alunos: d.alunos.filter((a) => a.id !== id) })),
+      // --- Vendas (CRM) ---
+      getLead: (id) => data.leads.find((l) => l.id === id),
+      leadsByEtapa: (e) => data.leads.filter((l) => l.etapa === e),
+      getCliente: (id) => data.clientes.find((c) => c.id === id),
+      getConversa: (id) => data.conversas.find((c) => c.id === id),
+      getAutomacao: (id) => data.automacoes.find((a) => a.id === id),
+      vendasKpis: () => calcKpis(data.leads, data.conversas),
+      saveLead: (l) => setData((d) => ({ ...d, leads: upsert(d.leads, l, (x) => x.id) })),
+      deleteLead: (id) => setData((d) => ({ ...d, leads: d.leads.filter((l) => l.id !== id) })),
+      moveLeadEtapa: (id, etapa) =>
+        setData((d) => ({
+          ...d,
+          leads: d.leads.map((l) => (l.id === id ? { ...l, etapa } : l)),
+        })),
+      saveCliente: (c) =>
+        setData((d) => ({ ...d, clientes: upsert(d.clientes, c, (x) => x.id) })),
+      deleteCliente: (id) =>
+        setData((d) => ({ ...d, clientes: d.clientes.filter((c) => c.id !== id) })),
+      enviarMensagem: (conversaId, msg) =>
+        setData((d) => ({
+          ...d,
+          conversas: d.conversas.map((c) =>
+            c.id === conversaId
+              ? { ...c, mensagens: [...c.mensagens, msg], status: 'aberto' }
+              : c,
+          ),
+        })),
+      marcarLido: (conversaId) =>
+        setData((d) => ({
+          ...d,
+          conversas: d.conversas.map((c) =>
+            c.id === conversaId ? { ...c, naoLidas: 0 } : c,
+          ),
+        })),
+      saveAutomacao: (a) =>
+        setData((d) => ({ ...d, automacoes: upsert(d.automacoes, a, (x) => x.id) })),
+      toggleAutomacao: (id) =>
+        setData((d) => ({
+          ...d,
+          automacoes: d.automacoes.map((a) =>
+            a.id === id ? { ...a, status: a.status === 'ativa' ? 'pausada' : 'ativa' } : a,
+          ),
+        })),
       resetData: () => setData(seed()),
     }),
     [data, hydrated],

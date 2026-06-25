@@ -20,6 +20,7 @@ export type IconName =
   | 'x'
   | 'chevron-right'
   | 'chevron-left'
+  | 'chevron-down'
   | 'calendar'
   | 'download'
   | 'star'
@@ -40,6 +41,20 @@ export type IconName =
   | 'layout-template'
   | 'ebook'
   | 'dot'
+  // vendas (CRM)
+  | 'kanban'
+  | 'target'
+  | 'user-check'
+  | 'whatsapp'
+  | 'workflow'
+  | 'send'
+  | 'phone'
+  | 'mail'
+  | 'tag'
+  | 'trending-up'
+  | 'trending-down'
+  | 'dollar'
+  | 'filter'
   // pilares
   | 'clinica'
   | 'gestao'
@@ -121,6 +136,7 @@ const PATHS: Record<IconName, ReactNode> = {
   ),
   'chevron-right': <path d="m9 18 6-6-6-6" />,
   'chevron-left': <path d="m15 18-6-6 6-6" />,
+  'chevron-down': <path d="m6 9 6 6 6-6" />,
   calendar: (
     <>
       <rect width="18" height="18" x="3" y="4" rx="2" />
@@ -225,6 +241,83 @@ const PATHS: Record<IconName, ReactNode> = {
     </>
   ),
   dot: <circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" />,
+  kanban: (
+    <>
+      <rect width="6" height="14" x="4" y="5" rx="1.5" />
+      <rect width="6" height="9" x="14" y="5" rx="1.5" />
+    </>
+  ),
+  target: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'user-check': (
+    <>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <polyline points="16 11 18 13 22 9" />
+    </>
+  ),
+  whatsapp: (
+    <>
+      <path d="M3 21l1.6-4.7A8 8 0 1 1 8 18.6z" />
+      <path
+        d="M9 8.5c.2 1.5 1.2 3 2.4 4 1 .9 2.2 1.5 3.1 1.6.5 0 .9-.4 1.2-.8.2-.3.1-.7-.2-.9l-1.3-.8c-.3-.2-.6-.1-.8.1l-.4.5c-.7-.4-1.3-1-1.7-1.7l.5-.4c.2-.2.3-.5.1-.8l-.8-1.3c-.2-.3-.6-.4-.9-.2-.4.2-.8.6-.8 1.1z"
+        fill="currentColor"
+        stroke="none"
+      />
+    </>
+  ),
+  workflow: (
+    <>
+      <rect width="7" height="7" x="3" y="3" rx="1.5" />
+      <rect width="7" height="7" x="14" y="14" rx="1.5" />
+      <path d="M6.5 10v2a2 2 0 0 0 2 2h6" />
+    </>
+  ),
+  send: (
+    <>
+      <path d="M22 2 11 13" />
+      <path d="M22 2 15 22l-4-9-9-4z" />
+    </>
+  ),
+  phone: (
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+  ),
+  mail: (
+    <>
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-10 6L2 7" />
+    </>
+  ),
+  tag: (
+    <>
+      <path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.42l8 8a2 2 0 0 0 2.82 0l7.17-7.17a2 2 0 0 0 0-2.82z" />
+      <circle cx="7" cy="7" r="1.2" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'trending-up': (
+    <>
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+      <polyline points="16 7 22 7 22 13" />
+    </>
+  ),
+  'trending-down': (
+    <>
+      <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+      <polyline points="16 17 22 17 22 11" />
+    </>
+  ),
+  dollar: (
+    <>
+      <line x1="12" x2="12" y1="2" y2="22" />
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </>
+  ),
+  filter: <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />,
   clinica: (
     <>
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
