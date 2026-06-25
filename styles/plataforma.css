@@ -51,7 +51,7 @@
   align-items: center;
   gap: 12px;
   padding: 11px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 500;
@@ -104,7 +104,7 @@
   height: 30px;
   display: grid;
   place-items: center;
-  border-radius: 6px;
+  border-radius: 5px;
   color: var(--muted-2);
   background: transparent;
   border: 1px solid transparent;
@@ -149,7 +149,7 @@
 .plataforma .plat-upgrade {
   margin-top: auto;
   border: 1px solid var(--line);
-  border-radius: 11px;
+  border-radius: 8px;
   padding: 16px;
   background: radial-gradient(120% 120% at 0% 0%, rgba(232, 180, 71, 0.12), transparent 60%);
 }
@@ -192,7 +192,7 @@
   color: var(--text);
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 6px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -509,7 +509,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.55);
   padding: 3px 8px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .plataforma .fav-btn {
   width: 32px;
@@ -619,7 +619,7 @@
 .plataforma .pilar-head .pilar-ico {
   width: 42px;
   height: 42px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -648,7 +648,7 @@
   gap: 14px;
   margin-top: 16px;
   padding: 14px 18px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: var(--card);
   border: 1px solid var(--line-soft);
 }
@@ -741,7 +741,7 @@
 .plataforma .live-banner .live-icon {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
   color: var(--gold);
@@ -792,7 +792,7 @@
   min-width: 48px;
   padding: 8px 6px;
   text-align: center;
-  border-radius: 7px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line-soft);
 }
@@ -821,7 +821,7 @@
   align-items: center;
   gap: 14px;
   padding: 16px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -905,7 +905,7 @@
 /* trilha de módulos */
 .plataforma .module {
   border: 1px solid var(--line-soft);
-  border-radius: 11px;
+  border-radius: 8px;
   overflow: hidden;
   margin-bottom: 14px;
   background: var(--card);
@@ -991,7 +991,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 2px 7px;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid var(--line-soft);
   color: var(--muted);
 }
@@ -1006,7 +1006,7 @@
 }
 .plataforma .aside-card {
   border: 1px solid var(--line-soft);
-  border-radius: 13px;
+  border-radius: 10px;
   padding: 20px;
   background: var(--card);
 }
@@ -1049,7 +1049,7 @@
 .plataforma .cert-card {
   text-align: center;
   border: 1px dashed var(--line);
-  border-radius: 13px;
+  border-radius: 10px;
   padding: 22px;
   background: radial-gradient(120% 120% at 50% 0%, rgba(232, 180, 71, 0.1), transparent 60%);
 }
@@ -1202,7 +1202,7 @@
 }
 .plataforma .player-aside {
   border: 1px solid var(--line-soft);
-  border-radius: 13px;
+  border-radius: 10px;
   overflow: hidden;
   background: var(--card);
   position: sticky;
@@ -1232,7 +1232,7 @@
   resize: vertical;
   background: var(--ink-2);
   border: 1px solid var(--line-soft);
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 14px;
   color: var(--text);
   font-family: inherit;
@@ -1314,7 +1314,7 @@
   align-items: center;
   gap: 14px;
   padding: 16px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -1354,7 +1354,7 @@
   flex-direction: column;
   background: var(--card);
   border: 1px solid var(--line-soft);
-  border-radius: 11px;
+  border-radius: 8px;
   overflow: hidden;
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
@@ -1389,14 +1389,14 @@
   gap: 16px;
   align-items: center;
   padding: 18px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: linear-gradient(120deg, color-mix(in srgb, var(--acc) 8%, var(--card)), var(--card));
   border: 1px solid var(--line-soft);
 }
 .plataforma .exclusive-card .ex-ico {
   width: 46px;
   height: 46px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -1423,7 +1423,7 @@
   display: flex;
   gap: 12px;
   padding: 16px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   margin-bottom: 18px;
@@ -1451,7 +1451,7 @@
 }
 .plataforma .post {
   padding: 18px;
-  border-radius: 11px;
+  border-radius: 8px;
   background: var(--card);
   border: 1px solid var(--line-soft);
   margin-bottom: 14px;
@@ -1612,7 +1612,7 @@
 .plataforma .mat-ico {
   width: 48px;
   height: 48px;
-  border-radius: 9px;
+  border-radius: 7px;
   display: grid;
   place-items: center;
   color: var(--acc);
@@ -1674,7 +1674,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--card);
   border: 1px solid var(--line-soft);
 }

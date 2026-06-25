@@ -199,7 +199,7 @@
   flex: none;
   width: 48px;
   height: 48px;
-  border-radius: 11px;
+  border-radius: 8px;
   display: grid;
   place-items: center;
   color: var(--gold-bright);
@@ -466,7 +466,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: var(--r, 10px);
+  border-radius: var(--r, 7px);
   overflow: hidden;
   margin-bottom: 20px;
   background:
@@ -539,7 +539,7 @@
   flex: none;
   width: 26px;
   height: 26px;
-  border-radius: 6px;
+  border-radius: 5px;
   display: grid;
   place-items: center;
   font-family: var(--font-felice-display), 'Poppins', sans-serif;
