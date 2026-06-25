@@ -180,7 +180,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 0 clamp(16px, 3vw, 34px);
+  padding: 0 clamp(20px, 3vw, 40px);
   background: rgba(11, 11, 13, 0.78);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-soft);
@@ -281,12 +281,14 @@
 }
 
 /* ---------------- Conteúdo ---------------- */
+/* Largura total: da borda da sidebar até a borda direita da tela, com
+   uma margem padrão (o padding horizontal). Sem max-width centralizado. */
 .plataforma .plat-content {
   flex: 1;
   width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: clamp(22px, 3.5vw, 40px) clamp(16px, 3vw, 34px) 80px;
+  max-width: none;
+  margin: 0;
+  padding: clamp(22px, 3.5vw, 40px) clamp(20px, 3vw, 40px) 80px;
 }
 .plataforma .plat-page-head {
   margin-bottom: 26px;
