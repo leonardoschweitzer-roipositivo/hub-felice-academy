@@ -181,12 +181,20 @@ export function PlatformDataProvider({ children }: { children: React.ReactNode }
           ),
         })),
       marcarLido: (conversaId) =>
-        setData((d) => ({
-          ...d,
-          conversas: d.conversas.map((c) =>
-            c.id === conversaId ? { ...c, naoLidas: 0 } : c,
-          ),
-        })),
+        setData((d) => {
+          // Idempotente: se já está zerada, devolve a MESMA referência de estado.
+          // Sem isso, chamar marcarLido dentro de um useEffect cria novo `data` a
+          // cada volta → novo `value` → nova ref da função → o efeito re-dispara →
+          // loop infinito que trava a aba (foi o que travava a tela Atendimento).
+          const alvo = d.conversas.find((c) => c.id === conversaId);
+          if (!alvo || alvo.naoLidas === 0) return d;
+          return {
+            ...d,
+            conversas: d.conversas.map((c) =>
+              c.id === conversaId ? { ...c, naoLidas: 0 } : c,
+            ),
+          };
+        }),
       saveAutomacao: (a) =>
         setData((d) => ({ ...d, automacoes: upsert(d.automacoes, a, (x) => x.id) })),
       toggleAutomacao: (id) =>
