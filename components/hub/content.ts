@@ -1,6 +1,6 @@
 /* ============================================================
    HUB Institucional · Felice Academy
-   Dados dos 7 produtos da vitrine + stats. Tudo configurável aqui.
+   Dados dos 6 produtos da vitrine + stats. Tudo configurável aqui.
    ⚠️ Validar com o cliente: estado real de cada card (Disponível /
    Em breve) e os links externos dos produtos ainda sem página.
    ============================================================ */
@@ -112,21 +112,6 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '06',
-    titulo: 'Gengiva',
-    descricao:
-      'Curso técnico de cirurgia e estética gengival, para resultados harmônicos e previsíveis no sorriso.',
-    categoria: 'Curso',
-    estado: 'em-breve',
-    href: '#',
-    cta: 'Em breve',
-    detalhes: [
-      'Cirurgia plástica periodontal',
-      'Recobrimento radicular e aumento de coroa',
-      'Previsibilidade estética',
-    ],
-  },
-  {
-    num: '07',
     titulo: 'Felice CRM',
     descricao:
       'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
@@ -224,7 +209,7 @@ export type Stat = { num: string; label: string };
 // ⚠️ Números a confirmar com o cliente.
 export const STATS: Stat[] = [
   { num: '+1.200', label: 'Dentistas impactados' },
-  { num: '7', label: 'Produtos no ecossistema' },
+  { num: '6', label: 'Produtos no ecossistema' },
   { num: '+10 anos', label: 'De prática clínica real' },
   { num: '100%', label: 'Feito por quem é da área' },
 ];
