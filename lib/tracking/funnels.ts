@@ -39,6 +39,12 @@ export const FUNNELS: Record<string, Funnel> = {
     value: 497.0,
     contentName: 'Gestão F4',
   },
+  'vendas-secretaria': {
+    slug: 'vendas-secretaria',
+    offer: null, // ⏳ preencher quando o link Green existir
+    value: 297.0, // ⚠️ placeholder — trocar pelo preço real
+    contentName: 'A Secretária que Vende',
+  },
 };
 
 /** Busca por slug do produto (ViewContent / Purchase do browser). */
