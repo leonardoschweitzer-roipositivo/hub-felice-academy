@@ -46,6 +46,7 @@ export const PRODUTOS: Produto[] = [
     href: '/produtos/masterclass-zigomatico',
     interno: true,
     cta: 'Assistir',
+    imagem: '/images/card-masterclass-zigomatico.jpg',
     detalhes: [
       'Planejamento e protocolos passo a passo',
       'Casos reais comentados pelo Dr. Sócrates',
