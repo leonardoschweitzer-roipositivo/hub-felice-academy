@@ -25,6 +25,10 @@ export type Produto = {
   destaque?: boolean;
   /** Imagem à esquerda do card (rota em /public). Sem imagem → fallback visual. */
   imagem?: string;
+  /** `object-position` da imagem. O box do card é quase quadrado e a imagem é
+   *  `cover`, então uma foto panorâmica perde bastante das laterais — use isto
+   *  para manter o assunto no enquadramento. Default: `50% 50%` (centro). */
+  imagemPos?: string;
   /** Destaques/detalhes do produto, exibidos como lista no card. */
   detalhes?: string[];
 };
@@ -104,6 +108,10 @@ export const PRODUTOS: Produto[] = [
     href: '/produtos/vendas-secretaria',
     interno: true,
     cta: 'Acessar',
+    // Mesma foto do hero da landing. Puxa o enquadramento para a direita:
+    // a atendente fica nesse lado da foto e o centro pegaria só a bancada.
+    imagem: '/images/background-secretaria-vende.jpg',
+    imagemPos: '78% 50%',
     detalhes: [
       'Do primeiro contato no WhatsApp ao fechamento',
       '5 módulos, 100% online, no ritmo da equipe',

@@ -5,8 +5,20 @@ import type { Produto } from './content';
    com detalhes à direita. Estado "em-breve" desabilita o CTA e o link.
    Sem imagem, mostra um fallback com o número do produto. */
 export function ProductCard({ produto }: { produto: Produto }) {
-  const { num, titulo, descricao, categoria, estado, href, interno, cta, destaque, imagem, detalhes } =
-    produto;
+  const {
+    num,
+    titulo,
+    descricao,
+    categoria,
+    estado,
+    href,
+    interno,
+    cta,
+    destaque,
+    imagem,
+    imagemPos,
+    detalhes,
+  } = produto;
   const disponivel = estado === 'disponivel';
   const label = cta ?? (disponivel ? 'Ver mais' : 'Em breve');
 
@@ -19,7 +31,12 @@ export function ProductCard({ produto }: { produto: Produto }) {
       <div className="hub-row-media">
         {imagem ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={imagem} alt={titulo} loading="lazy" />
+          <img
+            src={imagem}
+            alt={titulo}
+            loading="lazy"
+            style={imagemPos ? { objectPosition: imagemPos } : undefined}
+          />
         ) : (
           <span className="hub-row-media-fallback" aria-hidden="true">
             {num}
