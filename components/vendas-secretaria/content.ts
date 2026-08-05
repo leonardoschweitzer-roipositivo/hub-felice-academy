@@ -40,7 +40,7 @@ export const DEADLINE_ISO = '2026-07-31T23:59:59-03:00';
 /* ---------- Hero ---------- */
 export const HERO = {
   eyebrow: 'Curso online · Treinamento comercial da recepção',
-  titlePre: 'O treinamento que transforma a sua secretária na profissional que',
+  titlePre: 'Transforme sua secretária numa profissional que',
   titleGold: 'agenda, apresenta e fecha tratamento.',
   lead: 'Sua secretária atende com carinho — mas quantos orçamentos saem pela porta sem resposta? "A Secretária que Vende" é o curso pronto que você entrega à sua equipe para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
   ctaPrimary: 'Quero treinar minha secretária',
