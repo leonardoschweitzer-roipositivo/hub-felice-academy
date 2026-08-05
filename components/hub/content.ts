@@ -63,6 +63,10 @@ export const PRODUTOS: Produto[] = [
     href: '/produtos/maestria-zigomatica',
     interno: true,
     cta: 'Acessar',
+    // ⚠️ Arquivo veio de uma captura de tela: só 483x409. O card pede
+    // ~720px de largura em telas 2x, então fica levemente macio no
+    // Retina. Trocar pelo original em resolução maior quando houver.
+    imagem: '/images/card-maestria-zigomatico.jpg',
     detalhes: [
       'Do planejamento à instalação do implante',
       'Anatomia, técnica e manejo de complicações',
