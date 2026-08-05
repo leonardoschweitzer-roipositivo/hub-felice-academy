@@ -58,7 +58,7 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '02',
-    titulo: 'Maestria em Zigomático',
+    titulo: 'Maestria Zigomática',
     descricao:
       'Formação técnica completa em implantes zigomáticos, do básico ao avançado, com base científica e prática cirúrgica.',
     categoria: 'Curso',
