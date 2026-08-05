@@ -31,6 +31,9 @@ export type Produto = {
   imagemPos?: string;
   /** Destaques/detalhes do produto, exibidos como lista no card. */
   detalhes?: string[];
+  /** Tira o card das vitrines (home e /produtos) sem apagar o dado.
+   *  Para voltar a exibir, basta remover a flag. */
+  oculto?: boolean;
 };
 
 export const PRODUTOS: Produto[] = [
@@ -138,6 +141,7 @@ export const PRODUTOS: Produto[] = [
     interno: true,
     cta: 'Conhecer',
     destaque: true,
+    oculto: true, // fora das vitrines por ora — remover a flag para voltar
     detalhes: [
       'Agenda, pacientes e funil de vendas',
       'Faturamento e indicadores da clínica',
@@ -145,6 +149,10 @@ export const PRODUTOS: Produto[] = [
     ],
   },
 ];
+
+/** Lista que as vitrines (home e /produtos) devem renderizar. Usar esta e
+ *  não `PRODUTOS` direto, senão os cards marcados com `oculto` reaparecem. */
+export const PRODUTOS_VISIVEIS: Produto[] = PRODUTOS.filter((p) => !p.oculto);
 
 /* ============================================================
    Materiais / Conteúdos gratuitos (scripts, planilhas, PDFs…)

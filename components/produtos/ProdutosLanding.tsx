@@ -7,7 +7,7 @@ import { MaterialCard } from '@/components/hub/MaterialCard';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { PRODUTOS, MATERIAIS, STATS } from '@/components/hub/content';
+import { PRODUTOS_VISIVEIS, MATERIAIS, STATS } from '@/components/hub/content';
 
 /* ============================================================
    PÁGINA DE PRODUTOS · Felice Academy (/produtos)
@@ -57,7 +57,7 @@ export function ProdutosLanding() {
             </div>
 
             <div className="hub-rows">
-              {PRODUTOS.map((p, i) => (
+              {PRODUTOS_VISIVEIS.map((p, i) => (
                 <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
                   <ProductCard produto={p} />
                 </div>

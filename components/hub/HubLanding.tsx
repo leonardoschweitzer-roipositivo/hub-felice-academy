@@ -9,7 +9,7 @@ import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { Check } from '@/components/felice/ui/icons';
-import { PRODUTOS, MATERIAIS, STATS } from './content';
+import { PRODUTOS_VISIVEIS, MATERIAIS, STATS } from './content';
 
 const CREDS = [
   'Cirurgião-dentista graduado pela UFPB (2007)',
@@ -37,11 +37,13 @@ export function HubLanding() {
         <section className="hub-hero">
           <div className="hub-hero-bg" aria-hidden="true" />
           <div className="wrap hub-hero-inner">
-            <a href="/crm" className="hub-hero-pill reveal">
+            {/* Anunciava o Felice CRM, que saiu das vitrines por ora — passa a
+                anunciar a Plataforma, que é o destino que queremos empurrar. */}
+            <a href="/plataforma" className="hub-hero-pill reveal">
               <span className="hub-hero-pill-dot" aria-hidden="true" />
-              <span>Felice CRM já está no ar</span>
+              <span>A Plataforma já está no ar</span>
               <span className="hub-hero-pill-cta">
-                Conhecer
+                Acessar
                 <span className="arrow">→</span>
               </span>
             </a>
@@ -119,7 +121,7 @@ export function HubLanding() {
             </div>
 
             <div className="hub-rows">
-              {PRODUTOS.map((p, i) => (
+              {PRODUTOS_VISIVEIS.map((p, i) => (
                 <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
                   <ProductCard produto={p} />
                 </div>
