@@ -97,6 +97,7 @@ export const PRODUTOS: Produto[] = [
       'O curso em vídeo dos 4 pilares da gestão para dentistas: aprenda, no seu ritmo, a fazer a clínica atender, agendar e vender no automático.',
     categoria: 'Curso',
     estado: 'disponivel',
+    imagem: '/images/card-gestao-f4.jpg',
     href: '/produtos/gestao-f4',
     interno: true,
     cta: 'Acessar',
