@@ -29,7 +29,7 @@ export function SecretariaVendeHero() {
   return (
     <section className="hero mz-hero-sec" id="topo">
       <div className="hero-bg" />
-      <div className="mz-hero-photo" aria-hidden="true" />
+      <div className="mz-hero-photo sv-hero-photo" aria-hidden="true" />
 
       <div className="wrap mz-hero">
         {/* LEFT */}
