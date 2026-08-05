@@ -80,6 +80,7 @@ export const PRODUTOS: Produto[] = [
       'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
     categoria: 'Mentoria',
     estado: 'disponivel',
+    imagem: '/images/card-mentoria.jpg',
     href: '/produtos/mentorias',
     interno: true,
     cta: 'Ver as mentorias',
