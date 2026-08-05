@@ -29,8 +29,17 @@ import {
    implementação (mesma interface StoreValue), sem mexer nas telas.
    ============================================================ */
 
-// v2: inclui as coleções do módulo Vendas (leads, clientes, conversas, automações).
-const STORAGE_KEY = 'feliceplat:dataset:v2';
+/* ⚠️ SUBIR A VERSÃO SEMPRE QUE `data/*.ts` MUDAR.
+   O dataset é persistido inteiro aqui e, ao montar, o localStorage
+   SOBRESCREVE o seed — quem já visitou a plataforma continua vendo os
+   dados antigos para sempre, e nem hard refresh resolve (Cmd+Shift+R
+   limpa cache HTTP, não localStorage). O bump da chave é o que força
+   o re-seed. Custo: descarta edições feitas no admin, aceitável
+   enquanto os data/*.ts são mock.
+
+   v2: inclui as coleções do módulo Vendas (leads, clientes, conversas, automações).
+   v3: catálogo alinhado com a home (12 → 7 cursos) + campo `imagem`. */
+const STORAGE_KEY = 'feliceplat:dataset:v3';
 
 type Dataset = {
   cursos: Curso[];
