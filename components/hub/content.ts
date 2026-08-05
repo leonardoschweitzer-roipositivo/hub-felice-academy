@@ -5,7 +5,7 @@
    Em breve) e os links externos dos produtos ainda sem página.
    ============================================================ */
 
-export type Categoria = 'Curso' | 'Mentoria' | 'Software';
+export type Categoria = 'Curso' | 'Masterclass' | 'Mentoria' | 'Software';
 export type Estado = 'disponivel' | 'em-breve';
 
 export type Produto = {
@@ -36,10 +36,12 @@ export type Produto = {
 export const PRODUTOS: Produto[] = [
   {
     num: '01',
-    titulo: 'Masterclass Zigomático Descomplicado',
+    // "Masterclass" saiu do título e virou a categoria — era a informação
+    // que o badge dava errado (dizia "Curso").
+    titulo: 'Zigomático Descomplicado',
     descricao:
       'Domine os princípios dos implantes zigomáticos em poucas horas e transforme casos impossíveis em faturamento real — sem encaminhar o paciente.',
-    categoria: 'Curso',
+    categoria: 'Masterclass',
     estado: 'disponivel',
     href: '/produtos/masterclass-zigomatico',
     interno: true,
@@ -52,7 +54,7 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '02',
-    titulo: 'Zigomático',
+    titulo: 'Maestria em Zigomático',
     descricao:
       'Formação técnica completa em implantes zigomáticos, do básico ao avançado, com base científica e prática cirúrgica.',
     categoria: 'Curso',
