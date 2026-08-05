@@ -31,8 +31,12 @@ export type Curso = {
   duracao: string; // total, ex: "3h 20min"
   instrutor: string;
   selo?: 'novo' | 'em-alta' | null;
-  /** Gradiente do thumb (do → para). */
+  /** Gradiente do thumb (do → para). Fallback quando não há `imagem`. */
   thumb: [string, string];
+  /** Foto do thumb (rota em /public). Onde o curso tem produto equivalente
+   *  no hub, reusa a mesma imagem do card da home — sem duplicar arquivo.
+   *  Sem imagem, o card cai no gradiente de `thumb`. */
+  imagem?: string;
   modulos: Modulo[];
 };
 
@@ -58,6 +62,7 @@ export const CURSOS: Curso[] = [
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'em-alta',
     thumb: ['#0f3b35', '#5BC6B8'],
+    imagem: '/images/card-masterclass-zigomatico.jpg',
     modulos: [
       {
         titulo: 'Fundamentos e planejamento',
@@ -90,6 +95,7 @@ export const CURSOS: Curso[] = [
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'novo',
     thumb: ['#12302c', '#3ea597'],
+    imagem: '/images/card-maestria-zigomatico.jpg',
     modulos: [
       {
         titulo: 'Bases anatômicas',
@@ -103,27 +109,6 @@ export const CURSOS: Curso[] = [
         aulas: [
           a('tecnica', 'Técnica cirúrgica zigomática', '29:10'),
           a('carga-imediata', 'Carga imediata e prótese', '21:40'),
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'estetica-gengival',
-    pilar: 'clinica',
-    titulo: 'Estética Gengival',
-    subtitulo: 'Cirurgia e harmonização do sorriso',
-    descricao: 'Técnicas de cirurgia e estética gengival para desenhar sorrisos previsíveis e naturais.',
-    nivel: 'Intermediário',
-    duracao: '2h 50min',
-    instrutor: 'Dra. Helena Martins',
-    thumb: ['#143a34', '#67d3c4'],
-    modulos: [
-      {
-        titulo: 'Princípios',
-        aulas: [
-          a('estetica-rosa', 'A estética rosa do sorriso', '14:10'),
-          a('planejamento-gengival', 'Planejamento do desenho gengival', '17:25'),
-          a('tecnicas', 'Técnicas cirúrgicas essenciais', '20:30'),
         ],
       },
     ],
@@ -142,6 +127,7 @@ export const CURSOS: Curso[] = [
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'em-alta',
     thumb: ['#3a2c0c', '#E8B447'],
+    imagem: '/images/card-gestao-f4.jpg',
     modulos: [
       {
         titulo: 'A máquina de escalabilidade',
@@ -156,49 +142,6 @@ export const CURSOS: Curso[] = [
         aulas: [
           a('pops-por-cargo', 'POPs por cargo na prática', '21:30'),
           a('kit-f4', 'Aplicando o Kit Gestão F4', '12:00', 'pdf'),
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'pops-clinica',
-    pilar: 'gestao',
-    titulo: 'POPs: Padronize sua Clínica',
-    subtitulo: 'Procedimentos que organizam a rotina',
-    descricao: 'Crie procedimentos operacionais padrão para cada cargo e elimine a dependência de pessoas.',
-    nivel: 'Iniciante',
-    duracao: '1h 55min',
-    instrutor: 'Equipe Felice',
-    thumb: ['#2f2710', '#d6a93f'],
-    modulos: [
-      {
-        titulo: 'Construindo POPs',
-        aulas: [
-          a('o-que-e-pop', 'O que é (e o que não é) um POP', '09:50'),
-          a('mapeando-rotinas', 'Mapeando as rotinas da clínica', '14:20'),
-          a('modelos', 'Modelos prontos para adaptar', '11:05', 'pdf'),
-        ],
-      },
-    ],
-  },
-  {
-    slug: 'financeiro-descomplicado',
-    pilar: 'gestao',
-    titulo: 'Financeiro Descomplicado',
-    subtitulo: 'Fluxo de caixa e precificação',
-    descricao: 'Controle entradas e saídas, precifique procedimentos e tome decisões com base em números.',
-    nivel: 'Intermediário',
-    duracao: '2h 20min',
-    instrutor: 'Equipe Felice',
-    selo: 'novo',
-    thumb: ['#33290f', '#f0c969'],
-    modulos: [
-      {
-        titulo: 'Caixa sob controle',
-        aulas: [
-          a('fluxo-de-caixa', 'Montando o fluxo de caixa', '16:40'),
-          a('precificacao', 'Como precificar tratamentos', '19:15'),
-          a('indicadores', 'Indicadores que importam', '13:30'),
         ],
       },
     ],
@@ -280,17 +223,21 @@ export const CURSOS: Curso[] = [
 
   /* ---------------- VENDAS ---------------- */
   {
-    slug: 'crc-a-voz-da-clinica',
+    // Consolida os três antigos cursos do pilar (CRC, Fechamento de Planos e
+    // Recuperação de Inativos) no produto que a home vende: "A Secretária que
+    // Vende" (/produtos/vendas-secretaria). Os três viraram os módulos.
+    slug: 'secretaria-que-vende',
     pilar: 'vendas',
-    titulo: 'CRC: A Voz da Clínica',
-    subtitulo: 'Agendamento que reduz faltas',
+    titulo: 'A Secretária que Vende',
+    subtitulo: 'Do primeiro "oi" ao tratamento fechado',
     descricao:
-      'O guião tático da Central de Relacionamento: a chamada perfeita em 5 fases para agendar e confirmar.',
-    nivel: 'Iniciante',
-    duracao: '2h 00min',
-    instrutor: 'Equipe Felice',
+      'O treinamento comercial da recepção: agendar sem faltas, apresentar o plano com clareza e reativar quem sumiu da agenda.',
+    nivel: 'Essencial',
+    duracao: '5h 15min',
+    instrutor: 'Dr. Sócrates Tavares',
     selo: 'em-alta',
     thumb: ['#3a1f14', '#E8825A'],
+    imagem: '/images/background-secretaria-vende.jpg',
     modulos: [
       {
         titulo: 'A chamada perfeita',
@@ -301,43 +248,16 @@ export const CURSOS: Curso[] = [
           a('objecoes', 'Gestão de objeções', '15:20'),
         ],
       },
-    ],
-  },
-  {
-    slug: 'fechamento-de-planos',
-    pilar: 'vendas',
-    titulo: 'Fechamento de Planos de Tratamento',
-    subtitulo: 'Apresentação que converte',
-    descricao: 'Conduza a apresentação do plano com clareza e ética para aumentar a aceitação.',
-    nivel: 'Intermediário',
-    duracao: '1h 50min',
-    instrutor: 'Dr. Sócrates Tavares',
-    thumb: ['#341c12', '#ef9170'],
-    modulos: [
       {
-        titulo: 'A apresentação',
+        titulo: 'Apresentação do plano',
         aulas: [
           a('diagnostico-vendas', 'Do diagnóstico à proposta', '14:05'),
           a('ancoragem', 'Ancoragem e valor percebido', '16:35'),
           a('conducao', 'Condução do fechamento', '13:20'),
         ],
       },
-    ],
-  },
-  {
-    slug: 'recuperacao-de-pacientes',
-    pilar: 'vendas',
-    titulo: 'Recuperação de Pacientes Inativos',
-    subtitulo: 'Reative a base e fature mais',
-    descricao: 'Campanhas e scripts para trazer de volta pacientes que sumiram da agenda.',
-    nivel: 'Intermediário',
-    duracao: '1h 25min',
-    instrutor: 'Equipe Felice',
-    selo: 'novo',
-    thumb: ['#2f1810', '#e07a55'],
-    modulos: [
       {
-        titulo: 'Reativação',
+        titulo: 'Reativação da base',
         aulas: [
           a('segmentando', 'Segmentando a base inativa', '12:15'),
           a('scripts-reativacao', 'Scripts de reativação', '13:40', 'pdf'),

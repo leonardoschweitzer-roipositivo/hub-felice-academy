@@ -71,9 +71,10 @@ export function HomeDashboard() {
               '--acc': pilarAtual.cor,
               '--c1': cursoAtual.thumb[0],
               '--c2': cursoAtual.thumb[1],
+              ...(cursoAtual.imagem ? { '--thumb-img': `url('${cursoAtual.imagem}')` } : {}),
             })}
           >
-            <div className="continue-thumb">
+            <div className={`continue-thumb${cursoAtual.imagem ? ' has-img' : ''}`}>
               <span className="play-bubble">
                 <Icon name="play" size={24} />
               </span>
@@ -110,7 +111,9 @@ export function HomeDashboard() {
           </Link>
         </div>
         <div className="pilar-prog-grid">
-          {PILARES.map((p) => {
+          {/* Pilar sem nenhum curso fica fora: apareceria zerado (0/0 aulas) e
+              com cara de erro. Volta sozinho quando ganhar curso. */}
+          {PILARES.filter((p) => pilarProgresso(p.slug).total > 0).map((p) => {
             const prog = pilarProgresso(p.slug);
             return (
               <Link

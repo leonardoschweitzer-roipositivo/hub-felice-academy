@@ -464,6 +464,19 @@
   place-items: center;
   background: linear-gradient(135deg, var(--c1, #222) 0%, var(--c2, #444) 100%);
 }
+/* Curso com foto própria (`imagem` no mock) — a mesma arte do card da home.
+   Sem a classe, todos seguem no gradiente de --c1/--c2 das regras base.
+   Vale para os quatro lugares que pintam a arte do curso: card, banner de
+   continuar assistindo, herói da página do curso e palco do player.
+   O overlay escuro de cada um já garante a leitura do play e dos badges. */
+.plataforma .course-thumb.has-img,
+.plataforma .continue-thumb.has-img,
+.plataforma .course-hero-art.has-img,
+.plataforma .player-stage.has-img {
+  background-image: var(--thumb-img);
+  background-size: cover;
+  background-position: center;
+}
 .plataforma .course-thumb::after {
   content: '';
   position: absolute;

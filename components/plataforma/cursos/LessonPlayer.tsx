@@ -64,8 +64,12 @@ export function LessonPlayer({ cursoSlug, aulaSlug }: { cursoSlug: string; aulaS
         <div>
           {/* Palco do vídeo (placeholder) */}
           <div
-            className="player-stage"
-            style={styleVars({ '--c1': curso.thumb[0], '--c2': curso.thumb[1] })}
+            className={`player-stage${curso.imagem ? ' has-img' : ''}`}
+            style={styleVars({
+              '--c1': curso.thumb[0],
+              '--c2': curso.thumb[1],
+              ...(curso.imagem ? { '--thumb-img': `url('${curso.imagem}')` } : {}),
+            })}
           >
             <button type="button" className="player-play" aria-label="Reproduzir aula">
               <Icon name="play" size={32} />

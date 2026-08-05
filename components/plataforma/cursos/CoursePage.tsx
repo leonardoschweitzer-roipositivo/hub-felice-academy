@@ -73,8 +73,12 @@ export function CoursePage({ cursoSlug }: { cursoSlug: string }) {
           </div>
         </div>
         <div
-          className="course-hero-art reveal d1"
-          style={styleVars({ '--c1': curso.thumb[0], '--c2': curso.thumb[1] })}
+          className={`course-hero-art reveal d1${curso.imagem ? ' has-img' : ''}`}
+          style={styleVars({
+            '--c1': curso.thumb[0],
+            '--c2': curso.thumb[1],
+            ...(curso.imagem ? { '--thumb-img': `url('${curso.imagem}')` } : {}),
+          })}
         >
           <Link href={`/plataforma/cursos/${curso.slug}/${proxima.slug}`} className="play-bubble">
             <Icon name="play" size={26} />

@@ -23,9 +23,15 @@ export function CourseCard({
     <Link
       href={`/plataforma/cursos/${curso.slug}`}
       className="course-card reveal"
-      style={styleVars({ '--acc': pilar.cor, '--c1': curso.thumb[0], '--c2': curso.thumb[1] })}
+      style={styleVars({
+        '--acc': pilar.cor,
+        '--c1': curso.thumb[0],
+        '--c2': curso.thumb[1],
+        // Sem `imagem`, o thumb fica no gradiente de --c1/--c2 (regra base).
+        ...(curso.imagem ? { '--thumb-img': `url('${curso.imagem}')` } : {}),
+      })}
     >
-      <div className="course-thumb">
+      <div className={`course-thumb${curso.imagem ? ' has-img' : ''}`}>
         <div className="thumb-top">
           <span className="pilar-badge">
             <span className="pilar-dot" />

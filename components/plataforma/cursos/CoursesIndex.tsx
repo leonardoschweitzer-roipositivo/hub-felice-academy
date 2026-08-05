@@ -15,7 +15,11 @@ export function CoursesIndex() {
   const { cursosByPilar } = useStore();
   const { cursoProgressoBySlug, isFavorito, toggleFavorito } = useProgress();
 
-  const pilaresVisiveis = filtro === 'todos' ? PILARES : PILARES.filter((p) => p.slug === filtro);
+  // Pilar sem nenhum curso sai da aba e da listagem — senão renderiza um
+  // cabeçalho com grid vazio. Volta sozinho quando ganhar curso.
+  const pilaresComCurso = PILARES.filter((p) => cursosByPilar(p.slug).length > 0);
+  const pilaresVisiveis =
+    filtro === 'todos' ? pilaresComCurso : pilaresComCurso.filter((p) => p.slug === filtro);
 
   return (
     <>
@@ -39,7 +43,7 @@ export function CoursesIndex() {
           <Icon name="sparkles" size={17} />
           Todos
         </button>
-        {PILARES.map((p) => (
+        {pilaresComCurso.map((p) => (
           <button
             key={p.slug}
             type="button"
