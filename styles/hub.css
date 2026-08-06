@@ -653,14 +653,19 @@
   flex: 1;
   padding: 24px 24px 22px;
 }
+/* Tag de categoria (Curso / Masterclass / Mentoria / Software, e o formato
+   nos cards de material). Já era `--gold`, mas em 0.66rem com letter-spacing
+   largo sobre fundo escuro o tom lavava e lia como cinza. Sobe para o
+   dourado vivo e ganha borda + fundo dourados para o chip se destacar. */
 .felice-hub .hub-tag {
   align-self: flex-start;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--line);
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.1);
+  border: 1px solid rgba(232, 180, 71, 0.45);
   border-radius: 999px;
   padding: 5px 12px;
   margin-bottom: 16px;
