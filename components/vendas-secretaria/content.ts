@@ -31,7 +31,7 @@ export const OFERTA_ANCHOR = '#oferta';
 export const WHATSAPP_URL =
   'https://wa.me/5588981391199?text=' +
   encodeURIComponent(
-    'Olá! Tenho interesse no curso "A Secretária que Vende" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
+    'Olá! Tenho interesse no curso "CRC de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
   );
 
 /** Fechamento do lote — countdown autêntico. ⚠️ Ajustar para a data real. */
@@ -42,7 +42,7 @@ export const HERO = {
   eyebrow: 'Curso online · Treinamento comercial da recepção',
   titlePre: 'Transforme sua secretária numa profissional que',
   titleGold: 'agenda, apresenta e fecha tratamento.',
-  lead: 'Sua secretária atende com carinho — mas quantos orçamentos saem pela porta sem resposta? "A Secretária que Vende" é o curso pronto que você entrega à sua equipe para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
+  lead: 'Sua secretária atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega à sua equipe para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
   ctaPrimary: 'Quero treinar minha secretária',
   ctaSecondary: 'Ver os módulos',
   trust: [
@@ -295,7 +295,7 @@ export const DEPOIMENTOS: Depoimento[] = [
    ⚠️ parcela/aVista são PLACEHOLDER — trocar pelo preço real. */
 export const OFERTA = {
   ribbon: 'Acesso imediato',
-  titulo: 'A Secretária que Vende — completo',
+  titulo: 'CRC de Alta Performance — completo',
   itens: [
     'Módulo 1 · A secretária que vende',
     'Módulo 2 · Primeiro contato que agenda',
@@ -327,7 +327,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Qual a diferença para o curso Gestão F4?',
-    a: 'O Gestão F4 é para você, dono(a), montar o sistema dos 4 pilares da clínica (nível estratégico). "A Secretária que Vende" é o treinamento prático que você entrega à recepção — foco total em atender, agendar, apresentar orçamento e fechar. Um monta a estrutura; o outro treina a linha de frente.',
+    a: 'O Gestão F4 é para você, dono(a), montar o sistema dos 4 pilares da clínica (nível estratégico). O "CRC de Alta Performance" é o treinamento prático que você entrega à recepção — foco total em atender, agendar, apresentar orçamento e fechar. Um monta a estrutura; o outro treina a linha de frente.',
   },
   {
     q: 'Como funciona o bônus ao vivo?',

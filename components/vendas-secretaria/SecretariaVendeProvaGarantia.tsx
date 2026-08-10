@@ -1,4 +1,4 @@
-/* Depoimentos (vídeo) + Garantia do curso "A Secretária que Vende". */
+/* Depoimentos (vídeo) + Garantia do curso "CRC de Alta Performance". */
 
 import { DEPOIMENTOS } from './content';
 
@@ -96,8 +96,8 @@ export function SecretariaVendeGarantia() {
           <div>
             <h3>Risco zero para você</h3>
             <p>
-              Coloque a sua equipe nas primeiras aulas e comece a aplicar. Se A Secretária que Vende
-              não for para a sua clínica, peça o reembolso em até 7 dias — devolvemos 100% do valor,
+              Coloque a sua equipe nas primeiras aulas e comece a aplicar. Se o CRC de Alta
+              Performance não for para a sua clínica, peça o reembolso em até 7 dias — devolvemos 100% do valor,
               sem perguntas e sem burocracia. A decisão de continuar é totalmente sua.
             </p>
           </div>

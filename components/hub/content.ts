@@ -78,7 +78,8 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '03',
-    titulo: 'Mentoria',
+    // Plural: são duas trilhas, e o card leva para o hub /produtos/mentorias.
+    titulo: 'Mentorias',
     descricao:
       'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
     categoria: 'Mentoria',
@@ -112,9 +113,12 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '05',
-    titulo: 'A Secretária que Vende',
+    // Renomeado de "A Secretária que Vende" em 10/08/2026. A rota segue
+    // /produtos/vendas-secretaria de propósito: mudar o slug quebraria os
+    // links e anúncios que já apontam para lá.
+    titulo: 'CRC de Alta Performance',
     descricao:
-      'O treinamento comercial que você entrega à sua recepção: transforme atendimento em agenda cheia e orçamento fechado, do primeiro "oi" ao follow-up.',
+      'O treinamento comercial que você entrega à sua CRC: transforme atendimento em agenda cheia e orçamento fechado, do primeiro "oi" ao follow-up.',
     categoria: 'Curso',
     estado: 'disponivel',
     href: '/produtos/vendas-secretaria',
@@ -132,6 +136,26 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '06',
+    titulo: 'Recepção de Alta Performance',
+    // ⚠️ PROVISÓRIO: card criado antes da página de vendas. Quando ela sair,
+    // trocar `estado` para 'disponivel', apontar `href` para a rota real,
+    // ajustar `cta` e pôr a imagem. Par do CRC de Alta Performance: a CRC
+    // cuida do telefone/WhatsApp, este cuida do presencial na clínica.
+    descricao:
+      'O treinamento da linha de frente presencial: receber, acolher e conduzir o paciente da porta da clínica até a cadeira.',
+    categoria: 'Curso',
+    estado: 'em-breve',
+    href: '/produtos/recepcao-alta-performance',
+    interno: true,
+    detalhes: [
+      'A Arte de Receber: postura, script e protocolo',
+      'Da chegada do paciente ao pós-atendimento',
+      'Treinamento pronto para entregar à equipe',
+    ],
+  },
+  {
+    // Era o nó 06; virou 07 quando a Recepção de Alta Performance entrou.
+    num: '07',
     titulo: 'Consultoria',
     // ⚠️ PROVISÓRIO: card criado para o filtro nascer com as três opções.
     // Quando a página de vendas entrar, trocar `estado` para 'disponivel',
@@ -149,8 +173,8 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    // Era o nó 06; virou 07 quando a Consultoria entrou antes dele.
-    num: '07',
+    // Era o nó 06; foi para 08 quando Recepção e Consultoria entraram.
+    num: '08',
     titulo: 'Felice CRM',
     descricao:
       'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
@@ -253,7 +277,7 @@ export type Stat = { num: string; label: string };
 // ⚠️ Números a confirmar com o cliente.
 export const STATS: Stat[] = [
   { num: '+1.200', label: 'Dentistas impactados' },
-  { num: '6', label: 'Produtos no ecossistema' },
+  { num: '7', label: 'Produtos no ecossistema' },
   { num: '+10 anos', label: 'De prática clínica real' },
   { num: '100%', label: 'Feito por quem é da área' },
 ];
