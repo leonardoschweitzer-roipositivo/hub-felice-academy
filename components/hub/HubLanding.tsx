@@ -2,7 +2,7 @@ import '@/styles/felice.css';
 import '@/styles/hub.css';
 
 import { HubHeader } from './HubHeader';
-import { ProductCard } from './ProductCard';
+import { ProductShowcase } from './ProductShowcase';
 import { MaterialCard } from './MaterialCard';
 import { PlatformMockup } from './PlatformMockup';
 import { Footer } from '@/components/felice/sections/Footer';
@@ -115,18 +115,12 @@ export function HubLanding() {
               <span className="eyebrow">O ecossistema</span>
               <h2>Escolha o seu próximo passo</h2>
               <p className="lead">
-                Cursos, mentoria e software — tudo pensado para o dentista que quer sair do
+                Cursos, mentoria e consultoria — tudo pensado para o dentista que quer sair do
                 improviso e crescer com previsibilidade.
               </p>
             </div>
 
-            <div className="hub-rows">
-              {PRODUTOS_VISIVEIS.map((p, i) => (
-                <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
-                  <ProductCard produto={p} />
-                </div>
-              ))}
-            </div>
+            <ProductShowcase produtos={PRODUTOS_VISIVEIS} />
           </div>
         </section>
 

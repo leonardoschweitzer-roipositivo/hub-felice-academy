@@ -5,7 +5,7 @@
    Em breve) e os links externos dos produtos ainda sem página.
    ============================================================ */
 
-export type Categoria = 'Curso' | 'Masterclass' | 'Mentoria' | 'Software';
+export type Categoria = 'Curso' | 'Masterclass' | 'Mentoria' | 'Consultoria' | 'Software';
 export type Estado = 'disponivel' | 'em-breve';
 
 export type Produto = {
@@ -132,6 +132,25 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '06',
+    titulo: 'Consultoria',
+    // ⚠️ PROVISÓRIO: card criado para o filtro nascer com as três opções.
+    // Quando a página de vendas entrar, trocar `estado` para 'disponivel',
+    // apontar `href` para a rota real, ajustar `cta` e pôr a imagem.
+    descricao:
+      'Diagnóstico e plano de ação sob medida para a sua clínica, conduzidos pelo Dr. Sócrates.',
+    categoria: 'Consultoria',
+    estado: 'em-breve',
+    href: '/produtos/consultoria',
+    interno: true,
+    detalhes: [
+      'Diagnóstico completo da operação da clínica',
+      'Plano de ação priorizado e acompanhado',
+      'Trabalho direto com o dono e a equipe',
+    ],
+  },
+  {
+    // Era o nó 06; virou 07 quando a Consultoria entrou antes dele.
+    num: '07',
     titulo: 'Felice CRM',
     descricao:
       'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
