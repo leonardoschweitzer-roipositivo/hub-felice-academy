@@ -41,7 +41,8 @@ import {
    v3: catálogo alinhado com a home (12 → 7 cursos) + campo `imagem`. */
 // v4: rename de "A Secretária que Vende" para "CRC de Alta Performance". Sem
 // o bump, quem já visitou continua vendo o título velho do localStorage.
-const STORAGE_KEY = 'feliceplat:dataset:v4';
+// v5: entra o curso "Recepção de Alta Performance" (pilar Gestão) no catálogo.
+const STORAGE_KEY = 'feliceplat:dataset:v5';
 
 type Dataset = {
   cursos: Curso[];

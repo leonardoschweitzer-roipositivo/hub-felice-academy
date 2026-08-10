@@ -1,0 +1,70 @@
+/* ============================================================
+   "RECEPÇÃO DE ALTA PERFORMANCE" — ajustes específicos da landing.
+   Reaproveita 100% de felice.css + maestria.css (escopo .felice
+   .felice-maestria). Aqui só o que é exclusivo desta página.
+   Toda regra é escopada por uma classe própria com prefixo `rap-`
+   ou pela classe dupla — nada vaza para as outras 5 landings que
+   compartilham a camada .felice-maestria.
+   ============================================================ */
+
+/* ---------- Hero: foto de fundo própria desta landing ----------
+   A regra base `.felice-maestria .mz-hero-photo` (maestria.css) é
+   compartilhada por 5 landings e aponta para a foto da cirurgia
+   zigomática — sem este override, a Recepção herdaria aquela foto.
+
+   A foto é a MESMA do CRC de Alta Performance (é uma recepção de
+   clínica, o tema exato deste curso), mas com ENQUADRAMENTO
+   diferente de propósito: lá o corte fica em ~78% da largura, na
+   atendente; aqui puxa para 18%, a área de espera e a bancada. As
+   duas landings são produtos-par e ficam lado a lado na vitrine —
+   o corte é o que evita que pareçam a mesma página.
+
+   ⚠️ Como são 4 camadas e a regra base declara position/size/repeat
+   com 3 valores, os valores ciclariam e a FOTO herdaria os da 1ª
+   camada. Por isso as três são redeclaradas aqui por extenso.
+
+   Nota: aqui a foto é `cover` (e não o `100% auto` do CRC), então
+   ela preenche a seção inteira e a borda de baixo nunca aparece —
+   é o que dispensa o `::after` de máscara que o CRC precisa ter. */
+.felice-maestria .mz-hero-photo.rap-hero-photo {
+  background-image:
+    /* ESQUERDA — escurece a faixa do headline/lead */
+    linear-gradient(to right, rgba(11, 11, 13, 0.96) 0%, rgba(11, 11, 13, 0.9) 32%, rgba(11, 11, 13, 0.55) 54%, rgba(11, 11, 13, 0.12) 74%, rgba(11, 11, 13, 0) 88%),
+    /* TOPO */
+    linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 120px, rgba(11, 11, 13, 0) 300px),
+    /* RODAPÉ */
+    linear-gradient(to top, #0b0b0d 0%, #0b0b0d 10%, rgba(11, 11, 13, 0.5) 36%, rgba(11, 11, 13, 0) 62%),
+    url('/images/background-secretaria-vende.jpg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: center, center, center, 18% center;
+  background-size: cover, cover, cover, cover;
+}
+
+@media (max-width: 980px) {
+  /* No mobile o conteúdo empilha e a regra base já aplica opacity .45:
+     a foto vira textura. Só preservamos o enquadramento à esquerda, que
+     a base joga para `top right`. */
+  .felice-maestria .mz-hero-photo.rap-hero-photo {
+    background-position: center, center, center, 22% center;
+    background-size: cover, cover, cover, cover;
+  }
+}
+
+/* ---------- Método: os 4 pilares Disney lado a lado ----------
+   A regra base `.pillars` é de 3 colunas. A versão de 4 existe, mas
+   mora em styles/vendas-secretaria.css, que NÃO é carregado aqui —
+   cada landing importa só o próprio arquivo. A duplicação é
+   intencional; sem ela o 4º pilar cai sozinho numa segunda linha. */
+.felice-maestria .pillars.mz-pillars-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 980px) {
+  .felice-maestria .pillars.mz-pillars-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .felice-maestria .pillars.mz-pillars-4 {
+    grid-template-columns: 1fr;
+  }
+}

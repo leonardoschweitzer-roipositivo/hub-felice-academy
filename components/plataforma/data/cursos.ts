@@ -146,6 +146,68 @@ export const CURSOS: Curso[] = [
       },
     ],
   },
+  {
+    // Par presencial do "CRC de Alta Performance" (pilar vendas): aquele cuida
+    // do telefone/WhatsApp e do fechamento, este da experiência dentro da
+    // clínica — por isso mora em Gestão, e não em Vendas.
+    // Grade = seção "1. Conteúdo Programático" do plano de aula oficial.
+    // ⚠️ Slugs de aula formam a rota /plataforma/cursos/[curso]/[aula]:
+    // mudá-los depois zera o progresso já salvo do aluno.
+    slug: 'recepcao-alta-performance',
+    pilar: 'gestao',
+    titulo: 'Recepção de Alta Performance',
+    subtitulo: 'O atendimento Disney no balcão da clínica',
+    descricao:
+      'A formação da linha de frente presencial: receber, acolher e conduzir o paciente da porta até a cadeira, com rotina impecável e experiência que faz voltar.',
+    nivel: 'Essencial',
+    duracao: '4h 30min', // ⚠️ estimativa — confirmar com a gravação real
+    instrutor: 'Dr. Sócrates Tavares',
+    selo: 'novo',
+    thumb: ['#3a2c0c', '#E8B447'],
+    imagem: '/images/background-secretaria-vende.jpg',
+    modulos: [
+      {
+        titulo: 'Fundamentos do atendimento Disney na recepção',
+        aulas: [
+          a('principios-disney', 'Princípios Disney: sorriso, contato visual e momentos mágicos', '14:20'),
+          a('primeira-impressao', 'Primeira impressão e acolhimento personalizado', '12:40'),
+          a('linguagem-corporal', 'Postura e linguagem corporal', '13:55'),
+          a('sim-como-padrao', 'O "sim" como padrão', '11:30'),
+          a('role-playing', 'Autoavaliação: role-playing para fixar as bases', '18:10'),
+        ],
+      },
+      {
+        titulo: 'Procedimentos operacionais da recepção',
+        aulas: [
+          a('tarefas-e-agenda', 'Tarefas da recepcionista e gestão de agenda', '16:45'),
+          a('metodo-abc', 'Cadastro e atualização de dados: o método ABC', '12:15'),
+          a('reduzir-no-show', 'Agendamento e queda do no-show', '15:30'),
+          a('prontuarios', 'Prontuários e liberações para atendimento', '11:50'),
+          a('marketing-sensorial', 'Marketing sensorial: os cinco sentidos', '14:05'),
+        ],
+      },
+      {
+        titulo: 'Comunicação e relacionamento com pacientes',
+        aulas: [
+          a('escuta-ativa', 'Escuta ativa e perguntas abertas: a técnica dos 3 Rs', '14:40'),
+          a('sanduiche-de-valor', 'Explicar procedimentos e orçamentos: o sanduíche de valor', '16:20'),
+          a('fidelizacao', 'Fidelização: follow-up pós-consulta e indicações', '13:10'),
+          a('familias-e-idosos', 'Atendimento a famílias e idosos', '15:00'),
+          a('whatsapp-da-clinica', 'WhatsApp e lembretes para engajamento', '13:35'),
+        ],
+      },
+      {
+        titulo: 'Excelência e melhoria contínua',
+        aulas: [
+          a('metodo-heard', 'Reclamações e "wow moments": o método H.E.A.R.D.', '14:15'),
+          a('trabalho-em-equipe', 'Integração com dentistas e assistentes', '12:50'),
+          a('indicadores', 'Indicadores de desempenho da recepção', '15:45'),
+          a('simulacoes', 'Treinamento prático: simulações reais de cenários', '17:20'),
+          a('plano-de-desenvolvimento', 'Plano pessoal de desenvolvimento', '11:40', 'pdf'),
+        ],
+      },
+    ],
+  },
 
   /* ---------------- MARKETING ---------------- */
   {
