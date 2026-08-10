@@ -45,6 +45,12 @@ export const FUNNELS: Record<string, Funnel> = {
     value: 297.0, // ⚠️ placeholder — trocar pelo preço real
     contentName: 'A Secretária que Vende',
   },
+  'recepcao-alta-performance': {
+    slug: 'recepcao-alta-performance',
+    offer: null, // ⏳ preencher quando o link Green existir
+    value: 297.0, // ⚠️ placeholder — espelha o CRC (produto-par), confirmar
+    contentName: 'Recepção de Alta Performance',
+  },
 };
 
 /** Busca por slug do produto (ViewContent / Purchase do browser). */

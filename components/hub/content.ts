@@ -136,20 +136,25 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '06',
+    // Par do CRC de Alta Performance (05): a CRC cuida do telefone/WhatsApp
+    // e do fechamento do orçamento, este cuida do presencial na clínica.
     titulo: 'Recepção de Alta Performance',
-    // ⚠️ PROVISÓRIO: card criado antes da página de vendas. Quando ela sair,
-    // trocar `estado` para 'disponivel', apontar `href` para a rota real,
-    // ajustar `cta` e pôr a imagem. Par do CRC de Alta Performance: a CRC
-    // cuida do telefone/WhatsApp, este cuida do presencial na clínica.
     descricao:
-      'O treinamento da linha de frente presencial: receber, acolher e conduzir o paciente da porta da clínica até a cadeira.',
+      'O treinamento da linha de frente presencial: receber, acolher e conduzir o paciente da porta da clínica até a cadeira, com o método de atendimento Disney.',
     categoria: 'Curso',
-    estado: 'em-breve',
+    estado: 'disponivel',
     href: '/produtos/recepcao-alta-performance',
     interno: true,
+    cta: 'Acessar',
+    // Mesma foto do CRC (é uma recepção de clínica), mas com o enquadramento
+    // do lado OPOSTO: o card 05 corta em 78% (a atendente) e este em 22% (a
+    // área de espera). Os dois ficam lado a lado na vitrine — sem cortes
+    // diferentes, pareceriam o mesmo card.
+    imagem: '/images/background-secretaria-vende.jpg',
+    imagemPos: '22% 50%',
     detalhes: [
-      'A Arte de Receber: postura, script e protocolo',
-      'Da chegada do paciente ao pós-atendimento',
+      'Método Disney aplicado à recepção odontológica',
+      '4 módulos, 20 aulas, 100% online',
       'Treinamento pronto para entregar à equipe',
     ],
   },
