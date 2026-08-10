@@ -37,8 +37,7 @@ import { WHATSAPP_URL } from './content';
    Bônus → Acesso (Acesso × Premium) → Garantia → Sobre mim → Stats →
    FAQ → CTA final → Footer.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): CHECKOUT_URL, DEADLINE_ISO
-      e os vídeos dos depoimentos.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): CHECKOUT_URL e DEADLINE_ISO.
    ============================================================ */
 
 export function MasterclassLanding() {
