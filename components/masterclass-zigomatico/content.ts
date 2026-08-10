@@ -186,9 +186,27 @@ export const DESTAQUE = {
 
 /* ---------- Depoimentos ----------
    ⚠️ Adicionar `video` (embed) e `thumb` reais de cada aluno. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+/** `embed`/`embedId`: player do Panda, vertical (9:16), tocado dentro do card.
+ *  `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
+ *  mantido porque `MasterclassDepoimentos` ainda o renderiza. */
+export type Depoimento = {
+  nome: string;
+  meta: string;
+  texto: string;
+  embed?: string;
+  embedId?: string;
+  video?: string;
+  thumb?: string;
+};
 export const DEPOIMENTOS: Depoimento[] = [
-  { nome: 'Dr. Emmanuel Bezerra', meta: 'Aluno · Felice Academy', texto: 'Curso excepcional. Aprendi a tirar a equipe sob a cadeira e a indicar com critério. Mudou meu jogo.' },
+  {
+    nome: 'Dr. Emmanuel Bezerra',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Curso excepcional. Aprendi a tirar a equipe sob a cadeira e a indicar com critério. Mudou meu jogo.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
+    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
+  },
   { nome: 'Dr. Thiago Vinícius', meta: 'Aluno · Felice Academy', texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!' },
   { nome: 'Dr. Paulo Bezerra', meta: 'Aluno · Felice Academy', texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.' },
   { nome: 'Dr. Juliano Nunes', meta: 'Aluno · Felice Academy', texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.' },

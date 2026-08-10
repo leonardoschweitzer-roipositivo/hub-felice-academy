@@ -39,16 +39,25 @@ export function MasterclassDepoimentos() {
             {DEPOIMENTOS.map((d) => {
               const inner = (
                 <>
-                  <div className="mz-video-thumb">
-                    {d.thumb && (
+                  {/* Os depoimentos são verticais (9:16): o player fica DENTRO do
+                      card, e os slots sem vídeo guardam a mesma proporção para a
+                      fileira não ficar desalinhada enquanto os outros não chegam. */}
+                  <div className="mc-depo-video">
+                    {d.embed ? (
+                      <iframe
+                        id={d.embedId}
+                        src={d.embed}
+                        title={`Depoimento de ${d.nome}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    ) : d.thumb ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={d.thumb} alt={`Depoimento de ${d.nome}`} loading="lazy" />
+                    ) : (
+                      <span className="mc-depo-ph">Depoimento em vídeo em breve</span>
                     )}
-                    <span className="mz-video-play" aria-hidden="true">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </span>
                   </div>
                   <p>&quot;{d.texto}&quot;</p>
                   <div className="who">
@@ -57,7 +66,9 @@ export function MasterclassDepoimentos() {
                   </div>
                 </>
               );
-              return d.video ? (
+              // Com o player embutido o card não pode ser <a>: o link engoliria o
+              // clique do play. Só o card antigo (link externo) vira âncora.
+              return d.video && !d.embed ? (
                 <a key={d.nome} className="mz-video" href={d.video} target="_blank" rel="noopener noreferrer">
                   {inner}
                 </a>
