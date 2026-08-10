@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/produtos/vendas-secretaria/`, priority: 0.8 },
     { url: `${BASE}/produtos/recepcao-alta-performance/`, priority: 0.8 },
     { url: `${BASE}/produtos/mentorias/`, priority: 0.8 },
+    { url: `${BASE}/produtos/consultoria/`, priority: 0.8 },
     { url: `${BASE}/privacidade/`, priority: 0.3 },
     { url: `${BASE}/termos/`, priority: 0.3 },
   ];

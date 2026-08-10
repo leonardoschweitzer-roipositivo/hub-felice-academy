@@ -162,19 +162,19 @@ export const PRODUTOS: Produto[] = [
     // Era o nó 06; virou 07 quando a Recepção de Alta Performance entrou.
     num: '07',
     titulo: 'Consultoria',
-    // ⚠️ PROVISÓRIO: card criado para o filtro nascer com as três opções.
-    // Quando a página de vendas entrar, trocar `estado` para 'disponivel',
-    // apontar `href` para a rota real, ajustar `cta` e pôr a imagem.
     descricao:
-      'Diagnóstico e plano de ação sob medida para a sua clínica, conduzidos pelo Dr. Sócrates.',
+      'Diagnóstico e plano de ação sob medida para a sua clínica, conduzidos pelo Dr. Sócrates: 4 semanas auditando gestão, atendimento, comercial e marketing.',
     categoria: 'Consultoria',
-    estado: 'em-breve',
+    estado: 'disponivel',
     href: '/produtos/consultoria',
     interno: true,
+    cta: 'Ver a consultoria',
+    // ⚠️ Falta /images/card-consultoria.jpg. Sem o campo `imagem`, o card
+    // cai no fundo padrão — pôr o arquivo e a linha quando a arte chegar.
     detalhes: [
-      'Diagnóstico completo da operação da clínica',
-      'Plano de ação priorizado e acompanhado',
-      'Trabalho direto com o dono e a equipe',
+      '4 semanas de auditoria nos 4 setups da clínica',
+      '16 entregáveis prontos para a equipe aplicar',
+      'Planejamento estratégico de 12 meses',
     ],
   },
   {

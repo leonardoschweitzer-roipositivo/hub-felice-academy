@@ -45,6 +45,15 @@ export const FUNNELS: Record<string, Funnel> = {
     value: 297.0, // ⚠️ placeholder — trocar pelo preço real
     contentName: 'A Secretária que Vende',
   },
+  consultoria: {
+    slug: 'consultoria',
+    offer: null, // não há checkout: a entrada é por aplicação, não por link Green
+    // O deck ancora R$ 22 mil em entregáveis e fecha em R$ 6 mil. O preço
+    // NÃO aparece na landing (só na conversa de diagnóstico), mas o valor
+    // alimenta o ViewContent/SubmitApplication do Meta.
+    value: 6000.0,
+    contentName: 'Consultoria Gestão F4',
+  },
   'recepcao-alta-performance': {
     slug: 'recepcao-alta-performance',
     offer: null, // ⏳ preencher quando o link Green existir
