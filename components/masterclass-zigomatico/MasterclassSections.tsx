@@ -246,7 +246,7 @@ export function MasterclassBonus() {
             Bônus aceleradores
           </span>
           <h2>
-            No Premium, você ainda leva <span className="gold-grad">tudo isto junto</span>
+            Com o acesso, você ainda leva <span className="gold-grad">tudo isto junto</span>
           </h2>
         </div>
 
@@ -272,7 +272,7 @@ export function MasterclassBonus() {
             <span className="mz-bonus-total-val">{brl(total)}</span>
           </div>
           <p className="mz-bonus-total-note">
-            Tudo isto está <b>incluso no acesso Premium</b> — por apenas R$ 67.
+            Tudo isto já está <b>incluso no acesso</b> — por apenas R$ 67.
           </p>
         </div>
       </div>
@@ -280,24 +280,24 @@ export function MasterclassBonus() {
   );
 }
 
-/* ---------- Os dois tipos de acesso (Acesso × Premium) ---------- */
+/* ---------- O investimento (acesso único de R$ 67) ---------- */
 export function MasterclassComparativo() {
   return (
     <section className="sec offer" id="acesso">
       <div className="wrap">
         <div className="sec-head center reveal">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            A escolha
+            O investimento
           </span>
           <h2>
-            Os dois tipos de <span className="gold-grad">acesso</span>
+            Tudo isto por <span className="gold-grad">R$ 67</span>
           </h2>
         </div>
 
         <div className="mc-planos">
           {PLANOS.map((p, i) => (
             <div
-              className={`offer-card mc-plano${p.destaque ? ' mc-plano--premium' : ' mc-plano--free'} reveal${i ? ' d1' : ''}`}
+              className={`offer-card mc-plano${p.destaque ? ' mc-plano--destaque' : ''} reveal${i ? ' d1' : ''}`}
               key={p.nome}
             >
               {p.ribbon && <div className="ribbon">{p.ribbon}</div>}

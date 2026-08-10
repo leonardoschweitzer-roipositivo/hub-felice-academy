@@ -201,28 +201,22 @@
   line-height: 1.65;
 }
 
-/* Os dois tipos de acesso — 2 cards lado a lado. */
+/* Acesso único: um card centralizado. Era grid de 2 colunas (Acesso × Premium)
+   até o gratuito sair em 10/08/2026 — para voltar a comparar planos, é
+   `repeat(2, 1fr)` com `max-width: 880px` e a media query de 760px de volta. */
 .felice-maestria .mc-planos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 22px;
-  max-width: 880px;
+  max-width: 440px;
   margin: 8px auto 0;
   align-items: start;
-}
-@media (max-width: 760px) {
-  .felice-maestria .mc-planos {
-    grid-template-columns: 1fr;
-  }
 }
 .felice-maestria .mc-plano {
   position: relative;
   margin: 0;
 }
-.felice-maestria .mc-plano--free {
-  opacity: 0.92;
-}
-.felice-maestria .mc-plano--premium {
+.felice-maestria .mc-plano--destaque {
   border-color: var(--line);
   box-shadow: var(--glow);
 }

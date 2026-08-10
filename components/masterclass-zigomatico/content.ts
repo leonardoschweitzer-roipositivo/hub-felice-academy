@@ -1,6 +1,6 @@
 /* ============================================================
    MASTERCLASS ZIGOMÁTICO DESCOMPLICADO · conteúdo da landing
-   Produto de ticket baixo com checkout (Premium R$ 67) + acesso grátis.
+   Produto de ticket baixo, acesso único de R$ 67 com checkout.
    Edite SÓ aqui copy, segredos, bônus, planos, depoimentos e FAQ.
 
    ⚠️ TROCAR antes de publicar:
@@ -10,7 +10,7 @@
      no vídeo — os embeds entraram na ordem em que foram enviados.
    ============================================================ */
 
-/** Link de checkout do Premium. PLACEHOLDER — trocar pelo real. */
+/** Link de checkout do acesso (R$ 67). PLACEHOLDER — trocar pelo real. */
 export const CHECKOUT_URL = '#acesso';
 
 /** Âncora interna para a seção de planos/acesso. */
@@ -248,11 +248,12 @@ export const BONUS: { tag: string; titulo: string; texto: string; valor: number 
   { tag: 'Voucher', titulo: 'R$ 500 de desconto no Guia da Maestria', texto: 'Um voucher de desconto exclusivo para você dar o próximo passo e entrar na Maestria Zigomática (o curso completo).', valor: 1500 },
 ];
 
-/* ---------- Os dois tipos de acesso (Acesso × Premium) ----------
-   As linhas são os itens; cada plano marca o que inclui. */
+/* ---------- Acesso único (R$ 67) ----------
+   Era Acesso grátis × Premium; o gratuito saiu em 10/08/2026. `PLANOS`
+   continua sendo lista para o dia em que voltar a ter mais de um. */
 export type Plano = {
   nome: string;
-  /** Preço em texto curto (ex.: 'Grátis', 'R$ 67'). */
+  /** Preço em texto curto (ex.: 'R$ 67'). */
   preco: string;
   precoNota?: string;
   ribbon?: string;
@@ -277,21 +278,13 @@ export const ITENS_ACESSO: string[] = [
 
 export const PLANOS: Plano[] = [
   {
-    nome: 'Acesso',
-    preco: 'Grátis',
-    precoNota: 'Apenas a masterclass',
-    inclui: ['Masterclass Zigomático Descomplicado'],
-    cta: 'Assistir grátis',
-    href: '#topo',
-  },
-  {
-    nome: 'Premium',
+    nome: 'Acesso completo',
     preco: 'R$ 67',
     precoNota: 'pagamento único · acesso imediato',
-    ribbon: 'Mais escolhido',
+    // Sem `ribbon`: "Mais escolhido" só faz sentido comparando com algo.
     destaque: true,
     inclui: ITENS_ACESSO, // tudo
-    cta: 'Quero o Premium',
+    cta: 'Quero meu acesso',
     href: CHECKOUT_URL,
   },
 ];
@@ -331,19 +324,19 @@ export const STATS: { num: string; label: string }[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'A masterclass é gravada ou ao vivo?',
-    a: 'É gravada e fica disponível por tempo limitado (veja o contador). No acesso Premium, você garante também todos os bônus e o material para consultar quando quiser.',
+    a: 'É gravada e fica disponível por tempo limitado (veja o contador). Com o acesso você garante também todos os bônus e o material para consultar quando quiser.',
   },
   {
     q: 'Preciso já operar zigomático para aproveitar?',
     a: 'Não. A masterclass parte dos princípios e do raciocínio de indicação — serve tanto para quem quer começar com segurança quanto para quem já opera e busca um protocolo mais previsível.',
   },
   {
-    q: 'Qual a diferença entre o acesso grátis e o Premium?',
-    a: 'No acesso grátis você assiste à masterclass. No Premium (R$ 67) você leva, além da aula, todos os bônus aceleradores (ebooks, aula de cirurgia real, precificação, grupo de WhatsApp e o voucher de desconto na Maestria).',
+    q: 'O que exatamente eu levo por R$ 67?',
+    a: 'A masterclass completa mais todos os bônus aceleradores: os ebooks, a aula de cirurgia real comentada, a aula de precificação, o grupo de WhatsApp por 9 meses e o voucher de R$ 500 no Guia da Maestria. É pagamento único, sem mensalidade.',
   },
   {
     q: 'Como funciona a garantia?',
-    a: 'Você tem 7 dias de garantia incondicional no Premium. Se não for para você, devolvemos 100% do valor, sem burocracia.',
+    a: 'Você tem 7 dias de garantia incondicional. Se não for para você, devolvemos 100% do valor, sem burocracia.',
   },
 ];
 

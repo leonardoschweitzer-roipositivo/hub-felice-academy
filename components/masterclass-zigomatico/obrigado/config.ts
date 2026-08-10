@@ -2,9 +2,10 @@
    Página de Obrigado · Masterclass Zigomático Descomplicado — config
    Edite SÓ aqui os links/parâmetros da página de obrigado.
 
-   Gatilho NEUTRO: serve tanto para quem comprou o Premium (R$ 67)
-   quanto para quem garantiu o acesso grátis — por isso a copy fala em
-   "acesso liberado", e não em "compra".
+   Gatilho NEUTRO: a copy fala em "acesso liberado", e não em "compra".
+   Nasceu assim porque a landing tinha acesso grátis e Premium; o gratuito
+   saiu em 10/08/2026 e hoje todo mundo que chega aqui pagou os R$ 67 —
+   a copy neutra continua valendo, mas já pode falar em compra.
    ============================================================ */
 
 /** Rota do questionário de qualificação — para onde os CTAs "Agendar
