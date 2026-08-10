@@ -15,9 +15,10 @@ export const QUESTIONARIO_URL = '/produtos/masterclass-zigomatico/consultoria';
 /** Rota da página de confirmação (recebimento dos dados). */
 export const CONFIRMACAO_URL = '/produtos/masterclass-zigomatico/consultoria/confirmado';
 
-/** Acesso à masterclass / área do aluno (link secundário, discreto).
-    ⚠️ Ajustar para a URL real de assistir à masterclass (área do aluno). */
-export const ACESSO_URL = '/plataforma';
+/** Onde a pessoa assiste à masterclass. A aula COMPLETA toca no hero desta
+    própria página (10/08/2026), então "assistir" é uma âncora para o player —
+    e não mais a área do aluno, que não tem a aula. */
+export const ACESSO_URL = '/produtos/masterclass-zigomatico/obrigado#aula';
 
 /** WhatsApp de suporte (botão flutuante). */
 export const WHATSAPP_URL =
@@ -29,7 +30,12 @@ export const WHATSAPP_URL =
 /** Prazo, em dias, alinhado à garantia incondicional. Usado na copy de urgência. */
 export const PRAZO_DIAS = 7;
 
-/** Opcional: URL de um vídeo de boas-vindas (embed iframe). Vazio = esconde o slot.
-    ⚠️ Provisório: reusa o mesmo embed Wistia das outras páginas (ufbdtd0dj4).
-    Trocar pelo vídeo de boas-vindas específico da Masterclass quando houver. */
-export const VIDEO_URL = 'https://fast.wistia.net/embed/iframe/ufbdtd0dj4';
+/** A MASTERCLASS COMPLETA (16:9), no Panda. Não é mais um vídeo de
+    boas-vindas: é a entrega do produto, e é por isso que o hero pede o play.
+    Vazio = esconde o slot. O wrapper `.obg-video` já é 16:9, então do snippet
+    do Panda entra só o src. */
+export const VIDEO_URL =
+  'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=902930f1-914b-4c5e-b37c-0e7ce427355f';
+
+/** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
+export const VIDEO_IFRAME_ID = 'panda-902930f1-914b-4c5e-b37c-0e7ce427355f';
