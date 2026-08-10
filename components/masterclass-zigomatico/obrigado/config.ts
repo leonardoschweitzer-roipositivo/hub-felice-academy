@@ -4,7 +4,7 @@
 
    Gatilho NEUTRO: a copy fala em "acesso liberado", e não em "compra".
    Nasceu assim porque a landing tinha acesso grátis e Premium; o gratuito
-   saiu em 10/08/2026 e hoje todo mundo que chega aqui pagou os R$ 19,90 —
+   saiu em 10/08/2026 e hoje todo mundo que chega aqui pagou os R$ 67 —
    a copy neutra continua valendo, mas já pode falar em compra.
    ============================================================ */
 
