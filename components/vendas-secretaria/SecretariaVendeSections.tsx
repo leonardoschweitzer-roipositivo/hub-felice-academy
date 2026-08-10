@@ -347,7 +347,7 @@ export function SecretariaVendeBonus() {
             <span className="mz-bonus-total-val">{brl(total)}</span>
           </div>
           <p className="mz-bonus-total-note">
-            Tudo isto está <b>incluso gratuitamente</b> na sua matrícula de A Secretária que Vende.
+            Tudo isto está <b>incluso gratuitamente</b> na sua matrícula do CRC de Alta Performance.
           </p>
         </div>
       </div>
@@ -425,7 +425,7 @@ export function SecretariaVendeOferta() {
             A matrícula
           </span>
           <h2>
-            Garanta o acesso ao <span className="gold-grad">A Secretária que Vende</span>
+            Garanta o acesso ao <span className="gold-grad">CRC de Alta Performance</span>
           </h2>
         </div>
 

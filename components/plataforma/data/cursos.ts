@@ -224,11 +224,12 @@ export const CURSOS: Curso[] = [
   /* ---------------- VENDAS ---------------- */
   {
     // Consolida os três antigos cursos do pilar (CRC, Fechamento de Planos e
-    // Recuperação de Inativos) no produto que a home vende: "A Secretária que
-    // Vende" (/produtos/vendas-secretaria). Os três viraram os módulos.
+    // Recuperação de Inativos) no produto que a home vende: "CRC de Alta
+    // Performance" (/produtos/vendas-secretaria). Os três viraram os módulos.
+    // O slug fica como está: mudar quebraria o progresso já salvo do aluno.
     slug: 'secretaria-que-vende',
     pilar: 'vendas',
-    titulo: 'A Secretária que Vende',
+    titulo: 'CRC de Alta Performance',
     subtitulo: 'Do primeiro "oi" ao tratamento fechado',
     descricao:
       'O treinamento comercial da recepção: agendar sem faltas, apresentar o plano com clareza e reativar quem sumiu da agenda.',

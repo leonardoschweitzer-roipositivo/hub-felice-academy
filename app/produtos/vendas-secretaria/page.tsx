@@ -18,7 +18,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'A Secretária que Vende — Treinamento comercial para a recepção | Felice Academy',
+  title: 'CRC de Alta Performance — Treinamento comercial para a recepção | Felice Academy',
   description:
     'O curso pronto que você entrega à sua equipe de recepção para transformar atendimento em tratamento fechado. Do primeiro contato no WhatsApp ao follow-up do orçamento, com scripts e planilhas inclusos e bônus ao vivo. Garantia de 7 dias.',
 };

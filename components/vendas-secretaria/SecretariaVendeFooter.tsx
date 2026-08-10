@@ -1,6 +1,6 @@
 import { CHECKOUT_URL } from './content';
 
-/* Rodapé de "A Secretária que Vende" — mesmas classes/legal do Felice. */
+/* Rodapé do "CRC de Alta Performance" — mesmas classes/legal do Felice. */
 export function SecretariaVendeFooter() {
   return (
     <footer className="felice-footer">

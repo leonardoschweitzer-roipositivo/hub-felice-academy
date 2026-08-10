@@ -39,7 +39,9 @@ import {
 
    v2: inclui as coleções do módulo Vendas (leads, clientes, conversas, automações).
    v3: catálogo alinhado com a home (12 → 7 cursos) + campo `imagem`. */
-const STORAGE_KEY = 'feliceplat:dataset:v3';
+// v4: rename de "A Secretária que Vende" para "CRC de Alta Performance". Sem
+// o bump, quem já visitou continua vendo o título velho do localStorage.
+const STORAGE_KEY = 'feliceplat:dataset:v4';
 
 type Dataset = {
   cursos: Curso[];
