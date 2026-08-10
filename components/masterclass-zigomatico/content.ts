@@ -6,7 +6,8 @@
    ⚠️ TROCAR antes de publicar:
    - CHECKOUT_URL: link real de checkout (Greenn/Payfast).
    - DEADLINE_ISO: data real de saída do ar.
-   - DEPOIMENTOS: vídeos e thumbnails reais.
+   - DEPOIMENTOS: conferir se o nome de cada item bate com quem aparece
+     no vídeo — os embeds entraram na ordem em que foram enviados.
    ============================================================ */
 
 /** Link de checkout do Premium. PLACEHOLDER — trocar pelo real. */
@@ -207,9 +208,33 @@ export const DEPOIMENTOS: Depoimento[] = [
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
     embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
   },
-  { nome: 'Dr. Thiago Vinícius', meta: 'Aluno · Felice Academy', texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!' },
-  { nome: 'Dr. Paulo Bezerra', meta: 'Aluno · Felice Academy', texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.' },
-  { nome: 'Dr. Juliano Nunes', meta: 'Aluno · Felice Academy', texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.' },
+  {
+    nome: 'Dr. Thiago Vinícius',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
+    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
+  },
+  {
+    nome: 'Dr. Paulo Bezerra',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+  },
+  {
+    nome: 'Dr. Juliano Nunes',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.',
+    // O snippet deste veio como iframe fixo de 720x360, sem o div de proporção.
+    // É só a variante de tamanho fixo do Panda: o vídeo é 612x1080, vertical
+    // igual aos outros, e cai no mesmo slot 9:16.
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
+    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
+  },
 ];
 
 /* ---------- Bônus aceleradores ----------
