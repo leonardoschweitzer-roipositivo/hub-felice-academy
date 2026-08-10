@@ -29,7 +29,7 @@ export const FUNNELS: Record<string, Funnel> = {
   },
   'masterclass-zigomatico': {
     slug: 'masterclass-zigomatico',
-    offer: null, // ⏳
+    offer: 'VXcVJD',
     value: 67.0,
     contentName: 'Masterclass Zigomático',
   },

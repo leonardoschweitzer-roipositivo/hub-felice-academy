@@ -4,14 +4,15 @@
    Edite SÓ aqui copy, segredos, bônus, planos, depoimentos e FAQ.
 
    ⚠️ TROCAR antes de publicar:
-   - CHECKOUT_URL: link real de checkout (Greenn/Payfast).
-   - DEADLINE_ISO: data real de saída do ar.
+   - DEADLINE_ISO: data real de saída do ar (a de hoje é provisória).
    - DEPOIMENTOS: conferir se o nome de cada item bate com quem aparece
      no vídeo — os embeds entraram na ordem em que foram enviados.
    ============================================================ */
 
-/** Link de checkout do acesso (R$ 67). PLACEHOLDER — trocar pelo real. */
-export const CHECKOUT_URL = '#acesso';
+/** Checkout do acesso (R$ 67) na Greenn/Payfast. O código da oferta
+ *  (`VXcVJD`) também vive em lib/tracking/funnels.ts — trocar nos dois. */
+export const CHECKOUT_URL =
+  'https://payfast.greenn.com.br/142132/offer/VXcVJD?ch_id=142077';
 
 /** Âncora interna para a seção de planos/acesso. */
 export const OFERTA_ANCHOR = '#acesso';
@@ -25,8 +26,10 @@ export const VIDEO_URL =
 /** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
 export const VIDEO_IFRAME_ID = 'panda-f84f70aa-165f-40aa-b882-b5bd37076855';
 
-/** Saída do ar — countdown autêntico. ⚠️ Ajustar para a data real. */
-export const DEADLINE_ISO = '2026-07-15T23:59:59-03:00';
+/** Saída do ar — countdown autêntico. ⚠️ PROVISÓRIA (escolhida em 10/08/2026
+ *  para a barra voltar ao ar; a anterior, 15/07, já tinha vencido). Vencida,
+ *  a barra inteira sai do DOM — contador E "pessoas vendo agora" somem junto. */
+export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
 
 /** WhatsApp de dúvidas (botão flutuante). */
 export const WHATSAPP_URL =
