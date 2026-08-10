@@ -2,7 +2,7 @@ import '@/styles/felice.css';
 import '@/styles/hub.css';
 
 import { HubHeader } from '@/components/hub/HubHeader';
-import { ProductCard } from '@/components/hub/ProductCard';
+import { ProductShowcase } from '@/components/hub/ProductShowcase';
 import { MaterialCard } from '@/components/hub/MaterialCard';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
@@ -56,13 +56,7 @@ export function ProdutosLanding() {
               </p>
             </div>
 
-            <div className="hub-rows">
-              {PRODUTOS_VISIVEIS.map((p, i) => (
-                <div key={p.titulo} className={`reveal d${(i % 4) + 1}`}>
-                  <ProductCard produto={p} />
-                </div>
-              ))}
-            </div>
+            <ProductShowcase produtos={PRODUTOS_VISIVEIS} />
           </div>
         </section>
 
