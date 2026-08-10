@@ -1,6 +1,6 @@
 /* ============================================================
    MASTERCLASS ZIGOMÁTICO DESCOMPLICADO · conteúdo da landing
-   Produto de ticket baixo, acesso único de R$ 67 com checkout.
+   Produto de ticket baixo, acesso único de R$ 19,90 com checkout.
    Edite SÓ aqui copy, segredos, bônus, planos, depoimentos e FAQ.
 
    ⚠️ TROCAR antes de publicar:
@@ -9,7 +9,7 @@
      no vídeo — os embeds entraram na ordem em que foram enviados.
    ============================================================ */
 
-/** Checkout do acesso (R$ 67) na Greenn/Payfast. O código da oferta
+/** Checkout do acesso (R$ 19,90) na Greenn/Payfast. O código da oferta
  *  (`VXcVJD`) também vive em lib/tracking/funnels.ts — trocar nos dois. */
 export const CHECKOUT_URL =
   'https://payfast.greenn.com.br/142132/offer/VXcVJD?ch_id=142077';
@@ -251,14 +251,17 @@ export const BONUS: { tag: string; titulo: string; texto: string; valor: number 
   { tag: 'Voucher', titulo: 'R$ 500 de desconto no Guia da Maestria', texto: 'Um voucher de desconto exclusivo para você dar o próximo passo e entrar na Maestria Zigomática (o curso completo).', valor: 1500 },
 ];
 
-/* ---------- Acesso único (R$ 67) ----------
+/* ---------- Acesso único (R$ 19,90) ----------
    Era Acesso grátis × Premium; o gratuito saiu em 10/08/2026. `PLANOS`
-   continua sendo lista para o dia em que voltar a ter mais de um. */
+   continua sendo lista para o dia em que voltar a ter mais de um.
+   `parcela` + `aVista` seguem o mesmo formato das outras landings
+   (ver OFERTA em recepcao-alta-performance/content.ts). */
 export type Plano = {
   nome: string;
-  /** Preço em texto curto (ex.: 'R$ 67'). */
-  preco: string;
-  precoNota?: string;
+  /** Preço parcelado em destaque no card. */
+  parcela: { vezes: string; valor: string };
+  /** Preço à vista, na linha de apoio. */
+  aVista: string;
   ribbon?: string;
   destaque?: boolean;
   /** Itens inclusos neste plano (subset de ITENS_ACESSO). */
@@ -282,8 +285,8 @@ export const ITENS_ACESSO: string[] = [
 export const PLANOS: Plano[] = [
   {
     nome: 'Acesso completo',
-    preco: 'R$ 67',
-    precoNota: 'pagamento único · acesso imediato',
+    parcela: { vezes: '12x', valor: 'R$ 2,05' },
+    aVista: 'R$ 19,90',
     // Sem `ribbon`: "Mais escolhido" só faz sentido comparando com algo.
     destaque: true,
     inclui: ITENS_ACESSO, // tudo
@@ -334,8 +337,8 @@ export const FAQ: { q: string; a: string }[] = [
     a: 'Não. A masterclass parte dos princípios e do raciocínio de indicação — serve tanto para quem quer começar com segurança quanto para quem já opera e busca um protocolo mais previsível.',
   },
   {
-    q: 'O que exatamente eu levo por R$ 67?',
-    a: 'A masterclass completa mais todos os bônus aceleradores: os ebooks, a aula de cirurgia real comentada, a aula de precificação, o grupo de WhatsApp por 9 meses e o voucher de R$ 500 no Guia da Maestria. É pagamento único, sem mensalidade.',
+    q: 'O que exatamente eu levo por R$ 19,90?',
+    a: 'A masterclass completa mais todos os bônus aceleradores: os ebooks, a aula de cirurgia real comentada, a aula de precificação, o grupo de WhatsApp por 9 meses e o voucher de R$ 500 no Guia da Maestria. É pagamento único, sem mensalidade — e dá para parcelar em até 12x de R$ 2,05.',
   },
   {
     q: 'Como funciona a garantia?',

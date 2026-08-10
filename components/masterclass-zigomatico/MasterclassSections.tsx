@@ -272,7 +272,7 @@ export function MasterclassBonus() {
             <span className="mz-bonus-total-val">{brl(total)}</span>
           </div>
           <p className="mz-bonus-total-note">
-            Tudo isto já está <b>incluso no acesso</b> — por apenas R$ 67.
+            Tudo isto já está <b>incluso no acesso</b> — por apenas R$ 19,90.
           </p>
         </div>
       </div>
@@ -280,7 +280,7 @@ export function MasterclassBonus() {
   );
 }
 
-/* ---------- O investimento (acesso único de R$ 67) ---------- */
+/* ---------- O investimento (acesso único de R$ 19,90) ---------- */
 export function MasterclassComparativo() {
   return (
     <section className="sec offer" id="acesso">
@@ -290,7 +290,7 @@ export function MasterclassComparativo() {
             O investimento
           </span>
           <h2>
-            Tudo isto por <span className="gold-grad">R$ 67</span>
+            Tudo isto por <span className="gold-grad">R$ 19,90</span>
           </h2>
         </div>
 
@@ -305,10 +305,12 @@ export function MasterclassComparativo() {
                 <h3>{p.nome}</h3>
 
                 <div className="price-box">
+                  <div className="small">{p.parcela.vezes} de</div>
                   <div className="big">
-                    <span className="amount">{p.preco}</span>
+                    <span className="cur">R$</span>
+                    <span className="amount">{p.parcela.valor.replace(/^R\$\s*/, '')}</span>
                   </div>
-                  {p.precoNota && <div className="note">{p.precoNota}</div>}
+                  <div className="note">ou {p.aVista} à vista · acesso imediato</div>
                 </div>
 
                 <ul className="stack-list">
