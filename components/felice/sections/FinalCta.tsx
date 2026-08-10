@@ -1,3 +1,4 @@
+import { CHECKOUT_URL } from '../config';
 export function FinalCta() {
   return (
     <section className="sec final">
@@ -14,7 +15,7 @@ export function FinalCta() {
           um único paciente que não agendou.
         </p>
         <a
-          href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU"
+          href={CHECKOUT_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary btn-lg"
