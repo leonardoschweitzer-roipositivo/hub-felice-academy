@@ -1,5 +1,5 @@
 import { CtaConsultoria } from './Cta';
-import { ACESSO_URL, VIDEO_URL } from './config';
+import { VIDEO_URL, VIDEO_IFRAME_ID } from './config';
 
 /* Benefícios (2 palavras) que desfilam na esteira do rodapé do hero. */
 const MARQUEE_ITEMS = [
@@ -13,10 +13,10 @@ const MARQUEE_ITEMS = [
   'Referência na região',
 ];
 
-/* Hero pós-acesso: confirma o acesso à masterclass e direciona ao único
-   objetivo da página — agendar a consultoria. Copy neutra (serve para
-   acesso grátis e Premium); assistir à masterclass fica como link
-   secundário discreto. */
+/* Hero pós-compra. A MASTERCLASS COMPLETA toca aqui (10/08/2026), então a
+   headline e a lead existem para uma coisa só: fazer a pessoa dar o play e
+   assistir até o fim. O convite para a consultoria vem logo abaixo do player,
+   como próximo passo de quem terminou a aula. */
 export function HeroSucesso() {
   return (
     <header className="obg-hero">
@@ -30,27 +30,30 @@ export function HeroSucesso() {
         </span>
 
         <h1 className="reveal d1">
-          Seu acesso à{' '}
-          <span className="gold-grad">Masterclass Zigomático Descomplicado</span> liberou!
+          É agora: dê o play na{' '}
+          <span className="gold-grad">Masterclass Zigomático Descomplicado</span>
         </h1>
 
         <p className="obg-lead reveal d2">
-          Você acaba de dar o primeiro passo para deixar de encaminhar o caso de maior valor e
-          começar a operá-lo. Mas deixa eu te falar uma verdade: assistir à masterclass abre o
-          caminho — <strong>quem percorre é você</strong>. Por isso, eu incluí o passo mais
-          importante:
+          A aula completa está logo abaixo — do planejamento à precificação, sem enrolação.
+          Separe esse tempo sem interrupção e <strong>assista até o fim</strong>: é na segunda
+          metade que estão os critérios de indicação e o raciocínio que separa quem encaminha de
+          quem opera.
         </p>
 
         {VIDEO_URL ? (
-          <div className="obg-video reveal d3">
+          <div className="obg-video reveal d3" id="aula">
             <iframe
+              id={VIDEO_IFRAME_ID}
               src={VIDEO_URL}
-              title="Boas-vindas à Masterclass Zigomático Descomplicado"
+              title="Masterclass Zigomático Descomplicado — aula completa"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           </div>
         ) : null}
+
+        <p className="obg-pos-aula reveal d3">Terminou de assistir? Então o próximo passo é este:</p>
 
         <p className="obg-lead-strong reveal d3">
           &ldquo;Quero te ajudar pessoalmente. Em uma{' '}
@@ -62,9 +65,6 @@ export function HeroSucesso() {
         <div className="obg-cta-row reveal d3">
           <CtaConsultoria size="lg" />
         </div>
-        <a className="obg-sublink reveal d3" href={ACESSO_URL}>
-          Prefiro assistir à masterclass primeiro →
-        </a>
       </div>
 
       <div className="hero-marquee" aria-hidden="true">

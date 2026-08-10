@@ -117,6 +117,17 @@
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  /* alvo da âncora #aula: o header não é fixo aqui, mas o respiro evita
+     que o player encoste no topo da janela ao chegar pelo link */
+  scroll-margin-top: 24px;
+}
+/* Ponte entre a aula e o convite da consultoria. */
+.felice .obg-pos-aula {
+  margin-top: 34px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .felice .obg-video iframe {
   position: absolute;

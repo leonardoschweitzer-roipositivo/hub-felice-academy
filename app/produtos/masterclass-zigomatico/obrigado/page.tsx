@@ -19,9 +19,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'Acesso liberado — Masterclass Zigomático Descomplicado | Agende sua consultoria gratuita',
+  title: 'Assista agora — Masterclass Zigomático Descomplicado | Felice Academy',
   description:
-    'Seu acesso à Masterclass Zigomático Descomplicado está liberado. Agende a consultoria gratuita de 1 hora com o Dr. Sócrates e descubra o seu próximo passo nos zigomáticos.',
+    'Sua Masterclass Zigomático Descomplicado está liberada: assista à aula completa e agende a consultoria gratuita de 1 hora com o Dr. Sócrates para dar o próximo passo nos zigomáticos.',
   // Página de pós-acesso não deve ser indexada.
   robots: { index: false, follow: false },
 };
