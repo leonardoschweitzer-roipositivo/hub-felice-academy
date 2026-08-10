@@ -3,6 +3,7 @@ import { Check } from '@/components/felice/ui/icons';
 import {
   HERO,
   VIDEO_URL,
+  VIDEO_IFRAME_ID,
   FAIXA_FRASE,
   PROBLEMA,
   DORES,
@@ -51,6 +52,7 @@ export function MasterclassHero() {
         <div className="mc-video reveal d3">
           {VIDEO_URL ? (
             <iframe
+              id={VIDEO_IFRAME_ID}
               src={VIDEO_URL}
               title={HERO.videoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

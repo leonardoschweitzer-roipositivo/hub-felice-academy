@@ -4,10 +4,8 @@
    Edite SÓ aqui copy, segredos, bônus, planos, depoimentos e FAQ.
 
    ⚠️ TROCAR antes de publicar:
-   - VIDEO_URL: embed real da VSL (Wistia/YouTube/Vimeo).
    - CHECKOUT_URL: link real de checkout (Greenn/Payfast).
    - DEADLINE_ISO: data real de saída do ar.
-   - CASOS/APRENDIZADO: imagens reais (campo img).
    - DEPOIMENTOS: vídeos e thumbnails reais.
    ============================================================ */
 
@@ -17,8 +15,14 @@ export const CHECKOUT_URL = '#acesso';
 /** Âncora interna para a seção de planos/acesso. */
 export const OFERTA_ANCHOR = '#acesso';
 
-/** Embed da VSL no hero (16:9). PLACEHOLDER — trocar pelo real. */
-export const VIDEO_URL = '';
+/** Embed da VSL no hero. O wrapper `.mc-video` já é 16:9 e posiciona o
+ *  iframe, então o <div style="padding-top:56.25%"> do snippet do Panda
+ *  não entra aqui — só o src. */
+export const VIDEO_URL =
+  'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=f84f70aa-165f-40aa-b882-b5bd37076855';
+
+/** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
+export const VIDEO_IFRAME_ID = 'panda-f84f70aa-165f-40aa-b882-b5bd37076855';
 
 /** Saída do ar — countdown autêntico. ⚠️ Ajustar para a data real. */
 export const DEADLINE_ISO = '2026-07-15T23:59:59-03:00';
