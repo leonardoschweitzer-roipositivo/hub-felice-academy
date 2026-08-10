@@ -106,13 +106,13 @@ export const SEGREDOS: { n: string; titulo: string; texto: string }[] = [
   },
 ];
 
-/** Imagens da seção "o que você vai aprender" (placeholder até subir as reais). */
+/** Imagens da seção "o que você vai aprender" — na ordem da jornada do caso. */
 export type Aprendizado = { legenda: string; img?: string };
 export const APRENDIZADO_IMGS: Aprendizado[] = [
-  { legenda: 'Planejamento digital do caso' },
-  { legenda: 'Cirurgia guiada na prática' },
-  { legenda: 'Reabilitação concluída' },
-  { legenda: 'Leitura anatômica e ancoragem' },
+  { legenda: 'Leitura anatômica e ancoragem', img: '/images/aprender-leitura-anatomica.jpg' },
+  { legenda: 'Planejamento digital do caso', img: '/images/aprender-planejamento-digital.jpg' },
+  { legenda: 'Cirurgia guiada na prática', img: '/images/aprender-cirurgia-guiada.jpg' },
+  { legenda: 'Reabilitação concluída', img: '/images/aprender-reabilitacao-concluida.jpg' },
 ];
 
 /* ---------- Faixa-CTA (turn) ---------- */

@@ -153,7 +153,7 @@ export function MasterclassAprendizado() {
         </div>
 
         <div className="mc-aprender-imgs reveal">
-          {APRENDIZADO_IMGS.map((a, i) => (
+          {APRENDIZADO_IMGS.map((a) => (
             <figure className="mc-aprender-img" key={a.legenda}>
               {a.img ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -167,7 +167,8 @@ export function MasterclassAprendizado() {
                   </svg>
                 </span>
               )}
-              <figcaption>{a.legenda}</figcaption>
+              {/* a arte já traz o título; a legenda só aparece no placeholder. */}
+              {!a.img && <figcaption>{a.legenda}</figcaption>}
             </figure>
           ))}
         </div>
