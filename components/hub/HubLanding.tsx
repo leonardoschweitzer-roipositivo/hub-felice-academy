@@ -27,6 +27,13 @@ const CREDS = [
    página Gestão F4 (felice.css) + estilos próprios (hub.css).
    ============================================================ */
 
+/** O mockup mostra a NOSSA plataforma (`/plataforma`), que ainda não está
+ *  pronta para uso — sai do hero por ora (10/08/2026). A pílula acima segue
+ *  no lugar de propósito: os cursos estão no ar, na plataforma da Green.
+ *  Voltar para `true` quando a nossa entrar — componente e CSS ficam onde
+ *  estavam. */
+const MOSTRAR_MOCKUP_PLATAFORMA = false;
+
 export function HubLanding() {
   return (
     <div className="felice felice-hub" id="topo">
@@ -67,11 +74,13 @@ export function HubLanding() {
           </div>
 
           {/* Mockup da plataforma */}
-          <div className="hub-hero-mockup reveal d4">
-            <div className="hub-hero-mockup-glow" aria-hidden="true" />
-            <PlatformMockup />
-            <div className="hub-hero-mockup-fade" aria-hidden="true" />
-          </div>
+          {MOSTRAR_MOCKUP_PLATAFORMA && (
+            <div className="hub-hero-mockup reveal d4">
+              <div className="hub-hero-mockup-glow" aria-hidden="true" />
+              <PlatformMockup />
+              <div className="hub-hero-mockup-fade" aria-hidden="true" />
+            </div>
+          )}
         </section>
 
         {/* Prova de autoridade (resumo) */}
