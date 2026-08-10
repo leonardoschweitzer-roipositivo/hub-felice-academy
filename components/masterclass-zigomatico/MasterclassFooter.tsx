@@ -15,7 +15,7 @@ export function MasterclassFooter() {
         </div>
         <div className="foot-links">
           <a href="#bonus">Bônus</a>
-          <a href={CHECKOUT_URL}>Assistir Premium</a>
+          <a href={CHECKOUT_URL}>Garantir meu acesso</a>
           <a href="/privacidade">Política de Privacidade</a>
           <a href="/termos">Termos de Uso</a>
         </div>
