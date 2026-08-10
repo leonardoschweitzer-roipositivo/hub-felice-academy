@@ -20,9 +20,13 @@ export const CONFIRMACAO_URL = '/produtos/masterclass-zigomatico/consultoria/con
     e não mais a área do aluno, que não tem a aula. */
 export const ACESSO_URL = '/produtos/masterclass-zigomatico/obrigado#aula';
 
+/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
+    usado pelo botão flutuante e pelo envio do questionário de consultoria. */
+export const WHATSAPP_NUMERO = '5588981391199';
+
 /** WhatsApp de suporte (botão flutuante). */
 export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
+  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent(
     'Olá! Acabei de garantir meu acesso à Masterclass Zigomático Descomplicado e quero agendar minha consultoria gratuita.',
   );
