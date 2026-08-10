@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { LiveViewers } from '@/components/felice/ui/LiveViewers';
 import { DEADLINE_ISO, HERO } from './content';
 
 /**
- * Barra de escassez: contagem regressiva até a saída do ar da masterclass.
+ * Barra de escassez: contagem regressiva até a saída do ar da masterclass,
+ * mais o "X pessoas vendo esta página agora" (igual à barra do Kit F4).
  * Reusa o visual dourado `.urgency-bar` e mede a própria altura para expor
  * `--urgency-h` (header e hero descem o necessário).
  */
@@ -96,6 +98,8 @@ export function MasterclassDeadlineBar() {
             <span className="mz-seg"><b>{pad(s)}</b><em>seg</em></span>
           </span>
         </div>
+        <span className="urgency-sep" />
+        <LiveViewers />
       </div>
     </div>
   );
