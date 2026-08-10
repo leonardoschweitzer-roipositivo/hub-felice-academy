@@ -1,3 +1,4 @@
+import { CHECKOUT_URL } from '../config';
 export function Footer() {
   return (
     <footer className="felice-footer">
@@ -12,7 +13,7 @@ export function Footer() {
         </div>
         <div className="foot-links">
           <a href="#metodo">O método</a>
-          <a href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU" target="_blank" rel="noopener noreferrer">
+          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
             Comprar
           </a>
           <a href="/privacidade">Política de Privacidade</a>

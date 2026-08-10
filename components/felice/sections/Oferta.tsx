@@ -1,3 +1,4 @@
+import { CHECKOUT_URL, PRECO } from '../config';
 const ITENS = [
   'Procedimento Operacional Padrão',
   'Scripts de Atendimento',
@@ -55,13 +56,15 @@ export function Oferta() {
               <div className="small">Hoje, por apenas</div>
               <div className="big">
                 <span className="cur">R$</span>
-                <span className="amount">97</span>
+                <span className="amount">{PRECO.aVista.replace(/^R\$\s*/, '')}</span>
               </div>
-              <div className="note">ou parcelado no cartão · acesso imediato</div>
+              <div className="note">
+                ou {PRECO.parcela.vezes} de {PRECO.parcela.valor} no cartão · acesso imediato
+              </div>
             </div>
 
             <a
-              href="https://payfast.greenn.com.br/nwktnth/offer/4iIlqU"
+              href={CHECKOUT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-lg btn-block"
