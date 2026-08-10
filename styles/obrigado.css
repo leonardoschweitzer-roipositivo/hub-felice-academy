@@ -352,26 +352,38 @@
 }
 
 /* ============================================================
-   Masterclass · obrigado — headline em 3 linhas e subheadline em 3
-   linhas no desktop. Escopado em .obg-mc para não afetar Kit/Maestria.
+   Masterclass · obrigado — coluna mais larga que as outras obrigados:
+   a headline cabe em 3 linhas e o player da aula ganha tamanho no
+   desktop. Escopado em .obg-mc para não afetar Kit/Maestria.
    ============================================================ */
-.felice .obg-mc .obg-hero h1 {
-  max-width: 26ch;                          /* ~2 palavras por linha */
-  font-size: clamp(2.1rem, 5.2vw, 3.4rem);  /* garante caber na coluna */
+.felice.obg-mc .obg-hero-inner {
+  max-width: 1040px;                        /* padrão das outras: 860px */
+}
+.felice.obg-mc .obg-hero h1 {
+  /* 21ch = as 3 linhas pedidas. Medido no navegador: a janela de 3 linhas
+     desta headline vai de ~660px a ~860px (26ch dá 922px e vira 2 linhas
+     compridas; abaixo de 620px, 4). O `ch` acompanha o clamp do font-size,
+     então a proporção se mantém nas telas menores. */
+  max-width: 21ch;
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
   text-wrap: balance;                        /* 3 linhas equilibradas */
 }
-.felice .obg-mc .obg-lead {
+.felice.obg-mc .obg-lead {
   max-width: 84ch;                          /* 246 chars / 3 ≈ 82 por linha */
   text-wrap: balance;
+}
+/* A aula é a entrega do produto — merece a largura toda da coluna. */
+.felice.obg-mc .obg-video {
+  max-width: 960px;                         /* padrão das outras: 720px */
 }
 
 /* Mobile: mantém o comportamento original das demais obrigados. */
 @media (max-width: 760px) {
-  .felice .obg-mc .obg-hero h1 {
+  .felice.obg-mc .obg-hero h1 {
     max-width: 16ch;
     font-size: clamp(2.1rem, 5.2vw, 4rem);
   }
-  .felice .obg-mc .obg-lead {
+  .felice.obg-mc .obg-lead {
     max-width: 60ch;
   }
 }
