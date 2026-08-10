@@ -3,7 +3,7 @@ import '@/styles/maestria.css';
 import '@/styles/masterclass.css';
 
 import { MasterclassDeadlineBar } from './MasterclassDeadlineBar';
-import { MasterclassHeader } from './MasterclassHeader';
+// import { MasterclassHeader } from './MasterclassHeader';
 import {
   MasterclassHero,
   MasterclassFaixaFrase,
@@ -44,9 +44,12 @@ import { WHATSAPP_URL } from './content';
 
 export function MasterclassLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar">
+    <div className="felice felice-maestria has-urgency-bar mc-sem-header">
       <MasterclassDeadlineBar />
-      <MasterclassHeader />
+      {/* Header escondido a pedido do Leo (10/08/2026). Para trazer de volta:
+          descomente o <MasterclassHeader /> e tire `mc-sem-header` do wrapper
+          — é essa classe que devolve ao hero o espaço do header fixo. */}
+      {/* <MasterclassHeader /> */}
 
       <main>
         <MasterclassHero />

@@ -19,6 +19,16 @@
     padding-top: calc(72px + var(--urgency-h));
   }
 }
+/* Sem o header fixo, aqueles 104px/72px eram só a altura dele: sobrava um vão
+   enorme entre a barra de escassez e o badge do hero. Fica o respiro. */
+.felice.has-urgency-bar.mc-sem-header .mc-hero {
+  padding-top: calc(44px + var(--urgency-h));
+}
+@media (max-width: 760px) {
+  .felice.has-urgency-bar.mc-sem-header .mc-hero {
+    padding-top: calc(30px + var(--urgency-h));
+  }
+}
 .felice-maestria .mc-hero-inner {
   position: relative;
   z-index: 1;

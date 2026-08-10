@@ -30,7 +30,7 @@ export const FUNNELS: Record<string, Funnel> = {
   'masterclass-zigomatico': {
     slug: 'masterclass-zigomatico',
     offer: 'VXcVJD',
-    value: 67.0,
+    value: 19.9,
     contentName: 'Masterclass Zigomático',
   },
   'gestao-f4': {
