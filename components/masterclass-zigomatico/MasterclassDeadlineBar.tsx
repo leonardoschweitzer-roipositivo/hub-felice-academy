@@ -9,13 +9,13 @@ import { DEADLINE_ISO, HERO } from './content';
  * `--urgency-h` (header e hero descem o necessário).
  */
 function useCountdown(targetIso: string) {
-  const [left, setLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const [left, setLeft] = useState({ d: 0, h: 0, m: 0, s: 0, done: false });
   useEffect(() => {
     const target = new Date(targetIso).getTime();
     const tick = () => {
       const diff = target - Date.now();
       if (diff <= 0) {
-        setLeft({ d: 0, h: 0, m: 0, s: 0 });
+        setLeft({ d: 0, h: 0, m: 0, s: 0, done: true });
         return;
       }
       const s = Math.floor(diff / 1000);
@@ -24,6 +24,7 @@ function useCountdown(targetIso: string) {
         h: Math.floor((s % 86400) / 3600),
         m: Math.floor((s % 3600) / 60),
         s: s % 60,
+        done: false,
       });
     };
     tick();
@@ -37,12 +38,21 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 export function MasterclassDeadlineBar() {
   const barRef = useRef<HTMLDivElement>(null);
-  const { d, h, m, s } = useCountdown(DEADLINE_ISO);
+  const { d, h, m, s, done } = useCountdown(DEADLINE_ISO);
 
   useEffect(() => {
+    // Com o prazo vencido a barra sai do DOM, e aí `--urgency-h` precisa ser
+    // zerado na mão: o `.has-urgency-bar` do wrapper continua valendo e, sem
+    // isso, o default de 53px do felice.css deixa um vão preto sobre o hero.
+    const root = (barRef.current?.closest('.felice') ??
+      document.querySelector('.felice')) as HTMLElement | null;
+    if (!root) return;
+    if (done) {
+      root.style.setProperty('--urgency-h', '0px');
+      return;
+    }
     const bar = barRef.current;
-    const root = bar?.closest('.felice') as HTMLElement | null;
-    if (!bar || !root) return;
+    if (!bar) return;
     let last = -1;
     const apply = () => {
       const ht = bar.offsetHeight;
@@ -59,7 +69,13 @@ export function MasterclassDeadlineBar() {
       ro.disconnect();
       window.removeEventListener('resize', apply);
     };
-  }, []);
+  }, [done]);
+
+  // Prazo vencido → a barra sai do ar em vez de congelar em 00:00:00:00.
+  // O estado inicial é `done: false` de propósito: estas páginas são estáticas
+  // e o HTML vem do build, então decidir o vencimento no render quebraria a
+  // hidratação. O efeito acima roda no mesmo tick da montagem.
+  if (done) return null;
 
   return (
     <div className="urgency-bar" ref={barRef}>
