@@ -272,7 +272,7 @@ export function MasterclassBonus() {
             <span className="mz-bonus-total-val">{brl(total)}</span>
           </div>
           <p className="mz-bonus-total-note">
-            Tudo isto já está <b>incluso no acesso</b> — por apenas R$ 19,90.
+            Tudo isto já está <b>incluso no acesso</b> — por apenas R$ 67.
           </p>
         </div>
       </div>
@@ -280,7 +280,7 @@ export function MasterclassBonus() {
   );
 }
 
-/* ---------- O investimento (acesso único de R$ 19,90) ---------- */
+/* ---------- O investimento (acesso único de R$ 67) ---------- */
 export function MasterclassComparativo() {
   return (
     <section className="sec offer" id="acesso">
@@ -290,7 +290,7 @@ export function MasterclassComparativo() {
             O investimento
           </span>
           <h2>
-            Tudo isto por <span className="gold-grad">R$ 19,90</span>
+            Tudo isto por <span className="gold-grad">R$ 67</span>
           </h2>
         </div>
 
