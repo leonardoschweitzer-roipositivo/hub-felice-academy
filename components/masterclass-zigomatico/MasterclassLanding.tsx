@@ -24,6 +24,7 @@ import { MasterclassFooter } from './MasterclassFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
 import { WHATSAPP_URL } from './content';
 
 /* ============================================================
@@ -37,7 +38,8 @@ import { WHATSAPP_URL } from './content';
    Bônus → Investimento → Garantia → Sobre mim → Stats →
    FAQ → CTA final → Footer.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): CHECKOUT_URL e DEADLINE_ISO.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): DEADLINE_ISO — a data de
+      hoje é provisória.
    ============================================================ */
 
 export function MasterclassLanding() {
@@ -67,6 +69,7 @@ export function MasterclassLanding() {
       <MasterclassFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PurchaseToasts produto="a Masterclass" />
       <RevealOnScroll />
     </div>
   );

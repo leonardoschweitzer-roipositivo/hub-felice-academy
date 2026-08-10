@@ -39,13 +39,17 @@ const randInt = (lo: number, hi: number) => lo + Math.floor(Math.random() * (hi 
 /**
  * Avisos fake de compra ("Fulano comprou!") que aparecem no canto inferior
  * esquerdo em intervalos aleatórios e somem sozinhos.
+ *
+ * `produto` entra depois de "acabou de comprar" — o default mantém o Kit F4,
+ * que foi a primeira landing a usar isto. Nomes e cidades seguem fixos aqui:
+ * servem para qualquer landing de dentista.
  */
 /* duração da animação de saída (deve casar com .is-out no felice.css) */
 const OUT_MS = 400;
 /* tempo que o toast fica visível antes de começar a sair */
 const VISIBLE_MS = 5000;
 
-export function PurchaseToasts() {
+export function PurchaseToasts({ produto = 'o Kit F4' }: { produto?: string }) {
   const [toast, setToast] = useState<Toast | null>(null);
   const [phase, setPhase] = useState<'in' | 'out'>('in');
 
@@ -92,7 +96,7 @@ export function PurchaseToasts() {
           </span>
           <div className="purchase-toast-body">
             <b>{toast.nome}</b>
-            <span className="purchase-toast-msg">acabou de comprar o Kit F4</span>
+            <span className="purchase-toast-msg">acabou de comprar {produto}</span>
             <small>
               {toast.cidade} · há {toast.min} min
             </small>
