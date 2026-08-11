@@ -20,6 +20,12 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: { default: 'Plataforma', template: '%s · Felice Academy' },
   description: 'Área do aluno Felice Academy: cursos pelos 4 pilares, mentoria ao vivo e materiais.',
+  /* Área do aluno — e, hoje, um protótipo com dados fictícios (alunos,
+     pipeline, faturamento). Até 11/08/2026 as 16 páginas daqui eram
+     indexáveis e respondiam 200 em produção: era a única área privada do
+     site sem proteção de indexação. O `disallow` correspondente está em
+     app/robots.ts. */
+  robots: { index: false, follow: false },
 };
 
 /**

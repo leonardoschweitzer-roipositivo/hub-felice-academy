@@ -1,5 +1,25 @@
 import { CHECKOUT_URL } from '../config';
-export function Footer() {
+
+/* Rodapé compartilhado por todas as páginas do site.
+
+   Os dois links do meio são OPCIONAIS de propósito. Este componente é
+   renderizado em 14 lugares — landings, vitrine, páginas legais, área do
+   aluno, obrigados de outros produtos — e até 11/08/2026 ele mostrava, em
+   todos eles, um "Comprar" fixo apontando para o checkout do Kit Gestão F4
+   e um "O método" que só existe como âncora na landing do Kit.
+
+   Agora quem renderiza decide: `checkoutUrl` para vender o produto DAQUELA
+   página, `metodoAnchor` só onde a seção existe. Sem props, o rodapé fica
+   com marca + links legais, que é o que sempre faz sentido. */
+export function Footer({
+  checkoutUrl,
+  checkoutLabel = 'Comprar',
+  metodoAnchor,
+}: {
+  checkoutUrl?: string;
+  checkoutLabel?: string;
+  metodoAnchor?: string;
+} = {}) {
   return (
     <footer className="felice-footer">
       <div className="wrap">
@@ -12,10 +32,12 @@ export function Footer() {
           </a>
         </div>
         <div className="foot-links">
-          <a href="#metodo">O método</a>
-          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
-            Comprar
-          </a>
+          {metodoAnchor && <a href={metodoAnchor}>O método</a>}
+          {checkoutUrl && (
+            <a href={checkoutUrl} target="_blank" rel="noopener noreferrer">
+              {checkoutLabel}
+            </a>
+          )}
           <a href="/privacidade">Política de Privacidade</a>
           <a href="/termos">Termos de Uso</a>
         </div>
@@ -33,3 +55,7 @@ export function Footer() {
     </footer>
   );
 }
+
+/** Checkout do Kit — reexportado para a landing do Kit continuar passando
+    o próprio link sem importar de dois lugares. */
+export { CHECKOUT_URL };

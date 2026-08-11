@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { MasterclassLanding } from '@/components/masterclass-zigomatico/MasterclassLanding';
 import { ViewContent } from '@/components/tracking/ViewContent';
+import { paginaMeta } from '@/lib/seo';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -17,11 +18,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'Masterclass Zigomático Descomplicado — Dr. Sócrates Tavares | Felice Academy',
   description:
     'Domine os princípios dos implantes zigomáticos em poucas horas e transforme casos impossíveis em faturamento real. Masterclass do Dr. Sócrates Tavares — acesso completo com todos os bônus por R$ 67 (ou 12x de R$ 6,89). Garantia de 7 dias.',
-};
+});
 
 export default function MasterclassZigomaticoPage() {
   return (

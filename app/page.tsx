@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { HubLanding } from '@/components/hub/HubLanding';
+import { paginaMeta } from '@/lib/seo';
 
 // Mesmas fontes do design system Felice (Poppins display + Lato body).
 const poppins = Poppins({
@@ -17,11 +18,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'Felice Academy — Educação, Gestão e Software para Dentistas',
   description:
     'O ecossistema Felice Academy: cursos, mentoria e o Felice CRM. Educação e ferramentas para o dentista evoluir clínica e carreira.',
-};
+});
 
 export default function HomePage() {
   return (

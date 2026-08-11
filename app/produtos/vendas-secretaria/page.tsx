@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { SecretariaVendeLanding } from '@/components/vendas-secretaria/SecretariaVendeLanding';
 import { ViewContent } from '@/components/tracking/ViewContent';
+import { paginaMeta } from '@/lib/seo';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -17,11 +18,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'CRC de Alta Performance — Treinamento comercial para a recepção | Felice Academy',
   description:
     'O curso pronto que você entrega à sua equipe de recepção para transformar atendimento em tratamento fechado. Do primeiro contato no WhatsApp ao follow-up do orçamento, com scripts e planilhas inclusos e bônus ao vivo. Garantia de 7 dias.',
-};
+});
 
 export default function VendasSecretariaPage() {
   return (

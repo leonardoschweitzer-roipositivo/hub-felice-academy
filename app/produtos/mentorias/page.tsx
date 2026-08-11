@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { MentoriasHub } from '@/components/mentorias/MentoriasHub';
+import { paginaMeta } from '@/lib/seo';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -16,11 +17,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'Mentorias — Felice Academy | Dr. Sócrates Tavares',
   description:
     'Escolha a sua mentoria com o Dr. Sócrates: Gestão F4 (clínica organizada e lucrativa) ou Zigomático (domínio cirúrgico com hands-on presencial). Entrada por aplicação.',
-};
+});
 
 export default function MentoriasPage() {
   return (
