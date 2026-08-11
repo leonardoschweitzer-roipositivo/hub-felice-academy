@@ -1,5 +1,6 @@
 /* ============================================================
-   KIT GESTÃO F4 — links e preço da oferta.
+   KIT GESTÃO F4 — links, preço e vídeo, compartilhados pelas páginas
+   do produto (landing de vendas, obrigado e área do Kit).
    O checkout estava repetido em 3 seções (Oferta, FinalCta, Footer);
    ficar em três lugares é como o `ch_id` some numa troca de link.
    ============================================================ */
@@ -14,3 +15,13 @@ export const PRECO = {
   aVista: 'R$ 97',
   parcela: { vezes: '12x', valor: 'R$ 9,97' },
 };
+
+/** Vídeo de "como usar os documentos". Aparece na página de obrigado E na área
+ *  do Kit — por isso mora aqui, e não no config da obrigado. Vazio esconde os
+ *  dois slots.
+ *
+ *  ⚠️ PLACEHOLDER: o Wistia `ufbdtd0dj4` NÃO é o Dr. Sócrates (aparece outra
+ *  pessoa) e é o mesmo embed reusado nas obrigados de gestao-f4 e maestria.
+ *  A copy das duas páginas trata esse vídeo como sendo dele — trocar pelo
+ *  vídeo real antes de considerar publicado. */
+export const VIDEO_URL = 'https://fast.wistia.net/embed/iframe/ufbdtd0dj4';
