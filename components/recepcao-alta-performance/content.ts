@@ -13,8 +13,10 @@
    - CRC de Alta Performance (/produtos/vendas-secretaria): o par
      COMERCIAL, que cuida do telefone/WhatsApp e do fechamento do
      orçamento. Este aqui cuida do PRESENCIAL e da experiência.
-   - Gestão F4 (/produtos/gestao-f4): curso para o DONO montar o
-     sistema dos 4 pilares da gestão (nível estratégico).
+   - Consultoria Gestão F4 (/produtos/consultoria): o Dr. Sócrates
+     monta o sistema dos 4 pilares COM o dono, em 4 semanas de
+     auditoria (nível estratégico). NÃO é curso — a rota
+     /produtos/gestao-f4 anuncia um curso que não existe.
    As duas diferenças estão explicadas no FAQ para não canibalizar.
 
    A grade abaixo é a seção "1. Conteúdo Programático" do plano de

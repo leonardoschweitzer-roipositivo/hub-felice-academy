@@ -8,8 +8,10 @@
    Posicionamento: CURSO B2B — quem compra é o DONO da clínica para
    TREINAR a equipe de recepção. Formato: aulas gravadas + bônus ao
    vivo (encontro de dúvidas). NÃO confundir com:
-   - Gestão F4 (/produtos/gestao-f4): curso para o DONO montar o
-     sistema dos 4 pilares da gestão (nível estratégico).
+   - Consultoria Gestão F4 (/produtos/consultoria): o Dr. Sócrates
+     monta o sistema dos 4 pilares COM o dono, em 4 semanas de
+     auditoria (nível estratégico). NÃO é curso — a rota
+     /produtos/gestao-f4 anuncia um curso que não existe.
    Diferença explicada no FAQ para não canibalizar o Gestão F4.
 
    ⚠️ TROCAR antes de publicar:
