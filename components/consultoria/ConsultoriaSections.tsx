@@ -12,6 +12,8 @@ import {
   METODO,
   CICLO,
   CICLO_INTRO,
+  CICLO_SEMANAS,
+  CICLO_FAIXAS,
   ENTREGAS,
   CLINICA,
   ACADEMY,
@@ -288,13 +290,58 @@ export function ConsultoriaCiclo() {
             {CICLO_INTRO}
           </p>
         </div>
-        <div className="pillars cons-pillars-4">
-          {CICLO.map((c, i) => (
-            <div className={`pillar reveal${i ? ` d${i}` : ''}`} key={c.titulo}>
-              <div className="num">{String(i + 1).padStart(2, '0')}</div>
-              <span className="cons-setup">{c.setup}</span>
-              <h3>{c.titulo}</h3>
-              <p>{c.objetivo}</p>
+        {/* Gantt: os 4 setups eram cards soltos e não diziam QUANDO cada um
+            acontece. Aqui viram barras numa linha do tempo de 4 semanas.
+            O eixo (`--cols`) sai de CICLO_SEMANAS, e cada barra é posicionada
+            pelo campo `semana` — nada é inferido do índice. */}
+        <div className="cons-gantt reveal" style={{ ['--cols' as string]: CICLO_SEMANAS }}>
+          <div className="cons-gantt-head">
+            <span className="cons-gantt-canto" aria-hidden="true" />
+            <div className="cons-gantt-eixo">
+              {Array.from({ length: CICLO_SEMANAS }, (_, i) => (
+                <span className="cons-gantt-semana" key={i}>
+                  Semana {i + 1}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {CICLO.map((c) => (
+            <div className="cons-gantt-linha" key={c.titulo}>
+              <div className="cons-gantt-rotulo">
+                <span className="cons-setup">{c.setup}</span>
+                <h3>{c.titulo}</h3>
+                <p>{c.objetivo}</p>
+              </div>
+              <div className="cons-gantt-trilha">
+                {/* Duas versões do rótulo: no desktop o eixo de semanas está
+                    logo acima, mas a barra tem largura de sobra; no mobile o
+                    eixo some e a barra fica com ~77px — só cabe "S3". */}
+                <span className="cons-gantt-barra" style={{ gridColumn: `${c.semana} / span 1` }}>
+                  <span className="cons-gantt-longo">Encontro · semana {c.semana}</span>
+                  <span className="cons-gantt-curto" aria-hidden="true">
+                    S{c.semana}
+                  </span>
+                </span>
+              </div>
+            </div>
+          ))}
+
+          {/* Nas faixas o título fica no rótulo, como nas linhas de setup — e
+              não dentro da barra. Dentro, o texto de "16 entregáveis +
+              planejamento de 12 meses" estourava a barra de uma semana só. */}
+          {CICLO_FAIXAS.map((f) => (
+            <div className="cons-gantt-linha cons-gantt-linha--faixa" key={f.titulo}>
+              <div className="cons-gantt-rotulo">
+                <h3>{f.titulo}</h3>
+              </div>
+              <div className="cons-gantt-trilha">
+                <span
+                  className={`cons-gantt-barra cons-gantt-barra--${f.tipo ?? 'continua'}`}
+                  style={{ gridColumn: `${f.de} / span ${f.ate - f.de + 1}` }}
+                  aria-hidden="true"
+                />
+              </div>
             </div>
           ))}
         </div>

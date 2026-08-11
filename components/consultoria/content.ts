@@ -158,28 +158,55 @@ export const METODO: { n: string; titulo: string; texto: string }[] = [
 export const CICLO_INTRO =
   'Transformar clínicas odontológicas em estruturas organizadas, previsíveis e rentáveis, por meio de um método prático de gestão que alinha atendimento, comercial e marketing para gerar crescimento sustentável.';
 
-export const CICLO: { setup: string; titulo: string; objetivo: string }[] = [
+/** Total de semanas do ciclo — é o eixo do gráfico. */
+export const CICLO_SEMANAS = 4;
+
+/** `semana` posiciona a barra no gráfico. Vem do FAQ: "São 4 semanas, com 4
+ *  encontros — um por setup". Se um setup passar a ocupar duas semanas, é só
+ *  mudar aqui; o componente não assume que semana = índice. */
+export const CICLO: { setup: string; titulo: string; objetivo: string; semana: number }[] = [
   {
     setup: 'Setup 1',
     titulo: 'Auditoria e Gestão',
     objetivo: 'Descobrir onde a clínica está perdendo dinheiro, energia e oportunidade.',
+    semana: 1,
   },
   {
     setup: 'Setup 2',
     titulo: 'Atendimento e Jornada do Paciente',
     objetivo:
       'Fazer da recepção e do atendimento uma ferramenta estratégica de conversão, e não um custo.',
+    semana: 2,
   },
   {
     setup: 'Setup 3',
     titulo: 'Setor Comercial',
     objetivo: 'Analisar a taxa de conversão e saber como aumentar o número de pacientes.',
+    semana: 3,
   },
   {
     setup: 'Setup 4',
     titulo: 'Marketing Estratégico',
     objetivo:
       'Criar previsibilidade de novos pacientes e um setor de marketing que gera resultado.',
+    semana: 4,
+  },
+];
+
+/** Faixas contínuas do gráfico: o que corre POR BAIXO dos encontros. As duas
+ *  saem do FAQ ("entre eles, os especialistas analisam os seus números") e da
+ *  oferta (16 entregáveis + planejamento de 12 meses). */
+export const CICLO_FAIXAS: { titulo: string; de: number; ate: number; tipo?: 'entrega' }[] = [
+  {
+    titulo: 'Análise dos seus números entre os encontros',
+    de: 1,
+    ate: CICLO_SEMANAS,
+  },
+  {
+    titulo: '16 entregáveis + planejamento de 12 meses',
+    de: CICLO_SEMANAS,
+    ate: CICLO_SEMANAS,
+    tipo: 'entrega',
   },
 ];
 
