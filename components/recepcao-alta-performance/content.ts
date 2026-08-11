@@ -25,16 +25,19 @@
    Emocional) — decisão do Leo em 10/08/2026: vale o Conteúdo
    Programático; o Guia entra só como matéria-prima da copy.
 
+   ✅ Checkout e preço já são os reais (Payfast/Greenn, 11/08/2026):
+   12x de R$ 61,38 ou R$ 597,00 à vista — o mesmo do CRC, o produto-par.
+
    ⚠️ TROCAR antes de publicar:
-   - CHECKOUT_URL: link real de checkout (padrão Felice = Green).
    - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
    - BONUS: confirmar o que é realmente entregue (e os valores de
      ancoragem) — a lista foi derivada do material do próprio curso.
    ============================================================ */
 
-/** Link de checkout (pagamento). PLACEHOLDER — trocar pelo link real. */
-export const CHECKOUT_URL = '#oferta';
+/** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
+export const CHECKOUT_URL =
+  'https://payfast.greenn.com.br/43u7fdg/offer/iEtbZU?ch_id=140311';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
@@ -324,8 +327,8 @@ export const OFERTA = {
     'Certificado de conclusão da Felice Academy',
     'Garantia incondicional de 7 dias',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 29,70' },
-  aVista: 'R$ 297,00',
+  parcela: { vezes: '12x', valor: 'R$ 61,38' },
+  aVista: 'R$ 597,00',
   cta: 'Quero treinar minha recepção',
 };
 
