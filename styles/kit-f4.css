@@ -1367,6 +1367,17 @@
 .felice-kit.kit-index .kit-index-hero h1 {
   text-transform: uppercase;
 }
+/* Com o vídeo fechando o herói, o respiro padrão vira buraco: o
+   `padding-bottom` do .hub-hero (110px) somava com o `padding-top` do .sec
+   seguinte (120px) e dava 256px de vão. Encolhem para ~120px somados no
+   desktop e ~70px no mobile. */
+.felice-kit.kit-index .kit-index-hero {
+  padding-bottom: clamp(30px, 4vw, 56px);
+}
+.felice-kit.kit-index .hub-products {
+  padding-top: clamp(40px, 5vw, 64px);
+}
+
 /* Vídeo de "como usar os documentos" no herói do índice. Mesmo wrapper 16:9
    do `.obg-video`, redeclarado aqui porque a rota do Kit não importa
    obrigado.css (e importar 10 KB de folha só por 7 propriedades não paga). */
