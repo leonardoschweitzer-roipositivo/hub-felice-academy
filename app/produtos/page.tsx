@@ -21,7 +21,7 @@ const lato = Lato({
 export const metadata: Metadata = paginaMeta({
   title: 'Produtos — Felice Academy | Cursos, Mentoria e Software para Dentistas',
   description:
-    'O catálogo completo da Felice Academy: cursos (Zigomático, Gestão F4), mentorias e o Felice CRM, além de materiais gratuitos. Escolha o próximo passo da sua clínica.',
+    'O catálogo completo da Felice Academy: cursos de zigomático e de atendimento, mentorias, consultoria e o Felice CRM, além de materiais gratuitos. Escolha o próximo passo da sua clínica.',
 });
 
 export default function ProdutosPage() {

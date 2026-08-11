@@ -26,10 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/termos/`, priority: 0.3 },
   ];
   /* Fora daqui de propósito:
-     - /produtos/gestao-f4 — landing órfã (nenhum link interno leva a ela) de
-       um curso que, segundo os comentários do próprio repo, não existe, e com
-       CHECKOUT_URL='#oferta'. Continua no ar; só parou de ser oferecida ao
-       Google enquanto não houver oferta real. Reativar junto com o checkout.
+     - /produtos/gestao-f4 — a landing do "Curso Gestão F4" foi REMOVIDA em
+       11/08/2026 (o curso não existe; Gestão F4 é a consultoria). A rota
+       redireciona 301 para /produtos/consultoria — ver next.config.mjs.
      - /plataforma/** — protótipo com dados fictícios, agora noindex + disallow.
      - Páginas de obrigado, questionário e confirmação — todas noindex. */
 }
