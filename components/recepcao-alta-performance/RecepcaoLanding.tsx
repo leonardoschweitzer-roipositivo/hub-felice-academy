@@ -40,8 +40,8 @@ import { WHATSAPP_URL } from './content';
       reserva `--urgency-h` de espaço no topo. Se tirar a barra, tire a
       classe também, senão sobra um vão de 53px acima do hero.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): link de checkout,
-      data do lote e depoimentos reais.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): data do lote e
+      depoimentos reais. Checkout e preço já são os reais.
    ============================================================ */
 
 export function RecepcaoLanding() {

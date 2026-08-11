@@ -58,10 +58,8 @@ export const FUNNELS: Record<string, Funnel> = {
   },
   'recepcao-alta-performance': {
     slug: 'recepcao-alta-performance',
-    offer: null, // ⏳ preencher quando o link Green existir
-    // ⚠️ placeholder — herdado de quando o CRC (produto-par) também era 297.
-    // O CRC subiu para 597 em 11/08/2026; este aqui segue a confirmar.
-    value: 297.0,
+    offer: 'iEtbZU',
+    value: 597.0, // mesmo preço do CRC, o produto-par
     contentName: 'Recepção de Alta Performance',
   },
 };
