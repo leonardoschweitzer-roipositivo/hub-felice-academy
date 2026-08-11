@@ -59,7 +59,7 @@ export function MaestriaCasos() {
                       Imagem em breve
                     </span>
                   )}
-                  <span className="mz-caso-tag">Caso {String(i + 1).padStart(2, '0')}</span>
+                  <span className="mz-caso-tag">{c.etapa ?? `Caso ${String(i + 1).padStart(2, '0')}`}</span>
                 </div>
                 <figcaption>
                   <b>{c.titulo}</b>

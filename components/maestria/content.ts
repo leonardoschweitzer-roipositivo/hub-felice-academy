@@ -122,16 +122,54 @@ export const METODO: { n: string; titulo: string; texto: string }[] = [
 ];
 
 /* ---------- Casos reais (carrossel) ----------
-   ⚠️ As imagens entram depois: preencha `img` com o caminho em /images
-   (ex.: '/images/caso-quadrizigoma.jpg'). Sem `img`, mostra um placeholder. */
-export type Caso = { titulo: string; legenda: string; img?: string };
+   Mesmos registros do Dr. Sócrates usados na Masterclass (as imagens vivem
+   em /public/images e são compartilhadas), na ordem da jornada do caso.
+   A tag mostra a ETAPA, não "Caso 01/02/...": são estágios de poucos casos,
+   não sete casos distintos. Sem `etapa`, o card volta a numerar. */
+export type Caso = { titulo: string; legenda: string; img?: string; etapa?: string };
 export const CASOS: Caso[] = [
-  { titulo: 'Maxila atrófica severa', legenda: 'Reabilitação total com quadrizigoma' },
-  { titulo: 'Híbrido sobre zigomáticos', legenda: 'Planejamento digital e cirurgia guiada' },
-  { titulo: 'Carga imediata', legenda: 'Do plano à prótese provisória no mesmo dia' },
-  { titulo: 'Abordagem transsinusal', legenda: 'Trajetória e posicionamento guiado' },
-  { titulo: 'Zona segura', legenda: 'Ancoragem sem intercorrências' },
-  { titulo: 'Reabilitação complexa', legenda: 'Decisão clínica passo a passo' },
+  {
+    etapa: 'Planejamento',
+    titulo: 'Planejamento digital em 3D',
+    legenda: 'Vista frontal: guia e trajetórias definidas antes de abrir',
+    img: '/images/caso-planejamento-3d-frontal.jpg',
+  },
+  {
+    etapa: 'Planejamento',
+    titulo: 'Trajetória de ancoragem',
+    legenda: 'Vista lateral: percurso do implante até o corpo do zigomático',
+    img: '/images/caso-planejamento-3d-lateral.jpg',
+  },
+  {
+    etapa: 'Preparo',
+    titulo: 'Kit cirúrgico montado',
+    legenda: 'Fresas longas e instrumental específico do protocolo',
+    img: '/images/caso-kit-cirurgico.jpg',
+  },
+  {
+    etapa: 'Cirurgia',
+    titulo: 'Guia cirúrgico em posição',
+    legenda: 'Anilhas e pinos de fixação conduzindo a fresagem',
+    img: '/images/caso-cirurgia-guiada-guia.jpg',
+  },
+  {
+    etapa: 'Cirurgia',
+    titulo: 'Fresagem sob o guia',
+    legenda: 'Broca de 2,35 mm com stop, no acesso já preparado',
+    img: '/images/caso-cirurgia-guiada-fresagem.jpg',
+  },
+  {
+    etapa: 'Resultado',
+    titulo: 'Quadrizigoma',
+    legenda: 'Quatro zigomáticos sustentando a barra na maxila atrófica',
+    img: '/images/caso-quadrizigoma-panoramica.jpg',
+  },
+  {
+    etapa: 'Resultado',
+    titulo: 'Híbrido sobre zigomáticos',
+    legenda: 'Barra na maxila e implantes convencionais na mandíbula',
+    img: '/images/caso-hibrido-panoramica.jpg',
+  },
 ];
 
 /* ---------- Módulos (conteúdo) ---------- */
