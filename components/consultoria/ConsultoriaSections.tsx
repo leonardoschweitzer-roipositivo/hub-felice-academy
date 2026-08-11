@@ -34,12 +34,14 @@ import {
 
 /* ---------- Hero ----------
    Duas colunas: headline + CTAs à esquerda, cards "glass" de prova à
-   direita. Sem `.mz-hero-photo` — a landing ainda não tem foto de hero
-   própria (a regra da Maestria traz a foto do zigomático hardcoded). */
+   direita. A foto de fundo usa `.cons-hero-photo` (consultoria-landing.css)
+   e não a `.mz-hero-photo` da Maestria, que traz a foto do zigomático
+   hardcoded no CSS. */
 export function ConsultoriaHero() {
   return (
-    <section className="hero mz-hero-sec" id="topo">
+    <section className="hero mz-hero-sec cons-hero-sec" id="topo">
       <div className="hero-bg" />
+      <div className="cons-hero-photo" aria-hidden="true" />
 
       <div className="wrap mz-hero">
         {/* LEFT */}
