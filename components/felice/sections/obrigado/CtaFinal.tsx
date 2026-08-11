@@ -1,8 +1,9 @@
 import { CtaConsultoria } from './Cta';
 import { DOCS_URL } from './config';
 
-/* Fechamento: último empurrão para o agendamento, com o acesso aos
-   documentos ainda disponível como caminho secundário. */
+/* Fechamento: último empurrão para o agendamento. O sublink aqui leva à ÁREA
+   do Kit (topbar, busca, prev/next entre documentos) — e não à âncora da
+   grade, que jogaria o leitor de volta ao topo depois do CTA final. */
 export function CtaFinal() {
   return (
     <section className="sec obg-final">
@@ -21,7 +22,7 @@ export function CtaFinal() {
           </p>
           <CtaConsultoria size="lg" />
           <a className="obg-sublink" href={DOCS_URL}>
-            Acessar meus documentos do Kit F4 →
+            Ir para a área completa do Kit F4 →
           </a>
         </div>
       </div>
