@@ -397,3 +397,36 @@
     max-width: 60ch;
   }
 }
+
+/* ============================================================
+   Kit Gestão F4 · obrigado — A ENTREGA (grade dos 4 documentos)
+   O card em si vem de hub.css + kit-f4.css, escopado pelas classes
+   `felice-hub felice-kit` que ficam no <section> (ver MeusDocumentos).
+   Aqui só o que é específico desta página.
+   ============================================================ */
+.felice .obg-docs {
+  /* alvo da âncora #meus-documentos — mesmo respiro do .obg-video */
+  scroll-margin-top: 24px;
+}
+/* No Kit o botão de busca vive numa topbar flex; aqui ele fica solto,
+   centralizado entre o sec-head e a grade. */
+.felice .obg-docs-search-row {
+  display: flex;
+  justify-content: center;
+  margin: 26px 0 30px;
+}
+/* Ponte da entrega de volta para a consultoria. */
+.felice .obg-docs-ponte {
+  max-width: 62ch;
+  margin: 40px auto 0;
+  text-align: center;
+}
+.felice .obg-docs-ponte p {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.felice .obg-docs-ponte strong {
+  color: var(--text);
+}

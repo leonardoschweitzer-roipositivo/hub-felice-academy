@@ -1,5 +1,5 @@
 import { CtaConsultoria } from './Cta';
-import { DOCS_URL, VIDEO_URL } from './config';
+import { DOCS_ANCHOR, VIDEO_URL } from './config';
 
 /* Benefícios (2 palavras) que desfilam na esteira do rodapé do hero. */
 const MARQUEE_ITEMS = [
@@ -13,9 +13,10 @@ const MARQUEE_ITEMS = [
   'Resultado real',
 ];
 
-/* Hero pós-compra: parabeniza, confirma o acesso e direciona ao
-   único objetivo da página — agendar a consultoria. O acesso aos
-   documentos fica como link secundário discreto. */
+/* Hero pós-compra: parabeniza, confirma o acesso, mostra o vídeo em que o
+   Dr. Sócrates explica como usar os documentos e direciona à consultoria.
+   Os documentos em si vêm na seção seguinte (MeusDocumentos), então o
+   sublink daqui é uma âncora interna, não um link para outra rota. */
 export function HeroSucesso() {
   return (
     <header className="obg-hero">
@@ -60,8 +61,11 @@ export function HeroSucesso() {
         <div className="obg-cta-row reveal d3">
           <CtaConsultoria size="lg" />
         </div>
-        <a className="obg-sublink reveal d3" href={DOCS_URL}>
-          Prefiro acessar meus documentos primeiro →
+        {/* Âncora, não link para outra rota: os documentos estão logo abaixo.
+            Mandar para fora daqui seria vazar o funil no ponto de maior
+            atenção da página. A seta para baixo comunica "é aqui embaixo". */}
+        <a className="obg-sublink reveal d3" href={DOCS_ANCHOR}>
+          Ver meus 4 documentos agora ↓
         </a>
       </div>
 

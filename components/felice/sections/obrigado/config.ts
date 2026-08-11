@@ -10,8 +10,13 @@ export const QUESTIONARIO_URL = '/produtos/kitgestaof4/consultoria';
 /** Rota da página de confirmação (recebimento dos dados). */
 export const CONFIRMACAO_URL = '/produtos/kitgestaof4/consultoria/confirmado';
 
-/** Acesso aos 4 documentos do Kit (link secundário, discreto). */
+/** Área completa do Kit (topbar, busca, prev/next entre documentos).
+    Continua existindo depois de a grade entrar nesta página: é o link salvo
+    na plataforma e o destino do CTA final, da confirmação e do quiz. */
 export const DOCS_URL = '/produtos/kitgestaof4/kit-f4';
+
+/** Âncora da seção de documentos DENTRO desta página (ver MeusDocumentos). */
+export const DOCS_ANCHOR = '#meus-documentos';
 
 /** WhatsApp de suporte (botão flutuante). */
 export const WHATSAPP_URL =
