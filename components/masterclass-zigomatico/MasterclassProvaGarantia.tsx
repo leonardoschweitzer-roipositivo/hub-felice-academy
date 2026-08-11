@@ -28,7 +28,7 @@ export function MasterclassDepoimentos() {
           </h2>
         </div>
 
-        <div className="mz-casos mc-depos reveal">
+        <div className="mz-casos mz-depos reveal">
           <button type="button" className="mz-casos-nav mz-casos-prev" onClick={() => scroll(-1)} aria-label="Depoimentos anteriores">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="m15 18-6-6 6-6" />
@@ -42,7 +42,7 @@ export function MasterclassDepoimentos() {
                   {/* Os depoimentos são verticais (9:16): o player fica DENTRO do
                       card, e os slots sem vídeo guardam a mesma proporção para a
                       fileira não ficar desalinhada enquanto os outros não chegam. */}
-                  <div className="mc-depo-video">
+                  <div className="mz-depo-video">
                     {d.embed ? (
                       <iframe
                         id={d.embedId}
@@ -56,7 +56,7 @@ export function MasterclassDepoimentos() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={d.thumb} alt={`Depoimento de ${d.nome}`} loading="lazy" />
                     ) : (
-                      <span className="mc-depo-ph">Depoimento em vídeo em breve</span>
+                      <span className="mz-depo-ph">Depoimento em vídeo em breve</span>
                     )}
                   </div>
                   <p>&quot;{d.texto}&quot;</p>

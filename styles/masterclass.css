@@ -231,53 +231,6 @@
   box-shadow: var(--glow);
 }
 
-/* Depoimentos em carrossel (mesma linha, scroll horizontal). */
-.felice-maestria .mc-depos {
-  margin-top: 40px;
-}
-.felice-maestria .mc-depos .mz-video {
-  /* Mais estreito que o card 16:9 da Maestria: o player é vertical, e a 360px
-     de largura o 9:16 sozinho passaria de 600px de altura. */
-  flex: 0 0 clamp(240px, 72vw, 296px);
-  scroll-snap-align: start;
-  margin: 0;
-}
-.felice-maestria .mc-depo-video {
-  position: relative;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--r);
-  overflow: hidden;
-  margin-bottom: 14px;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(232, 180, 71, 0.16), transparent 60%),
-    linear-gradient(160deg, #16161b, #0e0e11);
-}
-.felice-maestria .mc-depo-video iframe,
-.felice-maestria .mc-depo-video img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-.felice-maestria .mc-depo-video img {
-  object-fit: cover;
-}
-/* Slot ainda sem vídeo. Sem botão de play: play que não toca engana o visitante. */
-.felice-maestria .mc-depo-ph {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 0 24px;
-  text-align: center;
-  color: var(--muted-2);
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.6;
-}
-
 /* Faixa-CTA com fundo dourado da identidade (igual à urgency-bar). */
 .felice-maestria .mc-cta-band {
   background: var(--grad-gold);

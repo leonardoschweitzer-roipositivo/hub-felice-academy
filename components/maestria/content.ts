@@ -296,25 +296,55 @@ export const MENTOR = {
   ],
 };
 
-/* ---------- Depoimentos (vídeo) ----------
-   ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais de cada aluno.
-   Enquanto não houver, o card mostra um placeholder com o play. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+/* ---------- Depoimentos (vídeo vertical) ----------
+   Os mesmos 4 depoimentos da Masterclass (ver masterclass-zigomatico/content.ts):
+   são alunos da Felice falando do professor e do método, e o `meta` fica
+   genérico de propósito — não afirma de qual curso cada um veio.
+
+   `embed`/`embedId`: player do Panda, 9:16, tocado dentro do card.
+   `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
+   mantido porque `MaestriaDepoimentos` ainda o renderiza. */
+export type Depoimento = {
+  nome: string;
+  meta: string;
+  texto: string;
+  embed?: string;
+  embedId?: string;
+  video?: string;
+  thumb?: string;
+};
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Juliene',
-    meta: 'Aluna · Felice Academy',
-    texto: 'Saí insegura para indicar e hoje planejo e opero meus próprios casos zigomáticos com método.',
+    nome: 'Dr. Emmanuel Bezerra',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Curso excepcional. Aprendi a tirar a equipe sob a cadeira e a indicar com critério. Mudou meu jogo.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
+    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
   },
   {
-    nome: 'Dr. João Marcel',
+    nome: 'Dr. Thiago Vinícius',
     meta: 'Aluno · Felice Academy',
-    texto: 'O fluxo guiado mudou meu jogo: o que eu encaminhava, agora resolvo na minha clínica.',
+    texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
+    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
   },
   {
-    nome: 'Dr. Cristhiano Salustio',
+    nome: 'Dr. Paulo Bezerra',
     meta: 'Aluno · Felice Academy',
-    texto: 'Conteúdo direto ao ponto, do diagnóstico ao hands-on. Ganhei confiança para os casos complexos.',
+    texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+  },
+  {
+    nome: 'Dr. Juliano Nunes',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
+    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
   },
 ];
 
