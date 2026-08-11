@@ -96,23 +96,6 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '04',
-    titulo: 'Gestão F4',
-    descricao:
-      'O curso em vídeo dos 4 pilares da gestão para dentistas: aprenda, no seu ritmo, a fazer a clínica atender, agendar e vender no automático.',
-    categoria: 'Curso',
-    estado: 'disponivel',
-    imagem: '/images/card-gestao-f4.jpg',
-    href: '/produtos/gestao-f4',
-    interno: true,
-    cta: 'Acessar',
-    detalhes: [
-      'Atendimento, Agendamento, Marketing e Gestão',
-      '4 módulos passo a passo, 100% online',
-      'POPs, scripts e calendário inclusos',
-    ],
-  },
-  {
-    num: '05',
     // Renomeado de "A Secretária que Vende" em 10/08/2026. A rota segue
     // /produtos/vendas-secretaria de propósito: mudar o slug quebraria os
     // links e anúncios que já apontam para lá.
@@ -135,8 +118,8 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    num: '06',
-    // Par do CRC de Alta Performance (05): a CRC cuida do telefone/WhatsApp
+    num: '05',
+    // Par do CRC de Alta Performance (04): a CRC cuida do telefone/WhatsApp
     // e do fechamento do orçamento, este cuida do presencial na clínica.
     titulo: 'Recepção de Alta Performance',
     descricao:
@@ -159,18 +142,23 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    // Era o nó 06; virou 07 quando a Recepção de Alta Performance entrou.
-    num: '07',
-    titulo: 'Consultoria',
+    // FUSÃO (11/08/2026): existiam dois cards, "Gestão F4" (Curso, nó 04) e
+    // "Consultoria" (nó 07). O curso Gestão F4 não existe — Gestão F4 É a
+    // consultoria de 4 semanas. Virou um card só, com o nome que a própria
+    // landing usa no <title>: "Consultoria Gestão F4".
+    num: '06',
+    titulo: 'Consultoria Gestão F4',
     descricao:
-      'Diagnóstico e plano de ação sob medida para a sua clínica, conduzidos pelo Dr. Sócrates: 4 semanas auditando gestão, atendimento, comercial e marketing.',
+      'Os 4 pilares da clínica auditados de perto pelo Dr. Sócrates: 4 semanas de diagnóstico em gestão, atendimento, comercial e marketing, com plano de ação sob medida.',
     categoria: 'Consultoria',
     estado: 'disponivel',
     href: '/produtos/consultoria',
     interno: true,
     cta: 'Ver a consultoria',
-    // ⚠️ Falta /images/card-consultoria.jpg. Sem o campo `imagem`, o card
-    // cai no fundo padrão — pôr o arquivo e a linha quando a arte chegar.
+    // Herdou a arte do card antigo do curso: é um dentista analisando
+    // indicadores da clínica, que descreve a auditoria melhor do que
+    // descrevia um curso em vídeo. Some a pendência do card-consultoria.jpg.
+    imagem: '/images/card-gestao-f4.jpg',
     detalhes: [
       '4 semanas de auditoria nos 4 setups da clínica',
       '16 entregáveis prontos para a equipe aplicar',
@@ -178,8 +166,9 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    // Era o nó 06; foi para 08 quando Recepção e Consultoria entraram.
-    num: '08',
+    // Era o nó 06; foi para 08 quando Recepção e Consultoria entraram, e
+    // voltou para 07 com a fusão do Gestão F4 na Consultoria.
+    num: '07',
     titulo: 'Felice CRM',
     descricao:
       'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
@@ -282,7 +271,8 @@ export type Stat = { num: string; label: string };
 // ⚠️ Números a confirmar com o cliente.
 export const STATS: Stat[] = [
   { num: '+1.200', label: 'Dentistas impactados' },
-  { num: '7', label: 'Produtos no ecossistema' },
+  // Conta os cards realmente visíveis: já ficou desatualizado uma vez.
+  { num: String(PRODUTOS_VISIVEIS.length), label: 'Produtos no ecossistema' },
   { num: '+10 anos', label: 'De prática clínica real' },
   { num: '100%', label: 'Feito por quem é da área' },
 ];
