@@ -7,7 +7,8 @@
    Atendimento · Comercial · Marketing · Gestão.
 
    Venda por APLICAÇÃO (sem preço): os CTAs levam ao questionário
-   que já existe em /produtos/kitgestaof4/consultoria.
+   próprio em /produtos/mentoria-gestao-f4/aplicacao, que abre o
+   WhatsApp com as respostas prontas.
 
    ⚠️ TROCAR antes de publicar:
    - DEPOIMENTOS: vídeos (embed) e thumbnails reais dos alunos.
@@ -15,8 +16,11 @@
    - BONUS.valor: ancoragem de valor percebido — ajuste se quiser.
    ============================================================ */
 
-/** Destino dos CTAs de matrícula = questionário de aplicação já existente. */
-export const APPLY_URL = '/produtos/kitgestaof4/consultoria';
+/** Destino dos CTAs de matrícula = questionário de aplicação da própria
+ *  mentoria. (Antes apontava para /produtos/kitgestaof4/consultoria, cuja
+ *  mensagem diz que a pessoa comprou o Kit e quer a consultoria gratuita —
+ *  produto errado, e o lead entrava como pós-compra do Kit.) */
+export const APPLY_URL = '/produtos/mentoria-gestao-f4/aplicacao';
 
 /** Âncora interna para os CTAs de "rolar até a candidatura". */
 export const OFERTA_ANCHOR = '#candidatura';

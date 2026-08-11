@@ -1,28 +1,32 @@
 /* ============================================================
-   Aplicação da Mentoria de Zigomático — configuração central.
+   Aplicação da Mentoria de Gestão F4 — configuração central.
 
    A mentoria não tem checkout: a entrada é por candidatura. Como a
    sub-rota `consultoria` das outras landings é o agendamento da
-   consultoria gratuita do funil, aqui ela se chama `aplicacao`
-   (mesmo padrão da Consultoria Gestão F4).
+   consultoria gratuita do pós-compra, aqui ela se chama `aplicacao`
+   (mesmo padrão da Consultoria Gestão F4 e da Mentoria de Zigomático).
+
+   Antes desta rota existir, os CTAs desta landing apontavam para
+   /produtos/kitgestaof4/consultoria: o candidato chegava ao WhatsApp
+   dizendo que tinha comprado o Kit e queria a consultoria gratuita.
    ============================================================ */
 
 /** Rota do questionário de candidatura — destino de todos os CTAs. */
-export const APLICACAO_URL = '/produtos/mentoria-zigomatico/aplicacao';
+export const APLICACAO_URL = '/produtos/mentoria-gestao-f4/aplicacao';
 
 /** Rota da página de confirmação (candidatura recebida). */
-export const CONFIRMACAO_URL = '/produtos/mentoria-zigomatico/aplicacao/confirmado';
+export const CONFIRMACAO_URL = '/produtos/mentoria-gestao-f4/aplicacao/confirmado';
 
 /** Volta para a landing (link discreto de "agora não"). */
-export const LANDING_URL = '/produtos/mentoria-zigomatico';
+export const LANDING_URL = '/produtos/mentoria-gestao-f4';
 
 /** Slug do produto para o tracking (Pixel + CAPI). */
-export const TRACKING_SLUG = 'mentoria-zigomatico';
+export const TRACKING_SLUG = 'mentoria-gestao-f4';
 
 /** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
     os 7 questionários no mesmo número, então a resposta precisa dizer de
     onde veio sem depender da frase de abertura. */
-export const ORIGEM_LABEL = 'Mentoria de Zigomático · candidatura (landing)';
+export const ORIGEM_LABEL = 'Mentoria de Gestão F4 · candidatura (landing)';
 
 /** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
     usado pelo envio da candidatura e pelo link de suporte. */
@@ -32,5 +36,5 @@ export const WHATSAPP_NUMERO = '5588981391199';
 export const WHATSAPP_URL =
   `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent(
-    'Olá! Me candidatei à Mentoria de Zigomático e gostaria de falar com a equipe.',
+    'Olá! Me candidatei à Mentoria de Gestão F4 e gostaria de falar com a equipe.',
   );

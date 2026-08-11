@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, ACESSO_URL, WHATSAPP_NUMERO } from '../obrigado/config';
+import { CONFIRMACAO_URL, ACESSO_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../obrigado/config';
 
 /* Questionário de qualificação do lead vindo da Masterclass Zigomático
    Descomplicado. As perguntas mapeiam a experiência com implantes, o
@@ -72,6 +72,7 @@ function montarLinkWhatsapp(
   const linhas = [
     'Olá! Acabei de assistir à Masterclass Zigomático Descomplicado e quero agendar minha consultoria gratuita de 1 hora.',
     '',
+    `*Origem:* ${ORIGEM_LABEL}`,
     `*Nome:* ${contato.nome}`,
     `*WhatsApp:* ${contato.whatsapp}`,
   ];

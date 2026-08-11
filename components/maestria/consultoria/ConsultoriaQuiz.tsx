@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, CURSO_URL, WHATSAPP_NUMERO } from '../obrigado/config';
+import { CONFIRMACAO_URL, CURSO_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../obrigado/config';
 
 /* Questionário de qualificação do lead vindo da Maestria Zigomática.
    As perguntas mapeiam a experiência com implantes, o volume de casos de
@@ -73,6 +73,7 @@ function montarLinkWhatsapp(
   const linhas = [
     'Olá! Adquiri a Maestria Zigomática e quero agendar minha consultoria gratuita de 1 hora.',
     '',
+    `*Origem:* ${ORIGEM_LABEL}`,
     `*Nome:* ${contato.nome}`,
     `*WhatsApp:* ${contato.whatsapp}`,
   ];

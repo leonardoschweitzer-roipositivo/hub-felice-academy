@@ -3,7 +3,13 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, LANDING_URL, TRACKING_SLUG, WHATSAPP_NUMERO } from './config';
+import {
+  CONFIRMACAO_URL,
+  LANDING_URL,
+  ORIGEM_LABEL,
+  TRACKING_SLUG,
+  WHATSAPP_NUMERO,
+} from './config';
 
 /* Questionário de candidatura da Mentoria de Zigomático.
 
@@ -111,6 +117,7 @@ function montarLinkWhatsapp(
   const linhas = [
     'Olá! Quero me candidatar à Mentoria de Zigomático.',
     '',
+    `*Origem:* ${ORIGEM_LABEL}`,
     `*Nome:* ${contato.nome}`,
     `*WhatsApp:* ${contato.whatsapp}`,
   ];

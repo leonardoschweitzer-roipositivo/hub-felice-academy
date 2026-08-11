@@ -19,6 +19,11 @@ export const CURSO_URL = '/plataforma';
     usado pelo botão flutuante e pelo envio do questionário. */
 export const WHATSAPP_NUMERO = '5588981391199';
 
+/** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
+    os 7 questionários no mesmo número, então a resposta precisa dizer de
+    onde veio sem depender da frase de abertura. */
+export const ORIGEM_LABEL = 'Maestria Zigomática · consultoria gratuita (pós-compra)';
+
 export const WHATSAPP_URL =
   `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent(

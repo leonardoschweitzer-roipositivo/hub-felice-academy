@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, LANDING_URL, WHATSAPP_NUMERO } from './config';
+import { CONFIRMACAO_URL, LANDING_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from './config';
 
 /* Questionário de aplicação da Consultoria Gestão F4. Fork do quiz do
    Curso Gestão F4, com duas diferenças que importam:
@@ -98,6 +98,7 @@ function montarLinkWhatsapp(
   const linhas = [
     'Olá! Quero me candidatar à Consultoria Gestão F4.',
     '',
+    `*Origem:* ${ORIGEM_LABEL}`,
     `*Nome:* ${contato.nome}`,
     `*WhatsApp:* ${contato.whatsapp}`,
   ];
