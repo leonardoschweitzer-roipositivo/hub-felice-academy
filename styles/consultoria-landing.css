@@ -51,18 +51,33 @@
         rgba(11, 11, 13, 0) 45%
       ),
     /* 3) preto OPACO até passar da borda de cima da foto (que começa em
-       130px) e só então desvanece — senão a borda reta dela aparece
-       atravessando o hero. Em px para casar com o offset. */
-      linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 148px, rgba(11, 11, 13, 0) 320px),
+       46px) e só então desvanece — senão a borda reta dela aparece
+       atravessando o hero. Em px para casar com o offset acima: subir a
+       foto exige encolher esta faixa junto, ou ela cobre o rosto. */
+      linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 62px, rgba(11, 11, 13, 0) 240px),
     url('/images/background-consultoria-hero.jpg');
   background-repeat: no-repeat;
-  /* `100% auto` + offset de 130px, como na Maestria: com `cover` a foto
-     16:9 num hero de ~1000px de altura dá um zoom enorme no rosto. Assim
-     ela entra na escala natural, começando abaixo da barra + header. */
-  background-position: center, center, center, center 130px;
+  /* `100% auto` + offset pequeno: com `cover` a foto 16:9 num hero de
+     ~1000px de altura dá um zoom enorme no rosto. Os 46px sobem a foto o
+     bastante para o rosto do Dr. ficar acima dos cards da direita. */
+  background-position: center, center, center, center 46px;
   background-size: cover, cover, cover, 100% auto;
   pointer-events: none;
 }
+/* Os cards descem mais que os 100px da Maestria: nesta foto o Dr. está mais
+   à esquerda e mais alto, e o card de cima cobria o rosto dele. */
+.felice-maestria .cons-hero-sec .mz-hero-right {
+  margin-top: 210px;
+}
+@media (max-width: 980px) {
+  /* Precisa repetir o override do maestria.css: media query NÃO soma
+     especificidade, e o seletor acima (3 classes) vence o de lá (2), então
+     os 210px vazariam para o mobile — onde o hero empilha e o respiro é 6px. */
+  .felice-maestria .cons-hero-sec .mz-hero-right {
+    margin-top: 6px;
+  }
+}
+
 /* Os cards "glass" da coluna direita são `rgba(255,255,255,0.045)`: contam com
    o fundo escuro da página atrás. Com a foto ali, o texto secundário deles
    sumia. Aqui eles ganham um fundo ESCURO translúcido — continua vidro, mas
