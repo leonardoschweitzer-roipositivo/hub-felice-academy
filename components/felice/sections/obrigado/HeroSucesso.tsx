@@ -1,5 +1,5 @@
 import { CtaConsultoria } from './Cta';
-import { VIDEO_URL } from '@/components/felice/config';
+import { VIDEO_URL, VIDEO_IFRAME_ID } from '@/components/felice/config';
 import { DOCS_ANCHOR } from './config';
 
 /* Benefícios (2 palavras) que desfilam na esteira do rodapé do hero. */
@@ -44,6 +44,7 @@ export function HeroSucesso() {
         {VIDEO_URL ? (
           <div className="obg-video reveal d3">
             <iframe
+              id={VIDEO_IFRAME_ID}
               src={VIDEO_URL}
               title="Boas-vindas ao Kit Gestão F4"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
