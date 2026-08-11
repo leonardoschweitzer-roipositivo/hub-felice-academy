@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { ConsultoriaLanding } from '@/components/consultoria/ConsultoriaLanding';
 import { ViewContent } from '@/components/tracking/ViewContent';
+import { paginaMeta } from '@/lib/seo';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -17,11 +18,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'Consultoria Gestão F4 — Sua Clínica Estruturada em 4 Semanas | Felice Academy',
   description:
     'Consultoria de gestão para clínicas odontológicas: 4 semanas de auditoria em Gestão, Atendimento, Comercial e Marketing, pacote de implementações e planejamento estratégico de 12 meses. Entrada por aplicação, vagas limitadas.',
-};
+});
 
 export default function ConsultoriaPage() {
   return (

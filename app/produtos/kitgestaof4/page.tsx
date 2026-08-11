@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { FeliceLanding } from '@/components/felice/FeliceLanding';
 import { ViewContent } from '@/components/tracking/ViewContent';
+import { paginaMeta } from '@/lib/seo';
 
 // Fontes próprias deste protótipo (independentes do design system do ROI).
 // Títulos: Poppins (negrito). Corpo: Lato.
@@ -22,11 +23,11 @@ const lato = Lato({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paginaMeta({
   title: 'Kit Sistema de Gestão F4 — Felice Academy',
   description:
     'A plataforma interativa de gestão para dentistas: POPs, scripts de atendimento, scripts de agendamento e calendário de marketing — com busca instantânea, IA que responde sobre o material e simulador de treino para a equipe. Acesso imediato.',
-};
+});
 
 export default function GestaoPage() {
   return (

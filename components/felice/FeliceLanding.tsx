@@ -14,6 +14,7 @@ import { Garantia } from './sections/Garantia';
 import { Faq } from './sections/Faq';
 import { FinalCta } from './sections/FinalCta';
 import { Footer } from './sections/Footer';
+import { CHECKOUT_URL } from './config';
 
 import { RevealOnScroll } from './ui/RevealOnScroll';
 import { WhatsappFloat } from './ui/WhatsappFloat';
@@ -59,7 +60,9 @@ export function FeliceLanding() {
         <FinalCta />
       </main>
 
-      <Footer />
+      {/* Única página onde os dois links extras do rodapé se aplicam: é a
+          landing do Kit, tem a seção #metodo e é aqui que se compra. */}
+      <Footer checkoutUrl={CHECKOUT_URL} metodoAnchor="#metodo" />
 
       {/* Flutuantes / urgência */}
       <WhatsappFloat href="https://wa.me/5588981391199?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Kit%20Gest%C3%A3o%20F4%2C%20por%20favor." />

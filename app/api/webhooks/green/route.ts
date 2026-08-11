@@ -79,14 +79,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'invalid_json' }, { status: 400 });
   }
 
-  // TODO TEMP DEBUG — remover após mapear o payload real do Green.
-  // Loga o corpo cru + o resultado do parse p/ ajustar parseGreenWebhook/PAID_STATUSES.
-  console.log('[green-webhook] RAW', JSON.stringify(raw));
-
   const sale = parseGreenWebhook(raw);
 
-  // TODO TEMP DEBUG
-  console.log('[green-webhook] PARSED', JSON.stringify(sale));
+  /* O bloco de depuração que existia aqui logava o payload CRU da Greenn
+     (`console.log('[green-webhook] RAW', JSON.stringify(raw))`) e devolvia
+     um `_debug` no corpo da resposta. Isso significava e-mail, telefone e
+     CPF do comprador em texto puro no log da Vercel, em produção. Removido
+     em 11/08/2026.
+
+     Para mapear o payload real da Greenn sem vazar dado pessoal, o que sai
+     no log são só as CHAVES do objeto e os campos não sensíveis — o
+     suficiente para ajustar `parseGreenWebhook` e `PAID_STATUSES`. */
   const _debug = {
     type: sale.type,
     status: sale.status,
@@ -94,6 +97,7 @@ export async function POST(req: Request) {
     offer: sale.offer,
     topKeys: raw && typeof raw === 'object' ? Object.keys(raw as object) : null,
   };
+  console.log('[green-webhook] recebido', JSON.stringify(_debug));
 
   // 3. Só venda paga dispara (senão 200 silencioso, p/ o Green não reenviar)
   if (sale.type !== 'sale' && sale.type !== 'purchase') {
