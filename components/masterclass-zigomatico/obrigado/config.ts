@@ -24,6 +24,11 @@ export const ACESSO_URL = '/produtos/masterclass-zigomatico/obrigado#aula';
     usado pelo botão flutuante e pelo envio do questionário de consultoria. */
 export const WHATSAPP_NUMERO = '5588981391199';
 
+/** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
+    os 7 questionários no mesmo número, então a resposta precisa dizer de
+    onde veio sem depender da frase de abertura. */
+export const ORIGEM_LABEL = 'Masterclass Zigomático · consultoria gratuita (pós-aula)';
+
 /** WhatsApp de suporte (botão flutuante). */
 export const WHATSAPP_URL =
   `https://wa.me/${WHATSAPP_NUMERO}?text=` +

@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, DOCS_URL, WHATSAPP_NUMERO } from '../sections/obrigado/config';
+import { CONFIRMACAO_URL, DOCS_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../sections/obrigado/config';
 
 /* Questionário de qualificação do lead. Não pergunta faturamento —
    as perguntas (consultórios, dentistas, volume de pacientes, equipe,
@@ -68,6 +68,7 @@ function montarLinkWhatsapp(
   const linhas = [
     'Olá! Adquiri o Kit Gestão F4 e quero agendar minha consultoria gratuita de 1 hora.',
     '',
+    `*Origem:* ${ORIGEM_LABEL}`,
     `*Nome:* ${contato.nome}`,
     `*WhatsApp:* ${contato.whatsapp}`,
   ];
