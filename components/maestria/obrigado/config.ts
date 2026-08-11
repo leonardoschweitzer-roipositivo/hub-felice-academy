@@ -24,7 +24,9 @@ export const WHATSAPP_URL =
 /** Prazo, em dias, alinhado à garantia incondicional. Usado na copy de urgência. */
 export const PRAZO_DIAS = 7;
 
-/** Opcional: URL de um vídeo de boas-vindas (embed iframe). Vazio = esconde o slot.
-    ⚠️ Provisório: reusa o mesmo embed Wistia do Kit Gestão F4 (ufbdtd0dj4).
-    Trocar pelo vídeo de boas-vindas específico da Maestria quando houver. */
-export const VIDEO_URL = 'https://fast.wistia.net/embed/iframe/ufbdtd0dj4';
+/** Opcional: URL de um vídeo de boas-vindas (embed iframe). Vazio = esconde o
+    slot, e é como está hoje (11/08/2026, a pedido do Leo).
+    Estava com o Wistia `ufbdtd0dj4` emprestado do Kit — um vídeo que nem é do
+    Dr. Sócrates, embora a copy logo abaixo seja assinada por ele. Para voltar,
+    basta pôr aqui o embed do vídeo real da Maestria. */
+export const VIDEO_URL = '';
