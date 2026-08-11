@@ -449,10 +449,10 @@ export function MaestriaOferta() {
             </ul>
 
             <div className="price-box">
-              <div className="small">12x de</div>
+              <div className="small">{OFERTA.parcela.vezes} de</div>
               <div className="big">
                 <span className="cur">R$</span>
-                <span className="amount">164,40</span>
+                <span className="amount">{OFERTA.parcela.valor.replace(/^R\$\s*/, '')}</span>
               </div>
               <div className="note">ou {OFERTA.aVista} à vista · acesso imediato</div>
             </div>

@@ -23,8 +23,8 @@ export const FUNNELS: Record<string, Funnel> = {
   },
   'maestria-zigomatica': {
     slug: 'maestria-zigomatica',
-    offer: null, // ⏳ preencher quando o link Green existir
-    value: 1595.0,
+    offer: '1oWoQi',
+    value: 997.0,
     contentName: 'Maestria Zigomática',
   },
   'masterclass-zigomatico': {
