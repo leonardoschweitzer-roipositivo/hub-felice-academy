@@ -1,4 +1,11 @@
-/* ⚠️ Substitua pelos depoimentos reais dos seus clientes (com nome e cidade reais). */
+/* ⚠️⚠️ DEPOIMENTOS FICTÍCIOS — NOMES E CLÍNICAS INVENTADOS ⚠️⚠️
+   Provisórios, a pedido do Leo (11/08/2026), só para a seção não ficar com
+   "[Nome do cliente]" no ar. Nenhum destes clientes existe.
+
+   TROCAR PELOS REAIS antes de escalar tráfego: depoimento inventado com
+   nome e clínica, sem aviso de que é ilustrativo, é publicidade enganosa
+   (CDC art. 37 / CONAR). Ao trocar, use nome e cidade reais e guarde a
+   autorização de uso de imagem/depoimento de cada cliente. */
 type Depoimento = {
   inicial: string;
   texto: string;
@@ -11,22 +18,22 @@ const DEPOIMENTOS: Depoimento[] = [
     inicial: 'M',
     texto:
       'Em duas semanas minha equipe parou de me perguntar tudo. Os POPs deixaram cada função clara e eu finalmente saí da operação.',
-    nome: '[Nome do cliente]',
-    meta: '[Clínica · Cidade/UF]',
+    nome: 'Dra. Mariana Alencar',
+    meta: 'Clínica Sorriso Vivo · Fortaleza/CE',
   },
   {
     inicial: 'A',
     texto:
       'Os scripts de agendamento mudaram nossa taxa de conversão. Hoje muito mais contatos viram consulta de verdade.',
-    nome: '[Nome do cliente]',
-    meta: '[Clínica · Cidade/UF]',
+    nome: 'Dr. André Furtado',
+    meta: 'Odonto Integrada · Juazeiro do Norte/CE',
   },
   {
     inicial: 'R',
     texto:
       'O calendário de marketing acabou com o "postar quando dá". Agora temos constância e o consultório virou referência na cidade.',
-    nome: '[Nome do cliente]',
-    meta: '[Clínica · Cidade/UF]',
+    nome: 'Dra. Renata Pontes',
+    meta: 'Espaço Odontológico Pontes · Sobral/CE',
   },
 ];
 
@@ -42,7 +49,8 @@ export function Depoimentos() {
             Resultados de quem saiu <span className="gold-grad">do improviso</span>
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
-            ⚠️ Substitua pelos depoimentos reais dos seus clientes (com nome e cidade reais).
+            Donos de clínica que trocaram o improviso por um sistema — e viram a equipe rodar sem
+            depender deles para cada decisão.
           </p>
         </div>
         <div className="testi">
