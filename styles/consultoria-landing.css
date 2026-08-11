@@ -16,6 +16,71 @@
    mentorias e o CRC.
    ============================================================ */
 
+/* ---------- Foto de fundo do hero ----------
+   Classe própria (e não a `.mz-hero-photo` da Maestria) porque aquela traz
+   a foto do zigomático hardcoded no CSS.
+
+   O Dr. Sócrates está na METADE DIREITA da foto, e o texto do hero fica à
+   esquerda — por isso o gradiente vai da esquerda (preto opaco) para a
+   direita (transparente): escurece só o lado do texto e deixa ele aparecer.
+   Ordem das camadas = da frente para trás. */
+.felice-maestria .cons-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b0b0d;
+  background-image:
+    /* 1) o gradiente pedido: preto → transparente, esquerda → direita.
+       Não chega a zero: a coluna direita do hero tem os cards "glass" de
+       prova, que sobre a foto crua ficam ilegíveis. Parar em ~0.45 mantém
+       o Dr. visível e os cards legíveis. */
+    linear-gradient(
+      to right,
+      #0b0b0d 0%,
+      rgba(11, 11, 13, 0.95) 24%,
+      rgba(11, 11, 13, 0.8) 42%,
+      rgba(11, 11, 13, 0.62) 62%,
+      rgba(11, 11, 13, 0.55) 100%
+    ),
+    /* 2) preto subindo do rodapé, para a foto morrer no fundo da página
+       em vez de terminar numa borda reta */
+      linear-gradient(
+        to top,
+        #0b0b0d 0%,
+        rgba(11, 11, 13, 0.85) 10%,
+        rgba(11, 11, 13, 0) 45%
+      ),
+    /* 3) preto OPACO até passar da borda de cima da foto (que começa em
+       130px) e só então desvanece — senão a borda reta dela aparece
+       atravessando o hero. Em px para casar com o offset. */
+      linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 148px, rgba(11, 11, 13, 0) 320px),
+    url('/images/background-consultoria-hero.jpg');
+  background-repeat: no-repeat;
+  /* `100% auto` + offset de 130px, como na Maestria: com `cover` a foto
+     16:9 num hero de ~1000px de altura dá um zoom enorme no rosto. Assim
+     ela entra na escala natural, começando abaixo da barra + header. */
+  background-position: center, center, center, center 130px;
+  background-size: cover, cover, cover, 100% auto;
+  pointer-events: none;
+}
+/* Os cards "glass" da coluna direita são `rgba(255,255,255,0.045)`: contam com
+   o fundo escuro da página atrás. Com a foto ali, o texto secundário deles
+   sumia. Aqui eles ganham um fundo ESCURO translúcido — continua vidro, mas
+   apoiado no preto da marca em vez de no rosto do Dr. */
+.felice-maestria .cons-hero-sec .mz-card {
+  background: rgba(11, 11, 13, 0.66);
+  border-color: rgba(232, 180, 71, 0.22);
+}
+
+@media (max-width: 980px) {
+  /* Empilhado, o texto passa por cima do Dr.: a foto vira textura. */
+  .felice-maestria .cons-hero-photo {
+    background-position: center, center, center, top center;
+    background-size: cover, cover, cover, cover;
+    opacity: 0.4;
+  }
+}
+
 /* ---------- 3 dores lado a lado (a base .pains é 2 colunas) ---------- */
 .felice-maestria .pains.cons-pains {
   grid-template-columns: repeat(3, 1fr);
