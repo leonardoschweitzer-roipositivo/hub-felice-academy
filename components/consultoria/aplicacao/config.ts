@@ -17,7 +17,11 @@ export const CONFIRMACAO_URL = '/produtos/consultoria/aplicacao/confirmado';
 /** Volta para a landing (link discreto de "agora não"). */
 export const LANDING_URL = '/produtos/consultoria';
 
+/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
+    usado pelo link de suporte e pelo envio da candidatura. */
+export const WHATSAPP_NUMERO = '5588981391199';
+
 /** WhatsApp de suporte. */
 export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
+  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent('Olá! Me candidatei à Consultoria Gestão F4 e gostaria de falar com a equipe.');

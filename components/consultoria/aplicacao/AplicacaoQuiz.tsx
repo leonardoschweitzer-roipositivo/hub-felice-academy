@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
-import { CONFIRMACAO_URL, LANDING_URL } from './config';
+import { CONFIRMACAO_URL, LANDING_URL, WHATSAPP_NUMERO } from './config';
 
 /* Questionário de aplicação da Consultoria Gestão F4. Fork do quiz do
    Curso Gestão F4, com duas diferenças que importam:
@@ -88,6 +88,28 @@ const QUESTOES: { id: string; label: string; options: string[] }[] = [
   },
 ];
 
+/** Monta a mensagem que o candidato envia: contato + as 9 respostas por
+ *  extenso, para a conversa de diagnóstico já começar qualificada.
+ *  Mesmo formato do questionário da Masterclass. */
+function montarLinkWhatsapp(
+  contato: { nome: string; whatsapp: string; email: string; cidade: string },
+  answers: Record<string, string>,
+) {
+  const linhas = [
+    'Olá! Quero me candidatar à Consultoria Gestão F4.',
+    '',
+    `*Nome:* ${contato.nome}`,
+    `*WhatsApp:* ${contato.whatsapp}`,
+  ];
+  if (contato.cidade) linhas.push(`*Cidade:* ${contato.cidade}`);
+  if (contato.email) linhas.push(`*E-mail:* ${contato.email}`);
+  linhas.push('', '*Minhas respostas:*');
+  QUESTOES.forEach((q, i) => {
+    linhas.push(`${i + 1}. ${q.label}`, `→ ${answers[q.id] ?? '—'}`);
+  });
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(linhas.join('\n'))}`;
+}
+
 export function AplicacaoQuiz() {
   const router = useRouter();
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -109,17 +131,25 @@ export function AplicacaoQuiz() {
     if (!completo || submitting) return;
     setSubmitting(true);
     setError('');
+
+    const contato = {
+      nome: nome.trim(),
+      whatsapp: whatsapp.trim(),
+      email: email.trim(),
+      cidade: cidade.trim(),
+    };
+    const whatsappUrl = montarLinkWhatsapp(contato, answers);
+
+    // A aba precisa ser aberta AQUI, ainda dentro do clique: se esperar o
+    // fetch, o navegador já não considera gesto do usuário e bloqueia o popup.
+    const aba = window.open('', '_blank');
+
     try {
       // Dispara o SubmitApplication no browser e ecoa o tracking ao servidor (dedup).
       // 'cold': o lead vem da landing, não de uma compra anterior.
       const tracking = fireApplication('consultoria', 'cold');
       const payload = {
-        contato: {
-          nome: nome.trim(),
-          whatsapp: whatsapp.trim(),
-          email: email.trim(),
-          cidade: cidade.trim(),
-        },
+        contato,
         qualificacao: answers,
         origem: 'consultoria/landing',
         tracking,
@@ -131,10 +161,20 @@ export function AplicacaoQuiz() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('falha');
-      router.push(CONFIRMACAO_URL);
     } catch {
-      setSubmitting(false);
-      setError('Não foi possível enviar agora. Tente novamente em instantes.');
+      // De propósito: NÃO trava o envio. A própria mensagem do WhatsApp leva
+      // contato e respostas, então a candidatura chega à equipe mesmo se o
+      // registro falhar — travar aqui perderia o lead por completo.
+      console.error('[aplicacao] falha ao registrar o lead; seguindo para o WhatsApp');
+    }
+
+    if (aba) {
+      aba.location.href = whatsappUrl;
+      router.push(CONFIRMACAO_URL);
+    } else {
+      // Popup bloqueado: leva a aba atual para o WhatsApp, que é o que a
+      // pessoa pediu ao clicar. A confirmação fica de fora nesse caminho.
+      window.location.href = whatsappUrl;
     }
   };
 
@@ -235,9 +275,12 @@ export function AplicacaoQuiz() {
               className="btn btn-primary btn-lg"
               disabled={!completo || submitting}
             >
-              {submitting ? 'Enviando…' : 'Enviar minha candidatura'}{' '}
+              {submitting ? 'Abrindo o WhatsApp…' : 'Enviar minha candidatura'}{' '}
               <span className="arrow">→</span>
             </button>
+            <p className="cons-submit-hint">
+              O WhatsApp abre com as suas respostas prontas — é só apertar enviar.
+            </p>
             <a className="cons-skip" href={LANDING_URL}>
               Agora não — voltar para a página da consultoria →
             </a>
