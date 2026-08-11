@@ -14,17 +14,19 @@
      /produtos/gestao-f4 anuncia um curso que não existe.
    Diferença explicada no FAQ para não canibalizar o Gestão F4.
 
+   ✅ Checkout e preço já são os reais (Payfast/Greenn, 11/08/2026):
+   12x de R$ 61,38 ou R$ 597,00 à vista.
+
    ⚠️ TROCAR antes de publicar:
-   - CHECKOUT_URL: link real de checkout (padrão Felice = Green).
-   - OFERTA.parcela / OFERTA.aVista: preço real.
    - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
    - STATS / contagem de módulos/aulas: confirmar (não inventar prova social).
    - Grade e bônus: RASCUNHO sugerido — validar com o cliente.
    ============================================================ */
 
-/** Link de checkout (pagamento). PLACEHOLDER — trocar pelo link real. */
-export const CHECKOUT_URL = '#oferta';
+/** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
+export const CHECKOUT_URL =
+  'https://payfast.greenn.com.br/tgzs73v/offer/PpTfLq?ch_id=140311';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
@@ -294,7 +296,8 @@ export const DEPOIMENTOS: Depoimento[] = [
 ];
 
 /* ---------- Oferta ----------
-   ⚠️ parcela/aVista são PLACEHOLDER — trocar pelo preço real. */
+   Preço oficial do checkout (Payfast/Greenn): 12x de R$ 61,38 ou
+   R$ 597,00 à vista. Mudou o preço lá? Mude aqui também. */
 export const OFERTA = {
   ribbon: 'Acesso imediato',
   titulo: 'CRC de Alta Performance — completo',
@@ -308,8 +311,8 @@ export const OFERTA = {
     'Bônus ao vivo: encontro de dúvidas com o time Felice',
     'Garantia incondicional de 7 dias',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 29,70' },
-  aVista: 'R$ 297,00',
+  parcela: { vezes: '12x', valor: 'R$ 61,38' },
+  aVista: 'R$ 597,00',
   cta: 'Quero treinar minha secretária',
 };
 

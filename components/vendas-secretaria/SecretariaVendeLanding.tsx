@@ -34,8 +34,8 @@ import { WHATSAPP_URL } from './content';
    Método (funil da recepção) → Módulos → Bônus → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): link de checkout,
-      preço real, data do lote e depoimentos.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): data do lote e
+      depoimentos. Checkout e preço já são os reais.
    ============================================================ */
 
 export function SecretariaVendeLanding() {
