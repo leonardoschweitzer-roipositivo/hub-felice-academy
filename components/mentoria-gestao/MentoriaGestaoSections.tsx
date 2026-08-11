@@ -238,7 +238,7 @@ export function MentoriaGestaoMetodo() {
             4 pilares para a clínica <span className="gold-grad">andar sem você</span>
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
-            Atendimento, Agendamento, Marketing e Gestão — os quatro motores que transformam o caos
+            Atendimento, Comercial, Marketing e Gestão — os quatro motores que transformam o caos
             em processo previsível e lucrativo.
           </p>
         </div>

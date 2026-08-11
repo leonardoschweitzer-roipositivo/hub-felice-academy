@@ -4,7 +4,7 @@
    Mentoria premium do Dr. Sócrates Tavares (gestão de clínicas).
 
    Estrutura sobre os 4 PILARES do método F4:
-   Atendimento · Agendamento · Marketing · Gestão.
+   Atendimento · Comercial · Marketing · Gestão.
 
    Venda por APLICAÇÃO (sem preço): os CTAs levam ao questionário
    que já existe em /produtos/kitgestaof4/consultoria.
@@ -33,7 +33,7 @@ export const HERO = {
   eyebrow: 'Mentoria de gestão · Método F4',
   titlePre: 'Tire a sua clínica das suas costas e transforme-a em uma',
   titleGold: 'empresa que atende, agenda e vende no automático.',
-  lead: 'Uma mentoria guiada pelos 4 pilares — Atendimento, Agendamento, Marketing e Gestão — com plataforma de aulas, encontros ao vivo, treinamento da sua equipe e acompanhamento de perto do Dr. Sócrates. Para você sair do improviso e operar com processo, previsibilidade e lucro.',
+  lead: 'Uma mentoria guiada pelos 4 pilares — Atendimento, Comercial, Marketing e Gestão — com plataforma de aulas, encontros ao vivo, treinamento da sua equipe e acompanhamento de perto do Dr. Sócrates. Para você sair do improviso e operar com processo, previsibilidade e lucro.',
   ctaPrimary: 'Quero me candidatar',
   ctaSecondary: 'Ver o que você recebe',
   trust: [
@@ -46,7 +46,7 @@ export const HERO = {
 
 /** Card de prova "glass" no hero (coluna direita). */
 export const HERO_CARD = {
-  destaque: { num: '4 pilares', label: 'Atendimento · Agendamento · Marketing · Gestão' },
+  destaque: { num: '4 pilares', label: 'Atendimento · Comercial · Marketing · Gestão' },
   progresso: { label: 'Método validado em clínica real', valor: 100 },
   mini: [
     { v: '+12', l: 'Cursos' },
@@ -74,7 +74,7 @@ export const HERO_MARQUEE = {
 /* ---------- Números / prova ----------
    Apenas fatos verdadeiros da estrutura da mentoria/plataforma. */
 export const STATS: { num: string; label: string }[] = [
-  { num: '4 pilares', label: 'Atendimento, Agendamento, Marketing e Gestão' },
+  { num: '4 pilares', label: 'Atendimento, Comercial, Marketing e Gestão' },
   { num: '+12 cursos', label: 'Trilhas por pilar, na plataforma' },
   { num: 'Encontros ao vivo', label: 'Hot seats e calls com mentores' },
   { num: 'Equipe junto', label: 'Treinamento de toda a sua clínica' },
@@ -113,7 +113,11 @@ export const PILARES: { n: string; titulo: string; texto: string }[] = [
   },
   {
     n: '02',
-    titulo: 'Agendamento',
+    // Renomeado de "Agendamento" em 11/08/2026: a arte deste pilar diz
+    // "Comercial de alta performance", e o arquivo veio nomeado
+    // "CORRIGIR AGENDAMENTOS PARA COMERCIAL". O conteúdo (CRC, ligação,
+    // objeções, fechamento) já era comercial.
+    titulo: 'Comercial',
     texto: 'A CRC como a voz da clínica: roteiro de ligação, confirmação que reduz faltas e banco de objeções. Mais cadeiras ocupadas, menos buraco na agenda.',
   },
   {
@@ -212,6 +216,7 @@ export const TRILHAS: Trilha[] = [
     n: '01',
     titulo: 'Atendimento',
     resumo: 'A arte de receber: a linha de frente que acolhe e converte cada paciente.',
+    img: '/images/pilar-atendimento.jpg',
     blocos: [
       {
         aulas: [
@@ -226,8 +231,13 @@ export const TRILHAS: Trilha[] = [
   },
   {
     n: '02',
-    titulo: 'Agendamento',
+    // Renomeado de "Agendamento" em 11/08/2026: a arte deste pilar diz
+    // "Comercial de alta performance", e o arquivo veio nomeado
+    // "CORRIGIR AGENDAMENTOS PARA COMERCIAL". O conteúdo (CRC, ligação,
+    // objeções, fechamento) já era comercial.
+    titulo: 'Comercial',
     resumo: 'A CRC como a voz da clínica: mais agenda cheia, menos faltas.',
+    img: '/images/pilar-comercial.jpg',
     blocos: [
       {
         aulas: [
@@ -244,6 +254,7 @@ export const TRILHAS: Trilha[] = [
     n: '03',
     titulo: 'Marketing',
     resumo: 'Conteúdo e tráfego com método para encher a agenda com o paciente certo.',
+    img: '/images/pilar-marketing.jpg',
     blocos: [
       {
         aulas: [
@@ -260,6 +271,7 @@ export const TRILHAS: Trilha[] = [
     n: '04',
     titulo: 'Gestão',
     resumo: 'O sistema que organiza processos, equipe e finanças — e tira a clínica das suas costas.',
+    img: '/images/pilar-gestao.jpg',
     blocos: [
       {
         sub: 'Parte 1 · Processos e equipe',
@@ -317,24 +329,55 @@ export const MENTOR = {
   ],
 };
 
-/* ---------- Depoimentos (vídeo) ----------
-   ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais de cada aluno. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+/* ---------- Depoimentos (vídeo vertical) ----------
+   Os mesmos 4 da Masterclass e da Maestria (ver masterclass-zigomatico/
+   content.ts): são alunos da Felice falando do professor e do método, e o
+   `meta` fica genérico de propósito — não afirma de qual curso cada um veio.
+
+   `embed`/`embedId`: player do Panda, 9:16, tocado dentro do card.
+   `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
+   mantido porque o componente ainda o renderiza. */
+export type Depoimento = {
+  nome: string;
+  meta: string;
+  texto: string;
+  embed?: string;
+  embedId?: string;
+  video?: string;
+  thumb?: string;
+};
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dra. Juliene',
-    meta: 'Aluna · Felice Academy',
-    texto: 'Saí de uma clínica que dependia de mim para tudo e hoje minha equipe atende, agenda e vende no padrão. Eu finalmente saí de dentro da operação.',
+    nome: 'Dr. Emmanuel Bezerra',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Curso excepcional. Aprendi a tirar a equipe sob a cadeira e a indicar com critério. Mudou meu jogo.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
+    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
   },
   {
-    nome: 'Dr. João Marcel',
+    nome: 'Dr. Thiago Vinícius',
     meta: 'Aluno · Felice Academy',
-    texto: 'O pilar de agendamento sozinho já reduziu minhas faltas. Com os POPs, a clínica anda mesmo quando eu não estou.',
+    texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
+    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
   },
   {
-    nome: 'Dr. Cristhiano Salustio',
+    nome: 'Dr. Paulo Bezerra',
     meta: 'Aluno · Felice Academy',
-    texto: 'Os encontros ao vivo e o acompanhamento fazem toda a diferença. Não é teoria: é o que eu aplico na segunda-feira.',
+    texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+  },
+  {
+    nome: 'Dr. Juliano Nunes',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
+    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
   },
 ];
 
@@ -365,7 +408,7 @@ export const ENTRADA: { n: string; titulo: string; texto: string }[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'Como funciona a mentoria de gestão?',
-    a: 'É um ecossistema, não um curso solto: plataforma de aulas organizada pelos 4 pilares (Atendimento, Agendamento, Marketing e Gestão), encontros ao vivo individuais e em grupo, materiais prontos e treinamento da sua equipe — com acompanhamento do Dr. Sócrates e da equipe Felice.',
+    a: 'É um ecossistema, não um curso solto: plataforma de aulas organizada pelos 4 pilares (Atendimento, Comercial, Marketing e Gestão), encontros ao vivo individuais e em grupo, materiais prontos e treinamento da sua equipe — com acompanhamento do Dr. Sócrates e da equipe Felice.',
   },
   {
     q: 'A mentoria é só para mim ou para a minha equipe também?',
@@ -394,6 +437,6 @@ export const FINAL = {
   eyebrow: 'Comece agora',
   titlePre: 'Pare de carregar a clínica nas costas.',
   titleGold: 'Construa um sistema que anda sem você.',
-  lead: 'Candidate-se à Mentoria de Gestão F4 e organize Atendimento, Agendamento, Marketing e Gestão — com a sua equipe treinada e o acompanhamento de quem já fez na própria clínica.',
+  lead: 'Candidate-se à Mentoria de Gestão F4 e organize Atendimento, Comercial, Marketing e Gestão — com a sua equipe treinada e o acompanhamento de quem já fez na própria clínica.',
   cta: 'Quero me candidatar',
 };
