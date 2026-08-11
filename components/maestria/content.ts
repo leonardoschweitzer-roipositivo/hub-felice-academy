@@ -4,14 +4,15 @@
    Curso premium do Dr. Sócrates Tavares (implantes zigomáticos).
 
    ⚠️ TROCAR antes de publicar:
-   - CHECKOUT_URL: link real de checkout (padrão Felice = Payfast/Greenn).
-   - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails dos alunos.
+   - DEPOIMENTOS: conferir se o nome de cada item bate com quem aparece
+     no vídeo — os embeds vieram da Masterclass, na ordem de envio.
    - DEADLINE_ISO: data real de fechamento da turma/lote.
    - STATS: confirmar qualquer número de prova social (não inventar).
    ============================================================ */
 
-/** Link de checkout (pagamento). PLACEHOLDER — trocar pelo link real. */
-export const CHECKOUT_URL = '#oferta';
+/** Checkout do curso (R$ 997) na Greenn/Payfast. O código da oferta
+ *  (`1oWoQi`) também vive em lib/tracking/funnels.ts — trocar nos dois. */
+export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/1oWoQi?ch_id=142077';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
@@ -359,8 +360,8 @@ export const OFERTA = {
     'Módulo 4 · Hands-on guiado (Partes 1 e 2)',
     'Bônus especiais (guias, série “Onde eu furo” e casos reais)',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 164,40' },
-  aVista: 'R$ 1.595,00',
+  parcela: { vezes: '12x', valor: 'R$ 102,51' },
+  aVista: 'R$ 997,00',
   cta: 'Garantir minha vaga',
 };
 
