@@ -41,8 +41,10 @@ export const FUNNELS: Record<string, Funnel> = {
   },
   'vendas-secretaria': {
     slug: 'vendas-secretaria',
-    offer: null, // ⏳ preencher quando o link Green existir
-    value: 297.0, // ⚠️ placeholder — trocar pelo preço real
+    offer: 'PpTfLq',
+    value: 597.0,
+    // Nome antigo de propósito: renomear partiria o histórico de eventos do
+    // Meta. O produto se chama "CRC de Alta Performance" desde 10/08/2026.
     contentName: 'A Secretária que Vende',
   },
   consultoria: {
@@ -57,7 +59,9 @@ export const FUNNELS: Record<string, Funnel> = {
   'recepcao-alta-performance': {
     slug: 'recepcao-alta-performance',
     offer: null, // ⏳ preencher quando o link Green existir
-    value: 297.0, // ⚠️ placeholder — espelha o CRC (produto-par), confirmar
+    // ⚠️ placeholder — herdado de quando o CRC (produto-par) também era 297.
+    // O CRC subiu para 597 em 11/08/2026; este aqui segue a confirmar.
+    value: 297.0,
     contentName: 'Recepção de Alta Performance',
   },
 };
