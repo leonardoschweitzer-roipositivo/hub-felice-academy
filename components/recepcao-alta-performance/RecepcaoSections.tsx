@@ -391,7 +391,7 @@ export function RecepcaoAutoridade() {
       <div className="wrap auth-grid">
         <div className="auth-photo reveal">
           <Image
-            src="/images/dr-socrates-tavares.avif"
+            src="/images/dr-socrates-tavares.jpg"
             alt={MENTOR.nome}
             width={600}
             height={697}

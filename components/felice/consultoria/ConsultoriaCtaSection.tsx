@@ -44,7 +44,7 @@ export function ConsultoriaCtaSection() {
         <div className="cta-consult-mentor">
           <div className="cta-consult-photo reveal">
             <Image
-              src="/images/dr-socrates-tavares.avif"
+              src="/images/dr-socrates-tavares.jpg"
               alt="Dr. Sócrates Tavares"
               width={560}
               height={650}
