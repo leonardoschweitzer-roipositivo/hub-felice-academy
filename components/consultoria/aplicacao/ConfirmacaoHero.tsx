@@ -16,20 +16,21 @@ export function ConfirmacaoHero() {
         </span>
 
         <h1 className="reveal d1">
-          Tudo certo! Sua candidatura à{' '}
-          <span className="gold-grad">Consultoria Gestão F4</span> está com a gente.
+          Falta um passo: <span className="gold-grad">envie a mensagem</span> no WhatsApp.
         </h1>
 
+        {/* O quiz abre o WhatsApp numa aba nova com tudo preenchido — só o
+            envio depende da pessoa. Por isso a página pede o envio em vez de
+            dizer "aguarde o contato". */}
         <p className="obg-lead reveal d2">
-          Nossa equipe vai analisar as suas respostas e entrar em contato pelo{' '}
-          <strong>WhatsApp</strong> para marcar a conversa de diagnóstico — é nela que avaliamos o
-          encaixe e apresentamos o formato e o investimento da consultoria. Fique de olho no seu
-          celular. 😊
+          Abrimos o WhatsApp em outra aba com a sua candidatura pronta — <strong>é só apertar
+          enviar</strong> e a equipe já recebe tudo para marcar a conversa de diagnóstico, em que
+          avaliamos o encaixe e apresentamos o formato e o investimento da consultoria.
         </p>
 
         <div className="obg-cta-row reveal d3">
           <a href={WHATSAPP_URL} className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-            Falar com a equipe agora <span className="arrow">→</span>
+            Não abriu? Abrir o WhatsApp <span className="arrow">→</span>
           </a>
         </div>
       </div>
