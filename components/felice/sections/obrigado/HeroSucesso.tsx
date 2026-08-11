@@ -1,5 +1,6 @@
 import { CtaConsultoria } from './Cta';
-import { DOCS_ANCHOR, VIDEO_URL } from './config';
+import { VIDEO_URL } from '@/components/felice/config';
+import { DOCS_ANCHOR } from './config';
 
 /* Benefícios (2 palavras) que desfilam na esteira do rodapé do hero. */
 const MARQUEE_ITEMS = [

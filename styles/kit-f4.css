@@ -1367,6 +1367,27 @@
 .felice-kit.kit-index .kit-index-hero h1 {
   text-transform: uppercase;
 }
+/* Vídeo de "como usar os documentos" no herói do índice. Mesmo wrapper 16:9
+   do `.obg-video`, redeclarado aqui porque a rota do Kit não importa
+   obrigado.css (e importar 10 KB de folha só por 7 propriedades não paga). */
+.felice-kit .kit-hero-video {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 34px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.felice-kit .kit-hero-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 .felice-kit .kit-doccard-progress {
   display: flex;
   align-items: center;
