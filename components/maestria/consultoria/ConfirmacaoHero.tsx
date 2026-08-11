@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CURSO_URL } from '../obrigado/config';
+import { WHATSAPP_URL, CURSO_URL } from '../obrigado/config';
 
 /* Página de confirmação (só HERO): recebemos os dados, o Dr. Sócrates
    entra em contato em breve. Reusa o fundo de pontinhos do hero da
@@ -17,13 +17,20 @@ export function ConfirmacaoHero() {
         </span>
 
         <h1 className="reveal d1">
-          Tudo certo! Seu pedido de <span className="gold-grad">consultoria</span> está com a gente.
+          Falta um passo: <span className="gold-grad">envie a mensagem</span> no WhatsApp.
         </h1>
 
+        {/* O quiz abre o WhatsApp numa aba nova com tudo preenchido — só o
+            envio depende da pessoa. Por isso a página pede o envio em vez de
+            dizer "aguarde o contato". */}
         <p className="obg-lead reveal d2">
-          O Dr. Sócrates e a equipe vão analisar as suas respostas e entrar em contato pelo{' '}
-          <strong>WhatsApp</strong> em breve para combinar o melhor horário da sua consultoria
-          gratuita de 1 hora. Fique de olho no seu celular. 😊
+          Abrimos o WhatsApp em outra aba com as suas respostas prontas — <strong>é só apertar
+          enviar</strong> e o Dr. Sócrates já recebe tudo para combinar o horário da sua consultoria
+          gratuita de 1 hora. Não abriu?{' '}
+          <a className="obg-inline-link" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            Abra por aqui
+          </a>
+          .
         </p>
 
         <div className="obg-cta-row reveal d3">

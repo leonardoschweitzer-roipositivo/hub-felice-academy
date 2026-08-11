@@ -19,8 +19,12 @@ export const DOCS_URL = '/produtos/kitgestaof4/kit-f4';
 export const DOCS_ANCHOR = '#meus-documentos';
 
 /** WhatsApp de suporte (botão flutuante). */
+/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
+    usado pelo botão flutuante e pelo envio do questionário. */
+export const WHATSAPP_NUMERO = '5588981391199';
+
 export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
+  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent(
     'Olá! Acabei de adquirir o Kit Gestão F4 e quero agendar minha consultoria gratuita.',
   );

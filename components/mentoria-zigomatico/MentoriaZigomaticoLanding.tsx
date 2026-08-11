@@ -19,6 +19,7 @@ import {
   MentoriaZigomaticoOferta,
   MentoriaZigomaticoFinal,
 } from './MentoriaZigomaticoSections';
+import { MentoriaZigomaticoCasos } from './MentoriaZigomaticoCasos';
 import { MentoriaZigomaticoDepoimentos, MentoriaZigomaticoEntrada } from './MentoriaZigomaticoProvaEntrada';
 import { MentoriaZigomaticoFaq } from './MentoriaZigomaticoFaq';
 import { MentoriaZigomaticoFooter } from './MentoriaZigomaticoFooter';
@@ -33,13 +34,15 @@ import { WHATSAPP_URL } from './content';
    Mentoria de Gestão — reusa felice.css + maestria.css + mentoria-gestao.css
    + ajustes em mentoria-zigomatico.css.
 
-   Venda por APLICAÇÃO (sem preço): CTAs → /produtos/kitgestaof4/consultoria.
+   Venda por APLICAÇÃO (sem preço): CTAs → /produtos/mentoria-zigomatico/aplicacao,
+   questionário próprio que abre o WhatsApp com as respostas prontas.
    Diferencial: encontros PRESENCIAIS (hands-on em laboratório, acompanhamento
    cirúrgico e encontros teóricos). Escassez: turmas pequenas (sem countdown).
 
    Ordem: TopBar → Header → Hero → Números → Problema → Eixos →
    Presenciais → Entregas → Trilhas → Bônus → Plataforma → Autoridade →
-   Depoimentos → Candidatura → Como entrar → FAQ → CTA final → Footer.
+   Casos reais → Depoimentos → Candidatura → Como entrar → FAQ →
+   CTA final → Footer.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): vídeos dos depoimentos,
       datas/locais dos encontros presenciais. Imagens de trilhas opcionais.
@@ -67,6 +70,7 @@ export function MentoriaZigomaticoLanding() {
         <MentoriaZigomaticoBonus />
         <MentoriaZigomaticoPlataforma />
         <MentoriaZigomaticoAutoridade />
+        <MentoriaZigomaticoCasos />
         <MentoriaZigomaticoDepoimentos />
         <MentoriaZigomaticoOferta />
         <MentoriaZigomaticoEntrada />
