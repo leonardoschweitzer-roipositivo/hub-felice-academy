@@ -1399,6 +1399,10 @@
   height: 100%;
   border: 0;
 }
+/* Oferta da consultoria logo abaixo do vídeo, ainda dentro do herói. */
+.felice-kit .kit-hero-oferta {
+  margin-top: 34px;
+}
 .felice-kit .kit-doccard-progress {
   display: flex;
   align-items: center;
