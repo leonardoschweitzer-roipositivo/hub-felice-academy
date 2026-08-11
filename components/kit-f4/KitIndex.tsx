@@ -9,6 +9,7 @@ import { DOC_META, DOC_ORDER } from './content';
 import { KitDocCard } from './KitDocCard';
 import { SearchModal } from './search/SearchModal';
 import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
+import { ConsultoriaOferta } from '@/components/felice/consultoria/ConsultoriaOferta';
 import { VIDEO_URL, VIDEO_IFRAME_ID } from '@/components/felice/config';
 
 /** Página índice do Kit F4: 4 cards (um por documento) com progresso. */
@@ -66,6 +67,11 @@ export function KitIndex() {
                 />
               </div>
             ) : null}
+
+            {/* Mesma âncora de preço + CTA da ConsultoriaCtaSection do rodapé,
+                repetida aqui logo depois do vídeo. É o mesmo componente, para
+                o "R$ 500/hora" e a promessa de vagas nunca divergirem. */}
+            <ConsultoriaOferta className="kit-hero-oferta reveal d4" />
           </div>
         </section>
 

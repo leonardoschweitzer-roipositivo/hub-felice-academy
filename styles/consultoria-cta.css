@@ -159,3 +159,21 @@
   color: var(--muted-2);
   font-size: 0.85rem;
 }
+
+/* Telas estreitas: a âncora de preço é flex-row com nowrap, e a 390px o
+   "R$ 500/hora" e o "Gratuito nesta semana" não cabem lado a lado — cada um
+   quebrava internamente, em 2 e 3 linhas. Empilha e vira a seta para baixo. */
+@media (max-width: 560px) {
+  .felice .cta-consult-price {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .felice .cta-consult-price .sep {
+    transform: rotate(90deg);
+    line-height: 1;
+  }
+  .felice .cta-consult-price .now {
+    font-size: 1.6rem;
+  }
+}

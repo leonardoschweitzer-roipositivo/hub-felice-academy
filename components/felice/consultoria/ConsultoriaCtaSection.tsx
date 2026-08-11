@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Check } from '../ui/icons';
-import { CtaConsultoria } from '../sections/obrigado/Cta';
+import { ConsultoriaOferta } from './ConsultoriaOferta';
 
 /* Seção de CTA reutilizável (índice do Kit F4 + 4 documentos). Funde a
    autoridade do Dr. Sócrates (foto + credenciais + fala) com a oferta da
@@ -84,19 +84,7 @@ export function ConsultoriaCtaSection() {
           ))}
         </div>
 
-        <div className="cta-consult-foot reveal d2">
-          <div className="cta-consult-price">
-            <span className="old">
-              R$ 500<small>/hora</small>
-            </span>
-            <span className="sep">→</span>
-            <span className="now">Gratuito nesta semana</span>
-          </div>
-          <CtaConsultoria size="lg" />
-          <p className="cta-consult-note">
-            Vagas limitadas liberadas pelo Dr. Sócrates só nesta semana.
-          </p>
-        </div>
+        <ConsultoriaOferta className="reveal d2" />
       </div>
     </section>
   );
