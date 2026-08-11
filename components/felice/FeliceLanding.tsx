@@ -28,8 +28,9 @@ import { UrgencyBar } from './ui/UrgencyBar';
    Para incluir, remover ou reordenar uma seção, basta editar a
    composição abaixo.
 
-   ⚠️ TROCAR: imagens dos produtos, foto do Dr. Sócrates,
-      depoimentos (placeholders) e link de checkout (#checkout).
+   ⚠️ TROCAR: os DEPOIMENTOS de sections/Depoimentos.tsx são FICTÍCIOS —
+      nomes e clínicas inventados, no ar como provisório. Trocar pelos
+      reais (com autorização de uso) antes de escalar tráfego.
    ============================================================ */
 
 export function FeliceLanding() {
