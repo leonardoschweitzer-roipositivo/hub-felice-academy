@@ -279,7 +279,7 @@ export function CrmAutoridade() {
       <div className="wrap auth-grid">
         <div className="auth-photo reveal">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/dr-socrates-tavares.avif" alt="Dr. Sócrates Tavares" loading="lazy" />
+          <img src="/images/dr-socrates-tavares.jpg" alt="Dr. Sócrates Tavares" loading="lazy" />
         </div>
         <div className="reveal d1">
           <span className="eyebrow">Quem está por trás</span>

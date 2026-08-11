@@ -89,7 +89,7 @@ export function HubLanding() {
             <div className="hub-authority-photo reveal">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/dr-socrates-tavares.avif"
+                src="/images/dr-socrates-tavares.jpg"
                 alt="Dr. Sócrates Tavares"
                 width={420}
                 height={520}
