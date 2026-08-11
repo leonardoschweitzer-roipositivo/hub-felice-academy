@@ -19,8 +19,8 @@ import { FlowScrollHint } from './FlowScrollHint';
 /* Quatro números — é o que a faixa `.numeros` do felice.css comporta por
    linha, e é o ritmo que todas as landings do site usam. */
 const NUMEROS = [
-  { n: '10', l: 'landings no ar' },
-  { n: '5 de 6', l: 'checkouts funcionando — testados ao vivo' },
+  { n: '9', l: 'landings no ar' },
+  { n: '5 de 5', l: 'checkouts funcionando — testados ao vivo' },
   { n: '9 de 9', l: 'produtos com página de obrigado (eram 6)' },
   { n: 'R$ 6.000', l: 'o ticket que o Meta não enxergava' },
 ];
@@ -90,18 +90,6 @@ const INVENTARIO: Linha[] = [
       { t: 'sim', k: 'ok' },
       { t: 'sim', k: 'ok' },
       { t: 'completo', k: 'ok' },
-    ],
-  },
-  {
-    produto: 'Curso Gestão F4',
-    meta: 'R$ 497 · página órfã',
-    cels: [
-      { t: 'sem link', k: 'warn' },
-      { t: '#oferta', k: 'no' },
-      { t: 'sim', k: 'ok' },
-      { t: 'sim', k: 'ok' },
-      { t: 'sim', k: 'ok' },
-      { t: 'sem oferta', k: 'warn' },
     ],
   },
   {
@@ -197,19 +185,6 @@ const GAPS: { n: string; t: string; tag: string; cls: 'crit' | 'med' | 'dep'; p:
   },
   {
     n: '04',
-    t: 'O Curso Gestão F4 tem o funil inteiro pronto e não vende',
-    tag: 'sua decisão',
-    cls: 'med',
-    p: (
-      <>
-        O botão de comprar aponta para a própria seção de oferta, e nenhum card do site leva até a
-        página. Obrigado, questionário e confirmação já existem, parados. Ou se cria a oferta na
-        Greenn, ou a página é aposentada — enquanto isso, ela saiu do sitemap.
-      </>
-    ),
-  },
-  {
-    n: '05',
     t: 'A landing do Felice CRM não converte',
     tag: 'sua decisão',
     cls: 'med',
@@ -221,7 +196,7 @@ const GAPS: { n: string; t: string; tag: string; cls: 'crit' | 'med' | 'dep'; p:
     ),
   },
   {
-    n: '06',
+    n: '05',
     t: 'A área de entrega do Kit está aberta',
     tag: 'sua decisão',
     cls: 'med',
@@ -233,7 +208,7 @@ const GAPS: { n: string; t: string; tag: string; cls: 'crit' | 'med' | 'dep'; p:
     ),
   },
   {
-    n: '07',
+    n: '06',
     t: 'O Kit não tem card na vitrine',
     tag: 'sua decisão',
     cls: 'med',
@@ -246,7 +221,7 @@ const GAPS: { n: string; t: string; tag: string; cls: 'crit' | 'med' | 'dep'; p:
     ),
   },
   {
-    n: '08',
+    n: '07',
     t: 'O Pixel dispara sem pedir consentimento',
     tag: 'antes de escalar',
     cls: 'dep',
@@ -282,7 +257,6 @@ const ROTAS: Rota[] = [
   { t: '/produtos/masterclass-zigomatico', a: 'idem · obrigado entrega a aula' },
   { t: '/produtos/vendas-secretaria', a: 'idem · CRC de Alta Performance' },
   { t: '/produtos/recepcao-alta-performance', a: 'idem' },
-  { t: '/produtos/gestao-f4', a: 'funil pronto, sem checkout e sem link', k: 'atencao' },
   { t: '' },
   { t: '── produtos por candidatura ───────────────', sep: true },
   { t: '/produtos/consultoria' },
@@ -324,6 +298,11 @@ const PASSOS_FEITOS = [
     n: '5',
     t: 'Higiene',
     d: 'O registro do webhook parou de guardar dado pessoal do comprador, e o rodapé parou de vender o Kit em página de outro produto.',
+  },
+  {
+    n: '6',
+    t: 'O Curso Gestão F4 saiu do ar',
+    d: 'O produto não existe — Gestão F4 é a consultoria. A landing, o funil parado e a entrada na tabela de eventos foram removidos, e o endereço antigo redireciona para a Consultoria, para quem tiver o link não cair num erro.',
   },
 ];
 
@@ -382,7 +361,7 @@ export function ArquiteturaPaginas() {
             <div className="arq-flow">
               <div className="arq-flow-tag">
                 <span className="arq-pill ok">Padrão A · produto pago</span>
-                <span>Kit F4 · Maestria · Masterclass · CRC · Recepção · (Curso Gestão F4)</span>
+                <span>Kit F4 · Maestria · Masterclass · CRC · Recepção</span>
               </div>
               <div className="arq-scroll">
                 <div className="arq-chain">
@@ -500,13 +479,13 @@ export function ArquiteturaPaginas() {
                   <b>As três foram criadas.</b>
                 </p>
               </article>
-              <article className="arq-q part">
+              <article className="arq-q yes">
                 <span className="arq-ask">Os checkouts estão ok?</span>
-                <span className="arq-verdict">5 de 6</span>
+                <span className="arq-verdict">Todos</span>
                 <p>
                   Abri os cinco links: todos respondem e o produto na Greenn bate com a landing. O
-                  sexto, do <b>Curso Gestão F4</b>, aponta para a própria seção de oferta — não
-                  vende.
+                  sexto era o <b>Curso Gestão F4</b>, cujo botão apontava para a própria seção de
+                  oferta — a landing foi removida, porque o curso não existe.
                 </p>
               </article>
               <article className="arq-q yes">

@@ -33,12 +33,9 @@ export const FUNNELS: Record<string, Funnel> = {
     value: 67.0,
     contentName: 'Masterclass Zigomático',
   },
-  'gestao-f4': {
-    slug: 'gestao-f4',
-    offer: null, // ⏳
-    value: 497.0,
-    contentName: 'Gestão F4',
-  },
+  /* `gestao-f4` saiu daqui em 11/08/2026 junto com a landing: o "Curso
+     Gestão F4" não existe — Gestão F4 é a consultoria de 4 semanas, que
+     tem a própria entrada abaixo. A rota redireciona para ela. */
   'vendas-secretaria': {
     slug: 'vendas-secretaria',
     offer: 'PpTfLq',

@@ -15,8 +15,9 @@
      orçamento. Este aqui cuida do PRESENCIAL e da experiência.
    - Consultoria Gestão F4 (/produtos/consultoria): o Dr. Sócrates
      monta o sistema dos 4 pilares COM o dono, em 4 semanas de
-     auditoria (nível estratégico). NÃO é curso — a rota
-     /produtos/gestao-f4 anuncia um curso que não existe.
+     auditoria (nível estratégico). NÃO é curso — a landing que
+     anunciava um "Curso Gestão F4" foi removida em 11/08/2026 e a
+     rota redireciona para a consultoria.
    As duas diferenças estão explicadas no FAQ para não canibalizar.
 
    A grade abaixo é a seção "1. Conteúdo Programático" do plano de
