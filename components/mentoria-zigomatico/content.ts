@@ -7,7 +7,7 @@
    vivo, tem encontros PRESENCIAIS — imersão hands-on em laboratório,
    acompanhamento cirúrgico (operar junto) e encontros teóricos.
 
-   Venda por APLICAÇÃO (sem preço): CTAs → /produtos/kitgestaof4/consultoria.
+   Venda por APLICAÇÃO (sem preço): CTAs → /produtos/mentoria-zigomatico/aplicacao.
 
    ⚠️ TROCAR antes de publicar:
    - DEPOIMENTOS: vídeos (embed) e thumbnails reais dos alunos.
@@ -15,8 +15,10 @@
    - BONUS.valor: ancoragem de valor percebido — ajuste se quiser.
    ============================================================ */
 
-/** Destino dos CTAs = questionário de aplicação já existente. */
-export const APPLY_URL = '/produtos/kitgestaof4/consultoria';
+/** Destino dos CTAs = questionário de aplicação da própria mentoria.
+ *  (Antes apontava para /produtos/kitgestaof4/consultoria, cuja copy é do
+ *  agendamento da consultoria gratuita do Kit — produto e mensagem errados.) */
+export const APPLY_URL = '/produtos/mentoria-zigomatico/aplicacao';
 
 /** Âncora interna para os CTAs de "rolar até a candidatura". */
 export const OFERTA_ANCHOR = '#candidatura';
@@ -312,6 +314,64 @@ export const MENTOR = {
     'Diretor-Clínico da Felice Odontologia',
     'Professor de cursos de especialização na Felice Academy',
   ],
+};
+
+/* ---------- Casos reais (carrossel) ----------
+   Mesmo acervo do curso/masterclass de zigomático: são os casos do
+   Dr. Sócrates, e é este raciocínio que a mentoria destrincha nos
+   presenciais. Trocar `img` se surgirem fotos novas. */
+export type Caso = { etapa?: string; titulo: string; legenda: string; img?: string };
+export const CASOS: Caso[] = [
+  {
+    etapa: 'Planejamento',
+    titulo: 'Planejamento digital em 3D',
+    legenda: 'Vista frontal: guia e trajetórias definidas antes de abrir',
+    img: '/images/caso-planejamento-3d-frontal.jpg',
+  },
+  {
+    etapa: 'Planejamento',
+    titulo: 'Trajetória de ancoragem',
+    legenda: 'Vista lateral: percurso do implante até o corpo do zigomático',
+    img: '/images/caso-planejamento-3d-lateral.jpg',
+  },
+  {
+    etapa: 'Preparo',
+    titulo: 'Kit cirúrgico montado',
+    legenda: 'Fresas longas e instrumental específico do protocolo',
+    img: '/images/caso-kit-cirurgico.jpg',
+  },
+  {
+    etapa: 'Cirurgia',
+    titulo: 'Guia cirúrgico em posição',
+    legenda: 'Anilhas e pinos de fixação conduzindo a fresagem',
+    img: '/images/caso-cirurgia-guiada-guia.jpg',
+  },
+  {
+    etapa: 'Cirurgia',
+    titulo: 'Fresagem sob o guia',
+    legenda: 'Broca de 2,35 mm com stop, no acesso já preparado',
+    img: '/images/caso-cirurgia-guiada-fresagem.jpg',
+  },
+  {
+    etapa: 'Resultado',
+    titulo: 'Quadrizigoma',
+    legenda: 'Quatro zigomáticos sustentando a barra na maxila atrófica',
+    img: '/images/caso-quadrizigoma-panoramica.jpg',
+  },
+  {
+    etapa: 'Resultado',
+    titulo: 'Híbrido sobre zigomáticos',
+    legenda: 'Barra na maxila e implantes convencionais na mandíbula',
+    img: '/images/caso-hibrido-panoramica.jpg',
+  },
+];
+
+/** Cabeçalho da seção de casos reais. */
+export const CASOS_HEAD = {
+  eyebrow: 'Casos reais',
+  titlePre: 'Os casos que você vai',
+  titleGold: 'aprender a operar ao lado do mentor',
+  lead: 'Casos reais de maxila atrófica severa conduzidos pelo Dr. Sócrates — do planejamento digital à reabilitação entregue. É este raciocínio que você acompanha no hands-on e leva para os seus próprios casos.',
 };
 
 /* ---------- Depoimentos (vídeo) ----------

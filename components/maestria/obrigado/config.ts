@@ -15,8 +15,12 @@ export const CONFIRMACAO_URL = '/produtos/maestria-zigomatica/consultoria/confir
 export const CURSO_URL = '/plataforma';
 
 /** WhatsApp de suporte (botão flutuante). */
+/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
+    usado pelo botão flutuante e pelo envio do questionário. */
+export const WHATSAPP_NUMERO = '5588981391199';
+
 export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
+  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
   encodeURIComponent(
     'Olá! Acabei de adquirir a Maestria Zigomática e quero agendar minha consultoria gratuita.',
   );
