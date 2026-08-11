@@ -187,6 +187,7 @@ export const MODULOS: Modulo[] = [
     n: '01',
     titulo: 'Fundamentos e decisões críticas',
     resumo: 'A base conceitual e o raciocínio clínico que sustentam toda cirurgia zigomática segura.',
+    img: '/images/modulo-fundamentos-decisoes.jpg',
     blocos: [
       {
         aulas: [
@@ -203,6 +204,7 @@ export const MODULOS: Modulo[] = [
     n: '02',
     titulo: 'Planejamento de alto impacto',
     resumo: 'O fluxo digital que transforma o caso mais complexo em um procedimento previsível.',
+    img: '/images/modulo-planejamento-alto-impacto.jpg',
     blocos: [
       {
         aulas: [
@@ -219,6 +221,7 @@ export const MODULOS: Modulo[] = [
     n: '03',
     titulo: 'Cirurgia guiada na prática',
     resumo: 'Da bancada à sala: instrumental, sequência cirúrgica e gestão da zona segura.',
+    img: '/images/modulo-cirurgia-guiada.jpg',
     blocos: [
       {
         aulas: [
@@ -235,6 +238,7 @@ export const MODULOS: Modulo[] = [
     n: '04',
     titulo: 'Hands-on guiado',
     resumo: 'Prática deliberada em modelo, do acesso ao posicionamento, até o ganho de precisão.',
+    img: '/images/modulo-hands-on-guiado.jpg',
     blocos: [
       {
         sub: 'Parte 1 · Base prática',
