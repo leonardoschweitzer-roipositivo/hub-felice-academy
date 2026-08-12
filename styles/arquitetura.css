@@ -31,6 +31,23 @@
   background: radial-gradient(760px 300px at 12% -10%, rgba(232, 180, 71, 0.13), transparent 62%);
   pointer-events: none;
 }
+/* A headline desta capa é mais longa que a das landings e, no tamanho
+   padrão do felice.css (`clamp(2.1rem, 5.2vw, 4rem)` → 64px), cada uma das
+   duas frases quebrava em duas linhas: sobravam "completa." e "receita."
+   sozinhos, e a linha dourada partia no meio.
+
+   Medido no navegador a 1440px: o h1 dispõe de 1060px e a frase mais longa
+   ("Cada produto tem uma jornada completa.") pede 1348px a 64px — cabe a
+   partir de ~50px. Daí o teto de 3rem, com ~5% de folga.
+
+   ⚠️ Se mexer na copy do h1, meça de novo em vez de chutar: 1ch desta
+   Poppins não é o que a conta de padaria sugere. O `<br />` do JSX separa
+   as duas frases; abaixo de ~800px elas voltam a quebrar sozinhas, e é
+   isso mesmo — no mobile não há tamanho que faça caber. */
+.felice-arq .arq-hero h1 {
+  font-size: clamp(1.9rem, 4.1vw, 3rem);
+}
+
 .felice-arq .arq-hero-in {
   position: relative;
   display: flex;
@@ -569,8 +586,46 @@
 .felice-arq .arq-tbl tbody tr:last-child td {
   border-bottom: none;
 }
+/* ---------- linha do inventário clicável ----------
+   Cada linha abre a landing daquele produto em outra aba. O link de verdade
+   está no nome (`.arq-prod-link`); quem estica a área de clique até a borda
+   da linha é o `::after` absoluto sobre a `tr` relativa — o padrão
+   "stretched link". Vantagem sobre um onClick na `tr`: o HTML da tabela
+   continua válido, o teclado alcança o link e a página segue server
+   component.
+
+   ⚠️ Depende de `position: relative` numa `tr` sob `border-collapse:
+   collapse`. Funciona nos navegadores atuais (conferido no Chromium,
+   clicando na última coluna), mas é o primeiro lugar a olhar se um dia a
+   linha parar de responder fora da coluna do nome.
+
+   Sem sublinhado, a pedido do Leo: quem sinaliza que dá para clicar é o
+   `cursor: pointer` mais a mudança de cor no hover. */
+.felice-arq .arq-tbl tbody tr {
+  position: relative;
+  cursor: pointer;
+}
+.felice-arq .arq-prod-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.16s ease;
+}
+.felice-arq .arq-prod-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
 .felice-arq .arq-tbl tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(232, 180, 71, 0.05);
+}
+.felice-arq .arq-tbl tbody tr:hover .arq-prod-link {
+  color: var(--gold);
+}
+/* O foco de teclado precisa aparecer: o link não tem mais sublinhado. */
+.felice-arq .arq-prod-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 .felice-arq .arq-tbl td.prod {
   font-family: var(--font-felice-display), 'Poppins', sans-serif;
