@@ -2,7 +2,6 @@ import '@/styles/felice.css';
 import '@/styles/maestria.css';
 import '@/styles/recepcao-alta-performance.css';
 
-import { RecepcaoDeadlineBar } from './RecepcaoDeadlineBar';
 import { RecepcaoHeader } from './RecepcaoHeader';
 import {
   RecepcaoHero,
@@ -22,7 +21,9 @@ import { RecepcaoFooter } from './RecepcaoFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { WHATSAPP_URL } from './content';
+import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
+import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 /* ============================================================
    "RECEPÇÃO DE ALTA PERFORMANCE" — landing de vendas (padrão Felice).
@@ -32,11 +33,11 @@ import { WHATSAPP_URL } from './content';
    Par presencial do CRC de Alta Performance (/produtos/vendas-secretaria),
    de quem esta landing é fork estrutural.
 
-   Ordem: DeadlineBar → Header → Hero → Números → Problema →
+   Ordem: ScarcityBar → Header → Hero → Números → Problema →
    Método (4 pilares Disney) → Módulos → Bônus → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
-   ⚠️ `has-urgency-bar` e a <RecepcaoDeadlineBar /> andam juntas: a classe
+   ⚠️ `has-urgency-bar` e a <ScarcityBar /> andam juntas: a classe
       reserva `--urgency-h` de espaço no topo. Se tirar a barra, tire a
       classe também, senão sobra um vão de 53px acima do hero.
 
@@ -47,7 +48,12 @@ import { WHATSAPP_URL } from './content';
 export function RecepcaoLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar">
-      <RecepcaoDeadlineBar />
+      <ScarcityBar
+        deadlineIso={DEADLINE_ISO}
+        label="A oferta deste lote encerra em"
+        vagas="Condição do lote atual"
+        viewers
+      />
       <RecepcaoHeader />
 
       <main>
@@ -74,6 +80,7 @@ export function RecepcaoLanding() {
       <RecepcaoFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PurchaseToasts produto="a Recepção de Alta Performance" />
       <RevealOnScroll />
     </div>
   );

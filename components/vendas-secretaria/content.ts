@@ -39,8 +39,15 @@ export const WHATSAPP_URL =
     'Olá! Tenho interesse no curso "CRC de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
   );
 
-/** Fechamento do lote — countdown autêntico. ⚠️ Ajustar para a data real. */
-export const DEADLINE_ISO = '2026-07-31T23:59:59-03:00';
+/**
+ * Fechamento do lote — alimenta o countdown da <ScarcityBar />.
+ * ⚠️ Vencida, a barra INTEIRA sai do ar (contador, vagas e "pessoas vendo
+ * agora"), e a página perde toda a urgência sem avisar ninguém. Estava em
+ * 31/07/2026, no passado, desde antes de 11/08/2026.
+ * ⚠️ Ajustar para a data real. Kit F4 à parte, as quatro landings com
+ * countdown vencem juntas em 31/08/2026 — renove todas de uma vez.
+ */
+export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {

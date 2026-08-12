@@ -1,7 +1,6 @@
 import '@/styles/felice.css';
 import '@/styles/maestria.css';
 
-import { MaestriaDeadlineBar } from './MaestriaDeadlineBar';
 import { MaestriaHeader } from './MaestriaHeader';
 import {
   MaestriaHero,
@@ -22,17 +21,24 @@ import { MaestriaFooter } from './MaestriaFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { WHATSAPP_URL } from './content';
+import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
+import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 /* ============================================================
    MAESTRIA ZIGOMÁTICA — landing de vendas (padrão Felice / dourado).
    Curso premium do Dr. Sócrates Tavares (implantes zigomáticos).
-   Fork estrutural da Gestão F4, ticket alto + escassez AUTÊNTICA
-   (deadline real de turma; sem toasts/viewers falsos).
+   Fork estrutural da Gestão F4, ticket alto + escassez por deadline
+   real de turma (DEADLINE_ISO em ./content.ts).
 
-   Ordem: DeadlineBar → Header → Hero → Números → Problema →
+   Ordem: ScarcityBar → Header → Hero → Números → Problema →
    Método → Módulos → Bônus → Plataforma → Autoridade →
    Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
+
+   ⚠️ O contador, o "X pessoas vendo agora" e os toasts de compra são os
+      mesmos recursos do Kit F4 e da Masterclass. Os toasts trazem nomes e
+      cidades FICTÍCIOS, fixos em PurchaseToasts.tsx — vale saber disso ao
+      falar de prova social nesta página.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): link de checkout,
       vídeos dos depoimentos, data real da turma. Foto de hero opcional.
@@ -41,7 +47,12 @@ import { WHATSAPP_URL } from './content';
 export function MaestriaLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar">
-      <MaestriaDeadlineBar />
+      <ScarcityBar
+        deadlineIso={DEADLINE_ISO}
+        label="As matrículas encerram em"
+        vagas="Vagas limitadas por turma"
+        viewers
+      />
       <MaestriaHeader />
 
       <main>
@@ -69,6 +80,7 @@ export function MaestriaLanding() {
       <MaestriaFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PurchaseToasts produto="a Maestria Zigomática" />
       <RevealOnScroll />
     </div>
   );

@@ -2,7 +2,6 @@ import '@/styles/felice.css';
 import '@/styles/maestria.css';
 import '@/styles/masterclass.css';
 
-import { MasterclassDeadlineBar } from './MasterclassDeadlineBar';
 // import { MasterclassHeader } from './MasterclassHeader';
 import {
   MasterclassHero,
@@ -25,7 +24,8 @@ import { MasterclassFooter } from './MasterclassFooter';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
-import { WHATSAPP_URL } from './content';
+import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { DEADLINE_ISO, HERO, WHATSAPP_URL } from './content';
 
 /* ============================================================
    MASTERCLASS ZIGOMÁTICO DESCOMPLICADO — landing de vendas.
@@ -33,7 +33,7 @@ import { WHATSAPP_URL } from './content';
    checkout: acesso único de R$ 67. Hero em VSL + countdown.
 
    Ordem (espelha a página antiga, no nosso visual):
-   DeadlineBar → Header → Hero(VSL) → Faixa-frase → Quem é o Dr.Sócrates →
+   ScarcityBar → Header → Hero(VSL) → Faixa-frase → Quem é o Dr.Sócrates →
    O que vai aprender → Faixa-CTA → Casos → Destaque → Depoimentos →
    Bônus → Investimento → Garantia → Sobre mim → Stats →
    FAQ → CTA final → Footer.
@@ -45,7 +45,8 @@ import { WHATSAPP_URL } from './content';
 export function MasterclassLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar mc-sem-header">
-      <MasterclassDeadlineBar />
+      {/* Sem linha de vagas: a masterclass é acesso único, não tem turma. */}
+      <ScarcityBar deadlineIso={DEADLINE_ISO} label={HERO.countdownLabel} viewers />
       {/* Header escondido a pedido do Leo (10/08/2026). Para trazer de volta:
           descomente o <MasterclassHeader /> e tire `mc-sem-header` do wrapper
           — é essa classe que devolve ao hero o espaço do header fixo. */}
