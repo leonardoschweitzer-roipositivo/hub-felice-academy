@@ -138,6 +138,306 @@
   flex: none;
   font-size: 1rem;
 }
+
+/* ---------- jornadas · mini-telas e a onda ----------
+   Cada etapa mostra um wireframe do formato da página, desenhado só com
+   barras e bolhas — nenhuma imagem, nada que envelheça quando a landing
+   real mudar. E um brilho dourado percorre a corrente em onda, para a
+   sequência ler como percurso e não como lista.
+
+   O ritmo é `--i` (índice, inline no elemento) × 0,8s, dentro de um ciclo
+   de `--n` × 0,8s + 1,8s de respiro. As setas levam `--i` com meio passo
+   de diferença, então acendem entre um nó e o outro. */
+/* Um elo = seta + nó. ⚠️ NÃO chamar de `.arq-step`: esse nome já é dos
+   cards numerados do "como usar" mais abaixo neste arquivo, e a colisão
+   trazia padding 16/20 e gap 16 para dentro da corrente — 58px de sobra por
+   etapa, que empurravam a jornada para fora da tela sem motivo aparente.
+
+   O `min-width: max-content` do .arq-chain só dimensiona os filhos DIRETOS,
+   e agora o filho direto é o elo, não o nó. Sem o `flex: none` aqui e o
+   `width: max-content` no nó, a caixa trava no min-width e o rótulo
+   monoespaçado ("SubmitApplication") vaza por baixo da borda. */
+.felice-arq .arq-elo {
+  display: flex;
+  align-items: stretch;
+  flex: none;
+}
+/* Padding apertado de propósito: com 7 etapas, cada pixel a mais empurra a
+   jornada do Padrão A para fora de um desktop de 1440px e obriga a arrastar
+   para ver o fim. Do jeito que está, ela cabe inteira. */
+.felice-arq .arq-chain--mock .arq-node {
+  position: relative;
+  width: max-content;
+  min-width: 128px;
+  padding: 8px;
+  gap: 3px;
+}
+.felice-arq .arq-chain--mock .arq-arw {
+  padding: 0 2px;
+}
+.felice-arq .arq-chain--mock .arq-node .n {
+  margin-top: 5px;
+}
+
+/* O acender vive no ::after, NÃO na borda do nó: `.ok` pinta border-color e
+   `.ext` pinta border-style, e animar a borda apagaria as duas durante todo
+   o ciclo. Aqui é uma moldura por cima, que não disputa com nada. */
+.felice-arq .arq-chain--mock .arq-node::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(232, 180, 71, 0.75);
+  border-radius: 11px;
+  box-shadow: 0 0 20px rgba(232, 180, 71, 0.22), inset 0 0 14px rgba(232, 180, 71, 0.07);
+  opacity: 0;
+  pointer-events: none;
+  animation: arq-onda calc(var(--n, 7) * 0.8s + 1.8s) linear infinite;
+  animation-delay: calc(var(--i, 0) * 0.8s);
+}
+.felice-arq .arq-chain--mock .arq-arw {
+  animation: arq-onda-seta calc(var(--n, 7) * 0.8s + 1.8s) linear infinite;
+  animation-delay: calc(var(--i, 0) * 0.8s);
+}
+@keyframes arq-onda {
+  0% {
+    opacity: 1;
+  }
+  16% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes arq-onda-seta {
+  0% {
+    color: var(--gold);
+    transform: translateX(2px);
+  }
+  16% {
+    color: var(--muted-2);
+    transform: none;
+  }
+  100% {
+    color: var(--muted-2);
+    transform: none;
+  }
+}
+
+/* ---------- o wireframe em si ---------- */
+.felice-arq .arq-mock {
+  display: flex;
+  flex-direction: column;
+  height: 74px;
+  border: 1px solid var(--line-soft);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+/* Página fora do site: a tela também fica tracejada, como a caixa. */
+.felice-arq .arq-node.ext .arq-mock {
+  border-style: dashed;
+}
+/* A faixa de escassez dourada que toda landing do site tem no topo. */
+.felice-arq .arq-mk-urg {
+  height: 4px;
+  flex: none;
+  background: var(--grad-gold);
+  opacity: 0.75;
+}
+.felice-arq .arq-mk-chrome {
+  height: 10px;
+  flex: none;
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.03);
+}
+/* Os 3 pontinhos da barra do navegador, num elemento só. */
+.felice-arq .arq-mk-chrome::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 3.5px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+  box-shadow: 5px 0 0 rgba(255, 255, 255, 0.17), 10px 0 0 rgba(255, 255, 255, 0.11);
+}
+.felice-arq .arq-mk-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 7px;
+  min-height: 0;
+}
+
+/* peças */
+.felice-arq .arq-mk-l {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  flex: none;
+}
+.felice-arq .arq-mk-l.w80 {
+  width: 80%;
+}
+.felice-arq .arq-mk-l.w75 {
+  width: 75%;
+}
+.felice-arq .arq-mk-l.w70 {
+  width: 70%;
+}
+.felice-arq .arq-mk-l.w60 {
+  width: 60%;
+}
+.felice-arq .arq-mk-l.w55 {
+  width: 55%;
+}
+.felice-arq .arq-mk-l.w50 {
+  width: 50%;
+}
+.felice-arq .arq-mk-l.w45 {
+  width: 45%;
+}
+.felice-arq .arq-mk-l.w40 {
+  width: 40%;
+}
+/* headline do hero — mais alta e clara que as linhas de apoio */
+.felice-arq .arq-mk-h {
+  height: 6px;
+  width: 78%;
+  border-radius: 2px;
+  background: rgba(245, 232, 205, 0.42);
+  flex: none;
+}
+.felice-arq .arq-mk-btn {
+  height: 8px;
+  width: 46%;
+  border-radius: 3px;
+  background: var(--grad-gold);
+  opacity: 0.85;
+  margin-top: auto;
+  flex: none;
+}
+.felice-arq .arq-mk-btn.wide {
+  width: 100%;
+}
+.felice-arq .arq-mk-img {
+  flex: 1;
+  min-height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(130deg, rgba(232, 180, 71, 0.2), rgba(255, 255, 255, 0.05) 62%);
+}
+.felice-arq .arq-mk-video {
+  flex: 1;
+  min-height: 18px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+/* triângulo de play, em bordas */
+.felice-arq .arq-mk-video::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-left: 7px solid rgba(232, 180, 71, 0.75);
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+}
+.felice-arq .arq-mk-field {
+  height: 7px;
+  border-radius: 2px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.04);
+  flex: none;
+}
+.felice-arq .arq-mk-chips {
+  display: flex;
+  gap: 3px;
+  flex: none;
+}
+.felice-arq .arq-mk-chip {
+  height: 6px;
+  flex: 1;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+/* a opção escolhida do questionário */
+.felice-arq .arq-mk-chip.on {
+  background: rgba(232, 180, 71, 0.42);
+}
+.felice-arq .arq-mk-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+}
+/* foto de perfil do anunciante */
+.felice-arq .arq-mk-av {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  flex: none;
+}
+.felice-arq .arq-mk-row .arq-mk-l {
+  flex: none;
+}
+/* selo de confirmação: círculo verde com o check em duas bordas */
+.felice-arq .arq-mk-ok {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(95, 174, 134, 0.9);
+  position: relative;
+  flex: none;
+}
+.felice-arq .arq-mk-ok::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  width: 3px;
+  height: 5px;
+  border: solid #0d0f0e;
+  border-width: 0 1.4px 1.4px 0;
+  transform: rotate(42deg);
+}
+/* bolhas da conversa — `me` é a resposta, alinhada à direita e verde */
+.felice-arq .arq-mk-bub {
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.11);
+  flex: none;
+}
+.felice-arq .arq-mk-bub.me {
+  background: rgba(95, 174, 134, 0.32);
+  align-self: flex-end;
+}
+.felice-arq .arq-mk-bub.w70 {
+  width: 70%;
+}
+.felice-arq .arq-mk-bub.w60 {
+  width: 60%;
+}
+.felice-arq .arq-mk-bub.w45 {
+  width: 45%;
+}
+/* A conversa é a última tela do padrão B: encosta as bolhas embaixo. */
+.felice-arq .arq-mock--whatsapp .arq-mk-body {
+  justify-content: flex-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .felice-arq .arq-chain--mock .arq-node::after,
+  .felice-arq .arq-chain--mock .arq-arw {
+    animation: none;
+  }
+}
 .felice-arq .arq-note {
   margin-top: 14px;
   font-size: 0.85rem;
