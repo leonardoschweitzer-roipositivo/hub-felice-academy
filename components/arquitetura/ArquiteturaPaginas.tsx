@@ -17,15 +17,19 @@ import { ArqJornada, type Etapa } from './ArqJornada';
    especial a tabela do inventário e a árvore de rotas.
    ============================================================ */
 
-/* Quatro números — é o que a faixa `.numeros` do felice.css comporta por
-   linha, e é o ritmo que todas as landings do site usam.
+/* CINCO números aqui, contra os quatro de toda landing do site: a faixa
+   `.numeros` do felice.css é `repeat(4, 1fr)` fixo e o quinto cairia órfão
+   numa segunda linha. Quem abre para 5 colunas é a regra `.felice-arq
+   .numeros-grid` do arquitetura.css — só nesta página.
 
-   As 64 páginas saem de `find app -name "page.tsx" | wc -l`: 44 do site
-   público (landings, questionários, confirmações, obrigados, área do Kit
-   F4, home, vitrine, termos, privacidade e esta página) e 20 da plataforma
-   do aluno e do admin, que ainda é protótipo com dados mockados.
+   As contagens saem de `find app -name "page.tsx" | wc -l`: 64 no total,
+   44 do site público (landings, questionários, confirmações, obrigados,
+   área do Kit F4, home, vitrine, termos, privacidade e esta página) e 20
+   da plataforma do aluno e do admin, que ainda é protótipo com dados
+   mockados — por isso os dois números aparecem separados, somar um
+   protótipo ao que está vendendo confundiria as duas coisas.
    ⚠️ Cinco dessas rotas são dinâmicas (`[curso]`, `[aula]`, `[material]`,
-   `[id]`), então o site SERVE mais páginas do que 64 — o número conta
+   `[id]`), então o site SERVE mais páginas do que isso — o número conta
    rotas escritas, que é o que dá para conferir no repo. Refaça a conta
    sempre que criar ou apagar rota. */
 const NUMEROS = [
@@ -39,7 +43,8 @@ const NUMEROS = [
      faixa contradizia a própria tabela da mesma página.
      O "(eram 6)" segue certo: era o estado antes do PR #61. */
   { n: '8 de 9', l: 'produtos com página de obrigado (eram 6)' },
-  { n: '64', l: 'páginas no site — 20 delas na plataforma do aluno, ainda em construção' },
+  { n: '44', l: 'páginas no site — da home às confirmações' },
+  { n: '20', l: 'páginas da plataforma do aluno, em desenvolvimento' },
 ];
 
 /* As duas jornadas. Cada etapa vira um nó com a mini-tela do formato da
