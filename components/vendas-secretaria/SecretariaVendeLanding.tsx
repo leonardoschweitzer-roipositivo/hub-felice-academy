@@ -2,7 +2,6 @@ import '@/styles/felice.css';
 import '@/styles/maestria.css';
 import '@/styles/vendas-secretaria.css';
 
-import { SecretariaVendeDeadlineBar } from './SecretariaVendeDeadlineBar';
 import { SecretariaVendeHeader } from './SecretariaVendeHeader';
 import {
   SecretariaVendeHero,
@@ -22,7 +21,9 @@ import { SecretariaVendeFooter } from './SecretariaVendeFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { WHATSAPP_URL } from './content';
+import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
+import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 /* ============================================================
    "A SECRETÁRIA QUE VENDE" — landing de vendas (padrão Felice / dourado).
@@ -30,9 +31,13 @@ import { WHATSAPP_URL } from './content';
    vender: do primeiro contato ao fechamento do orçamento. Fork
    estrutural do Gestão F4 (ticket com checkout + escassez por deadline).
 
-   Ordem: DeadlineBar → Header → Hero → Números → Problema →
+   Ordem: ScarcityBar → Header → Hero → Números → Problema →
    Método (funil da recepção) → Módulos → Bônus → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
+
+   ⚠️ O produto se chama "CRC de Alta Performance" na tela desde o rename de
+      10/08/2026, mas a rota e os componentes seguem com o nome antigo — é o
+      nome novo que vai no toast de compra.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): data do lote e
       depoimentos. Checkout e preço já são os reais.
@@ -41,7 +46,12 @@ import { WHATSAPP_URL } from './content';
 export function SecretariaVendeLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar">
-      <SecretariaVendeDeadlineBar />
+      <ScarcityBar
+        deadlineIso={DEADLINE_ISO}
+        label="A oferta deste lote encerra em"
+        vagas="Condição do lote atual"
+        viewers
+      />
       <SecretariaVendeHeader />
 
       <main>
@@ -68,6 +78,7 @@ export function SecretariaVendeLanding() {
       <SecretariaVendeFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PurchaseToasts produto="o CRC de Alta Performance" />
       <RevealOnScroll />
     </div>
   );

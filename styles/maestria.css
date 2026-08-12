@@ -437,6 +437,19 @@
   .felice-maestria .mz-vagas {
     font-size: 0.78rem;
   }
+  /* Barra com contador + vagas + "pessoas vendo agora": abaixo de 820px a
+     .urgency-bar-inner é nowrap (felice.css) e três itens não cabem ao lado
+     do relógio de 4 segmentos. A linha de vagas sai e ficam contador +
+     viewers, a dupla que a Masterclass já prova que cabe até 375px.
+
+     ⚠️ Mira em `.urgency-vagas`, NÃO em `.mz-vagas`: as TopBar da Consultoria
+     e das duas mentorias são feitas só de `.mz-vagas` dentro de uma
+     `.urgency-bar`, e um seletor mais largo esvaziaria as três no mobile.
+     Só a <ScarcityBar /> emite `urgency-vagas` e `urgency-sep--vagas`. */
+  .felice-maestria .urgency-vagas,
+  .felice-maestria .urgency-sep--vagas {
+    display: none;
+  }
 }
 
 /* ---------- Módulos ---------- */
