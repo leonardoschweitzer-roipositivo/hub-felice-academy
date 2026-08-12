@@ -381,11 +381,17 @@ export function ArquiteturaPaginas() {
         <div className="wrap arq-hero-in">
           <span className="eyebrow">Arquitetura da informação · uso interno</span>
           {/* "Cada", não "Todo": o h2 da seção das jornadas logo abaixo abre
-              com "Todo produto do site segue…" e o eco aparece ao rolar. */}
+              com "Todo produto do site segue…" e o eco aparece ao rolar.
+
+              ⚠️ Copy enxuta de propósito. Cada frase precisa caber em UMA
+              linha no tamanho do h1 desta capa (60px) — foi por isso que
+              saíram o "tem uma" e o "primeiro". Se crescer, ou a headline
+              quebra no meio ou tem de encolher abaixo dos títulos de seção,
+              que vão a 46px. Meça no navegador antes de trocar. */}
           <h1>
-            Cada produto tem uma jornada completa.
+            Cada produto, jornada completa.
             <br />
-            <span className="gold-grad">Do primeiro clique ao evento de receita.</span>
+            <span className="gold-grad">Do clique ao evento de receita.</span>
           </h1>
           {/* ⚠️ Os números batem com a faixa logo abaixo e com o Inventário —
               mexeu num, confira os três. O lead anterior falava em 10 landings

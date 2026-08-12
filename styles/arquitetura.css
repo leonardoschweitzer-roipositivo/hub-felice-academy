@@ -31,21 +31,26 @@
   background: radial-gradient(760px 300px at 12% -10%, rgba(232, 180, 71, 0.13), transparent 62%);
   pointer-events: none;
 }
-/* A headline desta capa é mais longa que a das landings e, no tamanho
-   padrão do felice.css (`clamp(2.1rem, 5.2vw, 4rem)` → 64px), cada uma das
-   duas frases quebrava em duas linhas: sobravam "completa." e "receita."
-   sozinhos, e a linha dourada partia no meio.
+/* Teto do h1 um pouco abaixo do padrão do felice.css (4rem/64px), para que
+   cada frase da headline caiba em UMA linha: medido no navegador, a 1440px
+   o h1 dispõe de 1060px e a copy atual cabe até 63px.
 
-   Medido no navegador a 1440px: o h1 dispõe de 1060px e a frase mais longa
-   ("Cada produto tem uma jornada completa.") pede 1348px a 64px — cabe a
-   partir de ~50px. Daí o teto de 3rem, com ~5% de folga.
+   ⚠️ O h2 do felice.css vai a 2.9rem (46px), então o piso útil aqui é bem
+   mais alto do que parece: abaixo de ~52px o h1 empata com os títulos de
+   seção e a hierarquia da página some. Já aconteceu — a copy era mais longa
+   e forçou o h1 a 48px, ficando visualmente igual aos h2. A saída foi
+   encurtar a copy, não baixar a headline.
 
-   ⚠️ Se mexer na copy do h1, meça de novo em vez de chutar: 1ch desta
-   Poppins não é o que a conta de padaria sugere. O `<br />` do JSX separa
-   as duas frases; abaixo de ~800px elas voltam a quebrar sozinhas, e é
-   isso mesmo — no mobile não há tamanho que faça caber. */
+   Ou seja, mexer no texto do h1 tem duas amarras ao mesmo tempo: precisa
+   caber em uma linha E permitir fonte acima de 52px. Meça no navegador em
+   vez de chutar — 1ch desta Poppins não é o que a conta de padaria sugere.
+   O `<br />` do JSX separa as duas frases; no mobile elas voltam a quebrar
+   sozinhas, e é isso mesmo — lá não há tamanho que faça caber. */
+/* O piso continua o 2.1rem do felice.css de propósito: baixá-lo empatava o
+   h1 com o h2 no mobile (1,03× a 375px), que é o mesmo problema de novo, só
+   que na outra ponta da escala. Aqui só o teto muda. */
 .felice-arq .arq-hero h1 {
-  font-size: clamp(1.9rem, 4.1vw, 3rem);
+  font-size: clamp(2.1rem, 5.1vw, 3.75rem);
 }
 
 .felice-arq .arq-hero-in {
