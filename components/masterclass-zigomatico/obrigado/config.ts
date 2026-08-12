@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMERO, whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    Página de Obrigado · Masterclass Zigomático Descomplicado — config
    Edite SÓ aqui os links/parâmetros da página de obrigado.
@@ -20,9 +22,10 @@ export const CONFIRMACAO_URL = '/produtos/masterclass-zigomatico/consultoria/con
     e não mais a área do aluno, que não tem a aula. */
 export const ACESSO_URL = '/produtos/masterclass-zigomatico/obrigado#aula';
 
-/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
-    usado pelo botão flutuante e pelo envio do questionário de consultoria. */
-export const WHATSAPP_NUMERO = '5588981391199';
+/** O WhatsApp da Felice — (88) 98139-1199. O número mora em
+    `lib/whatsapp/contato.ts`; aqui é só o reexport, porque o quiz deste
+    funil importa `WHATSAPP_NUMERO` deste config. */
+export { WHATSAPP_NUMERO };
 
 /** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
     os 7 questionários no mesmo número, então a resposta precisa dizer de
@@ -30,11 +33,9 @@ export const WHATSAPP_NUMERO = '5588981391199';
 export const ORIGEM_LABEL = 'Masterclass Zigomático · consultoria gratuita (pós-aula)';
 
 /** WhatsApp de suporte (botão flutuante). */
-export const WHATSAPP_URL =
-  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
-  encodeURIComponent(
-    'Olá! Acabei de garantir meu acesso à Masterclass Zigomático Descomplicado e quero agendar minha consultoria gratuita.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Acabei de garantir meu acesso à Masterclass Zigomático Descomplicado e quero agendar minha consultoria gratuita.',
+);
 
 /** Prazo, em dias, alinhado à garantia incondicional. Usado na copy de urgência. */
 export const PRAZO_DIAS = 7;

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+import { SUPORTE_KIT } from './suporte';
 import { DOC_META, DOC_ORDER } from './content';
 import { KitDocCard } from './KitDocCard';
 import { SearchModal } from './search/SearchModal';
@@ -98,7 +100,7 @@ export function KitIndex() {
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       <Footer />
-      <WhatsappFloat />
+      <WhatsappFloat href={whatsappUrl(SUPORTE_KIT)} />
       <RevealOnScroll />
     </div>
   );

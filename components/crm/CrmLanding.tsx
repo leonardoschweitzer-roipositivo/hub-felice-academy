@@ -18,6 +18,7 @@ import { CrmFaq } from './CrmFaq';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /* ============================================================
    FELICE CRM — landing de vendas (clone estrutural da Gestão F4)
@@ -59,7 +60,11 @@ export function CrmLanding() {
 
       <Footer />
 
-      <WhatsappFloat />
+      <WhatsappFloat
+        href={whatsappUrl(
+          'Olá! Tudo bem? Gostaria de mais informações sobre o Felice CRM, por favor.',
+        )}
+      />
       <RevealOnScroll />
     </div>
   );

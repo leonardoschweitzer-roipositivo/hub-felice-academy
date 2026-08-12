@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMERO, whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    Página de Obrigado · Kit Gestão F4 — configuração central
    Edite SÓ aqui os links/parâmetros da página de obrigado.
@@ -18,21 +20,19 @@ export const DOCS_URL = '/produtos/kitgestaof4/kit-f4';
 /** Âncora da seção de documentos DENTRO desta página (ver MeusDocumentos). */
 export const DOCS_ANCHOR = '#meus-documentos';
 
-/** WhatsApp de suporte (botão flutuante). */
-/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
-    usado pelo botão flutuante e pelo envio do questionário. */
-export const WHATSAPP_NUMERO = '5588981391199';
+/** O WhatsApp da Felice — (88) 98139-1199. O número mora em
+    `lib/whatsapp/contato.ts`; aqui é só o reexport, porque o quiz deste
+    funil importa `WHATSAPP_NUMERO` deste config. */
+export { WHATSAPP_NUMERO };
 
 /** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
     os 7 questionários no mesmo número, então a resposta precisa dizer de
     onde veio sem depender da frase de abertura. */
 export const ORIGEM_LABEL = 'Kit Gestão F4 · consultoria gratuita (pós-compra)';
 
-export const WHATSAPP_URL =
-  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
-  encodeURIComponent(
-    'Olá! Acabei de adquirir o Kit Gestão F4 e quero agendar minha consultoria gratuita.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Acabei de adquirir o Kit Gestão F4 e quero agendar minha consultoria gratuita.',
+);
 
 /** Prazo, em dias, alinhado à garantia incondicional. Usado na copy de urgência. */
 export const PRAZO_DIAS = 7;

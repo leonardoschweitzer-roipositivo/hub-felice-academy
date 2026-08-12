@@ -1,3 +1,5 @@
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    CURSO "RECEPÇÃO DE ALTA PERFORMANCE" · conteúdo central da landing
    Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
@@ -44,11 +46,9 @@ export const CHECKOUT_URL =
 export const OFERTA_ANCHOR = '#oferta';
 
 /** WhatsApp de dúvidas (botão flutuante). */
-export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
-  encodeURIComponent(
-    'Olá! Tenho interesse no curso "Recepção de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Tenho interesse no curso "Recepção de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
+);
 
 /** Fechamento do lote — countdown autêntico. ⚠️ Ajustar para a data real. */
 export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';

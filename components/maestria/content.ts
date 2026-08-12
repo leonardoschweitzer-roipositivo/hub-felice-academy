@@ -1,3 +1,5 @@
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    MAESTRIA ZIGOMÁTICA · conteúdo central da landing de vendas
    Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
@@ -18,11 +20,9 @@ export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/1oWoQi?c
 export const OFERTA_ANCHOR = '#oferta';
 
 /** WhatsApp de dúvidas (botão flutuante). */
-export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
-  encodeURIComponent(
-    'Olá! Tenho interesse na Maestria Zigomática e gostaria de tirar uma dúvida antes de me inscrever.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Tenho interesse na Maestria Zigomática e gostaria de tirar uma dúvida antes de me inscrever.',
+);
 
 /**
  * Fechamento da turma — alimenta o countdown da <ScarcityBar />.

@@ -1,4 +1,17 @@
-export function WhatsappFloat({ href = '#' }: { href?: string }) {
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
+/* O botão flutuante do WhatsApp, presente em quase toda página do site.
+
+   ⚠️ O default era `href="#"`, e sete páginas o usavam sem passar nada —
+   home, /produtos, /crm, o hub das mentorias, a área de entrega do Kit F4
+   (índice + os 4 documentos) e a plataforma. Nessas o botão aparecia igual
+   ao das outras e não levava a lugar nenhum. Agora o default é o número de
+   verdade, então página nova já nasce com o botão funcionando; quem tem
+   contexto próprio (uma landing de produto, um pós-compra) continua
+   passando o `href` com a mensagem dela. */
+const MENSAGEM_PADRAO = 'Olá! Tudo bem? Gostaria de mais informações sobre a Felice Academy, por favor.';
+
+export function WhatsappFloat({ href = whatsappUrl(MENSAGEM_PADRAO) }: { href?: string }) {
   // Link real (externo) abre em nova aba; placeholder "#" fica no mesmo contexto.
   const external = href !== '#';
   return (

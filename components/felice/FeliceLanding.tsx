@@ -1,5 +1,6 @@
 import '@/styles/felice.css';
 
+import { whatsappUrl } from '@/lib/whatsapp/contato';
 import { Header } from './sections/Header';
 import { Hero } from './sections/Hero';
 import { Numeros } from './sections/Numeros';
@@ -65,7 +66,11 @@ export function FeliceLanding() {
       <Footer checkoutUrl={CHECKOUT_URL} metodoAnchor="#metodo" />
 
       {/* Flutuantes / urgência */}
-      <WhatsappFloat href="https://wa.me/5588981391199?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Kit%20Gest%C3%A3o%20F4%2C%20por%20favor." />
+      <WhatsappFloat
+        href={whatsappUrl(
+          'Olá! Tudo bem? Gostaria de mais informações sobre o Kit Gestão F4, por favor.',
+        )}
+      />
       <PurchaseToasts />
 
       {/* Ativa as animações de scroll em todos os .reveal */}
