@@ -1,3 +1,5 @@
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    MENTORIA DE ZIGOMÁTICO · conteúdo central da landing de vendas
    Edite SÓ aqui copy, eixos, presenciais, entregas, bônus e FAQ.
@@ -24,11 +26,9 @@ export const APPLY_URL = '/produtos/mentoria-zigomatico/aplicacao';
 export const OFERTA_ANCHOR = '#candidatura';
 
 /** WhatsApp de dúvidas (botão flutuante). */
-export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
-  encodeURIComponent(
-    'Olá! Tenho interesse na Mentoria de Zigomático e gostaria de tirar uma dúvida antes de me candidatar.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Tenho interesse na Mentoria de Zigomático e gostaria de tirar uma dúvida antes de me candidatar.',
+);
 
 /* ---------- Hero ---------- */
 export const HERO = {

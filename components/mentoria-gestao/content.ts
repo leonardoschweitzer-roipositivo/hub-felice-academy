@@ -1,3 +1,5 @@
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    MENTORIA DE GESTÃO F4 · conteúdo central da landing de vendas
    Edite SÓ aqui copy, pilares, entregas, bônus, FAQ e depoimentos.
@@ -26,11 +28,9 @@ export const APPLY_URL = '/produtos/mentoria-gestao-f4/aplicacao';
 export const OFERTA_ANCHOR = '#candidatura';
 
 /** WhatsApp de dúvidas (botão flutuante). */
-export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
-  encodeURIComponent(
-    'Olá! Tenho interesse na Mentoria de Gestão F4 e gostaria de tirar uma dúvida antes de me candidatar.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Tenho interesse na Mentoria de Gestão F4 e gostaria de tirar uma dúvida antes de me candidatar.',
+);
 
 /* ---------- Hero ---------- */
 export const HERO = {

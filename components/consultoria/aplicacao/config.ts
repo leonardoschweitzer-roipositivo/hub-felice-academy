@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMERO, whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    Aplicação da Consultoria Gestão F4 — configuração central.
 
@@ -17,9 +19,10 @@ export const CONFIRMACAO_URL = '/produtos/consultoria/aplicacao/confirmado';
 /** Volta para a landing (link discreto de "agora não"). */
 export const LANDING_URL = '/produtos/consultoria';
 
-/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
-    usado pelo link de suporte e pelo envio da candidatura. */
-export const WHATSAPP_NUMERO = '5588981391199';
+/** O WhatsApp da Felice — (88) 98139-1199. O número mora em
+    `lib/whatsapp/contato.ts`; aqui é só o reexport, porque o quiz deste
+    funil importa `WHATSAPP_NUMERO` deste config. */
+export { WHATSAPP_NUMERO };
 
 /** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
     os 7 questionários no mesmo número, então a resposta precisa dizer de
@@ -27,6 +30,4 @@ export const WHATSAPP_NUMERO = '5588981391199';
 export const ORIGEM_LABEL = 'Consultoria Gestão F4 · candidatura (landing)';
 
 /** WhatsApp de suporte. */
-export const WHATSAPP_URL =
-  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
-  encodeURIComponent('Olá! Me candidatei à Consultoria Gestão F4 e gostaria de falar com a equipe.');
+export const WHATSAPP_URL = whatsappUrl('Olá! Me candidatei à Consultoria Gestão F4 e gostaria de falar com a equipe.');

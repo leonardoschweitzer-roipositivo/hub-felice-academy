@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+import { SUPORTE_KIT } from './suporte';
 import type { DocModel } from './content/types';
 import { KIT_BASE } from './content';
 import { useScrollSpy } from './useScrollSpy';
@@ -123,7 +125,7 @@ export function DocLayout({ doc }: { doc: DocModel }) {
       <ConsultoriaCtaSection />
 
       <Footer />
-      <WhatsappFloat />
+      <WhatsappFloat href={whatsappUrl(SUPORTE_KIT)} />
       <RevealOnScroll />
     </div>
   );

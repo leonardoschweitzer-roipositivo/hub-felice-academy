@@ -1,3 +1,5 @@
+import { whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    MASTERCLASS ZIGOMÁTICO DESCOMPLICADO · conteúdo da landing
    Produto de ticket baixo, acesso único de R$ 67 com checkout.
@@ -32,11 +34,9 @@ export const VIDEO_IFRAME_ID = 'panda-f84f70aa-165f-40aa-b882-b5bd37076855';
 export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
 
 /** WhatsApp de dúvidas (botão flutuante). */
-export const WHATSAPP_URL =
-  'https://wa.me/5588981391199?text=' +
-  encodeURIComponent(
-    'Olá! Tenho interesse na Masterclass Zigomático Descomplicado e gostaria de tirar uma dúvida.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Tenho interesse na Masterclass Zigomático Descomplicado e gostaria de tirar uma dúvida.',
+);
 
 /* ---------- Hero (VSL) ---------- */
 export const HERO = {

@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMERO, whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    Página de Obrigado · Recepção de Alta Performance — config central
    Edite SÓ aqui os links/parâmetros da página de obrigado.
@@ -19,9 +21,10 @@ export const QUESTIONARIO_URL = '/produtos/recepcao-alta-performance/consultoria
 /** Rota da página de confirmação (recebimento dos dados). */
 export const CONFIRMACAO_URL = '/produtos/recepcao-alta-performance/consultoria/confirmado';
 
-/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
-    usado pelo botão flutuante e pelo envio do questionário. */
-export const WHATSAPP_NUMERO = '5588981391199';
+/** O WhatsApp da Felice — (88) 98139-1199. O número mora em
+    `lib/whatsapp/contato.ts`; aqui é só o reexport, porque o quiz deste
+    funil importa `WHATSAPP_NUMERO` deste config. */
+export { WHATSAPP_NUMERO };
 
 /** Identificação do funil DENTRO da mensagem do WhatsApp. A equipe atende
     todos os questionários no mesmo número, então a resposta precisa dizer
@@ -29,11 +32,9 @@ export const WHATSAPP_NUMERO = '5588981391199';
 export const ORIGEM_LABEL = 'Recepção de Alta Performance · consultoria gratuita (pós-compra)';
 
 /** WhatsApp de suporte (botão flutuante). */
-export const WHATSAPP_URL =
-  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
-  encodeURIComponent(
-    'Olá! Acabei de adquirir a Recepção de Alta Performance e quero agendar minha consultoria gratuita.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Acabei de adquirir a Recepção de Alta Performance e quero agendar minha consultoria gratuita.',
+);
 
 /** Prazo, em dias, alinhado à garantia incondicional do curso. Usado na
     copy de urgência. */

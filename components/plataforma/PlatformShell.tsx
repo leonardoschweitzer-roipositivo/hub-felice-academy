@@ -9,6 +9,7 @@ import { PlatformTopbar } from './PlatformTopbar';
 import { PlatformReveal } from './PlatformReveal';
 import { Footer } from '@/components/felice/sections/Footer';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
+import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /**
  * Casca da área do aluno: sidebar fixa + topbar + conteúdo. Layout
@@ -34,7 +35,12 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
         <Footer />
       </div>
 
-      <WhatsappFloat />
+      {/* Aqui o visitante já é aluno: a mensagem é de suporte, não de venda. */}
+      <WhatsappFloat
+        href={whatsappUrl(
+          'Olá! Tudo bem? Sou aluno da Felice Academy e preciso de ajuda com a plataforma, por favor.',
+        )}
+      />
       <PlatformReveal />
     </div>
   );

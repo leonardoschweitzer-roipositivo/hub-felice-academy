@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMERO, whatsappUrl } from '@/lib/whatsapp/contato';
+
 /* ============================================================
    Aplicação da Mentoria de Zigomático — configuração central.
 
@@ -24,13 +26,12 @@ export const TRACKING_SLUG = 'mentoria-zigomatico';
     onde veio sem depender da frase de abertura. */
 export const ORIGEM_LABEL = 'Mentoria de Zigomático · candidatura (landing)';
 
-/** WhatsApp da Felice, só dígitos (formato wa.me). Fonte única do número —
-    usado pelo envio da candidatura e pelo link de suporte. */
-export const WHATSAPP_NUMERO = '5588981391199';
+/** O WhatsApp da Felice — (88) 98139-1199. O número mora em
+    `lib/whatsapp/contato.ts`; aqui é só o reexport, porque o quiz deste
+    funil importa `WHATSAPP_NUMERO` deste config. */
+export { WHATSAPP_NUMERO };
 
 /** WhatsApp de suporte (quem não conseguiu enviar pelo questionário). */
-export const WHATSAPP_URL =
-  `https://wa.me/${WHATSAPP_NUMERO}?text=` +
-  encodeURIComponent(
-    'Olá! Me candidatei à Mentoria de Zigomático e gostaria de falar com a equipe.',
-  );
+export const WHATSAPP_URL = whatsappUrl(
+  'Olá! Me candidatei à Mentoria de Zigomático e gostaria de falar com a equipe.',
+);
