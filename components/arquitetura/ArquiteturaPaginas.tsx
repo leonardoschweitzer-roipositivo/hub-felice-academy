@@ -17,6 +17,19 @@ import { ArqJornada, type Etapa } from './ArqJornada';
    especial a tabela do inventário e a árvore de rotas.
    ============================================================ */
 
+/* ⚠️ TRÊS SEÇÕES ESCONDIDAS a pedido do Leo em 11/08/2026, para voltar
+   depois: "O veredito" (as quatro perguntas), "O que já foi feito" e "O que
+   continua aberto". Nada foi apagado — o JSX, o `arq-qa`/`arq-q` do CSS e
+   os dados `PASSOS_FEITOS` e `GAPS` continuam aqui.
+
+   Para trazer as três de volta, vire esta constante para `true`. O padding
+   do topo do Inventário e o divisor que abre o balanço já acompanham a
+   flag, então não há mais nada a mexer.
+
+   Fica no ar: capa, faixa de números, as duas jornadas, o Inventário e a
+   árvore de rotas. */
+const MOSTRAR_DIAGNOSTICO: boolean = false;
+
 /* CINCO números aqui, contra os quatro de toda landing do site: a faixa
    `.numeros` do felice.css é `repeat(4, 1fr)` fixo e o quinto cairia órfão
    numa segunda linha. Quem abre para 5 colunas é a regra `.felice-arq
@@ -438,6 +451,7 @@ export function ArquiteturaPaginas() {
           <div className="divider" />
         </div>
 
+        {MOSTRAR_DIAGNOSTICO && (
         <section className="sec">
           <div className="wrap">
             <div className="sec-head">
@@ -484,8 +498,11 @@ export function ArquiteturaPaginas() {
             </div>
           </div>
         </section>
+        )}
 
-        <section className="sec" style={{ paddingTop: 0 }}>
+        {/* Sem o veredito acima, o Inventário passa a vir logo depois do
+            divisor e precisa do respiro de volta no topo. */}
+        <section className="sec" style={MOSTRAR_DIAGNOSTICO ? { paddingTop: 0 } : undefined}>
           <div className="wrap">
             <div className="sec-head">
               <span className="eyebrow">Inventário</span>
@@ -551,6 +568,10 @@ export function ArquiteturaPaginas() {
           </div>
         </section>
 
+        {/* Este divisor abre o balanço final: sai junto com as duas seções,
+            senão fica uma linha solta entre a árvore de rotas e o rodapé. */}
+        {MOSTRAR_DIAGNOSTICO && (
+        <>
         <div className="wrap">
           <div className="divider" />
         </div>
@@ -599,6 +620,8 @@ export function ArquiteturaPaginas() {
             </div>
           </div>
         </section>
+        </>
+        )}
       </main>
 
       <footer className="arq-foot">
