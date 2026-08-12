@@ -85,6 +85,8 @@ const PADRAO_B: Etapa[] = [
 type Linha = {
   produto: string;
   meta: string;
+  /** Rota da landing. A linha inteira do inventário abre isto em outra aba. */
+  href: string;
   cels: { t: string; k: 'ok' | 'no' | 'warn' | 'mut' }[];
 };
 
@@ -92,6 +94,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Kit Gestão F4',
     meta: 'R$ 97',
+    href: '/produtos/kitgestaof4/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'testado', k: 'ok' },
@@ -104,6 +107,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Maestria Zigomática',
     meta: 'R$ 997',
+    href: '/produtos/maestria-zigomatica/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'testado', k: 'ok' },
@@ -116,6 +120,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Masterclass Zigomático',
     meta: 'R$ 67',
+    href: '/produtos/masterclass-zigomatico/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'testado', k: 'ok' },
@@ -128,6 +133,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'CRC de Alta Performance',
     meta: 'R$ 597',
+    href: '/produtos/vendas-secretaria/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'testado', k: 'ok' },
@@ -140,6 +146,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Recepção de Alta Performance',
     meta: 'R$ 597',
+    href: '/produtos/recepcao-alta-performance/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'testado', k: 'ok' },
@@ -152,6 +159,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Consultoria Gestão F4',
     meta: 'R$ 6.000 · candidatura',
+    href: '/produtos/consultoria/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'não se aplica', k: 'mut' },
@@ -164,6 +172,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Mentoria de Gestão F4',
     meta: 'candidatura',
+    href: '/produtos/mentoria-gestao-f4/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'não se aplica', k: 'mut' },
@@ -176,6 +185,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Mentoria de Zigomático',
     meta: 'candidatura',
+    href: '/produtos/mentoria-zigomatico/',
     cels: [
       { t: 'no ar', k: 'ok' },
       { t: 'não se aplica', k: 'mut' },
@@ -188,6 +198,7 @@ const INVENTARIO: Linha[] = [
   {
     produto: 'Felice CRM',
     meta: 'oculto da vitrine',
+    href: '/crm/',
     cels: [
       { t: 'sem link', k: 'warn' },
       { t: 'botão morto', k: 'no' },
@@ -529,9 +540,24 @@ export function ArquiteturaPaginas() {
                 </thead>
                 <tbody>
                   {INVENTARIO.map((l) => (
+                    /* Linha inteira clicável, abrindo a landing em outra aba.
+                       O link é de verdade e mora no nome do produto; quem
+                       estica a área de clique até a borda da linha é o
+                       `::after` absoluto do arquitetura.css sobre a `tr`
+                       relativa. Assim o HTML da tabela continua válido e o
+                       teclado navega — um onClick na `tr` faria a linha
+                       clicar só com mouse, e ainda tornaria a página client. */
                     <tr key={l.produto}>
                       <td className="prod">
-                        {l.produto}
+                        <a
+                          className="arq-prod-link"
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Abrir ${l.produto} em uma nova aba`}
+                        >
+                          {l.produto}
+                        </a>
                         <small>{l.meta}</small>
                       </td>
                       {l.cels.map((c, i) => (
