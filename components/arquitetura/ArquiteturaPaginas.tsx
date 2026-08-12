@@ -2,6 +2,7 @@ import '@/styles/felice.css';
 import '@/styles/arquitetura.css';
 
 import { FlowScrollHint } from './FlowScrollHint';
+import { ArqJornada, type Etapa } from './ArqJornada';
 
 /* ============================================================
    /arquitetura-de-paginas — mapa interno do site.
@@ -23,6 +24,28 @@ const NUMEROS = [
   { n: '5 de 5', l: 'checkouts funcionando — testados ao vivo' },
   { n: '9 de 9', l: 'produtos com página de obrigado (eram 6)' },
   { n: 'R$ 6.000', l: 'o ticket que o Meta não enxergava' },
+];
+
+/* As duas jornadas. Cada etapa vira um nó com a mini-tela do formato da
+   página — a composição do wireframe está em ArqJornada.tsx.
+   Ao mudar um funil, mexa aqui: a corrente inteira sai daqui. */
+const PADRAO_A: Etapa[] = [
+  { n: 'Anúncio', e: 'tráfego', mock: 'anuncio' },
+  { n: 'Landing', e: 'ViewContent', mock: 'landing' },
+  { n: 'Greenn', e: 'checkout', mock: 'checkout', ext: true },
+  { n: 'Obrigado', e: 'Purchase', mock: 'obrigado', ok: true },
+  { n: 'Questionário', e: 'SubmitApplication', mock: 'quiz' },
+  { n: 'Confirmação', e: 'api/lead', mock: 'confirmacao' },
+  { n: 'WhatsApp', e: 'consultoria', mock: 'whatsapp', ext: true, ok: true },
+];
+
+const PADRAO_B: Etapa[] = [
+  { n: 'Anúncio', e: 'tráfego', mock: 'anuncio' },
+  { n: 'Landing', e: 'ViewContent', mock: 'landing' },
+  { n: 'Candidatura', e: 'SubmitApplication', mock: 'quiz' },
+  { n: 'Confirmação', e: 'api/lead', mock: 'confirmacao' },
+  { n: 'WhatsApp', e: 'diagnóstico e venda', mock: 'whatsapp', ext: true },
+  { n: 'Boas-vindas', e: 'Purchase', mock: 'boasvindas', ok: true },
 ];
 
 type Linha = {
@@ -363,44 +386,7 @@ export function ArquiteturaPaginas() {
                 <span className="arq-pill ok">Padrão A · produto pago</span>
                 <span>Kit F4 · Maestria · Masterclass · CRC · Recepção</span>
               </div>
-              <div className="arq-scroll">
-                <div className="arq-chain">
-                  <div className="arq-node">
-                    <span className="n">Anúncio</span>
-                    <span className="e">tráfego</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Landing</span>
-                    <span className="e">ViewContent</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node ext">
-                    <span className="n">Greenn</span>
-                    <span className="e">checkout</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node ok">
-                    <span className="n">Obrigado</span>
-                    <span className="e">Purchase</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Questionário</span>
-                    <span className="e">SubmitApplication</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Confirmação</span>
-                    <span className="e">api/lead</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node ext ok">
-                    <span className="n">WhatsApp</span>
-                    <span className="e">consultoria</span>
-                  </div>
-                </div>
-              </div>
+              <ArqJornada etapas={PADRAO_A} />
               <p className="arq-note">
                 <span>✓</span>
                 <b>Ciclo fechado.</b> A compra vira evento, e o comprador ainda entra no funil da
@@ -414,39 +400,7 @@ export function ArquiteturaPaginas() {
                 <span className="arq-pill warn">Padrão B · produto por candidatura</span>
                 <span>Consultoria Gestão F4 · Mentoria de Gestão · Mentoria de Zigomático</span>
               </div>
-              <div className="arq-scroll">
-                <div className="arq-chain">
-                  <div className="arq-node">
-                    <span className="n">Anúncio</span>
-                    <span className="e">tráfego</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Landing</span>
-                    <span className="e">ViewContent</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Candidatura</span>
-                    <span className="e">SubmitApplication</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node">
-                    <span className="n">Confirmação</span>
-                    <span className="e">api/lead</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node ext">
-                    <span className="n">WhatsApp</span>
-                    <span className="e">diagnóstico e venda</span>
-                  </div>
-                  <span className="arq-arw">→</span>
-                  <div className="arq-node ok">
-                    <span className="n">Boas-vindas</span>
-                    <span className="e">Purchase</span>
-                  </div>
-                </div>
-              </div>
+              <ArqJornada etapas={PADRAO_B} />
               <p className="arq-note">
                 <span>✓</span>
                 <b>Fechado em 11/08/2026.</b> A jornada terminava no WhatsApp, sem página nenhuma
