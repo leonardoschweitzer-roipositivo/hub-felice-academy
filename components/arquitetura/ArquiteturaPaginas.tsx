@@ -8,9 +8,9 @@ import { ArqJornada, type Etapa } from './ArqJornada';
    /arquitetura-de-paginas — mapa interno do site.
 
    Documento de trabalho, não página de venda: inventário das rotas, dos
-   checkouts, das candidaturas e das páginas de obrigado, com o que falta
-   em cada funil. Fica no domínio para a equipe abrir de qualquer lugar,
-   mas é `noindex` e não tem link em lugar nenhum do site.
+   checkouts, das candidaturas e das páginas de obrigado, com a jornada
+   completa de cada produto. Fica no domínio para a equipe abrir de
+   qualquer lugar, mas é `noindex` e não tem link em lugar nenhum do site.
 
    Levantamento de 11/08/2026, conferido no código, na produção e na
    Greenn. Ao mexer na arquitetura, atualize os números daqui — em
@@ -369,15 +369,21 @@ export function ArquiteturaPaginas() {
       <header className="arq-hero">
         <div className="wrap arq-hero-in">
           <span className="eyebrow">Arquitetura da informação · uso interno</span>
+          {/* "Cada", não "Todo": o h2 da seção das jornadas logo abaixo abre
+              com "Todo produto do site segue…" e o eco aparece ao rolar. */}
           <h1>
-            O site está de pé.
+            Cada produto tem uma jornada completa.
             <br />
-            <span className="gold-grad">O dinheiro é que parava no meio do caminho.</span>
+            <span className="gold-grad">Do primeiro clique ao evento de receita.</span>
           </h1>
+          {/* ⚠️ Os números batem com a faixa logo abaixo e com o Inventário —
+              mexeu num, confira os três. O lead anterior falava em 10 landings
+              e 6 checkouts, contagem de antes de o Curso Gestão F4 sair (PR
+              #63), e prometia "o que ainda depende de uma decisão comercial",
+              que era a seção hoje escondida por MOSTRAR_DIAGNOSTICO. */}
           <p className="lead">
-            Inventário das 10 landings da Felice Academy, dos 6 checkouts, das 9 candidaturas e das
-            páginas de obrigado — com o que já foi fechado e o que ainda depende de um painel de
-            terceiro ou de uma decisão comercial.
+            9 landings, 5 checkouts testados ao vivo, 8 questionários e 8 páginas de obrigado — cada
+            um com o evento certo no lugar certo.
           </p>
           <p className="arq-stamp">
             <span>
