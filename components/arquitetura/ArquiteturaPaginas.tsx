@@ -18,12 +18,28 @@ import { ArqJornada, type Etapa } from './ArqJornada';
    ============================================================ */
 
 /* Quatro números — é o que a faixa `.numeros` do felice.css comporta por
-   linha, e é o ritmo que todas as landings do site usam. */
+   linha, e é o ritmo que todas as landings do site usam.
+
+   As 64 páginas saem de `find app -name "page.tsx" | wc -l`: 44 do site
+   público (landings, questionários, confirmações, obrigados, área do Kit
+   F4, home, vitrine, termos, privacidade e esta página) e 20 da plataforma
+   do aluno e do admin, que ainda é protótipo com dados mockados.
+   ⚠️ Cinco dessas rotas são dinâmicas (`[curso]`, `[aula]`, `[material]`,
+   `[id]`), então o site SERVE mais páginas do que 64 — o número conta
+   rotas escritas, que é o que dá para conferir no repo. Refaça a conta
+   sempre que criar ou apagar rota. */
 const NUMEROS = [
   { n: '9', l: 'landings no ar' },
   { n: '5 de 5', l: 'checkouts funcionando — testados ao vivo' },
-  { n: '9 de 9', l: 'produtos com página de obrigado (eram 6)' },
-  { n: 'R$ 6.000', l: 'o ticket que o Meta não enxergava' },
+  /* 8 de 9, não "9 de 9". O "9 de 9" era verdade quando esta página nasceu
+     (PR #61 fechou o nono obrigado), mas o PR #63 removeu o Curso Gestão F4
+     junto com o obrigado dele e a faixa não acompanhou. Hoje são 8 arquivos
+     `obrigado/page.tsx` para os 9 produtos da tabela do inventário logo
+     abaixo — que já marca o Felice CRM com "falta" nessa coluna, ou seja, a
+     faixa contradizia a própria tabela da mesma página.
+     O "(eram 6)" segue certo: era o estado antes do PR #61. */
+  { n: '8 de 9', l: 'produtos com página de obrigado (eram 6)' },
+  { n: '64', l: 'páginas no site — 20 delas na plataforma do aluno, ainda em construção' },
 ];
 
 /* As duas jornadas. Cada etapa vira um nó com a mini-tela do formato da
