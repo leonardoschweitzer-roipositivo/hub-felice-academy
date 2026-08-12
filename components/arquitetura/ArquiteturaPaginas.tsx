@@ -3,6 +3,7 @@ import '@/styles/arquitetura.css';
 
 import { FlowScrollHint } from './FlowScrollHint';
 import { ArqJornada, type Etapa } from './ArqJornada';
+import { ArqMapa, MAPA_PUBLICO, MAPA_PLATAFORMA } from './ArqMapa';
 
 /* ============================================================
    /arquitetura-de-paginas — mapa interno do site.
@@ -14,7 +15,8 @@ import { ArqJornada, type Etapa } from './ArqJornada';
 
    Levantamento de 11/08/2026, conferido no código, na produção e na
    Greenn. Ao mexer na arquitetura, atualize os números daqui — em
-   especial a tabela do inventário e a árvore de rotas.
+   especial a tabela do inventário, o mapa de rotas (MAPA_PUBLICO e
+   MAPA_PLATAFORMA, no ArqMapa.tsx) e a árvore de texto do fim da seção.
    ============================================================ */
 
 /* ⚠️ TRÊS SEÇÕES ESCONDIDAS a pedido do Leo em 11/08/2026, para voltar
@@ -302,9 +304,14 @@ const GAPS: { n: string; t: string; tag: string; cls: 'crit' | 'med' | 'dep'; p:
   },
 ];
 
-/* Árvore de rotas. O JSX colapsa espaços entre elementos, então a coluna
-   das anotações é calculada aqui (padEnd sobre a rota mais longa) e
-   emitida como texto — o `white-space: pre` do .arq-tree preserva. */
+/* Árvore de rotas em texto. Desde o mapa visual (ArqMapa.tsx) ela deixou de
+   ser a forma principal de ler a arquitetura e passou a viver dobrada num
+   `<details>` no fim da seção — continua ali por ser a maneira mais rápida
+   de copiar as rotas para um chat ou um e-mail.
+
+   O JSX colapsa espaços entre elementos, então a coluna das anotações é
+   calculada aqui (padEnd sobre a rota mais longa) e emitida como texto — o
+   `white-space: pre` do .arq-tree preserva. */
 type Rota = { t: string; a?: string; k?: 'nota' | 'alerta' | 'atencao'; sep?: boolean };
 const ROTAS: Rota[] = [
   { t: '/', a: 'vitrine · 6 cards visíveis' },
@@ -584,25 +591,73 @@ export function ArquiteturaPaginas() {
             <div className="sec-head">
               <span className="eyebrow">Todas as rotas</span>
               <h2>O site inteiro numa tela</h2>
+              <p className="lead">
+                Cada caixa é uma página que existe no site, com o endereço dela. A hierarquia mostra
+                quem nasce de quem; a corrente à direita de cada produto, as páginas do funil dele.
+              </p>
             </div>
-            <div className="arq-tree">
-              {ROTAS.map((r, i) => (
-                <span key={i}>
-                  {r.sep ? (
-                    <i>{r.t}</i>
-                  ) : (
-                    <>
-                      <b>{r.t}</b>
-                      {r.a ? ' '.repeat(Math.max(1, COLUNA - r.t.length)) : ''}
-                      {r.a && r.k === 'alerta' && <u>{r.a}</u>}
-                      {r.a && r.k === 'atencao' && <s>{r.a}</s>}
-                      {r.a && !r.k && <i>{r.a}</i>}
-                    </>
-                  )}
-                  {'\n'}
-                </span>
-              ))}
+
+            {/* Como ler. Três marcas bastam — a quarta virava legenda longa
+                demais para o que é, no fundo, um mapa de endereços. */}
+            <div className="arq-legenda">
+              <span>
+                <i className="arq-lg-box" />
+                página do site · clique abre em outra aba
+              </span>
+              <span>
+                <i className="arq-lg-box dyn" />
+                rota dinâmica · o endereço depende do conteúdo
+              </span>
+              <span>
+                <i className="arq-lg-box tag" />
+                pendência, igual à da tabela acima
+              </span>
             </div>
+
+            {/* `.arq-bloco`, e não `.arq-flow`: o FlowScrollHint marca todo
+                `.arq-flow` cujo primeiro `.arq-scroll` corta, e a máscara
+                cai sobre TODOS os `.arq-scroll` de dentro — aqui isso
+                esmaeceria a borda das nove correntes de produto de uma vez,
+                por causa de uma só que não coubesse. */}
+            <div className="arq-bloco">
+              <div className="arq-flow-tag">
+                <span className="arq-pill ok">Site público · 44 páginas</span>
+                <span>o que está vendendo hoje</span>
+              </div>
+              <ArqMapa arvore={MAPA_PUBLICO} />
+            </div>
+
+            <div className="arq-bloco">
+              <div className="arq-flow-tag">
+                <span className="arq-pill mut">Plataforma · 20 páginas</span>
+                <span>protótipo com dados mockados · fora do Google</span>
+              </div>
+              <ArqMapa arvore={MAPA_PLATAFORMA} proto />
+            </div>
+
+            {/* A mesma árvore em texto, dobrada: é o formato que se copia e
+                cola num chat. Some do caminho de quem só quer olhar. */}
+            <details className="arq-texto">
+              <summary>Ver a mesma árvore em texto</summary>
+              <div className="arq-tree">
+                {ROTAS.map((r, i) => (
+                  <span key={i}>
+                    {r.sep ? (
+                      <i>{r.t}</i>
+                    ) : (
+                      <>
+                        <b>{r.t}</b>
+                        {r.a ? ' '.repeat(Math.max(1, COLUNA - r.t.length)) : ''}
+                        {r.a && r.k === 'alerta' && <u>{r.a}</u>}
+                        {r.a && r.k === 'atencao' && <s>{r.a}</s>}
+                        {r.a && !r.k && <i>{r.a}</i>}
+                      </>
+                    )}
+                    {'\n'}
+                  </span>
+                ))}
+              </div>
+            </details>
           </div>
         </section>
 
