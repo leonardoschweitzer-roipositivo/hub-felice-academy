@@ -487,6 +487,83 @@
   justify-content: flex-end;
 }
 
+/* ---------- peças das telas que só o mapa usa ----------
+   As oito primeiras telas são etapas de funil e se resolvem em barras
+   empilhadas. As quatro do mapa (vitrine, doc, legal, painel) têm layout
+   de duas dimensões — grade de cards, coluna de índice, barra lateral — e
+   por isso precisam destas peças a mais. `legal` não aparece aqui: é só
+   .arq-mk-l, que já existe. */
+
+/* vitrine: a grade de cards de produto da home e da /produtos */
+.felice-arq .arq-mk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  flex: 1;
+  min-height: 0;
+}
+.felice-arq .arq-mk-grid.wide {
+  grid-template-columns: repeat(2, 1fr);
+}
+.felice-arq .arq-mk-cardlet {
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.09);
+  min-height: 0;
+}
+/* widget de painel: mesma caixa, com o topo marcado como um título */
+.felice-arq .arq-mk-wid {
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-top: 2px solid rgba(255, 255, 255, 0.11);
+  min-height: 0;
+}
+
+/* doc e painel: índice ou barra lateral à esquerda, conteúdo à direita */
+.felice-arq .arq-mk-split {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  min-height: 0;
+}
+.felice-arq .arq-mk-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+.felice-arq .arq-mk-toc,
+.felice-arq .arq-mk-sb {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: none;
+}
+.felice-arq .arq-mk-toc {
+  width: 20%;
+  border-right: 1px solid var(--line-soft);
+  padding-right: 4px;
+}
+/* A barra da plataforma é escura e cheia, não um índice de texto. */
+.felice-arq .arq-mk-sb {
+  width: 22%;
+  padding: 3px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.45);
+}
+.felice-arq .arq-mk-toc i,
+.felice-arq .arq-mk-sb i {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+  flex: none;
+}
+/* O item ativo da barra lateral, dourado como na plataforma real. */
+.felice-arq .arq-mk-sb i:first-child {
+  background: var(--gold);
+  opacity: 0.6;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .felice-arq .arq-chain--mock .arq-node::after,
   .felice-arq .arq-chain--mock .arq-arw {
@@ -714,6 +791,307 @@
 .felice-arq .arq-tree s {
   color: var(--gold);
   text-decoration: none;
+}
+
+/* ---------- mapa de rotas ----------
+   A árvore visual do site: cada nó é um cartão com a mini-tela da página e
+   o endereço dela. Os conectores são bordas em ::before/::after, não SVG —
+   assim a árvore continua sendo uma lista aninhada de verdade, que o
+   teclado percorre e o leitor de tela entende.
+
+   Nada aqui anima. A onda dourada é a assinatura das duas jornadas lá em
+   cima; repetida em nove produtos ao mesmo tempo, viraria ruído. */
+
+/* Mesmo cartão das jornadas, sem a classe .arq-flow — o FlowScrollHint
+   mascara todo .arq-scroll de dentro de um .arq-flow que corte, e aqui há
+   uma corrente por produto. */
+.felice-arq .arq-bloco {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 22px;
+  margin-top: 18px;
+}
+
+.felice-arq .arq-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 24px;
+  margin-top: 18px;
+  font-size: 0.78rem;
+  color: var(--muted-2);
+}
+.felice-arq .arq-legenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.felice-arq .arq-lg-box {
+  width: 17px;
+  height: 12px;
+  flex: none;
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  background: var(--card-2);
+}
+.felice-arq .arq-lg-box.dyn {
+  border-style: dashed;
+  background: none;
+  opacity: 0.7;
+}
+.felice-arq .arq-lg-box.tag {
+  border: 0;
+  background: var(--grad-gold);
+  opacity: 0.6;
+}
+
+/* --arq-ind é a indentação de um nível E a largura do cotovelo; --arq-cot,
+   a altura em que o cotovelo encosta no cartão. Mexer nos dois juntos: o
+   traço vertical do último filho para exatamente em --arq-cot.
+
+   --arq-fio é o traço da árvore, e NÃO é --line-soft: aquele é o contorno
+   dos cartões, e a 7% de branco o fio some no fundo — a hierarquia ficava
+   só na indentação. Dourado a 30% é o mesmo tom das bordas acesas do
+   resto da página e sobrevive à distância de leitura. */
+.felice-arq .arq-mapa {
+  --arq-ind: 26px;
+  --arq-cot: 22px;
+  --arq-gap: 10px;
+  --arq-fio: rgba(232, 180, 71, 0.3);
+  margin-top: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.felice-arq .arq-ramo {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--arq-gap);
+}
+.felice-arq .arq-ramo .arq-ramo {
+  margin-top: var(--arq-gap);
+  padding-left: var(--arq-ind);
+}
+.felice-arq .arq-no {
+  min-width: 0;
+}
+/* Conector só a partir do segundo nível: a raiz não pende de ninguém. */
+.felice-arq .arq-ramo .arq-ramo > .arq-no {
+  position: relative;
+}
+/* O traço vertical. Sobe --arq-gap para cobrir o vão até o irmão de cima. */
+.felice-arq .arq-ramo .arq-ramo > .arq-no::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(var(--arq-gap) * -1);
+  bottom: 0;
+  width: 1px;
+  background: var(--arq-fio);
+}
+/* No último filho o traço morre no cotovelo, senão sobra um risco solto. */
+.felice-arq .arq-ramo .arq-ramo > .arq-no:last-child::before {
+  bottom: auto;
+  height: calc(var(--arq-gap) + var(--arq-cot));
+}
+.felice-arq .arq-ramo .arq-ramo > .arq-no::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--arq-cot);
+  width: calc(var(--arq-ind) - 7px);
+  height: 1px;
+  background: var(--arq-fio);
+}
+
+/* ---------- o cartão de uma rota ---------- */
+.felice-arq .arq-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: max-content;
+  max-width: 100%;
+  padding: 10px 15px 10px 10px;
+  background: var(--card-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.18s,
+    background 0.18s;
+}
+.felice-arq a.arq-card:hover {
+  border-color: var(--line);
+  background: rgba(232, 180, 71, 0.05);
+}
+.felice-arq a.arq-card:hover .arq-card-nome {
+  color: var(--gold-bright);
+}
+.felice-arq .arq-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+/* Página sem wireframe: linha compacta. A altura mínima é o dobro de
+   --arq-cot, para o cotovelo bater no meio dela. */
+.felice-arq .arq-card--row {
+  align-items: center;
+  min-height: calc(var(--arq-cot) * 2);
+  padding: 7px 15px;
+}
+/* Rota dinâmica não tem endereço para abrir — é um <span>, não um link. */
+.felice-arq .arq-card.is-dyn {
+  border-style: dashed;
+  opacity: 0.72;
+}
+.felice-arq .arq-card .arq-mock {
+  width: 92px;
+  height: 62px;
+  flex: none;
+}
+.felice-arq .arq-card-in {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding-top: 2px;
+}
+.felice-arq .arq-card--row .arq-card-in {
+  padding-top: 0;
+}
+/* `anywhere`, não `break-all`: as rotas longas do Kit só quebram quando
+   precisam, e primeiro nos hífens — o break-all cortava no meio de
+   "atendimento" mesmo havendo ponto de quebra logo antes. */
+.felice-arq .arq-card-rota {
+  font-family: var(--arq-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  overflow-wrap: anywhere;
+}
+.felice-arq .arq-card-nome {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: color 0.18s;
+}
+.felice-arq .arq-card-nome .arq-pill {
+  font-size: 0.6rem;
+}
+.felice-arq .arq-card-nota {
+  font-size: 0.76rem;
+  color: var(--muted-2);
+}
+
+/* ---------- a corrente do funil de um produto ----------
+   As páginas próprias daquele produto, alinhadas com onde os filhos dele
+   ficariam. Reusa o elo e a seta da jornada, menores e sem a onda. */
+.felice-arq .arq-mapa .arq-scroll {
+  margin-top: var(--arq-gap);
+  padding-left: var(--arq-ind);
+}
+.felice-arq .arq-chain--mini .arq-node {
+  width: max-content;
+  min-width: 106px;
+  padding: 7px;
+  gap: 2px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.18s,
+    background 0.18s;
+}
+.felice-arq a.arq-node:hover {
+  border-color: var(--line);
+  background: rgba(232, 180, 71, 0.05);
+}
+.felice-arq .arq-node:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.felice-arq .arq-chain--mini .arq-mock {
+  height: 52px;
+}
+.felice-arq .arq-chain--mini .arq-node .n {
+  margin-top: 5px;
+  font-size: 0.76rem;
+}
+/* O sufixo da rota, não um evento: cinza, para não competir com o dourado
+   dos endereços completos dos cartões. */
+.felice-arq .arq-chain--mini .arq-node .e {
+  font-size: 0.62rem;
+  color: var(--muted-2);
+}
+.felice-arq .arq-chain--mini .arq-arw {
+  padding: 0 4px;
+  font-size: 0.9rem;
+}
+
+/* A plataforma é maquete: recua um passo, sem roubar a dashed de quem é
+   rota dinâmica. */
+.felice-arq .arq-mapa--proto {
+  opacity: 0.86;
+}
+.felice-arq .arq-mapa--proto .arq-card-rota {
+  color: var(--muted);
+}
+
+/* ---------- a mesma árvore, em texto ---------- */
+.felice-arq .arq-texto {
+  margin-top: 18px;
+}
+.felice-arq .arq-texto summary {
+  display: inline-block;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: var(--arq-mono);
+  font-size: 0.78rem;
+  color: var(--muted-2);
+}
+.felice-arq .arq-texto summary:hover {
+  color: var(--gold);
+}
+.felice-arq .arq-texto[open] summary {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1080px) {
+  .felice-arq .arq-mapa {
+    --arq-ind: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .felice-arq .arq-bloco {
+    padding: 16px 14px;
+  }
+  /* Com 5 níveis de profundidade, 26px por nível empurrariam os documentos
+     do Kit para fora da tela. */
+  .felice-arq .arq-mapa {
+    --arq-ind: 13px;
+    --arq-cot: 18px;
+  }
+  .felice-arq .arq-card {
+    width: auto;
+    padding: 8px 11px 8px 8px;
+    gap: 9px;
+  }
+  .felice-arq .arq-card .arq-mock {
+    width: 62px;
+    height: 44px;
+  }
+  .felice-arq .arq-card-rota {
+    font-size: 0.67rem;
+  }
+  .felice-arq .arq-card-nome {
+    font-size: 0.84rem;
+  }
+  .felice-arq .arq-mapa .arq-scroll {
+    padding-left: 0;
+  }
 }
 
 /* ---------- diagnóstico ---------- */
