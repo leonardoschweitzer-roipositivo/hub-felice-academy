@@ -5,7 +5,7 @@ import { ArquiteturaPaginas } from '@/components/arquitetura/ArquiteturaPaginas'
 export const metadata: Metadata = {
   title: 'Arquitetura de páginas — mapa interno',
   description:
-    'Inventário das rotas, checkouts, candidaturas e páginas de obrigado da Felice Academy, com o que falta em cada funil.',
+    'Inventário das rotas, checkouts, candidaturas e páginas de obrigado da Felice Academy: a jornada completa de cada produto, do anúncio ao evento de receita.',
   // Documento interno: fora do Google e sem link em nenhum lugar do site.
   // Também não entra no app/sitemap.ts.
   robots: { index: false, follow: false },
