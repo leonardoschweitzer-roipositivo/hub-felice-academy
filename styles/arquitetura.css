@@ -50,6 +50,39 @@
   font-weight: 400;
 }
 
+/* ---------- faixa de números ----------
+   Esta é a única página do site com CINCO números: além dos três do funil,
+   ela separa as páginas do site das da plataforma, que ainda é protótipo.
+   A `.numeros-grid` do felice.css é `repeat(4, 1fr)` fixo — sem isto o
+   quinto item cai órfão numa segunda linha, e o separador vertical do
+   quarto fica pendurado no vazio à direita.
+
+   Só desce para 4 colunas em telas médias; abaixo de 760px o felice.css já
+   manda 2 e essa regra vence por vir depois no cascade. */
+.felice-arq .numeros-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 1080px) {
+  .felice-arq .numeros-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+  }
+  /* Com 5 itens em 3 colunas o separador do 3º encosta na borda da linha. */
+  .felice-arq .numeros-item:nth-child(3)::after {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .felice-arq .numeros-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* 5 itens em 2 colunas deixam o último sozinho na terceira linha, colado
+     na coluna da esquerda. Ocupando a linha inteira ele fica centrado. */
+  .felice-arq .numeros-item:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+
 /* ---------- jornadas ---------- */
 .felice-arq .arq-flow {
   background: var(--card);
