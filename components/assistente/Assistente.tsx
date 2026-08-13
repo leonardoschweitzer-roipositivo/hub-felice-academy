@@ -19,6 +19,7 @@ import { ASSISTENTE_NOME } from '@/lib/assistente/config';
 import { contextoDaPagina, rotaBloqueada } from '@/lib/assistente/paginas';
 import { fontVars } from '@/app/fonts';
 import { useAssistente, useAssistenteDisponivel } from './useAssistente';
+import { useNudge } from './useNudge';
 import { trackAberto, trackProdutoClicado } from './tracking';
 import '@/styles/assistente.css';
 
@@ -49,9 +50,27 @@ export function Assistente() {
     : `Oi! Sou a ${ASSISTENTE_NOME}, assistente virtual da Felice Academy. Me conta o que você quer resolver na sua clínica ou na sua carreira que eu te aponto o caminho certo aqui dentro.`;
 
   const estado = useAssistente(pathname, saudacao);
+  const [nudge, dispensarNudge] = useNudge(disponivel === true && !aberto && !estado.comecou);
 
+  /* Foco de volta no botão ao fechar — quem navega por teclado não pode
+     ser devolvido ao topo da página. O `jaAbriu` evita roubar o foco no
+     primeiro render, quando ninguém abriu nada ainda. */
+  const jaAbriu = useRef(false);
   useEffect(() => {
-    if (!aberto) fabRef.current?.focus({ preventScroll: true });
+    if (aberto) jaAbriu.current = true;
+    else if (jaAbriu.current) fabRef.current?.focus({ preventScroll: true });
+  }, [aberto]);
+
+  /* Com o painel em tela cheia no mobile, o resto da página fica `inert`:
+     sem isso o leitor de tela sai passeando pelo conteúdo atrás dele. */
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const main = document.querySelector('main');
+    if (!main) return;
+    const cheio = aberto && window.matchMedia('(max-width: 640px)').matches;
+    if (cheio) main.setAttribute('inert', '');
+    else main.removeAttribute('inert');
+    return () => main.removeAttribute('inert');
   }, [aberto]);
 
   // `disponivel === null` é o estado "ainda sondando": não desenhamos nada
@@ -72,6 +91,20 @@ export function Assistente() {
           onFechar={() => setAberto(false)}
           onIrProduto={trackProdutoClicado}
         />
+      )}
+
+      {nudge && !aberto && (
+        <div className="fia-nudge" role="status">
+          <span>Posso te ajudar a achar o caminho certo?</span>
+          <button
+            type="button"
+            className="fia-nudge-x"
+            onClick={dispensarNudge}
+            aria-label="Dispensar"
+          >
+            ×
+          </button>
+        </div>
       )}
 
       <button
