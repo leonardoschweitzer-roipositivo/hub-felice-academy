@@ -10,6 +10,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { analisar, type ChatMsg, type LeadSugerido, type Segmento } from '@/lib/assistente/markers';
+import { trackLeadOferecido, trackPrimeiraMensagem } from './tracking';
 
 export type Balao = {
   id: string;
@@ -52,6 +53,7 @@ export function useAssistente(pathname: string, saudacao: string) {
 
       setErro(null);
       setComecou(true);
+      trackPrimeiraMensagem(pathname);
       setBaloes((b) => [
         ...b,
         { id: novoId(), autor: 'voce', partes: [{ texto: msg, produtos: [] }] },
@@ -101,6 +103,7 @@ export function useAssistente(pathname: string, saudacao: string) {
           leadJaOferecido.current = true;
           setLead(fim.lead);
           setFaseLead('consentimento');
+          trackLeadOferecido(fim.lead.produto);
         }
       } catch (e) {
         // O visitante nunca vê erro técnico: a rota já degrada para uma

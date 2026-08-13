@@ -13,6 +13,7 @@ import { useState, type FormEvent } from 'react';
 import { whatsappUrl } from '@/lib/whatsapp/contato';
 import { ORIGEM_LABEL } from '@/lib/assistente/config';
 import { fireLead } from '@/components/tracking/application';
+import { trackWhatsapp } from './tracking';
 import type { LeadSugerido, ChatMsg } from '@/lib/assistente/markers';
 import { PRODUTOS_PUBLICOS } from './catalogoPublico';
 
@@ -114,6 +115,7 @@ export function FormularioLead({
        enxerga o clique e bloqueia o popup — é clássico no Safari/iOS, e é
        exatamente o que os 8 questionários do repo já fazem. */
     const aba = window.open('', '_blank');
+    trackWhatsapp(lead.produto);
 
     void (async () => {
       try {

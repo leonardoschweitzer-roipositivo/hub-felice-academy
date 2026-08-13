@@ -19,6 +19,7 @@ import { ASSISTENTE_NOME } from '@/lib/assistente/config';
 import { contextoDaPagina, rotaBloqueada } from '@/lib/assistente/paginas';
 import { fontVars } from '@/app/fonts';
 import { useAssistente, useAssistenteDisponivel } from './useAssistente';
+import { trackAberto, trackProdutoClicado } from './tracking';
 import '@/styles/assistente.css';
 
 /* O painel só é baixado quando alguém clica no botão: no carregamento da
@@ -69,6 +70,7 @@ export function Assistente() {
           sugestoes={contexto.slug ? SUGESTOES_PRODUTO : SUGESTOES_HOME}
           pagina={pathname}
           onFechar={() => setAberto(false)}
+          onIrProduto={trackProdutoClicado}
         />
       )}
 
@@ -76,7 +78,10 @@ export function Assistente() {
         type="button"
         className="fia-fab"
         ref={fabRef}
-        onClick={() => setAberto((v) => !v)}
+        onClick={() => {
+          if (!aberto) trackAberto(pathname);
+          setAberto((v) => !v);
+        }}
         aria-expanded={aberto}
         aria-controls="fia-painel"
         aria-label={aberto ? 'Fechar o assistente' : `Abrir o assistente ${ASSISTENTE_NOME}`}
