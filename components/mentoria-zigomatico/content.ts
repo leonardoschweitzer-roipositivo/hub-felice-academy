@@ -201,7 +201,22 @@ export const ENTREGAS: Entrega[] = [
 ];
 
 /* ---------- Trilhas / conteúdo na plataforma ----------
-   Reaproveita os temas do curso de zigomático (base teórica). */
+   Reaproveita os temas do curso de zigomático (base teórica).
+
+   As 4 artes são as MESMAS da Maestria (`public/images/modulo-*.jpg`,
+   1400×788, o 16:9 exato do `.mz-mod-media`) — arquivo compartilhado, não
+   duplicado, como as fotos de caso. Trocar o arquivo afeta as duas páginas.
+   Os `resumo` daqui são literalmente os subtítulos gravados nas artes, então
+   o par arte↔trilha é o do texto, não um chute.
+
+   ⚠️ Duas dessas artes vinham com "MÓDULO 05" e "MÓDULO 06" gravados no
+   canto superior esquerdo, herança de uma numeração que não bate com lugar
+   nenhum: aqui os cards dizem "Etapa 03" e "Etapa 04", e na Maestria dizem
+   "Módulo 03" e "Módulo 04". O selo foi APAGADO das duas em 13/08/2026 (o
+   fundo ali é preto chapado, média RGB ~0,8 e desvio ~0,65, então saiu sem
+   deixar mancha), o que corrigiu de uma vez o choque que já estava no ar na
+   Maestria desde 11/08. Se alguém repuser essas artes vindas do designer,
+   confira o canto antes — elas nascem com o selo. */
 export type Trilha = {
   n: string;
   titulo: string;
@@ -216,6 +231,7 @@ export const TRILHAS: Trilha[] = [
     n: '01',
     titulo: 'Fundamentos e decisões críticas',
     resumo: 'A base conceitual e o raciocínio clínico que sustentam toda cirurgia zigomática segura.',
+    img: '/images/modulo-fundamentos-decisoes.jpg',
     blocos: [
       {
         aulas: [
@@ -231,6 +247,7 @@ export const TRILHAS: Trilha[] = [
     n: '02',
     titulo: 'Planejamento de alto impacto',
     resumo: 'O fluxo digital que transforma o caso mais complexo em um procedimento previsível.',
+    img: '/images/modulo-planejamento-alto-impacto.jpg',
     blocos: [
       {
         aulas: [
@@ -246,6 +263,7 @@ export const TRILHAS: Trilha[] = [
     n: '03',
     titulo: 'Cirurgia guiada na prática',
     resumo: 'Da bancada à sala: instrumental, sequência cirúrgica e gestão da zona segura.',
+    img: '/images/modulo-cirurgia-guiada.jpg',
     blocos: [
       {
         aulas: [
@@ -261,6 +279,10 @@ export const TRILHAS: Trilha[] = [
     n: '04',
     titulo: 'Prática presencial guiada',
     resumo: 'Onde a teoria vira mão: hands-on em laboratório e acompanhamento cirúrgico.',
+    /* Único par em que a arte não repete o título: ela se chama "Hands-on
+       guiado" e ilustra a Parte 1. A trilha tem duas partes (o hands-on e o
+       acompanhamento cirúrgico), e não existe arte da segunda. */
+    img: '/images/modulo-hands-on-guiado.jpg',
     blocos: [
       {
         sub: 'Parte 1 · Hands-on em laboratório',
