@@ -133,12 +133,16 @@ body:not(:has(.felice .wpp)) .fia-fab {
 .fia-painel {
   position: fixed;
   right: 20px;
+  /* Altura vem do par `top`/`bottom`, não de `height`: assim o painel vai
+     do topo da tela até logo acima do botão flutuante e acompanha
+     qualquer altura de janela. O `bottom: 160px` é o que sobra em cima do
+     FAB (que fica em bottom:92px e tem 56px), com respiro. */
+  top: 20px;
   bottom: 160px;
   z-index: 210;
   display: flex;
   flex-direction: column;
-  width: min(384px, calc(100vw - 40px));
-  height: min(560px, calc(100vh - 200px));
+  width: min(520px, calc(100vw - 40px));
   background: var(--fia-ink);
   color: var(--fia-text);
   border: 1px solid var(--fia-line);
@@ -218,6 +222,15 @@ body:not(:has(.felice .wpp)) .fia-fab {
   flex-direction: column;
   gap: 10px;
   scrollbar-width: thin;
+}
+/* Com o painel indo até o topo, uma conversa curta deixava um vão enorme
+   entre a saudação e o campo de escrever. O `margin-top: auto` no PRIMEIRO
+   filho empurra a conversa para baixo enquanto sobra espaço e vira zero
+   quando o conteúdo passa a encher o log — é a versão segura do truque:
+   `justify-content: flex-end` no container torna o topo do histórico
+   inalcançável na rolagem em alguns navegadores. */
+.fia-log > *:first-child {
+  margin-top: auto;
 }
 
 .fia-turno {
