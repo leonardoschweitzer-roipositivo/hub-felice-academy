@@ -39,6 +39,18 @@ ok('lead parseado', r.lead?.produto === 'consultoria' && r.lead?.dor === 'perde 
 ok('texto sem resíduo de JSON', !/\{|"produto"|LEAD/.test(r.texto), JSON.stringify(r.texto));
 ok('§§§ virou 2 segmentos', r.segmentos.length === 2);
 
+// T0.2b — os cinco campos do diagnóstico SPIN
+ok('situação e implicação parseadas', r.lead?.situacao === '3 cadeiras' && r.lead?.implicacao === '20 por mês');
+const vazio = analisar('x\n[[LEAD]]{"produto":"consultoria","situacao":"   ","dor":"a"}');
+ok('campo em branco vira ausente, não string vazia', vazio.lead?.situacao === undefined);
+
+// T0.2c — a rota de cada produto chega ao prompt
+const cat = buildSystemPrompt({ contexto: contextoDaPagina('/'), dossies: [] });
+ok('rotas aparecem no catálogo do prompt',
+  cat.includes('ROTA CURTA') && cat.includes('ROTA MÉDIA') && cat.includes('ROTA SPIN'));
+ok('Kit é rota curta e Consultoria é SPIN',
+  /kitgestaof4[^\n]*ROTA CURTA/.test(cat) && /slug: consultoria[^\n]*ROTA SPIN/.test(cat));
+
 // T0.3 — degradação com JSON aninhado (a regex é lazy)
 const d = analisar('Texto.\n[[LEAD]]{"produto":"x","spin":{"s":"a"}}');
 ok('aninhado degrada para objeto vazio', d.lead !== undefined);

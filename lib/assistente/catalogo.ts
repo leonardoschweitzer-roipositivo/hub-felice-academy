@@ -41,6 +41,22 @@ export type OfertaKB = {
    *  `null` = não existe preço público (venda por candidatura). */
   preco: string | null;
   entrada: Entrada;
+  /** Qual rotina de qualificação a Sônia aplica a este produto.
+   *
+   *  NÃO é derivável do preço, e é por isso que é um campo: a Maestria
+   *  custa R$ 997 e é 'spin'; o CRC custa R$ 597 e é 'media'. O que decide
+   *  é o peso da decisão de compra, não o valor. Deixar o modelo inferir
+   *  isso de R$ 400 de diferença seria pedir ambiguidade.
+   *
+   *  'curta' — 1 pergunta, recomenda, entrega o link. Sem pergunta de
+   *    número e sem captura: cobrar SPIN de quem vai gastar menos de cem
+   *    reais faz a pessoa desistir de comprar.
+   *  'media' — Situação, Problema e SÓ a pergunta de número da Implicação.
+   *    Sem a etapa de Necessidade: quem compra no checkout já tem para
+   *    onde ir, e aquela etapa existe para produzir a frase que a equipe
+   *    humana usa.
+   *  'spin'  — as quatro etapas, com as duas perguntas de Implicação. */
+  rota: 'curta' | 'media' | 'spin';
   /** Rota do questionário de candidatura, nos produtos de alto ticket. */
   aplicacaoHref?: string;
   /** A IA pode oferecer este produto por conta própria? O Felice CRM está
@@ -72,6 +88,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/kitgestaof4/',
     preco: precoDe(kitPreco),
     entrada: 'checkout',
+    rota: 'curta',
     ofertavel: true,
     paraQuem:
       'dentista ou dono(a) de clínica que ainda não tem processo escrito e quer começar hoje, com investimento baixo: POP, scripts de atendimento e de agendamento e calendário de marketing prontos para entregar à equipe',
@@ -115,6 +132,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/masterclass-zigomatico/',
     preco: precoDe(masterclass.PLANOS[0]),
     entrada: 'checkout',
+    rota: 'curta',
     ofertavel: true,
     paraQuem:
       'cirurgião-dentista ou implantodontista que quer entender os princípios do implante zigomático em poucas horas, com investimento baixo, antes de decidir se vai fundo na técnica',
@@ -145,6 +163,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/maestria-zigomatica/',
     preco: precoDe(maestria.OFERTA),
     entrada: 'checkout',
+    rota: 'spin',
     ofertavel: true,
     paraQuem:
       'cirurgião que quer a formação técnica completa em zigomático — do diagnóstico e planejamento à cirurgia guiada e ao hands-on em modelo — para parar de encaminhar o caso de maxila atrófica severa',
@@ -175,6 +194,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/vendas-secretaria/',
     preco: precoDe(crc.OFERTA),
     entrada: 'checkout',
+    rota: 'media',
     ofertavel: true,
     paraQuem:
       'dono(a) de clínica cuja equipe de telefone e WhatsApp perde orçamento: o curso treina quem fala com o paciente a agendar, apresentar valor, contornar objeção e fazer follow-up até o fechamento',
@@ -212,6 +232,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/recepcao-alta-performance/',
     preco: precoDe(recepcao.OFERTA),
     entrada: 'checkout',
+    rota: 'media',
     ofertavel: true,
     paraQuem:
       'dono(a) de clínica que quer o presencial impecável: acolhimento nos primeiros segundos, rotina de balcão padronizada e paciente que volta e indica, com os 4 pilares do método Disney aplicados à odontologia',
@@ -246,6 +267,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/consultoria/',
     preco: null, // sem preço público — venda por candidatura
     entrada: 'candidatura',
+    rota: 'spin',
     aplicacaoHref: consultoria.APLICACAO_URL + '/',
     ofertavel: true,
     paraQuem:
@@ -282,6 +304,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/mentoria-gestao-f4/',
     preco: null,
     entrada: 'candidatura',
+    rota: 'spin',
     aplicacaoHref: mentoriaGestao.APPLY_URL + '/',
     ofertavel: true,
     paraQuem:
@@ -316,6 +339,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/produtos/mentoria-zigomatico/',
     preco: null,
     entrada: 'candidatura',
+    rota: 'spin',
     aplicacaoHref: mentoriaZigo.APPLY_URL + '/',
     ofertavel: true,
     paraQuem:
@@ -354,6 +378,7 @@ export const CATALOGO: OfertaKB[] = [
     href: '/crm/',
     preco: null,
     entrada: 'candidatura',
+    rota: 'spin',
     ofertavel: false,
     paraQuem:
       'clínicas que já são acompanhadas pela Felice — hoje o CRM entra como bônus da Mentoria de Gestão F4, não como produto avulso',
@@ -382,6 +407,18 @@ for (const slug of Object.keys(FUNNELS)) {
     throw new Error(
       `[assistente] o funil "${slug}" existe em lib/tracking/funnels.ts mas não tem entrada em lib/assistente/catalogo.ts. ` +
         'Adicione a oferta ao catálogo (ou remova o funil) — a Sônia recomenda a partir deste arquivo.',
+    );
+  }
+}
+
+/* Produto sem preço público é venda por conversa, e conversa exige a
+   qualificação inteira. Se um deles caísse em rota curta, a Sônia
+   mandaria a pessoa para um checkout que não existe. */
+for (const o of CATALOGO) {
+  if (o.preco === null && o.ofertavel && o.rota !== 'spin') {
+    throw new Error(
+      `[assistente] "${o.slug}" não tem preço público mas está na rota "${o.rota}". ` +
+        'Produto vendido por candidatura precisa da rota "spin".',
     );
   }
 }

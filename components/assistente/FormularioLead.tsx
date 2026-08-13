@@ -42,7 +42,9 @@ function montarMensagem(args: {
   objetivo: string;
   produtoNome?: string;
   pagina: string;
+  situacao?: string;
   dor?: string;
+  implicacao?: string;
   ultimasFalas: string[];
 }): string {
   const linhas = [
@@ -56,13 +58,17 @@ function montarMensagem(args: {
   if (args.produtoNome) linhas.push(`*Interesse:* ${args.produtoNome}`);
   linhas.push(`*Página:* ${args.pagina}`);
 
-  /* O diagnóstico que a Sônia montou. Cada linha some se a etapa não foi
-     coberta — "*Problema:* —" é ruído com cara de dado.
+  /* O diagnóstico SPIN que a Sônia levantou, na ordem do método. Cada
+     linha some se a etapa não foi coberta — "*Problema:* —" é ruído com
+     cara de dado. A linha de Implicação é a de maior valor: costuma trazer
+     o número, e é com ele que a equipe abre a conversa.
      ⚠️ O `dor` ERA DESCARTADO AQUI: chegava na assinatura, era passado na
      chamada e o corpo nunca o referenciava, então a dor que ela extraiu
      com as palavras da pessoa nunca chegava a quem ia ligar. */
   const diagnostico = [
+    args.situacao ? `*Situação:* ${args.situacao}` : '',
     args.dor ? `*Problema:* ${args.dor}` : '',
+    args.implicacao ? `*Implicação:* ${args.implicacao}` : '',
     args.objetivo ? `*O que quer resolver:* ${args.objetivo}` : '',
   ].filter(Boolean);
   if (diagnostico.length) linhas.push('', '*Diagnóstico da conversa:*', ...diagnostico);
@@ -119,7 +125,9 @@ export function FormularioLead({
         objetivo: objetivo.trim(),
         produtoNome: produto?.nome,
         pagina,
+        situacao: lead.situacao,
         dor: lead.dor,
+        implicacao: lead.implicacao,
         ultimasFalas,
       }),
     );
@@ -142,8 +150,13 @@ export function FormularioLead({
           keepalive: true,
           body: JSON.stringify({
             contato: { nome: nome.trim(), whatsapp: whatsapp.trim(), email: email.trim() || undefined },
+            /* O mesmo diagnóstico que foi para o WhatsApp, agora para o
+               CRM. `objetivo` vem do CAMPO, não do marcador: o textarea é
+               editável e a versão da pessoa vence a da IA. */
             qualificacao: {
+              ...(lead.situacao ? { situacao: lead.situacao } : {}),
               ...(lead.dor ? { dor: lead.dor } : {}),
+              ...(lead.implicacao ? { implicacao: lead.implicacao } : {}),
               ...(objetivo.trim() ? { objetivo: objetivo.trim() } : {}),
             },
             produto: lead.produto,

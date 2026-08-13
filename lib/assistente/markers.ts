@@ -21,12 +21,20 @@ export const RE_PRODUTO = /\[\[produto:([a-z0-9-]+)\]\]/g;
 export const RE_LEAD = /\[\[LEAD\]\]\s*(\{[\s\S]*?\})?/;
 export const RE_WA = /\[\[wa\]\]/g;
 
+/** O diagnóstico SPIN que a Sônia montou durante a conversa. Todos os
+ *  campos são opcionais: etapa não coberta vem AUSENTE, nunca vazia. */
 export type LeadSugerido = {
   /** Slug do produto recomendado, quando houver. */
   produto?: string;
-  /** A dor com as palavras da pessoa. */
+  /** Situação: o contexto da operação dela. */
+  situacao?: string;
+  /** Problema: a dor com as palavras da pessoa. */
   dor?: string;
-  /** O próximo passo, na primeira pessoa dela. Pré-preenche o formulário. */
+  /** Implicação: o custo do problema, começando pelo número quando houver.
+   *  É o campo de maior valor para quem for ligar. */
+  implicacao?: string;
+  /** Necessidade: o próximo passo, na primeira pessoa dela. Pré-preenche o
+   *  formulário. */
   objetivo?: string;
 };
 
@@ -64,11 +72,16 @@ export function analisar(bruto: string): Analise {
   if (mLead) {
     if (mLead[1]) {
       try {
+        // Allow-list explícita: campo que a IA invente é descartado aqui,
+        // e não vaza para o WhatsApp da equipe nem para o webhook.
         const j = JSON.parse(mLead[1]) as LeadSugerido;
+        const str = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
         lead = {
-          produto: typeof j.produto === 'string' ? j.produto : undefined,
-          dor: typeof j.dor === 'string' ? j.dor : undefined,
-          objetivo: typeof j.objetivo === 'string' ? j.objetivo : undefined,
+          produto: str(j.produto),
+          situacao: str(j.situacao),
+          dor: str(j.dor),
+          implicacao: str(j.implicacao),
+          objetivo: str(j.objetivo),
         };
       } catch {
         // JSON quebrado não pode custar a captura: o marcador sozinho já

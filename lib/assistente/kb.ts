@@ -23,9 +23,10 @@ function linhaCompacta(o: OfertaKB): string {
   const preco = o.preco ?? 'SEM PREÇO PÚBLICO — nunca cite valor';
   const entrada =
     o.entrada === 'checkout' ? 'compra direta no checkout' : 'entrada por candidatura';
+  const rotas = { curta: 'ROTA CURTA', media: 'ROTA MÉDIA', spin: 'ROTA SPIN' };
   const linhas = [
     `### ${o.nome}`,
-    `slug: ${o.slug} | ${o.categoria} | ${preco} | ${entrada}`,
+    `slug: ${o.slug} | ${o.categoria} | ${preco} | ${entrada} | ${rotas[o.rota]}`,
     `para quem: ${o.paraQuem}`,
     `NÃO é para: ${o.naoEhFit}`,
   ];
