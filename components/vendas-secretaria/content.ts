@@ -1,8 +1,16 @@
 import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /* ============================================================
-   CURSO "A SECRETÁRIA QUE VENDE" · conteúdo central da landing
+   CURSO "CRC DE ALTA PERFORMANCE" · conteúdo central da landing
    Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
+
+   O produto se chama "CRC de Alta Performance" desde 10/08/2026 (PR #19),
+   mas a copy continuou falando com a persona "secretária" até 13/08/2026 —
+   H1, os três CTAs, o Módulo 1 e o FAQ. Corrigido aqui. Seguem com o nome
+   antigo DE PROPÓSITO, e não são erro: a rota (/produtos/vendas-secretaria),
+   o `contentName` do funnels.ts, o slug do catálogo da plataforma e os nomes
+   dos arquivos/componentes — mexer neles quebraria anúncio no ar, histórico
+   de eventos do Meta e progresso salvo de aluno.
    Curso em vídeo (Dr. Sócrates / Felice Academy) que treina a
    recepção da clínica a VENDER: do primeiro contato ao fechamento
    do orçamento e ao follow-up.
@@ -52,10 +60,13 @@ export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
 /* ---------- Hero ---------- */
 export const HERO = {
   eyebrow: 'Curso online · Treinamento comercial da recepção',
-  titlePre: 'Transforme sua secretária numa profissional que',
+  // ⚠️ `titlePre` tem 45 caracteres, praticamente o mesmo da versão anterior
+  // (46): a quebra do H1 não muda. Ao reescrever, meça no navegador — chutar
+  // largura em `ch` nesta Poppins não funciona.
+  titlePre: 'Transforme sua recepção num time comercial que',
   titleGold: 'agenda, apresenta e fecha tratamento.',
-  lead: 'Sua secretária atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega à sua equipe para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
-  ctaPrimary: 'Quero treinar minha secretária',
+  lead: 'Sua equipe atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega a quem fala com o paciente para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
+  ctaPrimary: 'Quero treinar minha equipe',
   ctaSecondary: 'Ver os módulos',
   trust: [
     '100% online, no ritmo da equipe',
@@ -107,7 +118,7 @@ export const STATS: { num: string; label: string }[] = [
 export const DORES: { titulo: string; texto: string }[] = [
   {
     titulo: 'Orçamento apresentado, paciente sumiu',
-    texto: 'A secretária passa o valor, o paciente diz "vou pensar"… e ninguém dá follow-up. O tratamento — e o dinheiro — evaporam.',
+    texto: 'A recepção passa o valor, o paciente diz "vou pensar"… e ninguém dá follow-up. O tratamento — e o dinheiro — evaporam.',
   },
   {
     titulo: 'Trava no "quanto custa?"',
@@ -165,12 +176,12 @@ export type Modulo = {
 export const MODULOS: Modulo[] = [
   {
     n: '01',
-    titulo: 'A secretária que vende',
+    titulo: 'Quem atende, vende',
     resumo: 'A virada de mentalidade: a recepção é o time comercial da clínica. Onde o paciente entra, onde o dinheiro se ganha ou se perde.',
     blocos: [
       {
         aulas: [
-          'Por que a secretária é a peça-chave do faturamento',
+          'Por que quem atende é a peça-chave do faturamento',
           'Vender é servir: a venda ética e humanizada na odontologia',
           'A jornada do paciente: do primeiro "oi" ao tratamento fechado',
           'O funil comercial: lead → agendamento → comparecimento → fechamento',
@@ -237,7 +248,7 @@ export const MODULOS: Modulo[] = [
           'Confirmação ativa e queda do no-show',
           'Reativação de pacientes inativos',
           'Pedindo indicações e avaliações no Google',
-          'A rotina comercial semanal da secretária',
+          'A rotina comercial semanal da recepção',
         ],
       },
     ],
@@ -250,7 +261,7 @@ export const MODULOS: Modulo[] = [
 export const BONUS: { titulo: string; texto: string; valor: number }[] = [
   { titulo: 'Pacote de scripts prontos', texto: 'Roteiros editáveis de primeiro contato, apresentação de orçamento, follow-up, confirmação e reativação — prontos para a equipe usar hoje.', valor: 197 },
   { titulo: 'Banco de respostas para objeções', texto: 'O "o que dizer quando…" para "tá caro", "vou pensar", "preciso falar em casa" e as objeções mais comuns da recepção.', valor: 147 },
-  { titulo: 'Planilha de controle de orçamentos e follow-up', texto: 'O funil comercial da secretária numa planilha: cada orçamento aberto, o próximo contato e nada mais caindo no esquecimento.', valor: 147 },
+  { titulo: 'Planilha de controle de orçamentos e follow-up', texto: 'O funil comercial da recepção numa planilha: cada orçamento aberto, o próximo contato e nada mais caindo no esquecimento.', valor: 147 },
   { titulo: 'Modelos de mensagem (WhatsApp)', texto: 'Templates de confirmação de consulta e de reativação de pacientes, prontos para copiar, personalizar e enviar.', valor: 97 },
   { titulo: 'Encontro ao vivo de dúvidas', texto: 'Um encontro ao vivo com o time Felice para destravar a aplicação do método na realidade da sua clínica.', valor: 297 },
   { titulo: 'Aula bônus: Felice CRM para não perder orçamento', texto: 'Como usar o Felice CRM para registrar cada orçamento e automatizar o follow-up — para o dinheiro nunca mais escapar.', valor: 197 },
@@ -269,7 +280,7 @@ export const MENTOR = {
   nome: 'Dr. Sócrates Tavares',
   role: 'Diretor clínico da Felice Odontologia · Professor na Felice Academy',
   quote:
-    'Recepção não é custo, é o seu time comercial. A secretária certa, treinada com método, é quem transforma o seu marketing em agenda cheia e orçamento fechado. Foi assim que estruturei a linha de frente da Felice — e é isso que eu ensino aqui, passo a passo.',
+    'Recepção não é custo, é o seu time comercial. Quem atende o paciente, treinado com método, é quem transforma o seu marketing em agenda cheia e orçamento fechado. Foi assim que estruturei a linha de frente da Felice — e é isso que eu ensino aqui, passo a passo.',
   creds: [
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
@@ -283,7 +294,14 @@ export const MENTOR = {
 
 /* ---------- Depoimentos (vídeo) ----------
    ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais.
-   Enquanto não houver, o card mostra um placeholder com o play. */
+   Enquanto não houver, o card mostra um placeholder com o play.
+
+   O texto da Dra. Marina diz "minha secretária" e ficou como estava na
+   varredura de persona de 13/08/2026: é fala atribuída a uma pessoa, não
+   copy nossa, e reescrever depoimento é pôr palavra na boca de alguém. Como
+   fala de dona de clínica, soa natural e não contradiz o nome do produto.
+   ⚠️ Se estes três textos forem placeholder (os nomes não têm sobrenome nem
+   clínica, e nenhum tem vídeo), aí a regra não vale — troque pelos reais. */
 export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
 export const DEPOIMENTOS: Depoimento[] = [
   {
@@ -310,7 +328,7 @@ export const OFERTA = {
   ribbon: 'Acesso imediato',
   titulo: 'CRC de Alta Performance — completo',
   itens: [
-    'Módulo 1 · A secretária que vende',
+    'Módulo 1 · Quem atende, vende',
     'Módulo 2 · Primeiro contato que agenda',
     'Módulo 3 · Recepção que encanta',
     'Módulo 4 · Orçamento e fechamento',
@@ -321,26 +339,35 @@ export const OFERTA = {
   ],
   parcela: { vezes: '12x', valor: 'R$ 61,38' },
   aVista: 'R$ 597,00',
-  cta: 'Quero treinar minha secretária',
+  cta: 'Quero treinar minha equipe',
 };
 
 /* ---------- FAQ ---------- */
 export const FAQ: { q: string; a: string }[] = [
   {
-    q: 'Esse curso é para mim ou para a minha secretária?',
+    q: 'Esse curso é para mim ou para a minha equipe?',
     a: 'Para os dois. Você, dono(a), compra o acesso e entrega o treinamento à sua equipe de recepção. É o padrão comercial da sua clínica na mão de quem fala com o paciente — sem você precisar treinar pessoalmente, aula por aula.',
   },
   {
-    q: 'Minha secretária não tem experiência com vendas. Serve?',
-    a: 'Serve — e é exatamente para isso. O curso parte do zero, com script e passo a passo, para transformar uma pessoa acolhedora numa profissional que também conduz o paciente à decisão, sem parecer que está "empurrando".',
+    /* A menção a "secretária" aqui é deliberada: é o nome que muita clínica
+       ainda usa para o cargo, então quem chegou procurando por ele reconhece
+       o produto sem que o resto da copy contradiga o rename de 10/08/2026.
+       A outra que sobrou na página está num DEPOIMENTO, e por outro motivo
+       (ver o comentário de DEPOIMENTOS). */
+    q: 'Quem vai fazer o curso não tem experiência com vendas. Serve?',
+    a: 'Serve — e é exatamente para isso. O curso parte do zero, com script e passo a passo, para quem está na linha de frente (o cargo que muita clínica ainda chama de secretária) virar alguém que acolhe e também conduz o paciente à decisão, sem parecer que está "empurrando".',
   },
   {
     q: 'Dá para treinar mais de uma pessoa da equipe?',
     a: 'Sim, é feito para a equipe: você treina quem está na recepção hoje e padroniza quem entrar amanhã, sem que o resultado dependa de quem está no balcão naquele dia.',
   },
   {
-    q: 'Qual a diferença para o curso Gestão F4?',
-    a: 'O Gestão F4 é para você, dono(a), montar o sistema dos 4 pilares da clínica (nível estratégico). O "CRC de Alta Performance" é o treinamento prático que você entrega à recepção — foco total em atender, agendar, apresentar orçamento e fechar. Um monta a estrutura; o outro treina a linha de frente.',
+    /* Dizia "o curso Gestão F4", que não existe — a landing foi removida no
+       PR #63 (11/08/2026) e a rota redireciona para a consultoria. O
+       comentário no topo deste arquivo já registrava isso; o FAQ é que não
+       tinha acompanhado, e a página vendia comparação com produto fantasma. */
+    q: 'Qual a diferença para a Consultoria Gestão F4?',
+    a: 'A Consultoria Gestão F4 é para você, dono(a): o Dr. Sócrates monta o sistema dos 4 pilares da clínica com você, em 4 semanas (nível estratégico). O "CRC de Alta Performance" é o treinamento prático que você entrega à recepção — foco total em atender, agendar, apresentar orçamento e fechar. Uma monta a estrutura; o outro treina a linha de frente.',
   },
   {
     q: 'Como funciona o bônus ao vivo?',
@@ -358,5 +385,5 @@ export const FINAL = {
   titlePre: 'Pare de perder tratamento na recepção.',
   titleGold: 'Treine quem fala com o paciente para vender.',
   lead: 'Dê à sua equipe o método que transforma atendimento em agenda cheia e orçamento fechado. Acesso imediato, no ritmo da equipe, com garantia de 7 dias.',
-  cta: 'Quero treinar minha secretária',
+  cta: 'Quero treinar minha equipe',
 };

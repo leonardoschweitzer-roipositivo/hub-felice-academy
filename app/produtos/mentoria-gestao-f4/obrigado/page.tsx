@@ -16,11 +16,10 @@ export const metadata: Metadata = {
 /* Boas-vindas de quem foi aprovado e entrou na turma. O link é enviado
    pela equipe depois do fechamento no WhatsApp.
 
-   ⚠️ O <PurchasePixel /> resolve value/content_name por `funnelBySlug`, e
-   `mentoria-gestao-f4` ainda NÃO existe em lib/tracking/funnels.ts — falta
-   definir o valor da mentoria. Enquanto isso, o evento (que só dispara com
-   `?transaction_id=` na URL) vai sem valor. Preencher o funil antes de
-   otimizar campanha por receita. */
+   O <PurchasePixel /> resolve value/content_name por `funnelBySlug`, e
+   `mentoria-gestao-f4` entrou em lib/tracking/funnels.ts em 13/08/2026 com
+   R$ 6.000 — o evento (que só dispara com `?transaction_id=` na URL) agora
+   leva valor e nome do produto. */
 export default function ObrigadoPage() {
   return (
     <div className={fontVars}>

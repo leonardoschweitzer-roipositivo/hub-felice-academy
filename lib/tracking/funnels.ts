@@ -59,6 +59,26 @@ export const FUNNELS: Record<string, Funnel> = {
     value: 597.0, // mesmo preço do CRC, o produto-par
     contentName: 'Recepção de Alta Performance',
   },
+  /* As duas mentorias entram como a Consultoria: sem `offer`, porque a entrada
+     é por candidatura, e com R$ 6.000 — o mesmo patamar de alto ticket, definido
+     pelo Leo em 13/08/2026. O preço não aparece em nenhuma das duas landings.
+
+     Até aqui elas simplesmente não existiam nesta tabela, e as três chamadas
+     resolvem o funil por slug: o ViewContent da landing e o SubmitApplication
+     da candidatura iam sem `content_name`, e o Purchase da página de obrigado
+     ia sem `value` — receita de alto ticket invisível para o Meta. */
+  'mentoria-gestao-f4': {
+    slug: 'mentoria-gestao-f4',
+    offer: null, // não há checkout: a entrada é por aplicação, não por link Green
+    value: 6000.0,
+    contentName: 'Mentoria de Gestão F4',
+  },
+  'mentoria-zigomatico': {
+    slug: 'mentoria-zigomatico',
+    offer: null, // não há checkout: a entrada é por aplicação, não por link Green
+    value: 6000.0,
+    contentName: 'Mentoria de Zigomático',
+  },
 };
 
 /** Busca por slug do produto (ViewContent / Purchase do browser). */
