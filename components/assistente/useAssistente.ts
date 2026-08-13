@@ -93,6 +93,12 @@ export function useAssistente(pathname: string, saudacao: string) {
           );
         }
 
+        /* Flush final do decodificador: sem este `decode()` sem argumento,
+           bytes de um caractere multibyte que ficaram pela metade no
+           último pedaço morrem no decoder — e "ç" ou "ã" no fim da frase
+           somem. */
+        bruto += dec.decode();
+
         const fim = analisar(bruto);
         setBaloes((b) =>
           b.map((x) => (x.id === idIa ? { ...x, partes: fim.segmentos, parcial: false } : x)),

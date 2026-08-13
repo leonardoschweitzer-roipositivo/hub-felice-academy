@@ -41,8 +41,16 @@ export const MAX_CHARS_PER_MSG = 1200;
  *  últimas coisas que ela pode esquecer. */
 export const MAX_TOTAL_CHARS = 12_000;
 
-/** ~900 caracteres, que é o teto que o prompt pede por mensagem. */
-export const MAX_OUTPUT_TOKENS = 500;
+/** O prompt pede no máximo 900 caracteres por mensagem, o que dá ~300
+ *  tokens — então isto é folga de 4x, de propósito.
+ *
+ *  ⚠️ Estava em 500 e cortava a resposta no meio da frase em produção: os
+ *  modelos Flash pensam antes de responder e os tokens de raciocínio
+ *  contam DENTRO deste teto, então sobravam ~15 tokens de texto. O
+ *  pensamento foi desligado em gemini.ts (`thinkingBudget: 0`), e este
+ *  número subiu junto para o problema não voltar por outra porta. Não
+ *  baixe sem ler aquele comentário. */
+export const MAX_OUTPUT_TOKENS = 1200;
 
 /** Dossiês completos de produto por requisição (ver kb.ts). Cada um custa
  *  ~600 tokens; 2 é o ponto onde a resposta fica específica sem inchar. */
