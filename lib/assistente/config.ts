@@ -29,8 +29,15 @@ export const ASSISTENTE_ENABLED = process.env.ASSISTENTE_ENABLED !== 'false';
    São o teto de custo real por sessão. O rate limit por IP cuida de abuso;
    estes números cuidam da conta no fim do mês. */
 
-/** Mensagens no histórico (usuário + assistente). 24 ≈ 12 respostas dela. */
-export const MAX_TURNS = 24;
+/** Mensagens no histórico (usuário + assistente).
+ *
+ *  ⚠️ INVARIANTE: MAX_TURNS >= 2 * MAX_RESPOSTAS + 2.
+ *  Em app/api/assistente/chat/route.ts o `.slice(-MAX_TURNS)` roda ANTES
+ *  da contagem de respostas. Se MAX_TURNS for pequeno demais, o corte
+ *  nunca deixa a contagem chegar em MAX_RESPOSTAS — o fechamento forçado
+ *  jamais dispara, a conversa vira infinita e o teto de custo por sessão
+ *  deixa de existir. Ao mexer num dos dois, confira o outro. */
+export const MAX_TURNS = 34;
 
 /** Mensagem do visitante acima disso é TRUNCADA, não rejeitada — rejeitar
  *  faria a pessoa reescrever, e ela não tem culpa de ter colado um texto. */
@@ -39,7 +46,7 @@ export const MAX_CHARS_PER_MSG = 1200;
 /** Soma do histórico. Ao estourar, cortamos do MEIO (ver `cortarHistorico`
  *  em prompt.ts): as duas primeiras trocas guardam a dor declarada e são as
  *  últimas coisas que ela pode esquecer. */
-export const MAX_TOTAL_CHARS = 12_000;
+export const MAX_TOTAL_CHARS = 20_000;
 
 /** O prompt pede no máximo 900 caracteres por mensagem, o que dá ~300
  *  tokens — então isto é folga de 4x, de propósito.
@@ -57,8 +64,12 @@ export const MAX_OUTPUT_TOKENS = 1200;
 export const MAX_DOSSIES = 2;
 
 /** Respostas dela antes do fechamento forçado. Ao passar disso a rota NÃO
- *  chama a Gemini: devolve um fechamento fixo apontando o WhatsApp. */
-export const MAX_RESPOSTAS = 12;
+ *  chama a Gemini: devolve um fechamento fixo apontando o WhatsApp.
+ *
+ *  16 e não 12 porque a qualificação SPIN gasta até 7 respostas antes de
+ *  recomendar, e a recusa de contato queima mais uma. Ver a invariante em
+ *  MAX_TURNS: os dois números andam juntos. */
+export const MAX_RESPOSTAS = 16;
 
 /* ---------- Rate limit ----------
    ⚠️ O bucket é um Map em memória (ver rate-limit.ts) e NÃO sobrevive a

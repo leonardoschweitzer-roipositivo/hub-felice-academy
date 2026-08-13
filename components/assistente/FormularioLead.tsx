@@ -55,7 +55,18 @@ function montarMensagem(args: {
   if (args.email) linhas.push(`*E-mail:* ${args.email}`);
   if (args.produtoNome) linhas.push(`*Interesse:* ${args.produtoNome}`);
   linhas.push(`*Página:* ${args.pagina}`);
-  if (args.objetivo) linhas.push('', '*O que eu quero resolver:*', args.objetivo);
+
+  /* O diagnóstico que a Sônia montou. Cada linha some se a etapa não foi
+     coberta — "*Problema:* —" é ruído com cara de dado.
+     ⚠️ O `dor` ERA DESCARTADO AQUI: chegava na assinatura, era passado na
+     chamada e o corpo nunca o referenciava, então a dor que ela extraiu
+     com as palavras da pessoa nunca chegava a quem ia ligar. */
+  const diagnostico = [
+    args.dor ? `*Problema:* ${args.dor}` : '',
+    args.objetivo ? `*O que quer resolver:* ${args.objetivo}` : '',
+  ].filter(Boolean);
+  if (diagnostico.length) linhas.push('', '*Diagnóstico da conversa:*', ...diagnostico);
+
   if (args.ultimasFalas.length) {
     linhas.push('', '*Da conversa:*', ...args.ultimasFalas.map((f) => `- ${f}`));
   }
@@ -92,8 +103,11 @@ export function FormularioLead({
     if (!valido || enviando) return;
     setEnviando(true);
 
+    /* Falas curtas ficam de fora: numa qualificação com perguntas
+       fechadas as três últimas viram "uns 20", "sim", "isso" — ruído puro
+       para quem vai ler o lead. O filtro também encurta a URL do wa.me. */
     const ultimasFalas = historico
-      .filter((m) => m.role === 'user')
+      .filter((m) => m.role === 'user' && m.content.trim().length >= 15)
       .slice(-3)
       .map((m) => (m.content.length > 120 ? m.content.slice(0, 117) + '…' : m.content));
 

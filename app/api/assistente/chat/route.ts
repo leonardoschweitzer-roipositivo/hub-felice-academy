@@ -20,7 +20,7 @@ import { buildSystemPrompt, cortarHistorico, montarDossies } from '@/lib/assiste
 import { recuperarOfertas } from '@/lib/assistente/retrieve';
 import { streamGemini, SemChaveError } from '@/lib/assistente/gemini';
 import { limitado, ipDe } from '@/lib/assistente/rate-limit';
-import { pontoSeguro, sanitizarHistorico, type ChatMsg } from '@/lib/assistente/markers';
+import { pontoSeguro, sanitizarHistorico, RE_PRODUTO, type ChatMsg } from '@/lib/assistente/markers';
 import { WHATSAPP_NUMERO } from '@/lib/whatsapp/contato';
 
 export const runtime = 'nodejs';
@@ -31,6 +31,9 @@ type Body = {
   pathname?: string;
   /** Nome de quem já deixou o contato — o prompt para de pedir de novo. */
   contato?: string | null;
+  /** A pessoa já recusou uma vez deixar o contato. Muda o tom do prompt:
+   *  ela só volta a oferecer se a PESSOA sinalizar interesse. */
+  leadRecusado?: boolean;
 };
 
 /** "5588981391199" → "(88) 98139-1199". Derivado da fonte única do repo
@@ -112,27 +115,52 @@ export async function POST(req: Request) {
   const contexto = contextoDaPagina(pathname);
   const daPagina = contexto.slug;
 
-  // A conversa recente é o que decide qual dossiê anexar. Só as mensagens
-  // do usuário: as dela repetem o nome do produto que ela mesma sugeriu e
-  // travariam a recuperação no primeiro palpite.
-  const consulta = msgs
-    .filter((m) => m.role === 'user')
-    .slice(-3)
+  /* A conversa é o que decide qual dossiê anexar. Só as mensagens do
+     usuário: as dela repetem o nome do produto que ela mesma sugeriu e
+     travariam a recuperação no primeiro palpite.
+
+     A PRIMEIRA mensagem entra sempre, junto das 3 últimas. Ela é a dor
+     declarada ("minha equipe perde orçamento") — o sinal mais forte da
+     conversa inteira e o primeiro a ser soterrado por uma qualificação
+     longa, quando as últimas falas viram "uns 20", "sim", "isso". Sem ela,
+     o dossiê certo sumia justamente na mensagem em que a Sônia vai
+     recomendar. O `cortarHistorico` já trata as primeiras mensagens como
+     sagradas pelo mesmo motivo; a recuperação é que não tinha aprendido.
+     Repetir a primeira quando ela também está entre as 3 últimas não é
+     bug: o scorer soma por ocorrência, então repetir fortalece os termos
+     da abertura — que é a intenção. */
+  const doUsuario = msgs.filter((m) => m.role === 'user');
+  const consulta = [doUsuario[0], ...doUsuario.slice(-3)]
+    .filter(Boolean)
     .map((m) => m.content)
     .join(' ');
 
-  const recuperados = recuperarOfertas(
-    consulta,
-    daPagina ? MAX_DOSSIES - 1 : MAX_DOSSIES,
-    daPagina ? [daPagina] : [],
-  ).map((o) => o.slug);
+  /* O produto que ela já recomendou também é forçado: sem isso, uma
+     pergunta de acompanhamento ("serve para clínica pequena?", "tem
+     garantia?") pode chegar sem o dossiê do produto em questão. O
+     histórico aqui é CRU, com marcadores — o `sanitizarHistorico` só é
+     aplicado ao que vai para o modelo. `matchAll` opera sobre um clone da
+     regex e não mexe no `lastIndex` global, ao contrário do `.test()`
+     (armadilha já documentada em markers.ts). */
+  const jaRecomendado = msgs
+    .filter((m) => m.role === 'assistant')
+    .flatMap((m) => [...m.content.matchAll(RE_PRODUTO)].map((x) => x[1]))
+    .pop();
 
-  const dossies = montarDossies([...(daPagina ? [daPagina] : []), ...recuperados]);
+  /* ⚠️ `montarDossies` NÃO tem teto próprio — o teto vem do `k` daqui.
+     Somar um slug forçado sem reduzir o `k` infla o prompt em ~600 tokens
+     em silêncio. Prioridade: página > já recomendado > recuperados. */
+  const forcados = [...new Set([daPagina, jaRecomendado].filter(Boolean) as string[])];
+  const k = Math.max(0, MAX_DOSSIES - forcados.length);
+  const recuperados = k ? recuperarOfertas(consulta, k, forcados).map((o) => o.slug) : [];
+
+  const dossies = montarDossies([...forcados, ...recuperados]);
 
   const system = buildSystemPrompt({
     contexto,
     dossies,
     contatoCapturado: typeof body.contato === 'string' ? body.contato : null,
+    leadRecusado: body.leadRecusado === true,
   });
 
   const historico = cortarHistorico(

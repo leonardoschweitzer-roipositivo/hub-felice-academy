@@ -115,10 +115,15 @@ export function buildSystemPrompt(args: {
   contexto: ContextoPagina;
   dossies: string[];
   contatoCapturado?: string | null;
+  leadRecusado?: boolean;
 }): string {
+  /* Bloco DINÂMICO — fica depois do prefixo cacheado, então variar aqui
+     não custa cache. */
   const estado = args.contatoCapturado
     ? `CONTATO JÁ CAPTURADO: ${args.contatoCapturado}. Não peça contato de novo, não emita [[LEAD]] e não peça nome nem telefone. Conduza ao próximo passo e, se ela pedir uma pessoa, use [[wa]].`
-    : 'Contato ainda não capturado.';
+    : args.leadRecusado
+      ? 'A pessoa JÁ RECUSOU uma vez deixar o contato e escolheu continuar conversando aqui. Respeite isso: não peça de novo por conta própria e não repita a recomendação como se ela não tivesse respondido. Siga ajudando de graça e responda o que ela perguntar. Só ofereça o contato outra vez ([[LEAD]]) se ELA sinalizar que quer avançar — perguntou preço, prazo, como começa, se tem turma, ou disse que quer. Se ela pedir para falar com uma pessoa, use [[wa]] em vez de [[LEAD]].'
+      : 'Contato ainda não capturado.';
 
   return [
     REGRAS,
