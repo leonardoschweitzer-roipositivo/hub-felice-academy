@@ -38,7 +38,7 @@ export async function GET(req: Request) {
     const pathname = params.get('pathname') || '/';
     const bloqueada = rotaBloqueada(pathname);
     const contexto = contextoDaPagina(pathname);
-    const daPagina = contexto.oferta?.slug;
+    const daPagina = contexto.slug;
     const recuperados = recuperarOfertas(
       pergunta,
       daPagina ? MAX_DOSSIES - 1 : MAX_DOSSIES,

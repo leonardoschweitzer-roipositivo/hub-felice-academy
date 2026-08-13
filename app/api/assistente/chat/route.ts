@@ -110,7 +110,7 @@ export async function POST(req: Request) {
 
   /* ---------- Contexto ---------- */
   const contexto = contextoDaPagina(pathname);
-  const daPagina = contexto.oferta?.slug;
+  const daPagina = contexto.slug;
 
   // A conversa recente é o que decide qual dossiê anexar. Só as mensagens
   // do usuário: as dela repetem o nome do produto que ela mesma sugeriu e

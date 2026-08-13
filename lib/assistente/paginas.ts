@@ -6,13 +6,22 @@
    arquivo.
    ============================================================ */
 
-import { CATALOGO, POR_SLUG, type OfertaKB } from './catalogo';
+/* ⚠️ Este arquivo é importado pelo WIDGET, que roda no navegador. Ele NÃO
+   pode importar `lib/assistente/catalogo.ts`: aquele arquivo puxa os 9
+   content.ts das landings, e o resultado foi medido — o chunk do layout
+   raiz, que carrega em TODA página, saltou de 2,1 KB para 41,4 KB, levando
+   junto a copy da Maestria para o navegador de quem só abriu a home.
+   Daqui em diante, use o catálogo público (nome, href, categoria, preço),
+   que é a fatia enxuta e é mantida em sincronia por um guard de build. */
+import { PRODUTOS_PUBLICOS } from '@/components/assistente/catalogoPublico';
 
 export type ContextoPagina = {
   /** Frase que entra no system prompt descrevendo onde a pessoa está. */
   rotulo: string;
-  /** Produto da página, quando ela é de um produto. */
-  oferta?: OfertaKB;
+  /** Slug do produto da página, quando ela é de um produto. */
+  slug?: string;
+  /** Nome do produto, para a saudação do widget. */
+  nome?: string;
   /** Página de obrigado: quem está aqui JÁ COMPROU. Muda a conversa de
    *  venda para suporte e próximo passo. */
   posCompra: boolean;
@@ -66,15 +75,15 @@ export function rotaBloqueada(pathname: string): boolean {
 /** Casa o caminho com a oferta de href mais longo que o prefixa — assim
  *  `/produtos/consultoria/obrigado` resolve para a Consultoria sem precisar
  *  de uma tabela paralela de rotas que envelheceria sozinha. */
-function ofertaDaRota(p: string): OfertaKB | undefined {
-  let achada: OfertaKB | undefined;
-  for (const o of CATALOGO) {
+function ofertaDaRota(p: string): { slug: string; nome: string } | undefined {
+  let achada: { slug: string; nome: string; base: string } | undefined;
+  for (const [slug, o] of Object.entries(PRODUTOS_PUBLICOS)) {
     const base = limpar(o.href);
     if (p === base || p.startsWith(base + '/')) {
-      if (!achada || base.length > limpar(achada.href).length) achada = o;
+      if (!achada || base.length > achada.base.length) achada = { slug, nome: o.nome, base };
     }
   }
-  return achada;
+  return achada && { slug: achada.slug, nome: achada.nome };
 }
 
 export function contextoDaPagina(pathname: string): ContextoPagina {
@@ -99,7 +108,8 @@ export function contextoDaPagina(pathname: string): ContextoPagina {
     return {
       rotulo:
         'A pessoa está na página que apresenta as DUAS trilhas de mentoria (Gestão F4 e Zigomático). A dúvida dela provavelmente é qual das duas serve ao caso dela: uma é de negócio, a outra é clínica.',
-      oferta: POR_SLUG['mentoria-gestao-f4'],
+      // Sem `slug`: as duas mentorias importam aqui, e fixar uma delas
+      // faria a recuperação anexar sempre o dossiê da mesma.
       posCompra: false,
     };
   }
@@ -115,14 +125,16 @@ export function contextoDaPagina(pathname: string): ContextoPagina {
   if (oferta && posCompra) {
     return {
       rotulo: `A pessoa está na página de OBRIGADO de "${oferta.nome}" — ela ACABOU DE COMPRAR. Não venda este produto de novo: parabenize, ajude com o acesso e, só se fizer sentido para a dor dela, aponte o próximo degrau.`,
-      oferta,
+      slug: oferta.slug,
+      nome: oferta.nome,
       posCompra: true,
     };
   }
   if (oferta) {
     return {
       rotulo: `A pessoa está na landing de "${oferta.nome}". Assuma que o interesse é este produto e faça uma pergunta específica dele — não comece perguntando "o que você procura?".`,
-      oferta,
+      slug: oferta.slug,
+      nome: oferta.nome,
       posCompra: false,
     };
   }

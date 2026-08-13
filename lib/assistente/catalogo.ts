@@ -15,6 +15,7 @@
    ============================================================ */
 
 import { FUNNELS } from '@/lib/tracking/funnels';
+import { PRODUTOS_PUBLICOS } from '@/components/assistente/catalogoPublico';
 
 import { FAQ as kitFaq } from '@/components/felice/faq';
 import { PRECO as kitPreco } from '@/components/felice/config';
@@ -381,6 +382,31 @@ for (const slug of Object.keys(FUNNELS)) {
     throw new Error(
       `[assistente] o funil "${slug}" existe em lib/tracking/funnels.ts mas não tem entrada em lib/assistente/catalogo.ts. ` +
         'Adicione a oferta ao catálogo (ou remova o funil) — a Sônia recomenda a partir deste arquivo.',
+    );
+  }
+}
+
+/* O widget não pode importar este arquivo (ele arrasta os 9 content.ts,
+   ~146 KB, para o bundle do cliente), então existe uma fatia enxuta em
+   components/assistente/catalogoPublico.ts. Duas listas divergem em
+   silêncio — a menos que alguém confira. Confere aqui, no build. */
+for (const o of CATALOGO) {
+  const p = PRODUTOS_PUBLICOS[o.slug];
+  const erro = !p
+    ? 'não existe'
+    : p.nome !== o.nome
+      ? `nome diferente ("${p.nome}" × "${o.nome}")`
+      : p.href !== o.href
+        ? `href diferente ("${p.href}" × "${o.href}")`
+        : p.preco !== o.preco
+          ? `preço diferente ("${p.preco}" × "${o.preco}")`
+          : p.categoria !== o.categoria
+            ? `categoria diferente ("${p.categoria}" × "${o.categoria}")`
+            : null;
+  if (erro) {
+    throw new Error(
+      `[assistente] "${o.slug}" em components/assistente/catalogoPublico.ts ${erro}. ` +
+        'Os dois arquivos precisam contar a mesma história: um alimenta a IA, o outro desenha o card.',
     );
   }
 }

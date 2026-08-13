@@ -30,12 +30,20 @@ export type LeadSugerido = {
   objetivo?: string;
 };
 
+/** Um balão da conversa: o texto e o que vem logo abaixo dele. */
+export type Segmento = {
+  texto: string;
+  /** Produtos citados NESTE segmento — o card nasce colado ao balão que
+   *  fez a recomendação, e não empurrado para o fim da resposta. */
+  produtos: string[];
+};
+
 export type Analise = {
   /** Texto já sem marcador nenhum, pronto para virar balões. */
   texto: string;
   /** Balões, na ordem. Um por segmento do §§§. */
-  baloes: string[];
-  /** Slugs recomendados, na ordem em que apareceram. */
+  segmentos: Segmento[];
+  /** Todos os slugs recomendados, na ordem em que apareceram. */
   produtos: string[];
   /** Presente se a IA pediu a captura de contato. */
   lead?: LeadSugerido;
@@ -70,21 +78,33 @@ export function analisar(bruto: string): Analise {
     texto = texto.replace(RE_LEAD, '');
   }
 
-  texto = texto.replace(RE_PRODUTO, (_m, slug: string) => {
-    produtos.push(slug);
-    return '';
-  });
-
   const wa = RE_WA.test(texto);
   RE_WA.lastIndex = 0; // regex global guarda estado entre chamadas
   texto = texto.replace(RE_WA, '');
 
-  const baloes = texto
-    .split(SPLIT)
-    .map((s) => s.trim())
-    .filter(Boolean);
+  // Os produtos são extraídos POR SEGMENTO, depois do split: assim o card
+  // aparece logo abaixo do balão que o recomendou, e não empurrado para
+  // depois do fechamento consultivo.
+  const segmentos: Segmento[] = [];
+  for (const parte of texto.split(SPLIT)) {
+    const daParte: string[] = [];
+    const limpo = parte
+      .replace(RE_PRODUTO, (_m, slug: string) => {
+        daParte.push(slug);
+        produtos.push(slug);
+        return '';
+      })
+      .trim();
+    if (limpo || daParte.length) segmentos.push({ texto: limpo, produtos: daParte });
+  }
 
-  return { texto: baloes.join('\n\n'), baloes, produtos, lead, wa };
+  return {
+    texto: segmentos.map((s) => s.texto).filter(Boolean).join('\n\n'),
+    segmentos,
+    produtos,
+    lead,
+    wa,
+  };
 }
 
 /** Tira todo marcador de um texto — usado para medir tamanho e para
