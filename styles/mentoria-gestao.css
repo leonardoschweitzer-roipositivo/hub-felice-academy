@@ -4,6 +4,77 @@
    .felice-maestria). Aqui só o que é exclusivo desta página.
    ============================================================ */
 
+/* ---------- Hero com a foto do Dr. à mesa ----------
+   A MESMA foto da landing da Consultoria Gestão F4 (`background-consultoria-
+   hero.jpg`), que é o produto-par desta mentoria. Até 13/08/2026 esta página
+   usava a `.mz-hero-photo` da Maestria, que traz a foto do ZIGOMÁTICO
+   hardcoded — cirurgia no hero de uma landing de gestão.
+
+   ⚠️ Classe própria e regra COMPLETA de propósito, em vez de sobrescrever
+   `background-image` por cima da `.mz-hero-photo`. Aquela regra tem 3 camadas
+   e esta tem 4: o CSS cicla listas mais curtas, então `background-position` e
+   `background-size` herdados casariam com a camada errada e a foto entraria
+   torta. Sem herança, não há o que ciclar.
+
+   Estas quatro regras são gêmeas das `.cons-*` de consultoria-landing.css —
+   mexeu numa, olhe a outra. Os comentários de lá explicam por que cada
+   número é o que é; o resumo: o gradiente esquerda→direita não pode chegar a
+   zero (os cards "glass" da direita ficam ilegíveis sobre a foto crua), a
+   foto usa `100% auto` porque `cover` num hero de ~1000px dá zoom enorme no
+   rosto, e a faixa preta do topo tem de casar com o offset de 46px. */
+.felice-maestria .mg-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b0b0d;
+  background-image:
+    linear-gradient(
+      to right,
+      #0b0b0d 0%,
+      rgba(11, 11, 13, 0.95) 24%,
+      rgba(11, 11, 13, 0.8) 42%,
+      rgba(11, 11, 13, 0.62) 62%,
+      rgba(11, 11, 13, 0.55) 100%
+    ),
+    linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.85) 10%, rgba(11, 11, 13, 0) 45%),
+    linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 62px, rgba(11, 11, 13, 0) 240px),
+    url('/images/background-consultoria-hero.jpg');
+  background-repeat: no-repeat;
+  background-position: center, center, center, center 46px;
+  background-size: cover, cover, cover, 100% auto;
+  pointer-events: none;
+}
+
+/* Os cards da direita descem para não cobrir o rosto do Dr. */
+.felice-maestria .mg-hero-sec .mz-hero-right {
+  margin-top: 210px;
+}
+@media (max-width: 980px) {
+  /* Repetir o override do maestria.css é obrigatório: media query NÃO soma
+     especificidade, e o seletor acima (3 classes) vence o de lá (2), então os
+     210px vazariam para o mobile — onde o hero empilha e o respiro é 6px. */
+  .felice-maestria .mg-hero-sec .mz-hero-right {
+    margin-top: 6px;
+  }
+}
+
+/* Os cards "glass" são `rgba(255,255,255,0.045)` e contam com o fundo escuro
+   da página atrás. Com a foto ali, o texto secundário some — aqui eles ganham
+   fundo ESCURO translúcido: continua vidro, mas apoiado no preto da marca. */
+.felice-maestria .mg-hero-sec .mz-card {
+  background: rgba(11, 11, 13, 0.66);
+  border-color: rgba(232, 180, 71, 0.22);
+}
+
+@media (max-width: 980px) {
+  /* Empilhado, o texto passa por cima do Dr.: a foto vira textura. */
+  .felice-maestria .mg-hero-photo {
+    background-position: center, center, center, top center;
+    background-size: cover, cover, cover, cover;
+    opacity: 0.4;
+  }
+}
+
 /* Os 4 pilares lado a lado (a regra base .pillars da Maestria é 3 colunas). */
 .felice-maestria .pillars.mz-pillars-4 {
   grid-template-columns: repeat(4, 1fr);

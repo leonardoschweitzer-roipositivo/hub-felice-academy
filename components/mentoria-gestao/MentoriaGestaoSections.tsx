@@ -30,9 +30,14 @@ import {
    "glass" de prova (stats + faixa de temas). Mesma estrutura da Maestria. */
 export function MentoriaGestaoHero() {
   return (
-    <section className="hero mz-hero-sec" id="topo">
+    <section className="hero mz-hero-sec mg-hero-sec" id="topo">
       <div className="hero-bg" />
-      <div className="mz-hero-photo" aria-hidden="true" />
+      {/* `mg-hero-photo` é classe PRÓPRIA, não a `.mz-hero-photo` da Maestria —
+          aquela traz a foto do zigomático hardcoded no CSS, e era o que esta
+          página mostrava até 13/08/2026: uma landing de GESTÃO com foto de
+          cirurgia no hero. Mesma solução da Consultoria, e a mesma foto (o Dr.
+          sentado à mesa), que é o produto-par desta mentoria. */}
+      <div className="mg-hero-photo" aria-hidden="true" />
 
       <div className="wrap mz-hero">
         {/* LEFT */}
