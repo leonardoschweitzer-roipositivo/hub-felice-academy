@@ -8,10 +8,19 @@
 
    GET /api/assistente/kb/            → catálogo compacto + tamanhos
    GET /api/assistente/kb/?slug=crc   → dossiê completo de um produto
+   GET /api/assistente/kb/?pergunta=…&pathname=…
+       → o system prompt EXATO que a Sônia receberia, com os dossiês que a
+         recuperação escolheu. Roda sem GEMINI_API_KEY, então dá para
+         conferir prompt e recuperação sem gastar chamada nem depender da
+         chave (que só existe na Vercel).
    ============================================================ */
 
 import { nivel1, dossie, tamanhos } from '@/lib/assistente/kb';
 import { CATALOGO } from '@/lib/assistente/catalogo';
+import { MAX_DOSSIES } from '@/lib/assistente/config';
+import { contextoDaPagina, rotaBloqueada } from '@/lib/assistente/paginas';
+import { buildSystemPrompt, montarDossies } from '@/lib/assistente/prompt';
+import { recuperarOfertas } from '@/lib/assistente/retrieve';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -21,7 +30,42 @@ export const dynamic = 'force-dynamic';
 const emTokens = (chars: number) => Math.round(chars / 3.5);
 
 export async function GET(req: Request) {
-  const slug = new URL(req.url).searchParams.get('slug');
+  const params = new URL(req.url).searchParams;
+  const slug = params.get('slug');
+  const pergunta = params.get('pergunta');
+
+  if (pergunta) {
+    const pathname = params.get('pathname') || '/';
+    const bloqueada = rotaBloqueada(pathname);
+    const contexto = contextoDaPagina(pathname);
+    const daPagina = contexto.oferta?.slug;
+    const recuperados = recuperarOfertas(
+      pergunta,
+      daPagina ? MAX_DOSSIES - 1 : MAX_DOSSIES,
+      daPagina ? [daPagina] : [],
+    ).map((o) => o.slug);
+    const escolhidos = [...(daPagina ? [daPagina] : []), ...recuperados];
+    const system = buildSystemPrompt({
+      contexto,
+      dossies: montarDossies(escolhidos),
+      contatoCapturado: params.get('contato'),
+    });
+
+    const cabecalho = [
+      `pathname:   ${pathname}`,
+      `bloqueada:  ${bloqueada ? 'SIM — o assistente não aparece aqui' : 'não'}`,
+      `pergunta:   ${pergunta}`,
+      `da página:  ${daPagina ?? '—'}`,
+      `recuperado: ${recuperados.join(', ') || '— (nenhum: só o nível 1 vai)'}`,
+      `tamanho:    ${system.length} chars (~${emTokens(system.length)} tokens)`,
+      '='.repeat(70),
+      '',
+    ].join('\n');
+
+    return new Response(cabecalho + system + '\n', {
+      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+    });
+  }
 
   if (slug) {
     const texto = dossie(slug);
