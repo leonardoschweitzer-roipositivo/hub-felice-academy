@@ -398,6 +398,15 @@ body:not(:has(.felice .wpp)) .fia-fab {
   opacity: 0.55;
   cursor: default;
 }
+/* O botão que o marcador [[wa]] vira. É um <a>, não um <button>, então
+   precisa do reset que o `.fia-btn` (pensado para botão) não traz. */
+.fia-btn--wa {
+  align-self: stretch;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  line-height: 24px;
+}
 
 .fia-form {
   display: flex;

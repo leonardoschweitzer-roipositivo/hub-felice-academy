@@ -21,12 +21,20 @@ export const RE_PRODUTO = /\[\[produto:([a-z0-9-]+)\]\]/g;
 export const RE_LEAD = /\[\[LEAD\]\]\s*(\{[\s\S]*?\})?/;
 export const RE_WA = /\[\[wa\]\]/g;
 
+/** O diagnóstico SPIN que a Sônia montou durante a conversa. Todos os
+ *  campos são opcionais: etapa não coberta vem AUSENTE, nunca vazia. */
 export type LeadSugerido = {
   /** Slug do produto recomendado, quando houver. */
   produto?: string;
-  /** A dor com as palavras da pessoa. */
+  /** Situação: o contexto da operação dela. */
+  situacao?: string;
+  /** Problema: a dor com as palavras da pessoa. */
   dor?: string;
-  /** O próximo passo, na primeira pessoa dela. Pré-preenche o formulário. */
+  /** Implicação: o custo do problema, começando pelo número quando houver.
+   *  É o campo de maior valor para quem for ligar. */
+  implicacao?: string;
+  /** Necessidade: o próximo passo, na primeira pessoa dela. Pré-preenche o
+   *  formulário. */
   objetivo?: string;
 };
 
@@ -36,6 +44,9 @@ export type Segmento = {
   /** Produtos citados NESTE segmento — o card nasce colado ao balão que
    *  fez a recomendação, e não empurrado para o fim da resposta. */
   produtos: string[];
+  /** A IA ofereceu o WhatsApp da equipe NESTE segmento → o botão nasce
+   *  colado a este balão. */
+  wa?: boolean;
 };
 
 export type Analise = {
@@ -61,11 +72,16 @@ export function analisar(bruto: string): Analise {
   if (mLead) {
     if (mLead[1]) {
       try {
+        // Allow-list explícita: campo que a IA invente é descartado aqui,
+        // e não vaza para o WhatsApp da equipe nem para o webhook.
         const j = JSON.parse(mLead[1]) as LeadSugerido;
+        const str = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
         lead = {
-          produto: typeof j.produto === 'string' ? j.produto : undefined,
-          dor: typeof j.dor === 'string' ? j.dor : undefined,
-          objetivo: typeof j.objetivo === 'string' ? j.objetivo : undefined,
+          produto: str(j.produto),
+          situacao: str(j.situacao),
+          dor: str(j.dor),
+          implicacao: str(j.implicacao),
+          objetivo: str(j.objetivo),
         };
       } catch {
         // JSON quebrado não pode custar a captura: o marcador sozinho já
@@ -78,24 +94,29 @@ export function analisar(bruto: string): Analise {
     texto = texto.replace(RE_LEAD, '');
   }
 
-  const wa = RE_WA.test(texto);
-  RE_WA.lastIndex = 0; // regex global guarda estado entre chamadas
-  texto = texto.replace(RE_WA, '');
-
-  // Os produtos são extraídos POR SEGMENTO, depois do split: assim o card
-  // aparece logo abaixo do balão que o recomendou, e não empurrado para
-  // depois do fechamento consultivo.
+  // Os produtos e o botão de WhatsApp são extraídos POR SEGMENTO, depois do
+  // split: assim o card e o botão aparecem logo abaixo do balão que os
+  // ofereceu, e não empurrados para depois do fechamento consultivo.
+  let wa = false;
   const segmentos: Segmento[] = [];
   for (const parte of texto.split(SPLIT)) {
     const daParte: string[] = [];
+    let waDaParte = false;
     const limpo = parte
+      .replace(RE_WA, () => {
+        waDaParte = true;
+        wa = true;
+        return '';
+      })
       .replace(RE_PRODUTO, (_m, slug: string) => {
         daParte.push(slug);
         produtos.push(slug);
         return '';
       })
       .trim();
-    if (limpo || daParte.length) segmentos.push({ texto: limpo, produtos: daParte });
+    if (limpo || daParte.length || waDaParte) {
+      segmentos.push({ texto: limpo, produtos: daParte, wa: waDaParte });
+    }
   }
 
   return {
@@ -113,6 +134,28 @@ export function semMarcadores(bruto: string): string {
   return analisar(bruto).texto;
 }
 
+/** Transforma o JSON do [[LEAD]] em prosa, para o histórico higienizado.
+ *  Silencioso quando o JSON não presta: o resumo é um bônus, e falhar aqui
+ *  não pode custar a mensagem inteira. */
+function resumoDoLead(json?: string): string {
+  if (!json) return '';
+  try {
+    const j = JSON.parse(json) as Record<string, unknown>;
+    const partes: string[] = [];
+    const por = (chave: string, rotulo: string) => {
+      const v = j[chave];
+      if (typeof v === 'string' && v.trim()) partes.push(`${rotulo} ${v.trim()}`);
+    };
+    por('situacao', 'situação:');
+    por('dor', 'problema:');
+    por('implicacao', 'implicação:');
+    por('objetivo', 'ela quer:');
+    return partes.join('; ');
+  } catch {
+    return '';
+  }
+}
+
 /**
  * Higieniza o histórico ANTES de devolvê-lo ao modelo.
  *
@@ -126,7 +169,17 @@ export function sanitizarHistorico(msgs: ChatMsg[], nomeDoSlug: (s: string) => s
   return msgs.map((m) => {
     if (m.role !== 'assistant') return m;
     const content = m.content
-      .replace(RE_LEAD, '[você já ofereceu a captura de contato]')
+      /* O resumo que ela montou volta EM PROSA. Antes virava a frase seca
+         "[você já ofereceu a captura de contato]" e a qualificação que ela
+         mesma estruturou se perdia — na segunda oferta de contato ela
+         recomeçaria do zero. A prosa não tem colchetes duplos, então não
+         ensina o modelo a reemitir o marcador. */
+      .replace(RE_LEAD, (_x, json?: string) => {
+        const r = resumoDoLead(json);
+        return r
+          ? `[você já ofereceu a captura de contato. O que você já apurou: ${r}]`
+          : '[você já ofereceu a captura de contato]';
+      })
       .replace(RE_PRODUTO, (_x, s: string) => `(você recomendou: ${nomeDoSlug(s)})`)
       .replace(RE_WA, '(você ofereceu o WhatsApp)')
       .split(SPLIT)

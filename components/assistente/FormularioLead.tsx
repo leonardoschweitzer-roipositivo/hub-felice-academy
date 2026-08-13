@@ -42,7 +42,9 @@ function montarMensagem(args: {
   objetivo: string;
   produtoNome?: string;
   pagina: string;
+  situacao?: string;
   dor?: string;
+  implicacao?: string;
   ultimasFalas: string[];
 }): string {
   const linhas = [
@@ -55,7 +57,22 @@ function montarMensagem(args: {
   if (args.email) linhas.push(`*E-mail:* ${args.email}`);
   if (args.produtoNome) linhas.push(`*Interesse:* ${args.produtoNome}`);
   linhas.push(`*Página:* ${args.pagina}`);
-  if (args.objetivo) linhas.push('', '*O que eu quero resolver:*', args.objetivo);
+
+  /* O diagnóstico SPIN que a Sônia levantou, na ordem do método. Cada
+     linha some se a etapa não foi coberta — "*Problema:* —" é ruído com
+     cara de dado. A linha de Implicação é a de maior valor: costuma trazer
+     o número, e é com ele que a equipe abre a conversa.
+     ⚠️ O `dor` ERA DESCARTADO AQUI: chegava na assinatura, era passado na
+     chamada e o corpo nunca o referenciava, então a dor que ela extraiu
+     com as palavras da pessoa nunca chegava a quem ia ligar. */
+  const diagnostico = [
+    args.situacao ? `*Situação:* ${args.situacao}` : '',
+    args.dor ? `*Problema:* ${args.dor}` : '',
+    args.implicacao ? `*Implicação:* ${args.implicacao}` : '',
+    args.objetivo ? `*O que quer resolver:* ${args.objetivo}` : '',
+  ].filter(Boolean);
+  if (diagnostico.length) linhas.push('', '*Diagnóstico da conversa:*', ...diagnostico);
+
   if (args.ultimasFalas.length) {
     linhas.push('', '*Da conversa:*', ...args.ultimasFalas.map((f) => `- ${f}`));
   }
@@ -92,8 +109,11 @@ export function FormularioLead({
     if (!valido || enviando) return;
     setEnviando(true);
 
+    /* Falas curtas ficam de fora: numa qualificação com perguntas
+       fechadas as três últimas viram "uns 20", "sim", "isso" — ruído puro
+       para quem vai ler o lead. O filtro também encurta a URL do wa.me. */
     const ultimasFalas = historico
-      .filter((m) => m.role === 'user')
+      .filter((m) => m.role === 'user' && m.content.trim().length >= 15)
       .slice(-3)
       .map((m) => (m.content.length > 120 ? m.content.slice(0, 117) + '…' : m.content));
 
@@ -105,7 +125,9 @@ export function FormularioLead({
         objetivo: objetivo.trim(),
         produtoNome: produto?.nome,
         pagina,
+        situacao: lead.situacao,
         dor: lead.dor,
+        implicacao: lead.implicacao,
         ultimasFalas,
       }),
     );
@@ -128,8 +150,13 @@ export function FormularioLead({
           keepalive: true,
           body: JSON.stringify({
             contato: { nome: nome.trim(), whatsapp: whatsapp.trim(), email: email.trim() || undefined },
+            /* O mesmo diagnóstico que foi para o WhatsApp, agora para o
+               CRM. `objetivo` vem do CAMPO, não do marcador: o textarea é
+               editável e a versão da pessoa vence a da IA. */
             qualificacao: {
+              ...(lead.situacao ? { situacao: lead.situacao } : {}),
               ...(lead.dor ? { dor: lead.dor } : {}),
+              ...(lead.implicacao ? { implicacao: lead.implicacao } : {}),
               ...(objetivo.trim() ? { objetivo: objetivo.trim() } : {}),
             },
             produto: lead.produto,

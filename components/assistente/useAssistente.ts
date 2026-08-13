@@ -44,7 +44,21 @@ export function useAssistente(pathname: string, saudacao: string) {
    *  higieniza antes de mandar ao modelo. */
   const historico = useRef<ChatMsg[]>([]);
   /** Guarda contra duas capturas: uma vez oferecido, não oferece de novo. */
-  const leadJaOferecido = useRef(false);
+  /** Quantas vezes a captura já foi mostrada. Duas é o teto: a primeira é
+   *  a oferta, a segunda é a repescagem de quem recusou e depois voltou a
+   *  demonstrar interesse. Uma terceira seria perseguição.
+   *
+   *  Antes disto era um booleano que nunca voltava a false, e quem clicava
+   *  "Continuar conversando" ficava SEM caminho de conversão pelo resto da
+   *  sessão — nem a captura, nem o botão de WhatsApp (que também não
+   *  existia). */
+  const ofertasDeLead = useRef(0);
+  /** ⚠️ ref, e não state, DE PROPÓSITO: `recusarLead` chama `enviar` na
+   *  mesma tick, e um setState não teria chegado ao closure — o primeiro
+   *  POST depois da recusa iria com o valor antigo e o modelo não saberia
+   *  que ela recusou. */
+  const leadRecusado = useRef(false);
+  const respostasDesdeRecusa = useRef(0);
 
   const enviar = useCallback(
     async (texto: string) => {
@@ -71,7 +85,12 @@ export function useAssistente(pathname: string, saudacao: string) {
           // ela devolve 308 e o POST vira GET no meio do caminho.
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: historico.current, pathname, contato }),
+          body: JSON.stringify({
+            messages: historico.current,
+            pathname,
+            contato,
+            leadRecusado: leadRecusado.current,
+          }),
         });
 
         if (!resp.ok || !resp.body) {
@@ -104,9 +123,17 @@ export function useAssistente(pathname: string, saudacao: string) {
           b.map((x) => (x.id === idIa ? { ...x, partes: fim.segmentos, parcial: false } : x)),
         );
         historico.current = [...historico.current, { role: 'assistant', content: bruto }];
+        if (leadRecusado.current) respostasDesdeRecusa.current += 1;
 
-        if (fim.lead && !leadJaOferecido.current && !contato) {
-          leadJaOferecido.current = true;
+        /* Segunda oferta só depois de a conversa ter andado: a IA já foi
+           instruída (pelo ESTADO DA CONVERSA) a só reemitir o marcador se
+           a PESSOA sinalizar interesse, e isto é a trava do lado de cá. */
+        const podeOferecer =
+          ofertasDeLead.current === 0 ||
+          (ofertasDeLead.current === 1 && leadRecusado.current && respostasDesdeRecusa.current >= 2);
+
+        if (fim.lead && !contato && podeOferecer) {
+          ofertasDeLead.current += 1;
           setLead(fim.lead);
           setFaseLead('consentimento');
           trackLeadOferecido(fim.lead.produto);
@@ -124,10 +151,16 @@ export function useAssistente(pathname: string, saudacao: string) {
     [enviando, pathname, contato],
   );
 
-  /** Recusou deixar o contato: a conversa segue, e a Sônia não pede de
-   *  novo (o marcador só é aceito uma vez — ver `leadJaOferecido`). */
+  /** Recusou deixar o contato: a conversa segue. A Sônia não pede de novo
+   *  por conta própria — mas, diferente de antes, a porta não fica
+   *  trancada: se a PESSOA voltar a demonstrar interesse (perguntar preço,
+   *  prazo, como começa), cabe uma segunda oferta. Ver `podeOferecer`. */
   const recusarLead = useCallback(() => {
     setFaseLead(null);
+    // Marcado ANTES do enviar: é um ref justamente para o valor já estar
+    // no closure do POST que sai em seguida.
+    leadRecusado.current = true;
+    respostasDesdeRecusa.current = 0;
     void enviar('prefiro continuar conversando por aqui');
   }, [enviar]);
 
