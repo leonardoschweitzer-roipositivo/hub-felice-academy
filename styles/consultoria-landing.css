@@ -277,9 +277,11 @@
   margin-bottom: 6px;
 }
 
-/* CTA centralizado abaixo dos 3 passos da entrada. O `.center` usado nas
-   outras landings não tem regra própria no felice.css (só
-   `.sec-head.center`), então o botão ficava colado à esquerda. */
+/* CTA centralizado abaixo dos 3 passos da entrada. Esta classe nasceu como
+   contorno: o `.center` das outras landings não tinha regra no felice.css
+   (só `.sec-head.center`) e o botão ficava colado à esquerda. Desde
+   13/08/2026 o `.felice .center` existe, então isto virou redundância —
+   mantida só para não mexer numa landing fora do escopo daquele fix. */
 .felice-maestria .cons-cta-center {
   text-align: center;
 }

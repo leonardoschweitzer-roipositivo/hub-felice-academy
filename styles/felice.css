@@ -630,6 +630,14 @@
   margin-right: auto;
   text-align: center;
 }
+/* `center` sozinho, sem o `sec-head`. Até 13/08/2026 esta regra não existia:
+   quem escrevia <div className="center"> — o que parece óbvio — ficava com o
+   conteúdo colado à esquerda, e foi o que aconteceu com o CTA de candidatura
+   das DUAS mentorias. Especificidade menor que a de cima (0,2,0 contra 0,3,0),
+   então nada muda para os `.sec-head.center`, que já centralizam. */
+.felice .center {
+  text-align: center;
+}
 .felice .sec-head h2 {
   margin: 18px 0 16px;
 }
