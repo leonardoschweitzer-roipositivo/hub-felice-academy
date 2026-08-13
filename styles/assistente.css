@@ -289,6 +289,117 @@ body:not(:has(.felice .wpp)) .fia-fab {
   color: var(--fia-text);
 }
 
+/* ---------- Captura de contato ----------
+   Consentimento e formulário vivem DENTRO do log, não num modal: a
+   conversa continua visível acima e a pessoa não perde o que estava
+   perguntando. */
+.fia-consent,
+.fia-form {
+  align-self: stretch;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--fia-card-2);
+  border: 1px solid var(--fia-line);
+}
+.fia-consent-txt {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+.fia-consent-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fia-btn {
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--fia-line);
+  background: transparent;
+  color: var(--fia-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.fia-btn:hover {
+  border-color: var(--fia-gold);
+}
+.fia-btn:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 2px;
+}
+.fia-btn--primario {
+  background: var(--fia-grad);
+  border-color: transparent;
+  color: #1a1206;
+  font-weight: 600;
+}
+.fia-btn--primario:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.fia-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.fia-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.fia-campo > span {
+  font-size: 11.5px;
+  color: var(--fia-muted);
+}
+.fia-campo input,
+.fia-campo textarea {
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--fia-line-soft);
+  background: var(--fia-ink);
+  color: var(--fia-text);
+  /* 16px obrigatório: abaixo disso o iOS dá zoom ao focar. */
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+}
+.fia-campo input:focus-visible,
+.fia-campo textarea:focus-visible {
+  outline: none;
+  border-color: var(--fia-gold);
+}
+.fia-campo input[aria-invalid='true'] {
+  border-color: #d98080;
+}
+
+.fia-aceite {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 11.5px;
+  color: var(--fia-muted);
+  line-height: 1.45;
+}
+.fia-aceite input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  accent-color: var(--fia-gold);
+}
+.fia-aceite a {
+  color: var(--fia-gold);
+}
+
+.fia-form-erro {
+  margin: 0;
+  font-size: 12px;
+  color: #f0a5a5;
+}
+
 /* ---------- Chips de sugestão ---------- */
 .fia-chips {
   display: flex;

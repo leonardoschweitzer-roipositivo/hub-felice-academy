@@ -33,6 +33,9 @@ export function useAssistente(pathname: string, saudacao: string) {
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [lead, setLead] = useState<LeadSugerido | null>(null);
+  /** null = sem captura na tela; 'consentimento' = os dois botões;
+   *  'formulario' = os campos. */
+  const [faseLead, setFaseLead] = useState<'consentimento' | 'formulario' | null>(null);
   const [contato, setContato] = useState<string | null>(null);
   const [comecou, setComecou] = useState(false);
 
@@ -97,6 +100,7 @@ export function useAssistente(pathname: string, saudacao: string) {
         if (fim.lead && !leadJaOferecido.current && !contato) {
           leadJaOferecido.current = true;
           setLead(fim.lead);
+          setFaseLead('consentimento');
         }
       } catch (e) {
         // O visitante nunca vê erro técnico: a rota já degrada para uma
@@ -111,28 +115,55 @@ export function useAssistente(pathname: string, saudacao: string) {
     [enviando, pathname, contato],
   );
 
-  /** Chamado quando a pessoa recusa deixar o contato: a conversa segue. */
+  /** Recusou deixar o contato: a conversa segue, e a Sônia não pede de
+   *  novo (o marcador só é aceito uma vez — ver `leadJaOferecido`). */
   const recusarLead = useCallback(() => {
-    setLead(null);
+    setFaseLead(null);
     void enviar('prefiro continuar conversando por aqui');
   }, [enviar]);
 
-  const registrarContato = useCallback((nome: string) => {
-    setContato(nome);
-    setLead(null);
-  }, []);
+  const aceitarLead = useCallback(() => setFaseLead('formulario'), []);
+
+  /** Contato enviado: a confirmação é escrita LOCALMENTE, sem chamar a
+   *  API — a pessoa está saindo para o WhatsApp e não faz sentido gastar
+   *  uma requisição (nem fazê-la esperar) para dizer "pronto". */
+  const registrarContato = useCallback(
+    (nome: string) => {
+      setContato(nome);
+      setFaseLead(null);
+      setLead(null);
+      const primeiro = nome.split(' ')[0];
+      setBaloes((b) => [
+        ...b,
+        {
+          id: novoId(),
+          autor: 'ia',
+          partes: [
+            {
+              texto: `Pronto, ${primeiro} — abri o WhatsApp com o seu resumo. Se a janela não abrir, é só me chamar aqui que eu mando o link de novo.`,
+              produtos: [],
+            },
+          ],
+        },
+      ]);
+    },
+    [],
+  );
 
   return {
     baloes,
     enviando,
     erro,
     lead,
+    faseLead,
     contato,
     comecou,
+    /** O histórico cru, para o formulário mandar a conversa junto do lead. */
+    historico: historico.current,
     enviar,
+    aceitarLead,
     recusarLead,
     registrarContato,
-    dispensarLead: () => setLead(null),
   };
 }
 

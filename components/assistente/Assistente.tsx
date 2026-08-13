@@ -67,6 +67,7 @@ export function Assistente() {
         <AssistentePainel
           estado={estado}
           sugestoes={contexto.slug ? SUGESTOES_PRODUTO : SUGESTOES_HOME}
+          pagina={pathname}
           onFechar={() => setAberto(false)}
         />
       )}

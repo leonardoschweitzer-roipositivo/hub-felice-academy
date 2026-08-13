@@ -119,6 +119,43 @@ export function buildApplicationEvent(args: {
   };
 }
 
+/* Lead capturado numa conversa com o assistente do site.
+
+   Diferente do SubmitApplication acima em duas coisas que importam:
+   o evento é `Lead` (a candidatura tem rota e formulário próprios, e
+   misturar os dois infla o volume de candidaturas e estraga a otimização
+   de campanha), e a `event_source_url` é a página REAL onde a conversa
+   aconteceu — a conversa começa em qualquer uma das 44 rotas, não na rota
+   de candidatura de um produto.
+
+   ⚠️ Repare que NÃO existe `value` no custom_data, e é de propósito: é por
+   ele que os R$ 6.000 de funnels.ts (Consultoria e as duas mentorias)
+   vazariam para o Meta. Um `Lead` carimbado com valor de venda distorce o
+   ROAS de tudo. Daqui sai só o `content_name`. */
+export function buildLeadEvent(args: {
+  eventId: string; // 'lead_<uuid>' — mesmo do Pixel do browser (dedup)
+  slug: string | null; // produto recomendado; null = conversa sem recomendação
+  pagePath: string; // pathname onde a conversa rolou
+  contentName?: string;
+  identity: IdentityInput;
+  eventTime?: number;
+}): CapiEvent {
+  return {
+    event_name: 'Lead',
+    event_time: args.eventTime ?? nowSec(),
+    event_id: args.eventId,
+    action_source: 'website',
+    event_source_url: `${SITE_URL}${args.pagePath}`,
+    user_data: buildUserData(args.identity),
+    custom_data: {
+      source: 'assistente',
+      lead_type: 'cold',
+      ...(args.slug ? { product_slug: args.slug } : {}),
+      ...(args.contentName ? { content_name: args.contentName } : {}),
+    },
+  };
+}
+
 /** Envia um evento ao CAPI. Nunca lança fatal — devolve o resultado p/ log. */
 export async function sendCapiEvent(event: CapiEvent): Promise<CapiResult> {
   if (!META_CAPI_TOKEN) {

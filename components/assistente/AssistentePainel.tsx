@@ -11,6 +11,9 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ASSISTENTE_NOME } from '@/lib/assistente/config';
 import { Balao, Digitando } from './Balao';
+import { ConsentimentoLead } from './ConsentimentoLead';
+import { FormularioLead } from './FormularioLead';
+import { PRODUTOS_PUBLICOS } from './catalogoPublico';
 import type { EstadoAssistente } from './useAssistente';
 
 const FOCAVEIS =
@@ -19,11 +22,14 @@ const FOCAVEIS =
 export function AssistentePainel({
   estado,
   sugestoes,
+  pagina,
   onFechar,
   onIrProduto,
 }: {
   estado: EstadoAssistente;
   sugestoes: string[];
+  /** Onde a conversa está acontecendo — vai no lead e no evento. */
+  pagina: string;
   onFechar: () => void;
   onIrProduto?: (slug: string) => void;
 }) {
@@ -126,6 +132,24 @@ export function AssistentePainel({
           <Balao balao={b} key={b.id} onIrProduto={onIrProduto} />
         ))}
         {esperando && <Digitando />}
+
+        {estado.faseLead === 'consentimento' && estado.lead && (
+          <ConsentimentoLead
+            produtoNome={estado.lead.produto ? PRODUTOS_PUBLICOS[estado.lead.produto]?.nome : undefined}
+            onAceitar={estado.aceitarLead}
+            onRecusar={estado.recusarLead}
+          />
+        )}
+
+        {estado.faseLead === 'formulario' && estado.lead && (
+          <FormularioLead
+            lead={estado.lead}
+            pagina={pagina}
+            historico={estado.historico}
+            onEnviado={estado.registrarContato}
+          />
+        )}
+
         {estado.erro && <p className="fia-erro">{estado.erro}</p>}
       </div>
 
