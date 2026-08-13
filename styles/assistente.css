@@ -1,0 +1,572 @@
+/* ============================================================
+   ASSISTENTE DO SITE (Sônia) — prefixo `.fia-` (Felice IA).
+
+   O widget é montado no app/layout.tsx, IRMÃO da <div class="felice">, e
+   os tokens do design system (--gold, --card, --text…) estão escopados
+   DENTRO de `.felice`. Ele não herda nada, então redeclara os seus aqui,
+   com os mesmos valores. É duplicação de propósito: a alternativa era
+   importar felice.css (70 KB) em toda rota, inclusive /plataforma e as
+   páginas legais, com risco de regressão visual onde ele hoje não entra.
+   ⚠️ Ao trocar a paleta da marca, trocar aqui também.
+   ============================================================ */
+
+.fia-root {
+  --fia-ink: #0b0b0d;
+  --fia-card: #141417;
+  --fia-card-2: #191920;
+  --fia-line: rgba(232, 180, 71, 0.16);
+  --fia-line-soft: rgba(255, 255, 255, 0.08);
+  --fia-gold: #e8b447;
+  --fia-gold-deep: #b8821e;
+  --fia-grad: linear-gradient(135deg, #f8da74 0%, #e8b447 45%, #b8821e 100%);
+  --fia-text: #edeae2;
+  --fia-muted: #9c9aa0;
+
+  font-family: var(--font-felice-body), 'Lato', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.fia-root *,
+.fia-root *::before,
+.fia-root *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Botão flutuante ----------
+   Empilhado ACIMA do botão do WhatsApp, que é `.felice .wpp` e fica em
+   right:20px / bottom:20px / 58px de altura (felice.css:1494). O canto
+   inferior ESQUERDO não estava livre: é onde os purchase toasts aparecem
+   nas 5 landings com prova social (felice.css:1644).
+
+   Camadas: o teto de z-index do projeto era 81 (admin.css); aqui
+   começamos em 200 para o painel nunca ficar atrás de header ou barra de
+   urgência. */
+.fia-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 92px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fia-grad);
+  color: #1a1206;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 14px 34px -10px rgba(232, 180, 71, 0.55);
+  transition: transform 0.22s ease;
+}
+.fia-fab:hover {
+  transform: scale(1.07);
+}
+.fia-fab:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 3px;
+}
+
+/* Nas páginas SEM o botão do WhatsApp (privacidade, termos, e qualquer
+   página nova que não use o layout das landings) ele desce e ocupa o
+   canto. Progressive enhancement: navegador sem :has() fica no default
+   empilhado, que nunca sobrepõe nada. O `:has()` já é usado no repo
+   (kit-f4.css), então não é baseline novo. */
+body:not(:has(.felice .wpp)) .fia-fab {
+  bottom: 20px;
+}
+
+/* ---------- Cutucão ----------
+   Fica À ESQUERDA do botão, não acima: acima esbarraria no botão do
+   WhatsApp. Some sozinho e tem botão de dispensar. */
+.fia-nudge {
+  position: fixed;
+  right: 88px;
+  bottom: 100px;
+  z-index: 199;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(250px, calc(100vw - 120px));
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--fia-line);
+  background: var(--fia-card);
+  color: var(--fia-text);
+  font-size: 13px;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+  animation: fia-entra 0.3s ease both;
+}
+@keyframes fia-entra {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+}
+.fia-nudge-x {
+  border: 0;
+  background: none;
+  color: var(--fia-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+.fia-nudge-x:hover {
+  color: var(--fia-text);
+}
+/* No mobile ele roubaria metade da tela; lá o próprio botão basta. */
+@media (max-width: 640px) {
+  .fia-nudge {
+    display: none;
+  }
+}
+
+/* ---------- Painel ---------- */
+.fia-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 205;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.fia-painel {
+  position: fixed;
+  right: 20px;
+  bottom: 160px;
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  width: min(384px, calc(100vw - 40px));
+  height: min(560px, calc(100vh - 200px));
+  background: var(--fia-ink);
+  color: var(--fia-text);
+  border: 1px solid var(--fia-line);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  animation: fia-sobe 0.22s ease both;
+}
+@keyframes fia-sobe {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.fia-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 12px 14px;
+  border-bottom: 1px solid var(--fia-line-soft);
+  background: var(--fia-card);
+}
+.fia-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--fia-grad);
+  color: #1a1206;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-felice-display), 'Poppins', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+.fia-head-txt {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.fia-head-txt strong {
+  font-family: var(--font-felice-display), 'Poppins', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fia-text);
+}
+.fia-head-txt small {
+  font-size: 11.5px;
+  color: var(--fia-muted);
+}
+.fia-fechar {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--fia-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+.fia-fechar:hover {
+  color: var(--fia-text);
+}
+.fia-fechar:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: -2px;
+}
+
+/* ---------- Log ---------- */
+.fia-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+}
+
+.fia-turno {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 88%;
+}
+.fia-turno--ia {
+  align-self: flex-start;
+}
+.fia-turno--voce {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.fia-balao {
+  margin: 0;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  /* O texto vem do modelo com quebras de linha reais e é renderizado por
+     JSX — nunca por innerHTML. `pre-wrap` preserva as quebras sem markup. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.fia-turno--ia .fia-balao {
+  background: var(--fia-card);
+  border: 1px solid var(--fia-line-soft);
+  border-bottom-left-radius: 4px;
+}
+.fia-turno--voce .fia-balao {
+  background: rgba(232, 180, 71, 0.13);
+  border: 1px solid var(--fia-line);
+  border-bottom-right-radius: 4px;
+  color: var(--fia-text);
+}
+
+.fia-digitando {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 14px 15px;
+}
+.fia-digitando span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fia-muted);
+  animation: fia-pisca 1.2s infinite ease-in-out;
+}
+.fia-digitando span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.fia-digitando span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes fia-pisca {
+  0%,
+  60%,
+  100% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+.fia-erro {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #f0a5a5;
+}
+
+/* ---------- Card de produto recomendado ---------- */
+.fia-produto {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--fia-card-2);
+  border: 1px solid var(--fia-line);
+  text-decoration: none;
+  color: var(--fia-text);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.fia-produto:hover {
+  border-color: var(--fia-gold);
+  transform: translateY(-1px);
+}
+.fia-produto:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 2px;
+}
+.fia-produto-cat {
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fia-muted);
+}
+.fia-produto-nome {
+  font-family: var(--font-felice-display), 'Poppins', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--fia-gold);
+}
+.fia-produto-preco {
+  font-size: 12.5px;
+  color: var(--fia-muted);
+}
+.fia-produto-ir {
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--fia-text);
+}
+
+/* ---------- Captura de contato ----------
+   Consentimento e formulário vivem DENTRO do log, não num modal: a
+   conversa continua visível acima e a pessoa não perde o que estava
+   perguntando. */
+.fia-consent,
+.fia-form {
+  align-self: stretch;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--fia-card-2);
+  border: 1px solid var(--fia-line);
+}
+.fia-consent-txt {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+.fia-consent-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fia-btn {
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--fia-line);
+  background: transparent;
+  color: var(--fia-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.fia-btn:hover {
+  border-color: var(--fia-gold);
+}
+.fia-btn:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 2px;
+}
+.fia-btn--primario {
+  background: var(--fia-grad);
+  border-color: transparent;
+  color: #1a1206;
+  font-weight: 600;
+}
+.fia-btn--primario:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.fia-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.fia-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.fia-campo > span {
+  font-size: 11.5px;
+  color: var(--fia-muted);
+}
+.fia-campo input,
+.fia-campo textarea {
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--fia-line-soft);
+  background: var(--fia-ink);
+  color: var(--fia-text);
+  /* 16px obrigatório: abaixo disso o iOS dá zoom ao focar. */
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+}
+.fia-campo input:focus-visible,
+.fia-campo textarea:focus-visible {
+  outline: none;
+  border-color: var(--fia-gold);
+}
+.fia-campo input[aria-invalid='true'] {
+  border-color: #d98080;
+}
+
+.fia-aceite {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 11.5px;
+  color: var(--fia-muted);
+  line-height: 1.45;
+}
+.fia-aceite input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  accent-color: var(--fia-gold);
+}
+.fia-aceite a {
+  color: var(--fia-gold);
+}
+
+.fia-form-erro {
+  margin: 0;
+  font-size: 12px;
+  color: #f0a5a5;
+}
+
+/* ---------- Chips de sugestão ---------- */
+.fia-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 14px 4px;
+}
+.fia-chip {
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--fia-line);
+  background: transparent;
+  color: var(--fia-text);
+  font-size: 12.5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.fia-chip:hover {
+  border-color: var(--fia-gold);
+  background: rgba(232, 180, 71, 0.08);
+}
+.fia-chip:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Composer ---------- */
+.fia-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px 6px;
+  border-top: 1px solid var(--fia-line-soft);
+}
+.fia-input {
+  flex: 1;
+  resize: none;
+  max-height: 96px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--fia-line-soft);
+  background: var(--fia-card);
+  color: var(--fia-text);
+  /* 16px é obrigatório: abaixo disso o iOS dá zoom ao focar o campo. */
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+.fia-input:focus-visible {
+  outline: none;
+  border-color: var(--fia-gold);
+}
+.fia-input::placeholder {
+  color: var(--fia-muted);
+}
+.fia-enviar {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fia-grad);
+  color: #1a1206;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.fia-enviar:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.fia-enviar:focus-visible {
+  outline: 2px solid var(--fia-gold);
+  outline-offset: 2px;
+}
+
+.fia-aviso {
+  margin: 0;
+  padding: 0 14px 10px;
+  font-size: 10.5px;
+  color: var(--fia-muted);
+  text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .fia-painel {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* `dvh` e não `vh`: no Safari do iOS a barra de endereço come o
+       fundo do 100vh e o campo de texto fica embaixo dela. */
+    height: 100dvh;
+    border-radius: 0;
+    border: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* Com o painel em tela cheia, o FAB e o botão do WhatsApp atrás dele só
+     atrapalham o toque. */
+  .fia-root[data-aberto='sim'] .fia-fab {
+    display: none;
+  }
+  body:has(.fia-painel) .felice .wpp {
+    display: none;
+  }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .fia-fab,
+  .fia-painel,
+  .fia-produto,
+  .fia-nudge {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fia-digitando span {
+    animation: none;
+    opacity: 0.6;
+  }
+}

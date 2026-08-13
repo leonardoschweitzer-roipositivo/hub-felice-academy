@@ -49,7 +49,27 @@ export default function PrivacidadePage() {
             <strong>Dados de navegação:</strong> endereço IP, tipo de navegador, páginas visitadas e
             cookies, coletados automaticamente para fins estatísticos e de melhoria da experiência.
           </li>
+          <li>
+            <strong>Conversas com a assistente virtual:</strong> o conteúdo que você escreve para a
+            nossa assistente de inteligência artificial, junto do nome e do WhatsApp que você opte
+            por informar ao final da conversa. A conversa não é iniciada com pedido de dados: o
+            contato só é solicitado depois que você autoriza, e nada é enviado sem esse aceite.
+          </li>
         </ul>
+
+        <h3>Sobre a assistente virtual</h3>
+        <p>
+          A assistente do site é uma inteligência artificial, e não uma pessoa. Para gerar as
+          respostas, o conteúdo da conversa é processado pelo Google (modelo Gemini), que atua como
+          nosso operador para essa finalidade. Quando você preenche o formulário de contato dentro
+          da conversa, o resumo do que foi conversado é usado para que a nossa equipe entre em
+          contato com você pelo WhatsApp — base legal: o seu consentimento, que você pode retirar a
+          qualquer momento pelo canal indicado no item 7.
+        </p>
+        <p>
+          Não informe pela assistente dados de saúde, dados de pacientes ou qualquer informação
+          sigilosa: ela não é canal de atendimento clínico e não substitui a avaliação profissional.
+        </p>
 
         <h2>2. Como utilizamos seus dados</h2>
         <p>Os dados coletados são utilizados para:</p>

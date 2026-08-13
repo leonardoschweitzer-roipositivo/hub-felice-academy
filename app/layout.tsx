@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { MetaPixel } from '@/components/tracking/MetaPixel';
 import { META_PIXEL_ID } from '@/lib/tracking/config';
+import { Assistente } from '@/components/assistente/Assistente';
 
 // Base code do Pixel. Renderizado como <script> inline no topo do <body> →
 // roda durante o parse do HTML (antes da hidratação), garantindo que
@@ -66,6 +67,13 @@ export default function RootLayout({
           <script id="meta-pixel-base" dangerouslySetInnerHTML={{ __html: PIXEL_BASE }} />
         )}
         {children}
+        {/* Único ponto global do repo, por isso o assistente mora aqui: as
+            alternativas eram importar em ~22 componentes-raiz de landing
+            (22 pontos de esquecimento) ou criar um layout intermediário
+            que não existe — `/`, `/crm`, `/produtos/*` e `/privacidade`
+            são todos irmãos sob a raiz. Onde ele NÃO aparece está em
+            lib/assistente/paginas.ts. */}
+        <Assistente />
         <MetaPixel />
         {META_PIXEL_ID && (
           <noscript>
