@@ -117,7 +117,12 @@ export function Assistente() {
         }}
         aria-expanded={aberto}
         aria-controls="fia-painel"
-        aria-label={aberto ? 'Fechar o assistente' : `Abrir o assistente ${ASSISTENTE_NOME}`}
+        /* Fechado, o rótulo "Assistente de IA" está na tela (some abaixo de
+           640px, daí o aria-label continuar necessário) — e o nome acessível
+           precisa CONTER esse texto, senão comando de voz pelo que se lê na
+           tela não acha o botão (WCAG 2.5.3). Por isso o nome da Sônia entra
+           entre parênteses em vez de substituir o rótulo. */
+        aria-label={aberto ? 'Fechar o assistente' : `Abrir o Assistente de IA (${ASSISTENTE_NOME})`}
       >
         {aberto ? (
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -140,6 +145,9 @@ export function Assistente() {
             />
           </svg>
         )}
+        {/* Aberto, a pílula encolhe para o círculo do × — o painel ao lado já
+            se apresenta, e o rótulo repetido só ocuparia espaço. */}
+        {!aberto && <span className="fia-fab-rotulo">Assistente de IA</span>}
       </button>
     </div>
   );

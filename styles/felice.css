@@ -1490,24 +1490,66 @@
   font-weight: 700;
 }
 
-/* ---------- WhatsApp float ---------- */
+/* ---------- WhatsApp float ----------
+   No desktop é uma PÍLULA com rótulo; abaixo de 640px volta a ser o círculo
+   de sempre, onde texto roubaria a largura da tela.
+
+   ⚠️ A `min-width` é COMPARTILHADA com o FAB do assistente (`.fia-fab`, em
+   styles/assistente.css), que fica empilhado logo acima com o mesmo formato:
+   os dois só leem como um par se tiverem a mesma largura, e o texto de cada
+   um tem comprimento diferente. Mexeu num valor, olhe a outra ponta.
+
+   A exceção é a área de entrega do Kit F4, que devolve o círculo — lá o
+   `.kit-panel-fab` ocupa o espaço à esquerda (ver kit-f4.css). */
 .felice .wpp {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 60;
-  width: 58px;
+  min-width: 210px;
   height: 58px;
-  border-radius: 50%;
+  padding: 0 24px;
+  border-radius: 999px;
   background: #25d366;
-  display: grid;
-  place-items: center;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
   transition: transform 0.25s;
   animation: felice-pulse 2.6s ease-in-out infinite;
 }
 .felice .wpp:hover {
   transform: scale(1.08);
+}
+.felice .wpp-rotulo {
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+/* O ícone é a marca sozinha no círculo, mas ao lado de texto ele pesa
+   demais em 30px. */
+.felice .wpp svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+@media (max-width: 640px) {
+  .felice .wpp {
+    min-width: 0;
+    width: 58px;
+    padding: 0;
+  }
+  .felice .wpp-rotulo {
+    display: none;
+  }
+  .felice .wpp svg {
+    width: 30px;
+    height: 30px;
+  }
 }
 @keyframes felice-pulse {
   0%,
