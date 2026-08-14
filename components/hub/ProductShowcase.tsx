@@ -8,12 +8,17 @@ import type { Categoria, Produto } from './content';
    é estado — o resto da home segue server. */
 
 /** Rótulo de cada categoria no filtro. A ordem daqui é a ordem dos chips;
- *  categoria sem produto visível não vira chip (ex.: Software, hoje oculto). */
+ *  categoria sem produto visível não vira chip (ex.: Software, hoje oculto).
+ *
+ *  ⚠️ Esta ordem espelha a dos cards em `hub/content.ts` (Masterclass →
+ *  Cursos → Consultoria → Mentorias, definida em 13/08/2026). São duas listas
+ *  independentes: reordenar os produtos lá e não mexer aqui deixa o filtro
+ *  contando uma história e a vitrine outra. */
 const ROTULOS: Record<Categoria, string> = {
-  Curso: 'Cursos',
   Masterclass: 'Masterclass',
-  Mentoria: 'Mentorias',
+  Curso: 'Cursos',
   Consultoria: 'Consultoria',
+  Mentoria: 'Mentorias',
   Software: 'Software',
 };
 
