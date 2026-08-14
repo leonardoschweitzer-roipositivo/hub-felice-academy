@@ -191,7 +191,17 @@ export const METODO: { n: string; titulo: string; texto: string }[] = [
    OFERTA.itens abaixo, a headline "4 módulos." escrita à mão em
    SecretariaVendeSections.tsx, o STATS de obrigado/Prova.tsx, o card 03 de
    components/hub/content.ts e o catálogo em plataforma/data/cursos.ts (este
-   último exige bump do STORAGE_KEY do PlatformStore). `img` opcional. */
+   último exige bump do STORAGE_KEY do PlatformStore).
+
+   As 4 artes `crc-modulo-*.jpg` (14/08/2026) são EXCLUSIVAS desta landing —
+   ao contrário das `modulo-*.jpg`, que a Maestria e a mentoria de zigomático
+   compartilham. Entregues pelo Leo em 1672×941 e 1536×1024; as duas de 3:2
+   foram cortadas para 16:9 (a proporção do .mz-mod-media), com o offset
+   escolhido para não perder o assunto: a agenda na tela e o tablet com o
+   plano de tratamento. Todas viraram 1400×788 JPEG q82, como as da Maestria.
+   O <img> é decorativo (alt="" dentro de um wrapper aria-hidden) e NÃO leva
+   width/height: o slot conta com aspect-ratio + object-fit e o atributo
+   height desliga o aspect-ratio, esticando a foto. */
 export type Modulo = {
   n: string;
   titulo: string;
@@ -205,6 +215,7 @@ export const MODULOS: Modulo[] = [
     n: '01',
     titulo: 'Sondagem e Qualificação de Leads',
     resumo: 'Antes de oferecer horário, entender. As perguntas que revelam o que o paciente realmente quer — e o registro que faz nenhum lead se perder pelo caminho.',
+    img: '/images/crc-modulo-sondagem.jpg',
     blocos: [
       {
         aulas: [
@@ -221,6 +232,7 @@ export const MODULOS: Modulo[] = [
     n: '02',
     titulo: 'Agendamento Eficaz',
     resumo: 'A agenda cheia e sem buraco: oferecer horário com urgência controlada, prevenir a ausência antes que ela aconteça e medir o que está acontecendo.',
+    img: '/images/crc-modulo-agendamento.jpg',
     blocos: [
       {
         aulas: [
@@ -237,6 +249,7 @@ export const MODULOS: Modulo[] = [
     n: '03',
     titulo: 'Fechamento de Vendas e Tratamentos',
     resumo: 'O momento do dinheiro: apresentar o orçamento personalizado, facilitar o pagamento e conduzir o paciente até o sim — com técnica, não com descontão.',
+    img: '/images/crc-modulo-fechamento.jpg',
     blocos: [
       {
         aulas: [
@@ -253,6 +266,7 @@ export const MODULOS: Modulo[] = [
     n: '04',
     titulo: 'Tratativa de Objeções e Follow-up',
     resumo: 'O que dizer quando vem o "tá caro", o medo e o "não tenho tempo" — e o follow-up que recupera o orçamento que ficou na mesa.',
+    img: '/images/crc-modulo-follow-up.jpg',
     blocos: [
       {
         aulas: [
