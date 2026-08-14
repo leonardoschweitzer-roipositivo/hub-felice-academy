@@ -42,7 +42,10 @@ import {
 // v4: rename de "A Secretária que Vende" para "CRC de Alta Performance". Sem
 // o bump, quem já visitou continua vendo o título velho do localStorage.
 // v5: entra o curso "Recepção de Alta Performance" (pilar Gestão) no catálogo.
-const STORAGE_KEY = 'feliceplat:dataset:v5';
+// v6: grade real do CRC (4 módulos × 5 aulas do Conteúdo Programático). Os
+// slugs das aulas mudaram todos, então o progresso salvo daquele curso se
+// perde no re-seed — é o comportamento esperado enquanto os data/*.ts são mock.
+const STORAGE_KEY = 'feliceplat:dataset:v6';
 
 type Dataset = {
   cursos: Curso[];

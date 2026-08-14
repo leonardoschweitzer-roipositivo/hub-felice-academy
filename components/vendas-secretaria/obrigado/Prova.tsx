@@ -3,8 +3,8 @@
    trocado pela consultoria, que é o objetivo desta página. Nada de
    número de alunos ou resultado medido: não existe dado confirmado. */
 const STATS = [
-  { num: '5 módulos', label: 'Do primeiro contato ao fechamento e follow-up' },
-  { num: 'Scripts prontos', label: 'WhatsApp, orçamento, follow-up e confirmação' },
+  { num: '4 módulos', label: 'Sondagem, agendamento, fechamento e objeções' },
+  { num: '20 aulas', label: 'Curtas e práticas, com role-playing em duas delas' },
   { num: '100% online', label: 'A equipe assiste no ritmo dela, quantas vezes precisar' },
   { num: '1 hora', label: 'De consultoria direta com o Dr. Sócrates' },
 ];
