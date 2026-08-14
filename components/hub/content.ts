@@ -78,24 +78,6 @@ export const PRODUTOS: Produto[] = [
   },
   {
     num: '03',
-    // Plural: são duas trilhas, e o card leva para o hub /produtos/mentorias.
-    titulo: 'Mentorias',
-    descricao:
-      'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
-    categoria: 'Mentoria',
-    estado: 'disponivel',
-    imagem: '/images/card-mentoria.jpg',
-    href: '/produtos/mentorias',
-    interno: true,
-    cta: 'Ver as mentorias',
-    detalhes: [
-      'Duas trilhas: Gestão F4 e Zigomático',
-      'Plataforma, encontros ao vivo e suporte',
-      'Acompanhamento individual e em grupo',
-    ],
-  },
-  {
-    num: '04',
     // Renomeado de "A Secretária que Vende" em 10/08/2026. A rota segue
     // /produtos/vendas-secretaria de propósito: mudar o slug quebraria os
     // links e anúncios que já apontam para lá.
@@ -118,8 +100,8 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    num: '05',
-    // Par do CRC de Alta Performance (04): a CRC cuida do telefone/WhatsApp
+    num: '04',
+    // Par do CRC de Alta Performance (03): a CRC cuida do telefone/WhatsApp
     // e do fechamento do orçamento, este cuida do presencial na clínica.
     titulo: 'Recepção de Alta Performance',
     descricao:
@@ -130,7 +112,7 @@ export const PRODUTOS: Produto[] = [
     interno: true,
     cta: 'Acessar',
     // Mesma foto do CRC (é uma recepção de clínica), mas com o enquadramento
-    // do lado OPOSTO: o card 05 corta em 78% (a atendente) e este em 22% (a
+    // do lado OPOSTO: o card 03 corta em 78% (a atendente) e este em 22% (a
     // área de espera). Os dois ficam lado a lado na vitrine — sem cortes
     // diferentes, pareceriam o mesmo card.
     imagem: '/images/background-secretaria-vende.jpg',
@@ -146,7 +128,7 @@ export const PRODUTOS: Produto[] = [
     // "Consultoria" (nó 07). O curso Gestão F4 não existe — Gestão F4 É a
     // consultoria de 4 semanas. Virou um card só, com o nome que a própria
     // landing usa no <title>: "Consultoria Gestão F4".
-    num: '06',
+    num: '05',
     titulo: 'Consultoria Gestão F4',
     descricao:
       'Os 4 pilares da clínica auditados de perto pelo Dr. Sócrates: 4 semanas de diagnóstico em gestão, atendimento, comercial e marketing, com plano de ação sob medida.',
@@ -163,6 +145,31 @@ export const PRODUTOS: Produto[] = [
       '4 semanas de auditoria nos 4 setups da clínica',
       '16 entregáveis prontos para a equipe aplicar',
       'Planejamento estratégico de 12 meses',
+    ],
+  },
+  {
+    /* ÚLTIMO da vitrine por decisão do Leo (13/08/2026): estava no nó 03,
+       espremido entre a Maestria e o CRC, e sumia no meio dos cursos. A
+       ordem agora é uma escada de compromisso — Masterclass (entrada),
+       Cursos, Consultoria e Mentorias no fim, que é o ticket mais alto e
+       a entrada por candidatura. Mover o bloco exige renumerar os `num`,
+       porque eles viram o badge dourado do card e não são derivados do
+       índice: fora de sequência, a vitrine lê 01, 02, 04, 05, 06, 03. */
+    num: '06',
+    // Plural: são duas trilhas, e o card leva para o hub /produtos/mentorias.
+    titulo: 'Mentorias',
+    descricao:
+      'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
+    categoria: 'Mentoria',
+    estado: 'disponivel',
+    imagem: '/images/card-mentoria.jpg',
+    href: '/produtos/mentorias',
+    interno: true,
+    cta: 'Ver as mentorias',
+    detalhes: [
+      'Duas trilhas: Gestão F4 e Zigomático',
+      'Plataforma, encontros ao vivo e suporte',
+      'Acompanhamento individual e em grupo',
     ],
   },
   {
