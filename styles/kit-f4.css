@@ -432,6 +432,27 @@
   margin-bottom: 0;
 }
 
+/* O float do WhatsApp volta a ser CÍRCULO nesta área.
+   No resto do site ele é pílula com o rótulo "Nosso WhatsApp" (felice.css),
+   mas aqui o `.kit-panel-fab` logo abaixo mora em right:90px justamente
+   contando com um botão de 58px — a pílula de 200px passaria por baixo
+   dele. E o gesto é outro: quem está na entrega do Kit já comprou, o
+   WhatsApp daqui é suporte (mensagem própria em kit-f4/suporte.ts), não
+   captação que precise se anunciar. Vem depois de felice.css no layout da
+   rota, então ganha por ordem — mesma especificidade. */
+.felice-kit .wpp {
+  min-width: 0;
+  width: 58px;
+  padding: 0;
+}
+.felice-kit .wpp-rotulo {
+  display: none;
+}
+.felice-kit .wpp svg {
+  width: 30px;
+  height: 30px;
+}
+
 /* Botão flutuante (todas as larguras) */
 .felice-kit .kit-panel-fab {
   position: fixed;

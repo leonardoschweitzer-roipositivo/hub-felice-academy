@@ -35,26 +35,35 @@
 
 /* ---------- Botão flutuante ----------
    Empilhado ACIMA do botão do WhatsApp, que é `.felice .wpp` e fica em
-   right:20px / bottom:20px / 58px de altura (felice.css:1494). O canto
+   right:20px / bottom:20px / 58px de altura (felice.css). O canto
    inferior ESQUERDO não estava livre: é onde os purchase toasts aparecem
-   nas 5 landings com prova social (felice.css:1644).
+   nas 5 landings com prova social (`.purchase-toast-wrap`).
 
    Camadas: o teto de z-index do projeto era 81 (admin.css); aqui
    começamos em 200 para o painel nunca ficar atrás de header ou barra de
-   urgência. */
+   urgência.
+
+   No desktop é uma PÍLULA com rótulo, e o botão do WhatsApp logo abaixo é
+   a mesma forma. ⚠️ A `min-width` tem de bater com a do `.felice .wpp`
+   (felice.css) — os textos têm comprimentos diferentes e sem largura comum
+   os dois ficam desalinhados um sobre o outro. Abaixo de 640px os dois
+   voltam a ser círculos. */
 .fia-fab {
   position: fixed;
   right: 20px;
   bottom: 92px;
   z-index: 200;
-  width: 56px;
-  height: 56px;
+  min-width: 210px;
+  height: 58px;
+  padding: 0 24px;
   border: 0;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--fia-grad);
   color: #1a1206;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   cursor: pointer;
   box-shadow: 0 14px 34px -10px rgba(232, 180, 71, 0.55);
   transition: transform 0.22s ease;
@@ -66,6 +75,21 @@
   outline: 2px solid var(--fia-gold);
   outline-offset: 3px;
 }
+.fia-fab-rotulo {
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.fia-fab svg {
+  flex: none;
+}
+/* Com o painel aberto sobra só o ×, e a pílula volta a ser círculo. */
+.fia-root[data-aberto='sim'] .fia-fab {
+  min-width: 0;
+  width: 58px;
+  padding: 0;
+}
 
 /* Nas páginas SEM o botão do WhatsApp (privacidade, termos, e qualquer
    página nova que não use o layout das landings) ele desce e ocupa o
@@ -75,19 +99,26 @@
 body:not(:has(.felice .wpp)) .fia-fab {
   bottom: 20px;
 }
+/* O cutucão desce junto, senão fica um vão de 72px entre ele e o botão. */
+body:not(:has(.felice .wpp)) .fia-nudge {
+  bottom: 86px;
+}
 
 /* ---------- Cutucão ----------
-   Fica À ESQUERDA do botão, não acima: acima esbarraria no botão do
-   WhatsApp. Some sozinho e tem botão de dispensar. */
+   Fica ACIMA do botão, alinhado à direita. Ficava à esquerda enquanto o
+   FAB era um círculo de 56px; com a pílula de 210px o canto esquerdo
+   deixou de existir e o balão passaria POR BAIXO dela. Acima está livre:
+   quem vê o cutucão ainda não abriu o painel, e o painel é o único outro
+   ocupante daquela faixa. Some sozinho e tem botão de dispensar. */
 .fia-nudge {
   position: fixed;
-  right: 88px;
-  bottom: 100px;
+  right: 20px;
+  bottom: 158px;
   z-index: 199;
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: min(250px, calc(100vw - 120px));
+  max-width: min(280px, calc(100vw - 40px));
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid var(--fia-line);
@@ -136,7 +167,7 @@ body:not(:has(.felice .wpp)) .fia-fab {
   /* Altura vem do par `top`/`bottom`, não de `height`: assim o painel vai
      do topo da tela até logo acima do botão flutuante e acompanha
      qualquer altura de janela. O `bottom: 160px` é o que sobra em cima do
-     FAB (que fica em bottom:92px e tem 56px), com respiro. */
+     FAB (que fica em bottom:92px e tem 58px), com respiro. */
   top: 20px;
   bottom: 160px;
   z-index: 210;
@@ -567,6 +598,16 @@ body:not(:has(.felice .wpp)) .fia-fab {
     border-radius: 0;
     border: 0;
     padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* Sem espaço para rótulo: volta a ser o círculo de sempre. */
+  .fia-fab {
+    min-width: 0;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+  }
+  .fia-fab-rotulo {
+    display: none;
   }
   /* Com o painel em tela cheia, o FAB e o botão do WhatsApp atrás dele só
      atrapalham o toque. */
