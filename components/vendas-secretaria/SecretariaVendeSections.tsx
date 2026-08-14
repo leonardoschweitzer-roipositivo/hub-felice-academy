@@ -262,8 +262,11 @@ export function SecretariaVendeModulos() {
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
             O conteúdo
           </span>
+          {/* ⚠️ Contagem escrita à mão: não sai de MODULOS.length. Mexeu na
+              grade do content.ts, mexa aqui. */}
           <h2>
-            5 módulos. <span className="gold-grad">Do primeiro contato ao fechamento.</span>
+            4 módulos, 20 aulas.{' '}
+            <span className="gold-grad">Da sondagem ao follow-up.</span>
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
             Aulas curtas e práticas, organizadas para a equipe aplicar passo a passo — sem pular

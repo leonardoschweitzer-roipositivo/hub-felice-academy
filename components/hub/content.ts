@@ -95,7 +95,10 @@ export const PRODUTOS: Produto[] = [
     imagemPos: '78% 50%',
     detalhes: [
       'Do primeiro contato no WhatsApp ao fechamento',
-      '5 módulos, 100% online, no ritmo da equipe',
+      // O card 04 (Recepção) diz "4 módulos, 20 aulas, 100% online". Os dois
+      // cursos têm a mesma estrutura, então este cita a jornada em vez de
+      // repetir a frase — lado a lado na vitrine, pareceriam copiados.
+      '4 módulos, 20 aulas: da sondagem ao follow-up',
       'Scripts, planilhas e bônus ao vivo inclusos',
     ],
   },

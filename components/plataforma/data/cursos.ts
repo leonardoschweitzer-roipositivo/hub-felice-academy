@@ -287,43 +287,67 @@ export const CURSOS: Curso[] = [
   {
     // Consolida os três antigos cursos do pilar (CRC, Fechamento de Planos e
     // Recuperação de Inativos) no produto que a home vende: "CRC de Alta
-    // Performance" (/produtos/vendas-secretaria). Os três viraram os módulos.
+    // Performance" (/produtos/vendas-secretaria).
     // O slug fica como está: mudar quebraria o progresso já salvo do aluno.
+    //
+    // A grade abaixo é a REAL (14/08/2026): os 4 módulos × 5 aulas do
+    // "Conteúdo Programático" do material oficial, os mesmos de
+    // components/vendas-secretaria/content.ts. Antes eram 3 módulos e 9 aulas
+    // aqui contra 5 módulos e 24 aulas na landing — o mesmo curso contado de
+    // duas formas diferentes. Mexeu numa ponta, mexa na outra.
+    // ⚠️ Alterou este arquivo? Suba o STORAGE_KEY do PlatformStore, senão
+    // quem já visitou continua vendo o dataset velho do localStorage.
     slug: 'secretaria-que-vende',
     pilar: 'vendas',
     titulo: 'CRC de Alta Performance',
     subtitulo: 'Do primeiro "oi" ao tratamento fechado',
     descricao:
-      'O treinamento comercial da recepção: agendar sem faltas, apresentar o plano com clareza e reativar quem sumiu da agenda.',
+      'O treinamento comercial da recepção: sondar o lead, encher a agenda sem faltas, apresentar o orçamento e contornar a objeção até o tratamento fechado.',
     nivel: 'Essencial',
-    duracao: '5h 15min',
+    duracao: '4h 20min',
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'em-alta',
     thumb: ['#3a1f14', '#E8825A'],
     imagem: '/images/background-secretaria-vende.jpg',
     modulos: [
       {
-        titulo: 'A chamada perfeita',
+        titulo: 'Sondagem e qualificação de leads',
         aulas: [
-          a('primeiro-contato', 'O peso do primeiro contato', '11:30'),
-          a('cinco-fases', 'As 5 fases da chamada', '19:50'),
-          a('regra-5-min', 'A regra dos 5 minutos', '09:40'),
-          a('objecoes', 'Gestão de objeções', '15:20'),
+          a('perguntas-abertas', 'Perguntas abertas para mapear dores e desejos', '11:30'),
+          a('identificar-necessidades', 'Identificação de necessidades: dor, estética e orçamento', '13:45'),
+          a('paciente-ideal', 'Perfil do paciente ideal para tratamentos odontológicos', '10:20'),
+          a('crm-rastreamento', 'Ferramentas de anotação e CRM para rastreamento', '12:40'),
+          a('scripts-sondagem', 'Prática: scripts de sondagem com role-playing', '16:10', 'pdf'),
         ],
       },
       {
-        titulo: 'Apresentação do plano',
+        titulo: 'Agendamento eficaz',
         aulas: [
-          a('diagnostico-vendas', 'Do diagnóstico à proposta', '14:05'),
-          a('ancoragem', 'Ancoragem e valor percebido', '16:35'),
-          a('conducao', 'Condução do fechamento', '13:20'),
+          a('urgencia-controlada', 'Opções de horários com urgência controlada', '12:15'),
+          a('agenda-erp', 'Integração com a agenda da clínica e ERP', '09:50'),
+          a('ausencias-remarcacoes', 'Tratamento de ausências e remarcações preventivas', '13:20'),
+          a('agendamento-multiplo', 'Agendamento múltiplo: pacotes de tratamento', '11:05'),
+          a('metricas-no-show', 'Métricas de conversão: taxa de no-show reduzida', '14:30'),
         ],
       },
       {
-        titulo: 'Reativação da base',
+        titulo: 'Fechamento de vendas e tratamentos',
         aulas: [
-          a('segmentando', 'Segmentando a base inativa', '12:15'),
-          a('scripts-reativacao', 'Scripts de reativação', '13:40', 'pdf'),
+          a('tecnicas-fechamento', 'Técnicas de fechamento: assumir o sim e benefícios claros', '15:40'),
+          a('orcamento-personalizado', 'Apresentação de orçamentos personalizados', '13:10'),
+          a('financiamento-parcelamento', 'Financiamentos e parcelamentos como facilitadores', '11:25'),
+          a('urgencia-etica', 'Criação de urgência ética: "limites de vagas"', '09:35'),
+          a('role-playing-fechamento', 'Role-playing de fechamentos reais', '18:05'),
+        ],
+      },
+      {
+        titulo: 'Tratativa de objeções e follow-up',
+        aulas: [
+          a('objecoes-comuns', 'Objeções comuns: preço, medo e tempo', '12:50'),
+          a('respostas-empaticas', 'Respostas empáticas e contra-argumentos de valor', '14:20'),
+          a('follow-up-automatizado', 'Follow-up automatizado via WhatsApp e e-mail', '13:05'),
+          a('kpis-fechamento', 'Análise de KPIs: taxa de fechamento e reativação', '15:30'),
+          a('melhoria-continua', 'Melhoria contínua: feedback e ajustes nos scripts', '10:45'),
         ],
       },
     ],

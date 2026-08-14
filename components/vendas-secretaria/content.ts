@@ -28,11 +28,17 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    ✅ Checkout e preço já são os reais (Payfast/Greenn, 11/08/2026):
    12x de R$ 61,38 ou R$ 597,00 à vista.
 
+   ✅ A grade (MODULOS) é a REAL desde 14/08/2026 — 4 módulos × 5 aulas do
+   "Conteúdo Programático" do material oficial (Curso de CRC Agendamento /
+   CRC Comercial). Até então era um rascunho de 5 módulos que não batia com
+   nada: nenhum título coincidia, o Módulo 1 do material (sondagem) não
+   existia na página e o Módulo 3 do rascunho vendia acolhimento presencial,
+   que é o produto-par (/produtos/recepcao-alta-performance). Ver MODULOS.
+
    ⚠️ TROCAR antes de publicar:
    - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
-   - STATS / contagem de módulos/aulas: confirmar (não inventar prova social).
-   - Grade e bônus: RASCUNHO sugerido — validar com o cliente.
+   - BONUS: lista sugerida — validar com o cliente o que é entregue de fato.
    ============================================================ */
 
 /** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
@@ -78,11 +84,11 @@ export const HERO = {
 
 /** Card de prova "glass" no hero (coluna direita). */
 export const HERO_CARD = {
-  destaque: { num: '5 módulos', label: 'Do primeiro contato ao follow-up do orçamento' },
+  destaque: { num: '4 módulos', label: 'Da sondagem do lead ao follow-up do orçamento' },
   progresso: { label: 'Material pronto para a equipe aplicar', valor: 100 },
   mini: [
-    { v: '5', l: 'Módulos' },
-    { v: 'Scripts', l: 'prontos' },
+    { v: '4', l: 'Módulos' },
+    { v: '20', l: 'Aulas' },
     { v: '7 dias', l: 'Garantia' },
   ],
   pills: { live: 'Acesso imediato', premium: 'Bônus ao vivo' },
@@ -92,15 +98,19 @@ export const HERO_CARD = {
 export const HERO_MARQUEE = {
   titulo: 'O que a sua equipe vai dominar',
   itens: [
-    'Atendimento ao lead',
-    'Script de WhatsApp',
-    'Responder "quanto custa?"',
-    'Apresentar orçamento',
-    'Contornar objeções',
-    'Fechar tratamento',
-    'Follow-up do orçamento',
-    'Confirmação e no-show',
-    'Reativar inativos',
+    'Sondagem profunda',
+    'Perguntas abertas',
+    'Qualificação de leads',
+    'CRM e rastreamento',
+    'Urgência controlada',
+    'Queda do no-show',
+    'Orçamento personalizado',
+    'Técnicas de fechamento',
+    'Parcelamento como facilitador',
+    'Role-playing',
+    'Objeções: preço, medo e tempo',
+    'Follow-up por WhatsApp',
+    'KPIs de fechamento',
   ],
 };
 
@@ -108,8 +118,8 @@ export const HERO_MARQUEE = {
    Apenas fatos da estrutura do curso. ⚠️ Não inserir prova social
    (nº de alunos etc.) sem confirmar o dado real. */
 export const STATS: { num: string; label: string }[] = [
-  { num: '5 módulos', label: 'Do primeiro contato ao fechamento e follow-up' },
-  { num: 'Scripts prontos', label: 'WhatsApp, orçamento, follow-up e confirmação' },
+  { num: '4 módulos', label: 'Sondagem, agendamento, fechamento e objeções' },
+  { num: '20 aulas', label: 'Curtas e práticas, com role-playing em duas delas' },
   { num: '100% online', label: 'A equipe assiste no ritmo dela, quantas vezes precisar' },
   { num: '7 dias', label: 'Garantia incondicional' },
 ];
@@ -138,33 +148,50 @@ export const DORES_FECHAMENTO = {
   gold: 'escorre pelo ralo.',
 };
 
-/* ---------- Método / o funil comercial da recepção ---------- */
+/* ---------- Método / o funil comercial da recepção ----------
+   Os quatro verbos são os quatro módulos do material, na mesma ordem: o
+   visitante lê o método aqui e reencontra a mesma sequência na seção "O
+   conteúdo". Mexeu em MODULOS, olhe aqui. */
 export const METODO: { n: string; titulo: string; texto: string }[] = [
   {
     n: '01',
-    titulo: 'Atender',
-    texto: 'Transforme cada primeiro contato — WhatsApp, telefone, balcão — em confiança e em avaliação marcada, com a voz, a escrita e o script certos.',
+    titulo: 'Sondar',
+    texto: 'Antes de oferecer horário, entender: perguntas abertas que revelam a dor, a estética e o orçamento do paciente — e o registro no CRM para nenhum lead se perder.',
   },
   {
     n: '02',
     titulo: 'Agendar',
-    texto: 'Encha a agenda de avaliações e derrube o no-show com um processo de agendamento e confirmação que a equipe segue sempre igual.',
+    texto: 'Ofereça horário com urgência controlada, previna a ausência antes que ela aconteça e derrube o no-show — com a métrica na mão, não no achismo.',
   },
   {
     n: '03',
     titulo: 'Fechar',
-    texto: 'Apresente o orçamento com ancoragem de valor, conduza a decisão e contorne "tá caro" e "vou pensar" sem dar descontão.',
+    texto: 'Apresente o orçamento personalizado, use o parcelamento como facilitador e conduza a decisão com técnica de fechamento, não com descontão.',
   },
   {
     n: '04',
-    titulo: 'Reativar',
-    texto: 'Faça o follow-up dos orçamentos em aberto, recupere pacientes inativos e transforme quem fechou em indicação — o dinheiro que já está na casa.',
+    titulo: 'Contornar',
+    texto: 'Responda a preço, medo e tempo com empatia e argumento de valor, e faça o follow-up que recupera o orçamento que ficou na mesa.',
   },
 ];
 
 /* ---------- Módulos (conteúdo) ----------
-   ⚠️ Grade RASCUNHO coerente com o material Felice (CRC Comercial +
-   Atendimento) — ajuste para a grade real do curso. `img` opcional. */
+   GRADE REAL: seção "1. Conteúdo Programático" do material oficial (Curso de
+   CRC Agendamento / CRC Comercial), 4 módulos × 5 aulas = 20. Os títulos de
+   módulo e de aula são os do material, com só o ajuste de caixa depois dos
+   dois-pontos ("Dor, estética" → "dor, estética"); os `resumo` são nossos.
+
+   ⚠️ NÃO reintroduza acolhimento presencial aqui (a arte de receber, POP de
+   recepção, paciente irritado no balcão): é o "Recepção de Alta Performance"
+   (/produtos/recepcao-alta-performance), o produto-par do card 04. O rascunho
+   anterior tinha um módulo inteiro disso e os dois cursos se canibalizavam.
+   Este curso é telefone/WhatsApp, agendamento e fechamento do orçamento.
+
+   ⚠️ Mudou a contagem? São SEIS lugares além daqui: HERO_CARD e STATS acima,
+   OFERTA.itens abaixo, a headline "4 módulos." escrita à mão em
+   SecretariaVendeSections.tsx, o STATS de obrigado/Prova.tsx, o card 03 de
+   components/hub/content.ts e o catálogo em plataforma/data/cursos.ts (este
+   último exige bump do STORAGE_KEY do PlatformStore). `img` opcional. */
 export type Modulo = {
   n: string;
   titulo: string;
@@ -176,79 +203,64 @@ export type Modulo = {
 export const MODULOS: Modulo[] = [
   {
     n: '01',
-    titulo: 'Quem atende, vende',
-    resumo: 'A virada de mentalidade: a recepção é o time comercial da clínica. Onde o paciente entra, onde o dinheiro se ganha ou se perde.',
+    titulo: 'Sondagem e Qualificação de Leads',
+    resumo: 'Antes de oferecer horário, entender. As perguntas que revelam o que o paciente realmente quer — e o registro que faz nenhum lead se perder pelo caminho.',
     blocos: [
       {
         aulas: [
-          'Por que quem atende é a peça-chave do faturamento',
-          'Vender é servir: a venda ética e humanizada na odontologia',
-          'A jornada do paciente: do primeiro "oi" ao tratamento fechado',
-          'O funil comercial: lead → agendamento → comparecimento → fechamento',
-          'Os números que a recepção precisa acompanhar',
+          'Perguntas abertas para mapear dores e desejos do paciente',
+          'Identificação de necessidades: dor, estética e orçamento',
+          'Perfil do paciente ideal para tratamentos odontológicos',
+          'Ferramentas de anotação e CRM para rastreamento',
+          'Prática: scripts de sondagem com role-playing',
         ],
       },
     ],
   },
   {
     n: '02',
-    titulo: 'Primeiro contato que agenda',
-    resumo: 'O atendimento ao lead que vira avaliação marcada — no WhatsApp e no telefone, com script fase a fase.',
+    titulo: 'Agendamento Eficaz',
+    resumo: 'A agenda cheia e sem buraco: oferecer horário com urgência controlada, prevenir a ausência antes que ela aconteça e medir o que está acontecendo.',
     blocos: [
       {
         aulas: [
-          'A voz e a escrita que geram confiança no primeiro contato',
-          'Script de atendimento ao lead que agenda (WhatsApp/telefone)',
-          'Como responder "quanto custa?" sem perder o paciente',
-          'A regra dos 5 minutos: velocidade de resposta e resgate do lead frio',
-          'Derrubando o "vou ver e depois te falo"',
+          'Apresentação de opções de horários com urgência controlada',
+          'Integração com a agenda da clínica e ERP',
+          'Tratamento de ausências e remarcações preventivas',
+          'Agendamento múltiplo: pacotes de tratamento',
+          'Métricas de conversão: taxa de no-show reduzida',
         ],
       },
     ],
   },
   {
     n: '03',
-    titulo: 'Recepção que encanta e prepara a venda',
-    resumo: 'O acolhimento presencial que constrói confiança e prepara o terreno para o paciente dizer sim.',
+    titulo: 'Fechamento de Vendas e Tratamentos',
+    resumo: 'O momento do dinheiro: apresentar o orçamento personalizado, facilitar o pagamento e conduzir o paciente até o sim — com técnica, não com descontão.',
     blocos: [
       {
         aulas: [
-          'A arte de receber: acolhimento que constrói confiança',
-          'Padronizando a experiência presencial (POP de recepção)',
-          'Situações delicadas: atraso, falta de documento, paciente irritado',
-          'Criando o clima para o paciente decidir',
+          'Técnicas de fechamento: assumir o sim e benefícios claros',
+          'Apresentação de orçamentos personalizados',
+          'Financiamentos e parcelamentos como facilitadores',
+          'Criação de urgência ética: "limites de vagas"',
+          'Role-playing de fechamentos reais',
         ],
       },
     ],
   },
   {
     n: '04',
-    titulo: 'Orçamento e fechamento',
-    resumo: 'O momento do dinheiro: apresentar o plano de tratamento, ancorar valor e conduzir o paciente à decisão.',
+    titulo: 'Tratativa de Objeções e Follow-up',
+    resumo: 'O que dizer quando vem o "tá caro", o medo e o "não tenho tempo" — e o follow-up que recupera o orçamento que ficou na mesa.',
     blocos: [
       {
         aulas: [
-          'Como apresentar o plano de tratamento e o orçamento',
-          'Ancoragem de valor: vender saúde e transformação, não preço',
-          'Formas de pagamento e negociação sem "descontão"',
-          'Conduzindo o fechamento: o paciente diz sim',
-          'Banco de objeções: "tá caro", "vou pensar", "preciso falar em casa"',
-        ],
-      },
-    ],
-  },
-  {
-    n: '05',
-    titulo: 'Follow-up e reativação',
-    resumo: 'O dinheiro esquecido: recuperar orçamentos em aberto, derrubar o no-show e trazer o paciente inativo de volta.',
-    blocos: [
-      {
-        aulas: [
-          'Follow-up de orçamentos em aberto: o que ficou na mesa',
-          'Confirmação ativa e queda do no-show',
-          'Reativação de pacientes inativos',
-          'Pedindo indicações e avaliações no Google',
-          'A rotina comercial semanal da recepção',
+          'Objeções comuns: preço, medo e tempo',
+          'Respostas empáticas e contra-argumentos baseados em valor',
+          'Follow-up automatizado via WhatsApp e e-mail',
+          'Análise de KPIs: taxa de fechamento e reativação',
+          'Melhoria contínua: feedback e ajustes nos scripts',
         ],
       },
     ],
@@ -264,7 +276,9 @@ export const BONUS: { titulo: string; texto: string; valor: number }[] = [
   { titulo: 'Planilha de controle de orçamentos e follow-up', texto: 'O funil comercial da recepção numa planilha: cada orçamento aberto, o próximo contato e nada mais caindo no esquecimento.', valor: 147 },
   { titulo: 'Modelos de mensagem (WhatsApp)', texto: 'Templates de confirmação de consulta e de reativação de pacientes, prontos para copiar, personalizar e enviar.', valor: 97 },
   { titulo: 'Encontro ao vivo de dúvidas', texto: 'Um encontro ao vivo com o time Felice para destravar a aplicação do método na realidade da sua clínica.', valor: 297 },
-  { titulo: 'Aula bônus: Felice CRM para não perder orçamento', texto: 'Como usar o Felice CRM para registrar cada orçamento e automatizar o follow-up — para o dinheiro nunca mais escapar.', valor: 197 },
+  // O Módulo 1 já ensina "ferramentas de anotação e CRM para rastreamento"
+  // de forma genérica; este bônus é a aplicação daquilo dentro do Felice CRM.
+  { titulo: 'Aula bônus: o Módulo 1 dentro do Felice CRM', texto: 'O rastreamento que a aula 4 ensina, aplicado passo a passo no Felice CRM: cada orçamento registrado e o follow-up no automático.', valor: 197 },
   { titulo: 'Certificado de conclusão', texto: 'Certificado da Felice Academy ao final do curso, que valoriza a profissional e a sua recepção.', valor: 47 },
 ];
 
@@ -328,11 +342,10 @@ export const OFERTA = {
   ribbon: 'Acesso imediato',
   titulo: 'CRC de Alta Performance — completo',
   itens: [
-    'Módulo 1 · Quem atende, vende',
-    'Módulo 2 · Primeiro contato que agenda',
-    'Módulo 3 · Recepção que encanta',
-    'Módulo 4 · Orçamento e fechamento',
-    'Módulo 5 · Follow-up e reativação',
+    'Módulo 1 · Sondagem e qualificação de leads',
+    'Módulo 2 · Agendamento eficaz',
+    'Módulo 3 · Fechamento de vendas e tratamentos',
+    'Módulo 4 · Tratativa de objeções e follow-up',
     'Bônus: scripts, banco de objeções e planilhas prontos',
     'Bônus ao vivo: encontro de dúvidas com o time Felice',
     'Garantia incondicional de 7 dias',
