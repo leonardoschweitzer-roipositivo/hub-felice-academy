@@ -31,7 +31,7 @@ export function MentoriaZigomaticoHero() {
   return (
     <section className="hero mz-hero-sec" id="topo">
       <div className="hero-bg" />
-      <div className="mz-hero-photo" aria-hidden="true" />
+      <div className="mzz-hero-photo" aria-hidden="true" />
 
       <div className="wrap mz-hero">
         {/* LEFT */}
