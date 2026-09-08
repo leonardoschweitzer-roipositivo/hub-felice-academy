@@ -1,5 +1,6 @@
-import { PRODUTOS, money } from '@/lib/projecao/premissas';
-import { bandaGreenn } from '@/lib/projecao/model';
+import { PRODUTOS, money, pct, num } from '@/lib/projecao/premissas';
+import { RESUMO, RECORTES, LINHAS } from '@/lib/projecao/resumoPadrao';
+import { BANDAS, bandaGreenn } from '@/lib/projecao/model';
 import {
   HERO, BENCHMARK, APRENDIZAGEM, DESCOBERTA, FASES,
   METRICAS, ANALISES, PREMISSAS_AVISO,
@@ -21,7 +22,7 @@ export function Hero() {
             <div className="pj-hero-prod" key={p.id}>
               <b>{money(p.ticket)}</b>
               <span>{p.nome}</span>
-              <small>{p.objetivo === 'whatsapp' ? 'WhatsApp' : 'Purchase'}</small>
+              <small>{p.objetivoPadrao === 'whatsapp' ? 'WhatsApp' : 'Purchase'}</small>
             </div>
           ))}
         </div>
@@ -32,13 +33,14 @@ export function Hero() {
 
 /* As cinco faixas do benchmark, com a marca de qual produto cai em cada
    uma. Vem do model.ts para não haver duas tabelas de banda no projeto. */
-const FAIXAS = [100, 500, 2000, 5000, 15000].map((t) => {
-  const b = bandaGreenn(t);
-  return {
-    ...b,
-    produtos: PRODUTOS.filter((p) => bandaGreenn(p.ticket).rotulo === b.rotulo),
-  };
-});
+/* As faixas do benchmark, marcando qual produto cai em cada uma. Deriva de
+   BANDAS (model.ts) para não haver duas tabelas de banda no projeto — antes
+   isto re-derivava com tickets-sonda mágicos [100, 500, 2000, 5000, 15000],
+   que silenciosamente deixaria de cobrir uma faixa nova. */
+const FAIXAS = BANDAS.map((b) => ({
+  ...b,
+  produtos: PRODUTOS.filter((p) => bandaGreenn(p.ticket).rotulo === b.rotulo),
+}));
 
 export function Benchmark() {
   return (
@@ -104,11 +106,95 @@ export function Descoberta() {
           <span className="eyebrow">{DESCOBERTA.eyebrow}</span>
           <h2>{DESCOBERTA.h2}</h2>
         </div>
+
+        {/* Os números vêm de resumoPadrao.ts, calculados pelo MESMO motor do
+            simulador. A prosa afirma a tese; o número vem do modelo — assim
+            mexer numa premissa nunca deixa um parágrafo mentindo. */}
+        <div className="pj-tabela-scroll">
+          <table className="pj-tabela">
+            <thead>
+              <tr>
+                <th>Recorte</th>
+                <th>Produtos</th>
+                <th>Verba/mês</th>
+                <th>Receita</th>
+                <th>ROAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {RECORTES.map((r) => (
+                <tr key={r.nome} className={r.nome === 'Todos' ? 'is-nosso' : ''}>
+                  <td>{r.nome}</td>
+                  <td className="pj-mono">{r.produtos}</td>
+                  <td className="pj-mono">{money(r.verba)}</td>
+                  <td className="pj-mono">{money(r.receita)}</td>
+                  <td className="pj-mono">{r.roas.toFixed(2)}×</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p className="pj-nota">
+          Cenário realista, cada produto rodando exatamente no piso da aprendizagem, receita já
+          contando a escada. A Fase 1 rende{' '}
+          <b>{RESUMO.vantagemFase1.toFixed(1)}× mais por real investido</b> que o catálogo
+          inteiro — com {RESUMO.fase1.produtos} produtos em vez de {RESUMO.todos.produtos}.
+        </p>
+
         <div className="pj-prosa">
           {DESCOBERTA.paragrafos.map((t) => (
             <p key={t.slice(0, 24)}>{t}</p>
           ))}
         </div>
+
+        <div className="pj-tabela-scroll" style={{ marginTop: 34 }}>
+          <table className="pj-tabela">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Ticket</th>
+                <th>Piso/mês</th>
+                <th>Vendas</th>
+                <th>CAC</th>
+                <th>ROAS</th>
+                <th>LTV:CAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              {LINHAS.map((l) => (
+                <tr key={l.id}>
+                  <td>{l.nome}</td>
+                  <td className="pj-mono">{money(l.ticket)}</td>
+                  <td className="pj-mono">{money(l.verba)}</td>
+                  <td className="pj-mono">{num(l.vendas, 1)}</td>
+                  <td className="pj-mono">{money(l.cac)}</td>
+                  <td className={`pj-mono ${l.roas >= 1 ? 'forte' : 'fraco'}`}>
+                    {l.roas.toFixed(2)}×
+                  </td>
+                  <td className="pj-mono">
+                    {l.tier === 'alto' ? '—' : l.ltvCac.toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p className="pj-destaque">
+          O objetivo de campanha vale mais que qualquer criativo. CRC e Recepção têm checkout;
+          rodados com objetivo <b>Purchase</b>, o piso de cada um sai de{' '}
+          {money(RESUMO.crc.whatsapp)} para <b>{money(RESUMO.crc.purchase)}</b> por mês —{' '}
+          {RESUMO.crc.multiplo.toFixed(0)} vezes mais — e o total dos oito saltaria para{' '}
+          {money(RESUMO.crc.totalSeTodosPurchase)}. É a alavanca mais cara da página, e está a
+          um clique no simulador.
+        </p>
+
+        <p className="pj-nota">
+          A escada responde por {pct(RESUMO.pesoEscada, 0)} da receita projetada com o catálogo
+          inteiro no ar ({money(RESUMO.receitaEscada)}/mês) — e depende inteiramente de existir
+          alguém contactando a base.
+        </p>
       </div>
     </section>
   );
@@ -128,8 +214,6 @@ export function Fases() {
               <span className="pj-fase-n">{f.n}</span>
               <span className="pj-fase-quando">{f.quando}</span>
               <h3>{f.titulo}</h3>
-              <p className="pj-fase-verba">{f.verba}</p>
-              <p className="pj-fase-res">{f.resultado}</p>
               <p>{f.texto}</p>
             </article>
           ))}

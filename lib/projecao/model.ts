@@ -22,7 +22,11 @@
 /** Evento pelo qual o Meta otimiza a entrega. Muda TUDO no custo. */
 export type Objetivo = 'purchase' | 'whatsapp';
 
-export type ProdutoId = 'kit-f4' | 'maestria' | 'mentoria';
+/* O motor NÃO conhece produto nenhum: é genérico sobre o id, e o catálogo
+   (premissas.ts) é quem define quais existem. Antes `ProdutoId` morava aqui,
+   em contradição com o cabeçalho deste arquivo — e cada produto novo obrigava
+   a mexer no motor. */
+export type Tier = 'entrada' | 'meio' | 'alto';
 
 /* 365 / 12 / 7. Usar "4 semanas" subestimaria a verba mensal em ~8%, o que
    num piso de R$ 40 mil dá R$ 3,4 mil de diferença — dinheiro de verdade. */
@@ -87,7 +91,7 @@ export type Banda = { min: number; max: number; rotulo: string };
 /* Benchmark da Greenn: taxa média de conversão ponta-a-ponta por faixa de
    ticket. Quanto mais caro o produto, menos gente compra sem falar com
    alguém — daí a escada descendente. */
-const BANDAS: Array<{ ate: number; min: number; max: number; rotulo: string }> = [
+export const BANDAS: Array<{ ate: number; min: number; max: number; rotulo: string }> = [
   { ate: 100, min: 0.015, max: 0.05, rotulo: 'até R$ 100' },
   { ate: 500, min: 0.01, max: 0.03, rotulo: 'R$ 100 a R$ 500' },
   { ate: 2000, min: 0.008, max: 0.02, rotulo: 'R$ 500 a R$ 2.000' },
@@ -212,23 +216,24 @@ export type MesCaixa = {
  * clique e o pix passam semanas de conversa. Ignorar isso é o erro que
  * quebra o caixa — a projeção "fecha" no papel e falta dinheiro em março.
  */
-export function fluxoDeCaixa(
-  entradas: Array<{ resultado: Resultado; cicloDias: number }>,
-  meses = 6,
-): MesCaixa[] {
+/* Só o que o caixa precisa. Receber `Resultado` inteiro era demais — e
+   obrigava a UI a fabricar um Resultado falso só para a linha da escada. */
+export type EntradaCaixa = { verbaMensal: number; receita: number; cicloDias: number };
+
+export function fluxoDeCaixa(entradas: readonly EntradaCaixa[], meses = 6): MesCaixa[] {
   const linhas: MesCaixa[] = [];
 
   for (let mes = 1; mes <= meses; mes++) {
     let verbaAcum = 0;
     let receitaAcum = 0;
 
-    for (const { resultado, cicloDias } of entradas) {
+    for (const e of entradas) {
       /* A verba sai integral desde o mês 1 — anúncio se paga adiantado. */
-      verbaAcum += resultado.verbaMensal * mes;
+      verbaAcum += e.verbaMensal * mes;
       /* A receita não. `mesesMaduros` desconta o ciclo de fechamento: com 30
          dias de ciclo, o mês 1 rende zero e o acumulado anda um mês atrás. */
-      const mesesMaduros = Math.max(0, mes - cicloDias / 30);
-      receitaAcum += resultado.receita * mesesMaduros;
+      const mesesMaduros = Math.max(0, mes - e.cicloDias / 30);
+      receitaAcum += e.receita * mesesMaduros;
     }
 
     linhas.push({ mes, verbaAcum, receitaAcum, saldo: receitaAcum - verbaAcum });
@@ -240,94 +245,190 @@ export function fluxoDeCaixa(
 /* ============================================================
    A escada de produtos (cross-sell).
 
-   Acrescentada em 08/09/2026, depois que o Leo apontou o que faltava: quem
-   compra o Kit F4 entra numa base que a equipe do Dr. Sócrates CONTACTA —
-   e vende a Maestria ou a Mentoria. Quem compra a Maestria também sobe
-   para a Mentoria.
+   Quem compra um produto entra numa base que a equipe do Dr. Sócrates
+   CONTACTA — e sobe degrau. Isso não é detalhe: é o que decide se um produto
+   de entrada faz sentido. Pela venda direta o Kit F4 tem ROAS abaixo de 1 e
+   parece prejuízo; contando a escada, cada comprador vale várias vezes o
+   próprio ticket, porque uma fração pequena dele compra alto ticket.
 
-   Isto não é um detalhe de arredondamento: é o que decide se o Kit F4 faz
-   sentido. Olhando só a venda direta, ele tem ROAS 0,89 e parece prejuízo.
-   Contando a escada, cada comprador do Kit vale várias vezes os R$ 97 —
-   porque uma fração pequena dele compra um produto de R$ 15.000.
+   Generalizada em 08/09/2026 de 3 para 8 produtos. A cascata escrita à mão
+   (kitParaMaestria, kitParaMentoria, maestriaParaMentoria) não escala: com 8
+   produtos a matriz de todos-para-todos daria 56 pares, e ninguém calibra 56
+   números — 52 seriam o mesmo chute copiado. A granularidade em que a
+   premissa realmente existe é o PAR DE TIER, com um desconto para quem
+   cruza de trilha temática.
    ============================================================ */
 
+export type ParTier = 'entrada-meio' | 'entrada-alto' | 'meio-alto';
+
 export type TaxasEscada = {
-  /** Compradores do Kit que sobem para a Maestria. */
-  kitParaMaestria: number;
-  /** Compradores do Kit que vão direto à Mentoria (só os que NÃO subiram). */
-  kitParaMentoria: number;
-  /** Compradores da Maestria (diretos + vindos do Kit) que sobem à Mentoria. */
-  maestriaParaMentoria: number;
+  /** Fração da coorte do tier de baixo que sobe, por par de tier. */
+  porPar: Record<ParTier, number>;
+  /* Multiplicador quando origem e destino são de trilhas diferentes. Quem
+     comprou o Kit de GESTÃO tem menos chance de subir para a Mentoria de
+     ZIGOMÁTICO do que para a Consultoria — mas não zero: é o mesmo dentista,
+     na mesma base, recebendo a mesma ligação. */
+  crossTrilha: number;
 };
 
-export type Escada = {
-  kitParaMaestria: number;
-  kitParaMentoria: number;
-  maestriaParaMentoria: number;
-  /** Vendas totais por produto, já somando as que vieram da escada. */
-  maestriaTotal: number;
-  mentoriaTotal: number;
+/** O que o motor precisa saber de um produto para montar a escada. */
+export type NoEscada<Id extends string = string> = {
+  id: Id;
+  tier: Tier;
+  /** O motor não sabe quais trilhas existem — só compara igualdade. */
+  trilha: string;
+  ticket: number;
+  /** Peso ao receber gente do tier de baixo, relativo aos irmãos do tier. */
+  peso: number;
+  /* Vendas vindas de anúncio. Zero quando não há campanha no ar — e o produto
+     CONTINUA sendo destino da escada, porque a equipe comercial vende para a
+     base mesmo sem anúncio nenhum. Essa é a tese da página, então o motor não
+     tem noção de "ligado/desligado": só de venda direta. */
+  vendasDiretas: number;
+};
+
+export type FluxoEscada<Id extends string = string> = {
+  de: Id;
+  para: Id;
+  deTier: Tier;
+  paraTier: Tier;
+  crossTrilha: boolean;
+  pessoas: number;
+  receita: number;
+};
+
+export type Escada<Id extends string = string> = {
+  /** Arestas realizadas, para a UI listar os degraus que pesam. */
+  fluxos: FluxoEscada<Id>[];
+  /** Agregados que casam 1:1 com os sliders. */
+  porPar: Record<ParTier, { pessoas: number; receita: number }>;
+  vendasTotais: Record<Id, number>;
+  vendasCruzadas: Record<Id, number>;
   receitaDireta: number;
   receitaCruzada: number;
   receitaTotal: number;
-  /** Quanto vale um comprador do Kit ao longo da escada inteira. */
-  ltvKit: number;
-  ltvMaestria: number;
 };
+
+const PASSES: Array<{ de: Tier; para: Tier; par: ParTier }> = [
+  { de: 'entrada', para: 'meio', par: 'entrada-meio' },
+  /* Salto direto entrada→alto: só quem SOBROU do passe anterior. É o antigo
+     `(kit - kitParaMaestria) * taxa`, generalizado. */
+  { de: 'entrada', para: 'alto', par: 'entrada-alto' },
+  /* Lê o que o primeiro passe depositou no meio: é o antigo
+     `maestriaTotal = direta + vindos do kit`. */
+  { de: 'meio', para: 'alto', par: 'meio-alto' },
+];
 
 /**
  * Distribui os compradores diretos pela escada.
  *
- * ⚠️ A ordem importa para não contar a mesma pessoa duas vezes: quem sobe do
- * Kit para a Maestria sai do bolo que pode ir direto do Kit para a Mentoria,
- * e reentra depois pela porta da Maestria. Sem isso a projeção venderia a
- * Mentoria duas vezes para o mesmo comprador.
+ * ⚠️ A ORDEM DA NORMALIZAÇÃO é a regra que faz o modelo funcionar:
+ *
+ *     share_q    = peso_q / Σ peso_q                        (pesos BRUTOS)
+ *     fluxo(p→q) = coorte × taxa × share_q × fator(p,q)     (fator DEPOIS)
+ *
+ * Normalizar os pesos já multiplicados pelo fator de trilha faria a soma
+ * voltar a 1, e o desconto viraria mera REDISTRIBUIÇÃO — o comprador do Kit
+ * de Gestão subiria para a Maestria Zigomática na mesma taxa de sempre e o
+ * `crossTrilha` seria enfeite. Normalizando os brutos, `Σ share × fator ≤ 1`:
+ * quem não subiu por incompatibilidade de trilha FICA na coorte e ainda pode
+ * pegar o degrau seguinte.
+ *
+ * ⚠️ E ninguém é contado duas vezes: `restante` é debitado a cada promoção,
+ * enquanto `total` acumula para o placar. Sem essa separação a projeção
+ * venderia a mesma mentoria duas vezes para a mesma pessoa.
  */
-export function calcularEscada(
-  vendasDiretas: Record<ProdutoId, number>,
-  tickets: Record<ProdutoId, number>,
+export function calcularEscada<Id extends string>(
+  nos: ReadonlyArray<NoEscada<Id>>,
   t: TaxasEscada,
-): Escada {
-  const kit = vendasDiretas['kit-f4'];
+): Escada<Id> {
+  const doTier = (tier: Tier) => nos.filter((n) => n.tier === tier);
 
-  const kitParaMaestria = kit * t.kitParaMaestria;
-  /* Só quem ficou: quem já subiu para a Maestria será contado adiante. */
-  const kitParaMentoria = (kit - kitParaMaestria) * t.kitParaMentoria;
+  const restante = new Map<Id, number>(nos.map((n) => [n.id, n.vendasDiretas]));
+  const total = new Map<Id, number>(nos.map((n) => [n.id, n.vendasDiretas]));
+  const fluxos: FluxoEscada<Id>[] = [];
 
-  const maestriaTotal = vendasDiretas.maestria + kitParaMaestria;
-  const maestriaParaMentoria = maestriaTotal * t.maestriaParaMentoria;
+  /** Promove uma coorte para um tier. Devolve quanta gente efetivamente subiu. */
+  function distribuir(origem: NoEscada<Id>, coorte: number, destinoTier: Tier, taxa: number) {
+    const destinos = doTier(destinoTier).filter((d) => d.id !== origem.id);
+    const somaPesos = destinos.reduce((a, d) => a + d.peso, 0);
+    if (coorte <= 0 || taxa <= 0 || somaPesos <= 0) return 0;
 
-  const mentoriaTotal = vendasDiretas.mentoria + kitParaMentoria + maestriaParaMentoria;
+    let promovidos = 0;
+    for (const d of destinos) {
+      const cross = d.trilha !== origem.trilha;
+      const pessoas = coorte * taxa * (d.peso / somaPesos) * (cross ? t.crossTrilha : 1);
+      if (pessoas <= 0) continue;
+      promovidos += pessoas;
+      /* Quem chega entra nas DUAS contas: conta como venda e fica elegível
+         ao passe seguinte. */
+      total.set(d.id, (total.get(d.id) ?? 0) + pessoas);
+      restante.set(d.id, (restante.get(d.id) ?? 0) + pessoas);
+      fluxos.push({
+        de: origem.id,
+        para: d.id,
+        deTier: origem.tier,
+        paraTier: d.tier,
+        crossTrilha: cross,
+        pessoas,
+        receita: pessoas * d.ticket,
+      });
+    }
+    return promovidos;
+  }
 
-  const receitaDireta =
-    kit * tickets['kit-f4'] +
-    vendasDiretas.maestria * tickets.maestria +
-    vendasDiretas.mentoria * tickets.mentoria;
+  for (const passe of PASSES) {
+    for (const n of doTier(passe.de)) {
+      const coorte = restante.get(n.id) ?? 0;
+      const subiu = distribuir(n, coorte, passe.para, t.porPar[passe.par]);
+      restante.set(n.id, coorte - subiu);
+    }
+  }
 
-  const receitaCruzada =
-    kitParaMaestria * tickets.maestria +
-    (kitParaMentoria + maestriaParaMentoria) * tickets.mentoria;
+  const receitaDireta = nos.reduce((a, n) => a + n.vendasDiretas * n.ticket, 0);
+  const receitaCruzada = fluxos.reduce((a, f) => a + f.receita, 0);
 
-  /* LTV de um comprador do Kit: o próprio ticket mais o valor esperado de
-     cada degrau acima, com as mesmas exclusões da conta de cima. */
-  const ltvKit =
-    tickets['kit-f4'] +
-    t.kitParaMaestria * tickets.maestria +
-    (1 - t.kitParaMaestria) * t.kitParaMentoria * tickets.mentoria +
-    t.kitParaMaestria * t.maestriaParaMentoria * tickets.mentoria;
-
-  const ltvMaestria = tickets.maestria + t.maestriaParaMentoria * tickets.mentoria;
+  const porPar: Escada<Id>['porPar'] = {
+    'entrada-meio': { pessoas: 0, receita: 0 },
+    'entrada-alto': { pessoas: 0, receita: 0 },
+    'meio-alto': { pessoas: 0, receita: 0 },
+  };
+  for (const f of fluxos) {
+    const k = `${f.deTier}-${f.paraTier}` as ParTier;
+    porPar[k].pessoas += f.pessoas;
+    porPar[k].receita += f.receita;
+  }
 
   return {
-    kitParaMaestria,
-    kitParaMentoria,
-    maestriaParaMentoria,
-    maestriaTotal,
-    mentoriaTotal,
+    fluxos,
+    porPar,
+    vendasTotais: Object.fromEntries(total) as Record<Id, number>,
+    vendasCruzadas: Object.fromEntries(
+      nos.map((n) => [n.id, (total.get(n.id) ?? 0) - n.vendasDiretas]),
+    ) as Record<Id, number>,
     receitaDireta,
     receitaCruzada,
     receitaTotal: receitaDireta + receitaCruzada,
-    ltvKit,
-    ltvMaestria,
   };
+}
+
+/**
+ * LTV de cada produto: a receita que a cascata inteira gera para UMA compra.
+ *
+ * Reusa o próprio motor em vez de repetir a fórmula. A versão anterior tinha
+ * o LTV como fórmula fechada que replicava à mão a lógica da cascata — com 8
+ * produtos seria impossível de escrever e sairia de sincronia no primeiro
+ * ajuste. Rodando o mesmo algoritmo com um comprador só, é impossível
+ * divergir. Custo: N execuções de uma função O(N²) com N=8, irrelevante.
+ */
+export function ltvPorProduto<Id extends string>(
+  nos: ReadonlyArray<NoEscada<Id>>,
+  t: TaxasEscada,
+): Record<Id, number> {
+  const saida = {} as Record<Id, number>;
+  for (const alvo of nos) {
+    const unitario = nos.map((n) => ({ ...n, vendasDiretas: n.id === alvo.id ? 1 : 0 }));
+    saida[alvo.id] = calcularEscada(unitario, t).receitaTotal;
+  }
+  return saida;
 }
