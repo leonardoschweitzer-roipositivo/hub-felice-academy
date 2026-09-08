@@ -236,3 +236,98 @@ export function fluxoDeCaixa(
 
   return linhas;
 }
+
+/* ============================================================
+   A escada de produtos (cross-sell).
+
+   Acrescentada em 08/09/2026, depois que o Leo apontou o que faltava: quem
+   compra o Kit F4 entra numa base que a equipe do Dr. Sócrates CONTACTA —
+   e vende a Maestria ou a Mentoria. Quem compra a Maestria também sobe
+   para a Mentoria.
+
+   Isto não é um detalhe de arredondamento: é o que decide se o Kit F4 faz
+   sentido. Olhando só a venda direta, ele tem ROAS 0,89 e parece prejuízo.
+   Contando a escada, cada comprador do Kit vale várias vezes os R$ 97 —
+   porque uma fração pequena dele compra um produto de R$ 15.000.
+   ============================================================ */
+
+export type TaxasEscada = {
+  /** Compradores do Kit que sobem para a Maestria. */
+  kitParaMaestria: number;
+  /** Compradores do Kit que vão direto à Mentoria (só os que NÃO subiram). */
+  kitParaMentoria: number;
+  /** Compradores da Maestria (diretos + vindos do Kit) que sobem à Mentoria. */
+  maestriaParaMentoria: number;
+};
+
+export type Escada = {
+  kitParaMaestria: number;
+  kitParaMentoria: number;
+  maestriaParaMentoria: number;
+  /** Vendas totais por produto, já somando as que vieram da escada. */
+  maestriaTotal: number;
+  mentoriaTotal: number;
+  receitaDireta: number;
+  receitaCruzada: number;
+  receitaTotal: number;
+  /** Quanto vale um comprador do Kit ao longo da escada inteira. */
+  ltvKit: number;
+  ltvMaestria: number;
+};
+
+/**
+ * Distribui os compradores diretos pela escada.
+ *
+ * ⚠️ A ordem importa para não contar a mesma pessoa duas vezes: quem sobe do
+ * Kit para a Maestria sai do bolo que pode ir direto do Kit para a Mentoria,
+ * e reentra depois pela porta da Maestria. Sem isso a projeção venderia a
+ * Mentoria duas vezes para o mesmo comprador.
+ */
+export function calcularEscada(
+  vendasDiretas: Record<ProdutoId, number>,
+  tickets: Record<ProdutoId, number>,
+  t: TaxasEscada,
+): Escada {
+  const kit = vendasDiretas['kit-f4'];
+
+  const kitParaMaestria = kit * t.kitParaMaestria;
+  /* Só quem ficou: quem já subiu para a Maestria será contado adiante. */
+  const kitParaMentoria = (kit - kitParaMaestria) * t.kitParaMentoria;
+
+  const maestriaTotal = vendasDiretas.maestria + kitParaMaestria;
+  const maestriaParaMentoria = maestriaTotal * t.maestriaParaMentoria;
+
+  const mentoriaTotal = vendasDiretas.mentoria + kitParaMentoria + maestriaParaMentoria;
+
+  const receitaDireta =
+    kit * tickets['kit-f4'] +
+    vendasDiretas.maestria * tickets.maestria +
+    vendasDiretas.mentoria * tickets.mentoria;
+
+  const receitaCruzada =
+    kitParaMaestria * tickets.maestria +
+    (kitParaMentoria + maestriaParaMentoria) * tickets.mentoria;
+
+  /* LTV de um comprador do Kit: o próprio ticket mais o valor esperado de
+     cada degrau acima, com as mesmas exclusões da conta de cima. */
+  const ltvKit =
+    tickets['kit-f4'] +
+    t.kitParaMaestria * tickets.maestria +
+    (1 - t.kitParaMaestria) * t.kitParaMentoria * tickets.mentoria +
+    t.kitParaMaestria * t.maestriaParaMentoria * tickets.mentoria;
+
+  const ltvMaestria = tickets.maestria + t.maestriaParaMentoria * tickets.mentoria;
+
+  return {
+    kitParaMaestria,
+    kitParaMentoria,
+    maestriaParaMentoria,
+    maestriaTotal,
+    mentoriaTotal,
+    receitaDireta,
+    receitaCruzada,
+    receitaTotal: receitaDireta + receitaCruzada,
+    ltvKit,
+    ltvMaestria,
+  };
+}

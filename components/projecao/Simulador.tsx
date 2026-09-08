@@ -5,20 +5,22 @@ import { useState } from 'react';
 import {
   projetar,
   fluxoDeCaixa,
+  calcularEscada,
   taxaConversaVenda,
   CONVERSOES_APRENDIZAGEM,
   type Premissas,
   type ProdutoId,
   type Resultado,
+  type TaxasEscada,
 } from '@/lib/projecao/model';
 import {
-  PRODUTOS, CENARIOS, PREMISSAS, money, pct, num,
+  PRODUTOS, CENARIOS, PREMISSAS, ESCADA, CICLO_ESCADA_DIAS, money, pct, num,
   type CenarioId,
 } from '@/lib/projecao/premissas';
 import { Funil, type EtapaFunil } from './charts/Funil';
 import { BarraAlocacao } from './charts/BarraAlocacao';
 import { CurvaCaixa } from './charts/CurvaCaixa';
-import { SIMULADOR } from './content';
+import { SIMULADOR, ESCADA_TXT } from './content';
 
 /* ============================================================
    O simulador. Único componente com estado da página inteira.
@@ -40,6 +42,8 @@ type Ativos = Record<ProdutoId, boolean>;
 
 const FATOR_INICIAL: Fatores = { 'kit-f4': 1, maestria: 1, mentoria: 1 };
 
+const TICKETS: Record<ProdutoId, number> = { 'kit-f4': 97, maestria: 997, mentoria: 15000 };
+
 function clonar(cen: CenarioId): Estado {
   return {
     'kit-f4': { ...PREMISSAS[cen]['kit-f4'] },
@@ -53,11 +57,13 @@ export function Simulador() {
   const [prem, setPrem] = useState<Estado>(() => clonar('realista'));
   const [fatores, setFatores] = useState<Fatores>(FATOR_INICIAL);
   const [ativos, setAtivos] = useState<Ativos>({ 'kit-f4': true, maestria: true, mentoria: true });
+  const [escada, setEscada] = useState<TaxasEscada>(() => ({ ...ESCADA.realista }));
 
   function trocarCenario(id: CenarioId) {
     setCenario(id);
     setPrem(clonar(id));
     setFatores(FATOR_INICIAL);
+    setEscada({ ...ESCADA[id] });
   }
 
   function editar(id: ProdutoId, campo: keyof Premissas, valor: number) {
@@ -72,11 +78,33 @@ export function Simulador() {
 
   const ligados = resultados.filter((r) => ativos[r.produto.id]);
   const verbaTotal = ligados.reduce((a, r) => a + r.resultado.verbaMensal, 0);
-  const receitaTotal = ligados.reduce((a, r) => a + r.resultado.receita, 0);
+
+  /* Produto desligado entra na escada com zero venda — assim dá para ver o
+     que a base do Kit alimenta nos degraus de cima simplesmente desligando
+     o Kit e olhando a Mentoria cair. */
+  const vendasDiretas = {
+    'kit-f4': ativos['kit-f4'] ? resultados[0].resultado.vendas : 0,
+    maestria: ativos.maestria ? resultados[1].resultado.vendas : 0,
+    mentoria: ativos.mentoria ? resultados[2].resultado.vendas : 0,
+  } as Record<ProdutoId, number>;
+
+  const esc = calcularEscada(vendasDiretas, TICKETS, escada);
+  const receitaTotal = esc.receitaTotal;
+
   const caixa = fluxoDeCaixa(
-    ligados.map((r) => ({ resultado: r.resultado, cicloDias: r.premissas.cicloDias })),
+    [
+      ...ligados.map((r) => ({ resultado: r.resultado, cicloDias: r.premissas.cicloDias })),
+      /* A receita da escada entra como uma linha própria, com ciclo bem mais
+         longo: nutrir e fechar o degrau de cima leva cerca de 60 dias. */
+      {
+        resultado: { ...resultados[0].resultado, verbaMensal: 0, receita: esc.receitaCruzada },
+        cicloDias: CICLO_ESCADA_DIAS,
+      },
+    ],
     6,
   );
+
+  const cacKit = resultados[0].resultado.cac;
 
   return (
     <section className="sec pj-sim" id="simulador">
@@ -106,7 +134,7 @@ export function Simulador() {
         <div className="pj-resumo">
           <div className="pj-resumo-nums">
             <div><b>{money(verbaTotal)}</b><span>verba por mês</span></div>
-            <div><b>{money(receitaTotal)}</b><span>receita projetada</span></div>
+            <div><b>{money(receitaTotal)}</b><span>receita com a escada</span></div>
             <div>
               <b className={receitaTotal >= verbaTotal ? 'ok' : 'ruim'}>
                 {verbaTotal > 0 ? `${(receitaTotal / verbaTotal).toFixed(2)}×` : '—'}
@@ -151,6 +179,79 @@ export function Simulador() {
               onEditar={(campo, valor) => editar(produto.id, campo, valor)}
             />
           ))}
+        </div>
+
+        {/* ---------- escada de produtos ---------- */}
+        <div className="pj-escada">
+          <div className="pj-escada-head">
+            <span className="eyebrow">{ESCADA_TXT.eyebrow}</span>
+            <h3>{ESCADA_TXT.h2}</h3>
+            <p className="pj-nota">{ESCADA_TXT.lead}</p>
+            <ul className="pj-degraus">
+              {ESCADA_TXT.degraus.map((d) => (
+                <li key={`${d.de}-${d.para}`}>
+                  <span className="pj-degrau-de">{d.de}</span>
+                  <span className="pj-degrau-seta" aria-hidden="true">→</span>
+                  <span className="pj-degrau-para">{d.para}</span>
+                  <small>{d.nota}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="pj-escada-body">
+            <div className="pj-escada-campos">
+              <Campo
+                rot="Kit F4 → Maestria" valor={escada.kitParaMaestria} fmt={(v) => pct(v, 1)}
+                min={0} max={0.25} passo={0.005} bruto={escada.kitParaMaestria}
+                onChange={(v) => setEscada((e) => ({ ...e, kitParaMaestria: v }))}
+                dica={`${num(esc.kitParaMaestria, 1)} vendas/mês`}
+              />
+              <Campo
+                rot="Kit F4 → Mentoria" valor={escada.kitParaMentoria} fmt={(v) => pct(v, 1)}
+                min={0} max={0.08} passo={0.002} bruto={escada.kitParaMentoria}
+                onChange={(v) => setEscada((e) => ({ ...e, kitParaMentoria: v }))}
+                dica={`${num(esc.kitParaMentoria, 1)} vendas/mês · só quem não subiu à Maestria`}
+              />
+              <Campo
+                rot="Maestria → Mentoria" valor={escada.maestriaParaMentoria} fmt={(v) => pct(v, 1)}
+                min={0} max={0.3} passo={0.005} bruto={escada.maestriaParaMentoria}
+                onChange={(v) => setEscada((e) => ({ ...e, maestriaParaMentoria: v }))}
+                dica={`${num(esc.maestriaParaMentoria, 1)} vendas/mês`}
+              />
+            </div>
+
+            <div className="pj-escada-saida">
+              <div className="pj-escada-ltv">
+                <span>Valor de um comprador do Kit F4</span>
+                <b>{money(esc.ltvKit)}</b>
+                <small>
+                  contra um CAC de {money(cacKit)} ·{' '}
+                  <strong className={esc.ltvKit / cacKit >= 3 ? 'forte' : 'fraco'}>
+                    LTV:CAC {cacKit > 0 ? (esc.ltvKit / cacKit).toFixed(2) : '—'}
+                  </strong>{' '}
+                  {esc.ltvKit / cacKit >= 3 ? '(meta ≥ 3 atingida)' : '(meta é ≥ 3)'}
+                </small>
+              </div>
+
+              <dl className="pj-out pj-out--escada">
+                <div><dt>Receita direta</dt><dd>{money(esc.receitaDireta)}</dd></div>
+                <div><dt>Receita da escada</dt><dd className="forte">{money(esc.receitaCruzada)}</dd></div>
+                <div>
+                  <dt>Mentorias no mês</dt>
+                  <dd>
+                    {num(esc.mentoriaTotal, 1)}
+                    <em>
+                      {' '}de {num(vendasDiretas.mentoria, 1)} diretas
+                    </em>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <p className="pj-nota">{ESCADA_TXT.nota}</p>
+          <p className="pj-destaque pj-destaque--aviso">{ESCADA_TXT.aviso}</p>
         </div>
 
         {/* ---------- caixa ---------- */}
