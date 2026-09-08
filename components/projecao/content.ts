@@ -6,9 +6,9 @@
 
 export const HERO = {
   eyebrow: 'Documento interno · 08/09/2026',
-  h1: 'Quanto custa colocar os três produtos no ar',
+  h1: 'Quanto custa colocar os produtos no ar',
   lead:
-    'Projeção de investimento em tráfego pago para o Kit Gestão F4, a Maestria Zigomática e a Mentoria de Gestão F4 — partindo da regra que define o piso da verba: 50 conversões por semana, por conjunto de anúncios.',
+    'Projeção de investimento em tráfego pago para os oito produtos da Felice Academy — do Kit de R$ 97 à Mentoria de R$ 15.000. Dá para simular um produto, uma trilha ou o catálogo inteiro, partindo da regra que define o piso da verba: 50 conversões por semana, por conjunto de anúncios.',
 };
 
 export const BENCHMARK = {
@@ -36,63 +36,66 @@ export const SIMULADOR = {
   eyebrow: 'Simulador',
   h2: 'Mexa nas premissas e veja o que muda',
   lead:
-    'Os três cenários abaixo são pontos de partida. Todo campo é editável — inclusive o preço de cada produto: mude o ticket, o CPM, o CTR, o custo por conversa ou a taxa de fechamento e a projeção inteira recalcula na hora, escada incluída.',
+    'Escolha os produtos, o cenário e mexa no que quiser. Todo campo é editável — inclusive o preço e o objetivo de campanha de cada produto: a projeção inteira recalcula na hora, escada incluída.',
   notaPreco:
     'Mexer no preço tem consequência dupla e o simulador mostra as duas: muda a receita, e muda a faixa de conversão que a Greenn espera daquele ticket. Subir o preço sem baixar a taxa de conversão faz o aviso da banda acender — é o sinal de que a premissa virou otimista demais.',
 };
 
 export const DESCOBERTA = {
   eyebrow: 'O que a projeção mostra',
-  h2: 'O Kit F4 só faz sentido por causa da escada — e aí faz muito',
+  h2: 'Lançar tudo é possível — e é a pior forma de gastar a mesma verba',
   paragrafos: [
-    'Olhando só a venda direta, o Kit F4 é o pior negócio do trio: consome 58% da verba e devolve ROAS 0,89. Manter 50 compras por semana num produto de R$ 97 custa mais do que ele devolve, porque o evento que o Meta persegue é a própria venda. Nenhum ajuste de segmentação conserta isso — é aritmética da regra das 50.',
-    'Só que o Kit não vende R$ 97. Ele entrega uma base de compradores que a equipe do Dr. Sócrates contacta — e uma fração dela sobe para a Maestria e para a Mentoria. Contando a escada, cada comprador do Kit vale cerca de R$ 349, contra um CAC de R$ 109: LTV:CAC de 3,2, dentro da meta.',
-    'A escada também muda de onde vem o faturamento da Mentoria. Das vendas projetadas por mês, cerca de metade não vem do anúncio da Mentoria: vem de quem entrou pelo Kit ou pela Maestria. A campanha de alto ticket não está sozinha — ela colhe o que os dois produtos de baixo plantaram.',
-    'A ressalva é grande e precisa ser dita: no cenário conservador, sem régua de contato ativa, o LTV do comprador do Kit cai para R$ 173 e o LTV:CAC vai a 0,58. O Kit F4 não é uma aposta no anúncio — é uma aposta na equipe comercial ligando para a base. Sem esse processo funcionando, ele perde dinheiro nos dois cenários.',
+    'Manter os oito produtos fora da fase de aprendizagem ao mesmo tempo é o cenário mais caro do catálogo, e o de pior retorno por real investido. Cada campanha nova carrega o próprio pedágio de 50 conversões semanais, e esse pedágio não escala com o tamanho do produto: o Kit de R$ 97 e a Mentoria de R$ 15.000 pagam o mesmo tipo de entrada.',
+    'Os dois produtos de porta de entrada são o centro do problema. Juntos consomem quase metade da verba total e são os únicos com ROAS de front-end abaixo de 1 — não por criativo ruim, mas por aritmética: manter 50 compras por semana num produto de R$ 97 custa mais do que ele devolve, porque o evento que o Meta persegue é a própria venda.',
+    'A escada não salva os dois automaticamente, e aqui está o achado menos óbvio da projeção: quanto MAIS produtos no catálogo, MENOS vale cada comprador de entrada. A fração da base que sobe de degrau é propriedade da base e da equipe comercial, não do número de ofertas — então acrescentar produtos não promove mais gente, apenas espalha a mesma coorte por destinos mais baratos. Com o catálogo inteiro no ar, o comprador do Kit tende a parar num produto de R$ 597 ou na Consultoria de R$ 6.000 em vez de chegar à Mentoria de R$ 15.000.',
+    'A conclusão prática não é "não lance". É que a ordem importa mais que a quantidade: concentrar verba em poucos produtos rende mais por real do que espalhá-la por todos, e a diferença não é pequena.',
   ],
 };
 
 export const FASES = {
   eyebrow: 'Recomendação',
-  h2: 'Começar pelos dois que se pagam sozinhos',
+  h2: 'Concentrar primeiro, abrir o catálogo depois',
   fases: [
     {
       n: 'Fase 1',
       quando: 'Meses 1 e 2',
-      titulo: 'Maestria + Mentoria',
-      verba: 'R$ 17.400/mês',
-      resultado: 'R$ 123.000/mês de receita projetada · ROAS 7,1',
+      titulo: 'Maestria + Mentoria de Gestão',
       texto:
-        'Os dois produtos de WhatsApp carregam o faturamento com uma fração da verba, e já entre eles existe escada: parte de quem compra a Maestria sobe para a Mentoria. Entram primeiro porque geram caixa desde o primeiro mês e porque o evento otimizado é barato — as 50 conversões semanais saem por muito menos do que custam no Kit.',
+        'Os dois produtos que se pagam sozinhos, e o melhor retorno por real de todos os recortes. Entram primeiro porque geram caixa desde o primeiro mês e porque o evento otimizado é barato — as 50 conversões semanais saem por uma fração do que custam num produto de entrada.',
     },
     {
       n: 'Fase 2',
       quando: 'A partir do mês 3',
-      titulo: 'Entra o Kit Gestão F4',
-      verba: '+ R$ 23.600/mês',
-      resultado: '+ R$ 75.900/mês de receita · ROAS marginal 3,2',
+      titulo: 'Uma trilha inteira, não o catálogo inteiro',
       texto:
-        'Entra quando a régua de contato da base já existir — e não antes. O que ele acrescenta não é o faturamento de R$ 97: é quase o dobro de vendas da Mentoria, alimentadas pela base que ele forma. Medido por LTV:CAC e por taxa de passagem para o backend, nunca pelo ROAS do gerenciador.',
+        'Com caixa no bolso, abrir a trilha de Gestão completa rende mais do que ligar os oito: mesmo público, mesma equipe, escada mais curta e mais cara no topo. A trilha de Zigomático fala com um público bem mais estreito — CPM maior — e tem o teto da escada em R$ 6.000 contra os R$ 15.000 da Gestão.',
+    },
+    {
+      n: 'Fase 3',
+      quando: 'Quando a régua de contato existir',
+      titulo: 'Os produtos de entrada',
+      texto:
+        'Kit F4 e Zigomático Descomplicado entram por último e medidos por LTV:CAC, nunca pelo ROAS do gerenciador. E só entram depois de existir processo de contato ativo na base: sem alguém ligando, eles não são porta de entrada, são só prejuízo com volume.',
     },
   ],
   ressalva:
-    'A ordem é essa por um motivo: sem processo de contato ativo na base do Kit, o LTV:CAC dele cai para 0,58 e ele vira prejuízo puro. O que decide a Fase 2 não é a verba disponível — é a equipe comercial estar ligando.',
+    'A ordem não é conservadorismo: é que verba concentrada em poucos produtos rende bem mais por real do que espalhada por todos, e um produto de entrada sem régua de contato não tem como se pagar.',
 };
 
 export const ESCADA_TXT = {
   eyebrow: 'A escada de produtos',
   h2: 'Quem compra barato é quem compra caro depois',
   lead:
-    'Os três produtos não são campanhas independentes: são degraus. Quem compra o Kit entra numa base que a equipe contacta, e parte dela sobe. Ignorar isso subestima o resultado — e leva a desligar justamente o produto que alimenta os outros.',
+    'Os produtos não são campanhas independentes: são degraus, em duas trilhas paralelas. Quem compra entra numa base que a equipe contacta, e parte dela sobe. Ignorar isso subestima o resultado — e leva a desligar justamente o produto que alimenta os outros.',
   degraus: [
-    { de: 'Kit F4', para: 'Maestria', nota: 'base contactada pela equipe, já compradora' },
-    { de: 'Kit F4', para: 'Mentoria', nota: 'salto direto de quem não passou pela Maestria' },
-    { de: 'Maestria', para: 'Mentoria', nota: 'inclui quem chegou à Maestria vindo do Kit' },
+    { de: 'Entrada', para: 'Meio', nota: 'Kit F4 → CRC/Recepção · Descomplicado → Maestria' },
+    { de: 'Entrada', para: 'Alto', nota: 'salto direto de quem não passou pelo meio' },
+    { de: 'Meio', para: 'Alto', nota: 'inclui quem chegou ao meio vindo da entrada' },
   ],
   nota:
-    'A conta não conta a mesma pessoa duas vezes: quem sobe do Kit para a Maestria sai do bolo que pode ir direto à Mentoria e reentra pela porta da Maestria. E a receita da escada não cai no mesmo mês — leva cerca de 60 dias entre a compra do Kit e o fechamento do degrau de cima, o que aparece no fluxo de caixa.',
+    'Três regras na conta. Ninguém é contado duas vezes: quem sobe da entrada para o meio sai do bolo que pode saltar direto ao alto e reentra pela porta do meio. Cruzar trilha custa: quem é de Gestão tem menos chance de subir para um produto de Zigomático — menos, não zero, é o mesmo dentista na mesma base. E a receita da escada não cai no mesmo mês: leva cerca de 60 dias entre a compra e o fechamento do degrau de cima.',
   aviso:
-    'Estas três taxas são as premissas mais incertas da página e as que mais mexem no resultado: no cenário realista respondem por 41% de toda a receita projetada. São o primeiro número a substituir por dado real assim que a base tiver histórico.',
+    'Um produto sem campanha continua recebendo escada — e isso não é bug: a equipe vende para a base mesmo sem anúncio no ar. É por isso que a Consultoria fatura aqui mesmo desligada. Estas taxas são as premissas mais incertas da página e as que mais mexem no resultado: são o primeiro número a substituir por dado real.',
 };
 
 export const METRICAS = {
@@ -174,7 +177,7 @@ export const PREMISSAS_AVISO = {
   eyebrow: 'Leia antes de decidir',
   h2: 'O que aqui é medido e o que é premissa',
   medido: [
-    'Preços dos três produtos (conferidos no código do site)',
+    'Preços dos oito produtos (conferidos no código do site)',
     'Taxas de conversão por faixa de ticket (benchmark da Greenn)',
     'A regra das 50 conversões em 7 dias (documentação do Meta)',
   ],
@@ -183,7 +186,9 @@ export const PREMISSAS_AVISO = {
     'Custo por conversa iniciada',
     'Todas as taxas do funil de atendimento (qualificação, agendamento, comparecimento, fechamento)',
     'A curva de saturação de 12% por dobra de verba',
-    'As três taxas da escada de produtos — as mais incertas de todas',
+    'As taxas da escada e o fator de cruzar trilha — as mais incertas de todas',
+    'Os pesos que decidem para qual produto do tier de cima cada pessoa sobe',
+    'O agrupamento em duas trilhas temáticas e em três patamares de ticket',
   ],
   compromisso:
     'A Felice nunca rodou tráfego nesses funis — não há histórico. Toda a projeção é benchmark externo mais premissa de mercado. Depois de 30 dias no ar, os números reais do gerenciador entram no lugar das premissas e esta página é reprojetada. Até lá, trate as faixas como ordem de grandeza, não como previsão.',

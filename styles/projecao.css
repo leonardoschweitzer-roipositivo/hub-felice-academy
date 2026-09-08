@@ -22,10 +22,13 @@
   --pj-apagado: #6b501a;
   --pj-branco: #f4efe4;
   --pj-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  /* Um TOM por produto, do escuro ao claro conforme o ticket sobe. */
-  --pj-kit: #7a5a18;
-  --pj-maestria: #c29433;
-  --pj-mentoria: #f5cd47;
+  /* Um tom por TIER, não por produto: com 8 produtos, oito amarelos seriam
+     indistinguíveis e não diriam nada. Por tier, a barra de alocação responde
+     de relance "quanto da verba está na porta de entrada?" — que é a pergunta
+     da página. A trilha vem por textura, um segundo canal independente. */
+  --pj-entrada: #7a5a18;
+  --pj-meio: #c29433;
+  --pj-alto: #f5cd47;
 }
 
 /* ---------- capa ---------- */
@@ -56,16 +59,13 @@
   max-width: 68ch;
 }
 
+/* auto-fit, e não `repeat(3,1fr)`: com 8 produtos a grade fixa deixava a
+   última linha com dois cards esticados na largura toda. */
 .felice-projecao .pj-hero-prods {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
   margin-top: 14px;
-}
-@media (max-width: 720px) {
-  .felice-projecao .pj-hero-prods {
-    grid-template-columns: 1fr;
-  }
 }
 .felice-projecao .pj-hero-prod {
   border: 1px solid var(--line);
@@ -78,7 +78,7 @@
 }
 .felice-projecao .pj-hero-prod b {
   font-family: var(--font-felice-display), 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   background: var(--grad-gold);
   -webkit-background-clip: text;
   background-clip: text;
@@ -284,14 +284,22 @@
   overflow: hidden;
   white-space: nowrap;
 }
-/* O texto acompanha o tom do fundo: creme sobre o amarelo escuro do Kit,
+/* O texto acompanha o tom do fundo: creme sobre o amarelo escuro da entrada,
    preto sobre os dois mais claros. Sem isso o "58%" some no segmento. */
-.felice-projecao .pj-aloc-seg--kit-f4 {
-  background: var(--pj-kit);
+.felice-projecao .pj-aloc-seg--entrada {
+  background: var(--pj-entrada);
   color: var(--pj-branco);
 }
-.felice-projecao .pj-aloc-seg--maestria { background: var(--pj-maestria); }
-.felice-projecao .pj-aloc-seg--mentoria { background: var(--pj-mentoria); }
+.felice-projecao .pj-aloc-seg--meio { background: var(--pj-meio); }
+.felice-projecao .pj-aloc-seg--alto { background: var(--pj-alto); }
+
+/* Trilha por textura: funciona sem cor e some numa impressão em cinza sem
+   levar informação junto, porque o tom já carrega o tier. */
+.felice-projecao .pj-aloc-tr--zigomatico {
+  background-image: repeating-linear-gradient(
+    135deg, rgba(0, 0, 0, 0.22) 0 4px, transparent 4px 9px
+  );
+}
 
 .felice-projecao .pj-aloc-leg {
   list-style: none;
@@ -314,9 +322,9 @@
   border-radius: 50%;
   margin-right: 7px;
 }
-.felice-projecao .pj-dot--kit-f4 { background: var(--pj-kit); }
-.felice-projecao .pj-dot--maestria { background: var(--pj-maestria); }
-.felice-projecao .pj-dot--mentoria { background: var(--pj-mentoria); }
+.felice-projecao .pj-dot--entrada { background: var(--pj-entrada); }
+.felice-projecao .pj-dot--meio { background: var(--pj-meio); }
+.felice-projecao .pj-dot--alto { background: var(--pj-alto); }
 
 /* ---------- cartões de produto ---------- */
 .felice-projecao .pj-grid {
@@ -333,9 +341,6 @@
   flex-direction: column;
   gap: 16px;
   transition: opacity 0.2s;
-}
-.felice-projecao .pj-card.is-off {
-  opacity: 0.42;
 }
 .felice-projecao .pj-card-head {
   display: flex;
@@ -617,14 +622,22 @@
 }
 
 /* ---------- fases ---------- */
-.felice-projecao .pj-fases-grid,
+.felice-projecao .pj-fases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
 .felice-projecao .pj-prem-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
+@media (max-width: 900px) {
+  .felice-projecao .pj-fases-grid {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 760px) {
-  .felice-projecao .pj-fases-grid,
   .felice-projecao .pj-prem-grid {
     grid-template-columns: 1fr;
   }
@@ -916,3 +929,223 @@
   font-style: normal;
   color: var(--muted-2);
 }
+
+/* ============================================================
+   Seleção de produtos (8 produtos, 08/09/2026).
+   ============================================================ */
+.felice-projecao .pj-selecao {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+.felice-projecao .pj-selecao-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.felice-projecao .pj-selecao-head b {
+  font-family: var(--pj-mono);
+  font-size: 0.82rem;
+  color: var(--pj-forte);
+}
+.felice-projecao .pj-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.felice-projecao .pj-preset {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.16s, color 0.16s, background 0.16s;
+}
+.felice-projecao .pj-preset:hover { border-color: var(--line); color: var(--text); }
+.felice-projecao .pj-preset.is-on {
+  border-color: var(--gold);
+  background: rgba(232, 180, 71, 0.12);
+  color: var(--pj-forte);
+}
+
+.felice-projecao .pj-chip-grupo {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-chip-grupo-rot {
+  flex: 0 0 92px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  padding-top: 7px;
+}
+.felice-projecao .pj-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.felice-projecao .pj-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  color: var(--muted-2);
+  cursor: pointer;
+  transition: border-color 0.16s, color 0.16s;
+}
+/* O checkbox some da vista mas NÃO do foco: `display:none` o tiraria da
+   navegação por teclado. Daí o clip + o :focus-within logo abaixo. */
+.felice-projecao .pj-chip input {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.felice-projecao .pj-chip:focus-within {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.felice-projecao .pj-chip em {
+  font-style: normal;
+  font-family: var(--pj-mono);
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+/* O tom da borda diz o tier, como na barra de alocação. */
+.felice-projecao .pj-chip.is-on { color: var(--text); }
+.felice-projecao .pj-chip--entrada.is-on { border-color: var(--pj-entrada); }
+.felice-projecao .pj-chip--meio.is-on { border-color: var(--pj-meio); }
+.felice-projecao .pj-chip--alto.is-on { border-color: var(--pj-alto); }
+.felice-projecao .pj-chip.is-on::before { content: '✓'; color: var(--pj-forte); }
+
+.felice-projecao .pj-vazio {
+  text-align: center;
+  color: var(--muted-2);
+  padding: 40px 0;
+  border: 1px dashed var(--line-soft);
+  border-radius: var(--r-lg);
+}
+
+/* ---------- seletor de objetivo ---------- */
+.felice-projecao .pj-seg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.felice-projecao .pj-seg-btn {
+  font: inherit;
+  font-size: 0.74rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+.felice-projecao .pj-seg-btn.is-on {
+  border-color: var(--gold);
+  color: var(--pj-forte);
+  background: rgba(232, 180, 71, 0.1);
+}
+.felice-projecao .pj-seg-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.felice-projecao .pj-seg-aviso {
+  font-style: normal;
+  font-size: 0.7rem;
+  color: var(--muted-2);
+}
+
+/* ---------- cartão: borda pelo tier, botão de tirar do ar ---------- */
+.felice-projecao .pj-card--entrada { border-left: 2px solid var(--pj-entrada); }
+.felice-projecao .pj-card--meio { border-left: 2px solid var(--pj-meio); }
+.felice-projecao .pj-card--alto { border-left: 2px solid var(--pj-alto); }
+.felice-projecao .pj-tirar {
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--muted-2);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.felice-projecao .pj-tirar:hover { border-color: var(--gold); color: var(--pj-forte); }
+.felice-projecao .pj-tag--gestao { border-color: rgba(232, 180, 71, 0.3); color: var(--pj-medio); }
+.felice-projecao .pj-tag--zigomatico { border-color: rgba(248, 218, 116, 0.35); color: var(--pj-forte); }
+
+/* ---------- densidade compacta acima de 4 cartões ---------- */
+/* Passando de 4 produtos o simulador ia a mais de 5.000px de rolagem. Campos
+   em 2 colunas cortam ~40% da altura sem esconder controle nenhum: todo
+   slider continua visível e operável. */
+.felice-projecao .pj-grid--compacto .pj-campos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 14px;
+}
+.felice-projecao .pj-grid--compacto .pj-campo--largo { grid-column: 1 / -1; }
+
+/* ---------- diagnóstico recolhível ---------- */
+.felice-projecao .pj-diag > summary {
+  cursor: pointer;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  padding: 8px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-diag > summary:hover { color: var(--gold); }
+.felice-projecao .pj-diag[open] > summary { margin-bottom: 10px; }
+
+/* ---------- tabelas da escada ---------- */
+.felice-projecao .pj-ltv {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.felice-projecao .pj-ltv th {
+  text-align: left;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  font-weight: 600;
+  padding: 0 8px 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-ltv td {
+  padding: 9px 8px 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--muted);
+}
+.felice-projecao .pj-ltv tr:last-child td { border-bottom: 0; }
+.felice-projecao .pj-ltv td:first-child { color: var(--text); }
+.felice-projecao .pj-ltv tr.is-apagado td { opacity: 0.55; }
+.felice-projecao .pj-ltv em {
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--muted-2);
+}
+.felice-projecao .pj-ltv th:not(:first-child),
+.felice-projecao .pj-ltv td:not(:first-child) { text-align: right; }
