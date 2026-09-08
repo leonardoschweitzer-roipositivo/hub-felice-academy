@@ -1,0 +1,767 @@
+/* ============================================================
+   /projecao-trafego — projeção de investimento em tráfego.
+
+   Só o que o felice.css não tem. Tudo escopado em `.felice-projecao` e com
+   as classes prefixadas `pj-`, porque o wrapper `.felice` é compartilhado
+   por todas as landings do site — regra sem prefixo aqui vazaria para elas.
+
+   Cores, fontes, .wrap, .sec, .sec-head, .eyebrow, .lead, .display e
+   .divider vêm do felice.css.
+   ============================================================ */
+
+.felice-projecao {
+  --pj-ok: #5fae86;
+  --pj-ruim: #e0655f;
+  --pj-aviso: #d8a13a;
+  --pj-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Uma cor por produto, usada na barra de alocação e nas legendas. */
+  --pj-kit: #6f93c4;
+  --pj-maestria: #5fae86;
+  --pj-mentoria: #e8b447;
+}
+
+/* ---------- capa ---------- */
+.felice-projecao .pj-hero {
+  padding: clamp(56px, 8vw, 96px) 0 clamp(36px, 5vw, 56px);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(760px 300px at 12% -10%, rgba(232, 180, 71, 0.13), transparent 62%);
+  pointer-events: none;
+}
+.felice-projecao .pj-hero-in {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.felice-projecao .pj-hero h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  max-width: 18ch;
+}
+.felice-projecao .pj-hero .lead {
+  max-width: 68ch;
+}
+
+.felice-projecao .pj-hero-prods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+@media (max-width: 720px) {
+  .felice-projecao .pj-hero-prods {
+    grid-template-columns: 1fr;
+  }
+}
+.felice-projecao .pj-hero-prod {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--card);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.felice-projecao .pj-hero-prod b {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice-projecao .pj-hero-prod span {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.felice-projecao .pj-hero-prod small {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------- prosa e destaques ---------- */
+.felice-projecao .pj-prosa {
+  max-width: 72ch;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+.felice-projecao .pj-prosa p {
+  margin: 0;
+}
+.felice-projecao .pj-destaque {
+  margin: 34px 0 0;
+  padding: 20px 24px;
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(90deg, rgba(232, 180, 71, 0.08), transparent 70%);
+  border-radius: 0 var(--r) var(--r) 0;
+  color: var(--text);
+  max-width: 82ch;
+}
+.felice-projecao .pj-destaque--aviso {
+  border-left-color: var(--pj-aviso);
+  background: linear-gradient(90deg, rgba(216, 161, 58, 0.1), transparent 70%);
+}
+.felice-projecao .pj-nota {
+  margin-top: 18px;
+  color: var(--muted-2);
+  font-size: 0.88rem;
+  max-width: 78ch;
+}
+
+/* ---------- tabela do benchmark ---------- */
+.felice-projecao .pj-tabela-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.felice-projecao .pj-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+  background: var(--card);
+}
+.felice-projecao .pj-tabela th,
+.felice-projecao .pj-tabela td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.92rem;
+}
+.felice-projecao .pj-tabela th {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.felice-projecao .pj-tabela tr:last-child td {
+  border-bottom: 0;
+}
+.felice-projecao .pj-tabela tr.is-nosso {
+  background: rgba(232, 180, 71, 0.06);
+}
+.felice-projecao .pj-tabela tr.is-nosso td:last-child {
+  color: var(--gold-bright);
+}
+.felice-projecao .pj-mono {
+  font-family: var(--pj-mono);
+  font-size: 0.86rem !important;
+}
+
+/* ---------- simulador: cenários ---------- */
+.felice-projecao .pj-cenarios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+@media (max-width: 760px) {
+  .felice-projecao .pj-cenarios {
+    grid-template-columns: 1fr;
+  }
+}
+.felice-projecao .pj-cen {
+  text-align: left;
+  padding: 16px 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.felice-projecao .pj-cen:hover {
+  border-color: var(--line);
+  transform: translateY(-2px);
+}
+.felice-projecao .pj-cen.is-on {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(232, 180, 71, 0.1), var(--card));
+}
+.felice-projecao .pj-cen b {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  color: var(--text);
+  font-size: 1.02rem;
+}
+.felice-projecao .pj-cen.is-on b {
+  color: var(--gold-bright);
+}
+.felice-projecao .pj-cen span {
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+/* ---------- simulador: resumo ---------- */
+.felice-projecao .pj-resumo {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, var(--card-2), var(--card));
+  padding: clamp(20px, 3vw, 30px);
+  margin-bottom: 28px;
+}
+.felice-projecao .pj-resumo-nums {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 760px) {
+  .felice-projecao .pj-resumo-nums {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 14px;
+  }
+}
+.felice-projecao .pj-resumo-nums b {
+  display: block;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.05;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* ok/ruim precisam vencer o gradiente dourado do b acima: sem cor sólida
+   E sem desligar o background-clip, o texto sairia transparente. */
+.felice-projecao .pj-resumo-nums b.ok,
+.felice-projecao .pj-resumo-nums b.ruim {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+.felice-projecao .pj-resumo-nums b.ok { color: var(--pj-ok); }
+.felice-projecao .pj-resumo-nums b.ruim { color: var(--pj-ruim); }
+.felice-projecao .pj-resumo-nums span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- barra de alocação ---------- */
+.felice-projecao .pj-aloc {
+  margin-top: 26px;
+}
+.felice-projecao .pj-aloc-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-aloc-seg {
+  width: var(--w);
+  display: grid;
+  place-items: center;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #0b0b0d;
+  transition: width 0.25s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.felice-projecao .pj-aloc-seg--kit-f4 { background: var(--pj-kit); }
+.felice-projecao .pj-aloc-seg--maestria { background: var(--pj-maestria); }
+.felice-projecao .pj-aloc-seg--mentoria { background: var(--pj-mentoria); }
+
+.felice-projecao .pj-aloc-leg {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.felice-projecao .pj-aloc-leg b {
+  color: var(--text);
+  font-weight: 600;
+}
+.felice-projecao .pj-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.felice-projecao .pj-dot--kit-f4 { background: var(--pj-kit); }
+.felice-projecao .pj-dot--maestria { background: var(--pj-maestria); }
+.felice-projecao .pj-dot--mentoria { background: var(--pj-mentoria); }
+
+/* ---------- cartões de produto ---------- */
+.felice-projecao .pj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 18px;
+}
+.felice-projecao .pj-card {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 0.2s;
+}
+.felice-projecao .pj-card.is-off {
+  opacity: 0.42;
+}
+.felice-projecao .pj-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.felice-projecao .pj-card-head h3 {
+  margin: 0 0 4px;
+  font-size: 1.18rem;
+}
+.felice-projecao .pj-papel {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.felice-projecao .pj-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.felice-projecao .pj-toggle input {
+  accent-color: var(--gold);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.felice-projecao .pj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.felice-projecao .pj-tag {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.felice-projecao .pj-tag--whatsapp {
+  border-color: rgba(95, 174, 134, 0.4);
+  color: var(--pj-ok);
+}
+.felice-projecao .pj-tag--purchase {
+  border-color: rgba(111, 147, 196, 0.4);
+  color: var(--pj-kit);
+}
+.felice-projecao .pj-tag--evt {
+  border-color: rgba(232, 180, 71, 0.3);
+  color: var(--gold);
+}
+
+/* aviso da fase de aprendizagem */
+.felice-projecao .pj-aprend {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  padding: 12px 14px;
+  border-radius: var(--r);
+  border: 1px solid;
+}
+.felice-projecao .pj-aprend.ok {
+  border-color: rgba(95, 174, 134, 0.32);
+  background: rgba(95, 174, 134, 0.08);
+  color: var(--muted);
+}
+.felice-projecao .pj-aprend.alerta {
+  border-color: rgba(224, 101, 95, 0.36);
+  background: rgba(224, 101, 95, 0.08);
+  color: #eab9b6;
+}
+.felice-projecao .pj-aprend b {
+  color: var(--text);
+}
+
+/* ---------- controles ---------- */
+.felice-projecao .pj-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.felice-projecao .pj-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.felice-projecao .pj-campo-rot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.felice-projecao .pj-campo-rot b {
+  font-family: var(--pj-mono);
+  font-size: 0.84rem;
+  color: var(--gold-bright);
+}
+.felice-projecao .pj-campo small {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+}
+.felice-projecao .pj-campo input[type='range'] {
+  width: 100%;
+  accent-color: var(--gold);
+  cursor: pointer;
+  height: 3px;
+}
+
+/* ---------- funil ---------- */
+.felice-projecao .pj-funil {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-funil-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.felice-projecao .pj-funil-val {
+  font-family: var(--pj-mono);
+  color: var(--text);
+}
+.felice-projecao .pj-funil-track {
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+.felice-projecao .pj-funil-fill {
+  height: 100%;
+  width: var(--w);
+  border-radius: 999px;
+  background: var(--grad-gold);
+  transition: width 0.25s ease;
+}
+.felice-projecao .pj-funil-pass {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: var(--muted-2);
+}
+
+/* ---------- saída ---------- */
+.felice-projecao .pj-out {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 10px;
+  margin: 0;
+}
+@media (max-width: 420px) {
+  .felice-projecao .pj-out {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.felice-projecao .pj-out dt {
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.felice-projecao .pj-out dd {
+  margin: 0;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+.felice-projecao .pj-out dd.ok { color: var(--pj-ok); }
+.felice-projecao .pj-out dd.ruim { color: var(--pj-ruim); }
+
+/* ---------- guardrail da banda Greenn ---------- */
+.felice-projecao .pj-guard {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 11px 13px;
+  border-radius: var(--r);
+  border: 1px dashed var(--line-soft);
+  color: var(--muted-2);
+}
+.felice-projecao .pj-guard b { color: var(--text); }
+.felice-projecao .pj-guard--dentro {
+  border-color: rgba(95, 174, 134, 0.35);
+}
+.felice-projecao .pj-guard--acima,
+.felice-projecao .pj-guard--abaixo {
+  border-color: rgba(216, 161, 58, 0.4);
+  color: #d9c396;
+}
+
+/* ---------- curva de caixa ---------- */
+.felice-projecao .pj-caixa {
+  margin-top: 34px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: clamp(20px, 3vw, 30px);
+}
+.felice-projecao .pj-caixa h3 {
+  margin: 0 0 8px;
+}
+.felice-projecao .pj-curva {
+  margin: 18px 0 0;
+}
+.felice-projecao .pj-curva svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.felice-projecao .pj-curva-grid {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+}
+.felice-projecao .pj-curva-ylab,
+.felice-projecao .pj-curva-xlab {
+  fill: var(--muted-2);
+  font-size: 10px;
+  font-family: var(--pj-mono);
+}
+.felice-projecao .pj-curva-ylab { text-anchor: end; }
+.felice-projecao .pj-curva-xlab { text-anchor: middle; }
+.felice-projecao .pj-curva-area {
+  fill: rgba(232, 180, 71, 0.11);
+}
+.felice-projecao .pj-curva-receita {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.felice-projecao .pj-curva-verba {
+  fill: none;
+  stroke: var(--muted-2);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 4;
+}
+.felice-projecao .pj-curva-pt {
+  fill: var(--gold-bright);
+}
+.felice-projecao .pj-curva-leg {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.felice-projecao .pj-line {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+.felice-projecao .pj-line--receita { background: var(--gold); }
+.felice-projecao .pj-line--verba {
+  background: repeating-linear-gradient(90deg, var(--muted-2) 0 5px, transparent 5px 9px);
+}
+
+/* ---------- fases ---------- */
+.felice-projecao .pj-fases-grid,
+.felice-projecao .pj-prem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 760px) {
+  .felice-projecao .pj-fases-grid,
+  .felice-projecao .pj-prem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.felice-projecao .pj-fase {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+}
+.felice-projecao .pj-fase-n {
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.felice-projecao .pj-fase-quando {
+  font-size: 0.76rem;
+  color: var(--muted-2);
+}
+.felice-projecao .pj-fase h3 {
+  margin: 4px 0 0;
+  color: var(--text);
+}
+.felice-projecao .pj-fase-verba {
+  margin: 6px 0 0;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice-projecao .pj-fase-res {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--pj-ok);
+}
+.felice-projecao .pj-fase p:last-child {
+  margin: 8px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---------- métricas ---------- */
+.felice-projecao .pj-met-grid,
+.felice-projecao .pj-anal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.felice-projecao .pj-met,
+.felice-projecao .pj-anal {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: 24px;
+}
+.felice-projecao .pj-met h3,
+.felice-projecao .pj-anal h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+.felice-projecao .pj-met-sub {
+  margin: 0 0 16px;
+  font-size: 0.82rem;
+  color: var(--gold);
+}
+.felice-projecao .pj-met ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.felice-projecao .pj-met li {
+  display: grid;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-projecao .pj-met li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.felice-projecao .pj-met li b {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.felice-projecao .pj-met li span {
+  color: var(--muted-2);
+  font-size: 0.8rem;
+}
+.felice-projecao .pj-met li em {
+  font-style: normal;
+  font-family: var(--pj-mono);
+  font-size: 0.76rem;
+  color: var(--pj-ok);
+}
+.felice-projecao .pj-anal p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---------- premissas ---------- */
+.felice-projecao .pj-prem {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  padding: 24px;
+}
+.felice-projecao .pj-prem h3 {
+  margin: 0 0 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.felice-projecao .pj-prem--ok h3 { color: var(--pj-ok); }
+.felice-projecao .pj-prem--chute h3 { color: var(--pj-aviso); }
+.felice-projecao .pj-prem ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- rodapé ---------- */
+.felice-projecao .pj-footer {
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--line-soft);
+  margin-top: 20px;
+}
+.felice-projecao .pj-footer p {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+}
+
+/* Quem pediu menos movimento não precisa das transições dos sliders. */
+@media (prefers-reduced-motion: reduce) {
+  .felice-projecao .pj-funil-fill,
+  .felice-projecao .pj-aloc-seg,
+  .felice-projecao .pj-cen {
+    transition: none;
+  }
+}
