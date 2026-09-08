@@ -10,14 +10,22 @@
    ============================================================ */
 
 .felice-projecao {
-  --pj-ok: #5fae86;
-  --pj-ruim: #e0655f;
-  --pj-aviso: #d8a13a;
+  /* ⚠️ PALETA FECHADA: preto fosco, tons de amarelo e branco. Nada de verde,
+     vermelho ou azul — pedido do Leo em 08/09/2026. Onde antes havia
+     semáforo de cor, a diferença passa a ser de LUMINOSIDADE (amarelo claro
+     = bom, amarelo escuro/apagado = atenção) somada a forma: borda sólida
+     contra tracejada. Cor sozinha nunca carrega o sinal, o que de quebra
+     resolve daltonismo. */
+  --pj-forte: #f8da74;
+  --pj-medio: #e8b447;
+  --pj-fraco: #8f6a22;
+  --pj-apagado: #6b501a;
+  --pj-branco: #f4efe4;
   --pj-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  /* Uma cor por produto, usada na barra de alocação e nas legendas. */
-  --pj-kit: #6f93c4;
-  --pj-maestria: #5fae86;
-  --pj-mentoria: #e8b447;
+  /* Um TOM por produto, do escuro ao claro conforme o ticket sobe. */
+  --pj-kit: #7a5a18;
+  --pj-maestria: #c29433;
+  --pj-mentoria: #f5cd47;
 }
 
 /* ---------- capa ---------- */
@@ -109,8 +117,8 @@
   max-width: 82ch;
 }
 .felice-projecao .pj-destaque--aviso {
-  border-left-color: var(--pj-aviso);
-  background: linear-gradient(90deg, rgba(216, 161, 58, 0.1), transparent 70%);
+  border-left-color: var(--pj-medio);
+  background: linear-gradient(90deg, rgba(232, 180, 71, 0.1), transparent 70%);
 }
 .felice-projecao .pj-nota {
   margin-top: 18px;
@@ -244,8 +252,8 @@
   -webkit-background-clip: border-box;
   background-clip: border-box;
 }
-.felice-projecao .pj-resumo-nums b.ok { color: var(--pj-ok); }
-.felice-projecao .pj-resumo-nums b.ruim { color: var(--pj-ruim); }
+.felice-projecao .pj-resumo-nums b.ok { color: var(--pj-forte); }
+.felice-projecao .pj-resumo-nums b.ruim { color: var(--pj-fraco); }
 .felice-projecao .pj-resumo-nums span {
   display: block;
   margin-top: 8px;
@@ -276,7 +284,12 @@
   overflow: hidden;
   white-space: nowrap;
 }
-.felice-projecao .pj-aloc-seg--kit-f4 { background: var(--pj-kit); }
+/* O texto acompanha o tom do fundo: creme sobre o amarelo escuro do Kit,
+   preto sobre os dois mais claros. Sem isso o "58%" some no segmento. */
+.felice-projecao .pj-aloc-seg--kit-f4 {
+  background: var(--pj-kit);
+  color: var(--pj-branco);
+}
 .felice-projecao .pj-aloc-seg--maestria { background: var(--pj-maestria); }
 .felice-projecao .pj-aloc-seg--mentoria { background: var(--pj-mentoria); }
 
@@ -370,11 +383,11 @@
   letter-spacing: 0.04em;
 }
 .felice-projecao .pj-tag--whatsapp {
-  border-color: rgba(95, 174, 134, 0.4);
-  color: var(--pj-ok);
+  border-color: rgba(248, 218, 116, 0.4);
+  color: var(--pj-forte);
 }
 .felice-projecao .pj-tag--purchase {
-  border-color: rgba(111, 147, 196, 0.4);
+  border-color: rgba(232, 180, 71, 0.4);
   color: var(--pj-kit);
 }
 .felice-projecao .pj-tag--evt {
@@ -391,14 +404,18 @@
   border: 1px solid;
 }
 .felice-projecao .pj-aprend.ok {
-  border-color: rgba(95, 174, 134, 0.32);
-  background: rgba(95, 174, 134, 0.08);
+  border-style: solid;
+  border-color: rgba(248, 218, 116, 0.34);
+  background: rgba(248, 218, 116, 0.07);
   color: var(--muted);
 }
+/* Tracejado + amarelo apagado: o alerta se distingue do "ok" mesmo em
+   impressão em preto e branco, ou para quem não separa os dois tons. */
 .felice-projecao .pj-aprend.alerta {
-  border-color: rgba(224, 101, 95, 0.36);
-  background: rgba(224, 101, 95, 0.08);
-  color: #eab9b6;
+  border-style: dashed;
+  border-color: var(--pj-fraco);
+  background: rgba(143, 106, 34, 0.12);
+  color: #d8c391;
 }
 .felice-projecao .pj-aprend b {
   color: var(--text);
@@ -506,8 +523,8 @@
   font-size: 1.02rem;
   color: var(--text);
 }
-.felice-projecao .pj-out dd.ok { color: var(--pj-ok); }
-.felice-projecao .pj-out dd.ruim { color: var(--pj-ruim); }
+.felice-projecao .pj-out dd.ok { color: var(--pj-forte); }
+.felice-projecao .pj-out dd.ruim { color: var(--pj-fraco); }
 
 /* ---------- guardrail da banda Greenn ---------- */
 .felice-projecao .pj-guard {
@@ -521,12 +538,12 @@
 }
 .felice-projecao .pj-guard b { color: var(--text); }
 .felice-projecao .pj-guard--dentro {
-  border-color: rgba(95, 174, 134, 0.35);
+  border-color: rgba(248, 218, 116, 0.35);
 }
 .felice-projecao .pj-guard--acima,
 .felice-projecao .pj-guard--abaixo {
-  border-color: rgba(216, 161, 58, 0.4);
-  color: #d9c396;
+  border-color: rgba(232, 180, 71, 0.42);
+  color: #d8c391;
 }
 
 /* ---------- curva de caixa ---------- */
@@ -649,7 +666,7 @@
 .felice-projecao .pj-fase-res {
   margin: 0;
   font-size: 0.86rem;
-  color: var(--pj-ok);
+  color: var(--pj-forte);
 }
 .felice-projecao .pj-fase p:last-child {
   margin: 8px 0 0;
@@ -711,7 +728,7 @@
   font-style: normal;
   font-family: var(--pj-mono);
   font-size: 0.76rem;
-  color: var(--pj-ok);
+  color: var(--pj-forte);
 }
 .felice-projecao .pj-anal p {
   margin: 0;
@@ -733,8 +750,8 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.felice-projecao .pj-prem--ok h3 { color: var(--pj-ok); }
-.felice-projecao .pj-prem--chute h3 { color: var(--pj-aviso); }
+.felice-projecao .pj-prem--ok h3 { color: var(--pj-forte); }
+.felice-projecao .pj-prem--chute h3 { color: var(--pj-medio); }
 .felice-projecao .pj-prem ul {
   margin: 0;
   padding-left: 18px;
@@ -764,4 +781,126 @@
   .felice-projecao .pj-cen {
     transition: none;
   }
+}
+
+/* ---------- escada de produtos ---------- */
+.felice-projecao .pj-escada {
+  margin-top: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, var(--card-2), var(--card));
+  padding: clamp(20px, 3vw, 30px);
+}
+.felice-projecao .pj-escada-head h3 {
+  margin: 12px 0 6px;
+}
+.felice-projecao .pj-degraus {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.felice-projecao .pj-degraus li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  font-size: 0.85rem;
+}
+.felice-projecao .pj-degrau-de {
+  color: var(--muted);
+}
+.felice-projecao .pj-degrau-seta {
+  color: var(--gold);
+}
+.felice-projecao .pj-degrau-para {
+  color: var(--pj-forte);
+  font-weight: 600;
+}
+.felice-projecao .pj-degraus small {
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+@media (max-width: 560px) {
+  .felice-projecao .pj-degraus small {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.felice-projecao .pj-escada-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  margin: 24px 0 4px;
+}
+@media (max-width: 860px) {
+  .felice-projecao .pj-escada-body {
+    grid-template-columns: 1fr;
+  }
+}
+.felice-projecao .pj-escada-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.felice-projecao .pj-escada-saida {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.felice-projecao .pj-escada-ltv {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  background: rgba(232, 180, 71, 0.05);
+}
+.felice-projecao .pj-escada-ltv span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.felice-projecao .pj-escada-ltv b {
+  display: block;
+  margin: 6px 0 8px;
+  font-family: var(--font-felice-display), 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice-projecao .pj-escada-ltv small {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+/* forte/fraco: a diferença é de luminosidade do amarelo, não de matiz —
+   e o sublinhado dá o segundo sinal, que não depende de cor nenhuma. */
+.felice-projecao .forte {
+  color: var(--pj-forte);
+}
+.felice-projecao .fraco {
+  color: var(--pj-fraco);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.felice-projecao .pj-out--escada {
+  grid-template-columns: repeat(3, 1fr);
+}
+.felice-projecao .pj-out dd em {
+  font-style: normal;
+  font-family: var(--font-felice-body), 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: var(--muted-2);
 }

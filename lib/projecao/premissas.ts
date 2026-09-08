@@ -16,7 +16,7 @@
    para nicho de odontologia no Meta. Substitua pelos reais após 30 dias.
    ============================================================ */
 
-import type { Premissas, ProdutoId } from './model';
+import type { Premissas, ProdutoId, TaxasEscada } from './model';
 
 export type CenarioId = 'conservador' | 'realista' | 'agressivo';
 
@@ -133,6 +133,32 @@ export const PREMISSAS: Record<CenarioId, Record<ProdutoId, Premissas>> = {
     },
   },
 };
+
+/* ============================================================
+   Taxas da escada de produtos.
+
+   A base do Kit F4 não é lista fria: é gente que já pagou, já consumiu o
+   material e já conhece o método — e a equipe do Dr. Sócrates liga. Por isso
+   estas taxas são muito mais altas que qualquer conversão de tráfego frio.
+
+   As faixas vêm da prática de mercado em infoproduto com equipe comercial
+   ativa. São as premissas MAIS incertas da página inteira — e também as que
+   mais mexem no resultado. É o primeiro número a substituir por real.
+   ============================================================ */
+export const ESCADA: Record<CenarioId, TaxasEscada> = {
+  /* Sem processo de contato estruturado: a base existe, mas ninguém liga
+     com constância. */
+  conservador: { kitParaMaestria: 0.02, kitParaMentoria: 0.003, maestriaParaMentoria: 0.04 },
+  /* Equipe contactando a base com régua definida. */
+  realista: { kitParaMaestria: 0.05, kitParaMentoria: 0.01, maestriaParaMentoria: 0.08 },
+  /* Régua madura, com oferta certa na hora certa. */
+  agressivo: { kitParaMaestria: 0.09, kitParaMentoria: 0.02, maestriaParaMentoria: 0.14 },
+};
+
+/* Cross-sell não acontece na semana da compra: é nutrição, contato e
+   fechamento. Entra no fluxo de caixa com ciclo próprio, bem mais longo que
+   o da venda direta. */
+export const CICLO_ESCADA_DIAS = 60;
 
 export function produtoPorId(id: ProdutoId): Produto {
   const p = PRODUTOS.find((x) => x.id === id);

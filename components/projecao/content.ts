@@ -41,39 +41,56 @@ export const SIMULADOR = {
 
 export const DESCOBERTA = {
   eyebrow: 'O que a projeção mostra',
-  h2: 'O Kit F4 consome 58% da verba e é o único com ROAS abaixo de 1',
+  h2: 'O Kit F4 só faz sentido por causa da escada — e aí faz muito',
   paragrafos: [
-    'No cenário realista, manter as três campanhas fora da fase de aprendizagem ao mesmo tempo custa cerca de R$ 41 mil por mês. Quase R$ 24 mil disso vão para o produto de R$ 97 — que devolve R$ 21 mil.',
-    'A causa é estrutural, não é criativo ruim. Manter 50 compras por semana num produto de R$ 97 custa mais do que o produto devolve, porque o evento que o Meta persegue é a própria venda. Nenhum ajuste de segmentação conserta isso: é aritmética da regra das 50.',
-    'A leitura correta não é "o Kit F4 não funciona". É que ele não é centro de lucro — é porta de entrada. Só se paga se houver order bump, upsell e, principalmente, passagem para o backend. Enquanto não existir o número de quantos alunos do Kit compram a Mentoria, mantê-lo no ar é aposta, não decisão.',
+    'Olhando só a venda direta, o Kit F4 é o pior negócio do trio: consome 58% da verba e devolve ROAS 0,89. Manter 50 compras por semana num produto de R$ 97 custa mais do que ele devolve, porque o evento que o Meta persegue é a própria venda. Nenhum ajuste de segmentação conserta isso — é aritmética da regra das 50.',
+    'Só que o Kit não vende R$ 97. Ele entrega uma base de compradores que a equipe do Dr. Sócrates contacta — e uma fração dela sobe para a Maestria e para a Mentoria. Contando a escada, cada comprador do Kit vale cerca de R$ 349, contra um CAC de R$ 109: LTV:CAC de 3,2, dentro da meta.',
+    'A escada também muda de onde vem o faturamento da Mentoria. Das vendas projetadas por mês, cerca de metade não vem do anúncio da Mentoria: vem de quem entrou pelo Kit ou pela Maestria. A campanha de alto ticket não está sozinha — ela colhe o que os dois produtos de baixo plantaram.',
+    'A ressalva é grande e precisa ser dita: no cenário conservador, sem régua de contato ativa, o LTV do comprador do Kit cai para R$ 173 e o LTV:CAC vai a 0,58. O Kit F4 não é uma aposta no anúncio — é uma aposta na equipe comercial ligando para a base. Sem esse processo funcionando, ele perde dinheiro nos dois cenários.',
   ],
 };
 
 export const FASES = {
   eyebrow: 'Recomendação',
-  h2: 'Começar pelos dois que se pagam',
+  h2: 'Começar pelos dois que se pagam sozinhos',
   fases: [
     {
       n: 'Fase 1',
       quando: 'Meses 1 e 2',
       titulo: 'Maestria + Mentoria',
       verba: 'R$ 17.400/mês',
-      resultado: 'R$ 96.900/mês de receita projetada · ROAS 5,6',
+      resultado: 'R$ 123.000/mês de receita projetada · ROAS 7,1',
       texto:
-        'Os dois produtos de WhatsApp carregam o faturamento com 42% da verba total. Entram primeiro porque geram caixa desde o primeiro mês e porque o evento otimizado é barato — as 50 conversões semanais saem por uma fração do que custam no Kit.',
+        'Os dois produtos de WhatsApp carregam o faturamento com uma fração da verba, e já entre eles existe escada: parte de quem compra a Maestria sobe para a Mentoria. Entram primeiro porque geram caixa desde o primeiro mês e porque o evento otimizado é barato — as 50 conversões semanais saem por muito menos do que custam no Kit.',
     },
     {
       n: 'Fase 2',
       quando: 'A partir do mês 3',
       titulo: 'Entra o Kit Gestão F4',
       verba: '+ R$ 23.600/mês',
-      resultado: '217 compras/mês · ROAS de front-end 0,89',
+      resultado: '+ R$ 75.900/mês de receita · ROAS marginal 3,2',
       texto:
-        'Entra depois, com caixa no bolso e com order bump e upsell já ligados. E entra medido por LTV e por taxa de passagem para o backend — nunca pelo ROAS do gerenciador, que por definição vai parecer ruim.',
+        'Entra quando a régua de contato da base já existir — e não antes. O que ele acrescenta não é o faturamento de R$ 97: é quase o dobro de vendas da Mentoria, alimentadas pela base que ele forma. Medido por LTV:CAC e por taxa de passagem para o backend, nunca pelo ROAS do gerenciador.',
     },
   ],
   ressalva:
-    'A Fase 2 depende de um número que ainda não existe: quanto do faturamento da Mentoria vem de quem entrou pelo Kit. Medir isso é pré-requisito para escalar o low ticket.',
+    'A ordem é essa por um motivo: sem processo de contato ativo na base do Kit, o LTV:CAC dele cai para 0,58 e ele vira prejuízo puro. O que decide a Fase 2 não é a verba disponível — é a equipe comercial estar ligando.',
+};
+
+export const ESCADA_TXT = {
+  eyebrow: 'A escada de produtos',
+  h2: 'Quem compra barato é quem compra caro depois',
+  lead:
+    'Os três produtos não são campanhas independentes: são degraus. Quem compra o Kit entra numa base que a equipe contacta, e parte dela sobe. Ignorar isso subestima o resultado — e leva a desligar justamente o produto que alimenta os outros.',
+  degraus: [
+    { de: 'Kit F4', para: 'Maestria', nota: 'base contactada pela equipe, já compradora' },
+    { de: 'Kit F4', para: 'Mentoria', nota: 'salto direto de quem não passou pela Maestria' },
+    { de: 'Maestria', para: 'Mentoria', nota: 'inclui quem chegou à Maestria vindo do Kit' },
+  ],
+  nota:
+    'A conta não conta a mesma pessoa duas vezes: quem sobe do Kit para a Maestria sai do bolo que pode ir direto à Mentoria e reentra pela porta da Maestria. E a receita da escada não cai no mesmo mês — leva cerca de 60 dias entre a compra do Kit e o fechamento do degrau de cima, o que aparece no fluxo de caixa.',
+  aviso:
+    'Estas três taxas são as premissas mais incertas da página e as que mais mexem no resultado: no cenário realista respondem por 41% de toda a receita projetada. São o primeiro número a substituir por dado real assim que a base tiver histórico.',
 };
 
 export const METRICAS = {
@@ -164,6 +181,7 @@ export const PREMISSAS_AVISO = {
     'Custo por conversa iniciada',
     'Todas as taxas do funil de atendimento (qualificação, agendamento, comparecimento, fechamento)',
     'A curva de saturação de 12% por dobra de verba',
+    'As três taxas da escada de produtos — as mais incertas de todas',
   ],
   compromisso:
     'A Felice nunca rodou tráfego nesses funis — não há histórico. Toda a projeção é benchmark externo mais premissa de mercado. Depois de 30 dias no ar, os números reais do gerenciador entram no lugar das premissas e esta página é reprojetada. Até lá, trate as faixas como ordem de grandeza, não como previsão.',
