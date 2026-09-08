@@ -322,31 +322,45 @@ export const MENTOR = {
 };
 
 /* ---------- Depoimentos (vídeo) ----------
-   ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais.
-   Enquanto não houver, o card mostra um placeholder com o play.
+   Os três depoimentos REAIS chegaram em 08/09/2026 como embeds do Panda,
+   verticais (9:16), e substituíram os três textos placeholder que estavam
+   aqui desde o começo (nomes sem sobrenome, sem clínica e sem vídeo — a
+   própria nota antiga mandava trocá-los pelos reais quando chegassem).
 
-   O texto da Dra. Marina diz "minha secretária" e ficou como estava na
-   varredura de persona de 13/08/2026: é fala atribuída a uma pessoa, não
-   copy nossa, e reescrever depoimento é pôr palavra na boca de alguém. Como
-   fala de dona de clínica, soa natural e não contradiz o nome do produto.
-   ⚠️ Se estes três textos forem placeholder (os nomes não têm sobrenome nem
-   clínica, e nenhum tem vídeo), aí a regra não vale — troque pelos reais. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+   ⚠️ Os cards entram SÓ com o vídeo: quem fala se apresenta na gravação.
+   Não há `texto`/`nome` porque não recebemos os nomes junto — e inventar
+   legenda para o vídeo de uma pessoa real é pôr palavra na boca dela. Assim
+   que os nomes vierem, é só preencher `nome`/`meta` (e `texto`, se houver
+   uma frase de fato dita por ela) que o card volta a mostrar a assinatura.
+
+   `embed`/`embedId`: mesmo par usado na Maestria e na Masterclass — o
+   `embedId` é o `panda-<uuid>` que o player procura para se achar na página.
+   O <div style="padding-top:177.77%"> do snippet do Panda NÃO entra: o
+   wrapper .mz-depo-video já é 9:16 e posiciona o iframe. */
+export type Depoimento = {
+  nome?: string;
+  meta?: string;
+  texto?: string;
+  embed?: string;
+  embedId?: string;
+  video?: string;
+  thumb?: string;
+};
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Rafael',
-    meta: 'Dono de clínica · Aluno Felice Academy',
-    texto: 'Depois que minha recepção começou a dar follow-up nos orçamentos, recuperei tratamento que eu já dava por perdido.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=e0583781-9326-4859-8744-d05f83cc9eaa',
+    embedId: 'panda-e0583781-9326-4859-8744-d05f83cc9eaa',
   },
   {
-    nome: 'Dra. Marina',
-    meta: 'Dona de clínica · Aluna Felice Academy',
-    texto: 'Minha secretária travava no "quanto custa". Hoje ela agenda a avaliação e o paciente chega decidido.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=dc2d3e0d-9041-4f4f-9318-7b21621caa21',
+    embedId: 'panda-dc2d3e0d-9041-4f4f-9318-7b21621caa21',
   },
   {
-    nome: 'Dr. Bruno',
-    meta: 'Dono de clínica · Aluno Felice Academy',
-    texto: 'Padronizei o atendimento da equipe inteira. Não importa quem atende: o paciente tem sempre a mesma experiência.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=7bdbfe4d-7276-4f3f-b00d-0e38711c7f50',
+    embedId: 'panda-7bdbfe4d-7276-4f3f-b00d-0e38711c7f50',
   },
 ];
 

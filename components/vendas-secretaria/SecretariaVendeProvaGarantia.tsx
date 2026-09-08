@@ -16,37 +16,41 @@ export function SecretariaVendeDepoimentos() {
           </h2>
         </div>
 
-        <div className="mz-videos">
+        {/* Depoimentos verticais (9:16): o player toca DENTRO do card, então
+            o card não pode ser <a> — o link engoliria o clique do play. Os
+            cards sem legenda ganham --solo para o vídeo não deixar sobra de
+            margem embaixo. */}
+        <div className="mz-videos mz-videos--depo">
           {DEPOIMENTOS.map((d, i) => {
-            const inner = (
-              <>
-                <div className="mz-video-thumb">
-                  {d.thumb && (
+            const legenda = d.texto || d.nome;
+            const cls = `mz-video reveal${legenda ? '' : ' mz-video--solo'}${i > 0 ? ` d${i}` : ''}`;
+            const titulo = d.nome ? `Depoimento de ${d.nome}` : `Depoimento de aluno ${i + 1}`;
+            return (
+              <div key={d.embedId ?? d.nome ?? i} className={cls}>
+                <div className="mz-depo-video">
+                  {d.embed ? (
+                    <iframe
+                      id={d.embedId}
+                      src={d.embed}
+                      title={titulo}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  ) : d.thumb ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={d.thumb} alt={`Depoimento de ${d.nome}`} loading="lazy" />
+                    <img src={d.thumb} alt={titulo} loading="lazy" />
+                  ) : (
+                    <span className="mz-depo-ph">Depoimento em vídeo em breve</span>
                   )}
-                  <span className="mz-video-play" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
                 </div>
-                <p>&quot;{d.texto}&quot;</p>
-                <div className="who">
-                  <b>{d.nome}</b>
-                  <small>{d.meta}</small>
-                </div>
-              </>
-            );
-            const cls = `mz-video reveal${i > 0 ? ` d${i}` : ''}`;
-            // ⚠️ Sem URL de vídeo ainda → card estático com play (placeholder).
-            return d.video ? (
-              <a key={d.nome} className={cls} href={d.video} target="_blank" rel="noopener noreferrer">
-                {inner}
-              </a>
-            ) : (
-              <div key={d.nome} className={cls}>
-                {inner}
+                {d.texto && <p>&quot;{d.texto}&quot;</p>}
+                {d.nome && (
+                  <div className="who">
+                    <b>{d.nome}</b>
+                    {d.meta && <small>{d.meta}</small>}
+                  </div>
+                )}
               </div>
             );
           })}

@@ -177,7 +177,7 @@ export const METODO: { n: string; titulo: string; texto: string }[] = [
    entra aqui para a promessa de 20 aulas fechar.
 
    As 4 artes `rap-modulo-*.jpg` são EXCLUSIVAS desta landing — assim como
-   as `crc-modulo-*.jpg` do Curso de Recepção Comercial, e ao contrário das
+   as `crc-modulo-*.jpg` do CRC de Alta Performance, e ao contrário das
    `modulo-*.jpg`, que a Maestria e a mentoria de zigomático compartilham.
    Todas normalizadas em 1400x788 JPEG q82 (16:9, a proporcao do
    .mz-mod-media). O <img> e decorativo (alt="" dentro de um wrapper
@@ -306,24 +306,42 @@ export const MENTOR = {
 };
 
 /* ---------- Depoimentos (vídeo) ----------
-   ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais.
-   Enquanto não houver, o card mostra um placeholder com o play. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+   Os dois depoimentos REAIS chegaram em 08/09/2026 como embeds do Panda,
+   verticais (9:16), e substituíram os três textos placeholder que estavam
+   aqui (nomes sem sobrenome, sem clínica e sem vídeo).
+
+   ⚠️ Os cards entram SÓ com o vídeo: quem fala se apresenta na gravação.
+   Não há `texto`/`nome` porque não recebemos os nomes junto — e inventar
+   legenda para o vídeo de uma pessoa real é pôr palavra na boca dela. Assim
+   que os nomes vierem, é só preencher `nome`/`meta` (e `texto`, se houver
+   uma frase de fato dita por ela) que o card volta a mostrar a assinatura.
+
+   São DOIS aqui e TRÊS no CRC de Alta Performance: a grade .mz-videos--depo
+   é auto-fit centrado justamente para as duas quantidades caírem bem.
+
+   `embed`/`embedId`: mesmo par usado na Maestria e na Masterclass — o
+   `embedId` é o `panda-<uuid>` que o player procura para se achar na página.
+   O <div style="padding-top:177.77%"> do snippet do Panda NÃO entra: o
+   wrapper .mz-depo-video já é 9:16 e posiciona o iframe. */
+export type Depoimento = {
+  nome?: string;
+  meta?: string;
+  texto?: string;
+  embed?: string;
+  embedId?: string;
+  video?: string;
+  thumb?: string;
+};
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Rafael',
-    meta: 'Dono de clínica · Aluno Felice Academy',
-    texto: 'Mudou o clima da sala de espera. O paciente chega tenso e senta na cadeira já relaxado — o meu trabalho começa mais fácil.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=f979d964-310d-4f2f-8ac1-652890173610',
+    embedId: 'panda-f979d964-310d-4f2f-8ac1-652890173610',
   },
   {
-    nome: 'Dra. Marina',
-    meta: 'Dona de clínica · Aluna Felice Academy',
-    texto: 'A confirmação em dois tempos derrubou minhas faltas. Hoje a agenda do dia seguinte chega fechada, e não como uma surpresa.',
-  },
-  {
-    nome: 'Dr. Bruno',
-    meta: 'Dono de clínica · Aluno Felice Academy',
-    texto: 'Padronizei a recepção inteira com os checklists. Não importa quem está no balcão: o paciente é recebido sempre do mesmo jeito.',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=99986061-4291-4476-9485-7d26d8127e73',
+    embedId: 'panda-99986061-4291-4476-9485-7d26d8127e73',
   },
 ];
 

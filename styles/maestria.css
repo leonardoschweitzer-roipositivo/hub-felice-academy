@@ -943,3 +943,23 @@
   text-transform: uppercase;
   line-height: 1.6;
 }
+
+/* Depoimentos verticais em GRADE (sem carrossel) — CRC de Alta Performance e
+   Recepção de Alta Performance. A regra base .mz-videos é 3 colunas na
+   largura cheia do .wrap, pensada para thumb 16:9; com player 9:16 cada
+   coluna passaria de 600px de altura e a fileira comeria a tela. O teto de
+   300px por card é o mesmo do clamp() do carrossel da Maestria.
+   auto-fit + center para a fileira ficar centrada com 2 OU 3 depoimentos —
+   as duas landings têm quantidades diferentes. */
+.felice-maestria .mz-videos--depo {
+  grid-template-columns: repeat(auto-fit, minmax(0, 300px));
+  justify-content: center;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Card só com vídeo (sem frase nem assinatura): a margem de 14px que separa
+   o player do texto viraria sobra no rodapé do card. */
+.felice-maestria .mz-video--solo .mz-depo-video {
+  margin-bottom: 0;
+}
