@@ -274,6 +274,15 @@ export function MentoriaZigomaticoPresencial() {
         <div className="mz-bonus mz-presencial">
           {PRESENCIAL.map((p, i) => (
             <article className={`mz-bonus-card reveal${i ? ` d${i % 4}` : ''}`} key={p.titulo}>
+              {p.img && (
+                /* A foto sangra até a borda do card (margens negativas anulam
+                   o padding). Decorativa: o card já diz em texto o que ela
+                   mostra, então alt="" para o leitor de tela não repetir. */
+                <div className="mz-presencial-media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.img} alt="" loading="lazy" />
+                </div>
+              )}
               <span className="mz-bonus-tag">{p.tag}</span>
               <h3>{p.titulo}</h3>
               <p>{p.texto}</p>

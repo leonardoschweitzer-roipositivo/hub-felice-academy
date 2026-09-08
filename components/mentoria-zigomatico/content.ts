@@ -130,22 +130,38 @@ export const PILARES: { n: string; titulo: string; texto: string }[] = [
 ];
 
 /* ---------- Encontros presenciais (destaque) ----------
-   O grande diferencial desta mentoria. ⚠️ Ajustar datas/locais reais. */
-export type Presencial = { tag: string; titulo: string; texto: string };
+   O grande diferencial desta mentoria. ⚠️ Ajustar datas/locais reais.
+
+   As 3 fotos (08/09/2026) são registros REAIS de turmas do Dr. Sócrates, uma
+   por card e na ordem da seção: bancada, centro cirúrgico e planejamento.
+   Não são banco de imagem — são a prova visual do que o card promete, que é o
+   argumento inteiro desta seção ("não é só vídeo").
+
+   Duas das três vieram do celular em retrato (3024×4032) e o slot do card é
+   4:3, então perderam 44% da altura no corte. O offset foi escolhido, não
+   centralizado, porque centralizado cortava justo o assunto: na de bancada
+   sobe até pegar o kit, o modelo e o motor; na de planejamento desce até as
+   duas cabeças caberem inteiras com o 3D na tela ao fundo. A do centro
+   cirúrgico já era 4:3 e só foi reamostrada. Todas em 1000×750 JPEG q82 — o
+   card tem ~360px de largura, então sobra resolução para tela retina. */
+export type Presencial = { tag: string; titulo: string; texto: string; img?: string };
 export const PRESENCIAL: Presencial[] = [
   {
     tag: 'Laboratório',
     titulo: 'Imersão hands-on em laboratório',
+    img: '/images/presencial-laboratorio.jpg',
     texto: 'Prática presencial em modelo e peça anatômica: acesso, trajetória e posicionamento do implante zigomático, repetindo até dominar a técnica com confiança.',
   },
   {
     tag: 'Centro cirúrgico',
     titulo: 'Acompanhamento cirúrgico (operar junto)',
+    img: '/images/presencial-centro-cirurgico.jpg',
     texto: 'Você acompanha e opera casos reais ao lado do Dr. Sócrates — mentoria de bancada e sala, vendo cada decisão na prática e tirando dúvidas na hora.',
   },
   {
     tag: 'Imersão',
     titulo: 'Encontros teóricos presenciais',
+    img: '/images/presencial-planejamento.jpg',
     texto: 'Discussão de casos, planejamento em grupo e raciocínio clínico aprofundado — networking presencial com outros cirurgiões da mentoria.',
   },
 ];
