@@ -23,11 +23,19 @@ export type CenarioId = 'conservador' | 'realista' | 'agressivo';
 export type Produto = {
   id: ProdutoId;
   nome: string;
+  /** Preço de tabela hoje. É só o ponto de partida: o simulador deixa mexer. */
   ticket: number;
   objetivo: Premissas['objetivo'];
   rota: string;
   /** Como o produto se paga — resumo de uma linha para a tabela. */
   papel: string;
+  /* Faixa que o slider de preço percorre. Fica aqui, e não no componente,
+     porque é dado do produto: não faz sentido oferecer R$ 50.000 para o Kit
+     nem R$ 97 para a Mentoria. O passo é redondo para o número parar em
+     valor que alguém realmente cobraria. */
+  precoMin: number;
+  precoMax: number;
+  precoPasso: number;
 };
 
 export const PRODUTOS: Produto[] = [
@@ -38,6 +46,9 @@ export const PRODUTOS: Produto[] = [
     objetivo: 'purchase',
     rota: '/produtos/kitgestaof4/',
     papel: 'Porta de entrada — aquisição de lead, não centro de lucro',
+    precoMin: 27,
+    precoMax: 497,
+    precoPasso: 10,
   },
   {
     id: 'maestria',
@@ -46,6 +57,9 @@ export const PRODUTOS: Produto[] = [
     objetivo: 'whatsapp',
     rota: '/produtos/maestria-zigomatica/',
     papel: 'Meio de funil — melhor relação entre volume e margem',
+    precoMin: 297,
+    precoMax: 4997,
+    precoPasso: 50,
   },
   {
     id: 'mentoria',
@@ -54,6 +68,9 @@ export const PRODUTOS: Produto[] = [
     objetivo: 'whatsapp',
     rota: '/produtos/mentoria-gestao-f4/',
     papel: 'Alto ticket — carrega o faturamento com pouca verba',
+    precoMin: 3000,
+    precoMax: 60000,
+    precoPasso: 500,
   },
 ];
 

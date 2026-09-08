@@ -36,7 +36,9 @@ export const SIMULADOR = {
   eyebrow: 'Simulador',
   h2: 'Mexa nas premissas e veja o que muda',
   lead:
-    'Os três cenários abaixo são pontos de partida. Todo campo é editável: mude o CPM, o CTR, o custo por conversa ou a taxa de fechamento e a projeção inteira recalcula na hora.',
+    'Os três cenários abaixo são pontos de partida. Todo campo é editável — inclusive o preço de cada produto: mude o ticket, o CPM, o CTR, o custo por conversa ou a taxa de fechamento e a projeção inteira recalcula na hora, escada incluída.',
+  notaPreco:
+    'Mexer no preço tem consequência dupla e o simulador mostra as duas: muda a receita, e muda a faixa de conversão que a Greenn espera daquele ticket. Subir o preço sem baixar a taxa de conversão faz o aviso da banda acender — é o sinal de que a premissa virou otimista demais.',
 };
 
 export const DESCOBERTA = {

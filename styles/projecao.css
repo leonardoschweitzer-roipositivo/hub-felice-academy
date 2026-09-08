@@ -904,3 +904,15 @@
   font-size: 0.74rem;
   color: var(--muted-2);
 }
+
+/* Preço alterado no simulador: o contorno mais claro avisa que aquele
+   número não é mais o preço de tabela do produto — sem isso dá para sair
+   da reunião achando que a projeção foi feita com o preço praticado. */
+.felice-projecao .pj-tag--mudado {
+  border-color: var(--pj-forte);
+  color: var(--pj-forte);
+}
+.felice-projecao .pj-tag--mudado em {
+  font-style: normal;
+  color: var(--muted-2);
+}
