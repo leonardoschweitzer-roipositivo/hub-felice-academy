@@ -42,3 +42,58 @@
   inset: 0;
   background: linear-gradient(to bottom, transparent 55%, rgba(10, 10, 13, 0.75));
 }
+
+/* ---------- Hero com a foto da cirurgia ----------
+   Até 08/09/2026 esta página usava a `.mz-hero-photo` da Maestria, que traz
+   `background-maestria-zigmoatica.jpg` hardcoded — a mesma arte da landing
+   da Maestria. Agora tem a sua: a foto do Dr. Sócrates operando ao lado do
+   aluno, que é literalmente o que a mentoria promete.
+
+   ⚠️ Classe própria e regra COMPLETA de propósito, em vez de sobrescrever só
+   o `background-image` da `.mz-hero-photo`. Aquela regra tem 3 camadas e esta
+   tem 4: o CSS cicla listas mais curtas, então `background-position` e
+   `background-size` herdados casariam com a camada errada e a foto entraria
+   torta. Sem herança, não há o que ciclar. Mesmo motivo (e mesma estrutura)
+   da `.mg-hero-photo` em mentoria-gestao.css — mexeu numa, olhe a outra.
+
+   O gradiente esquerda→direita é 80%/20% por pedido do Leo (08/09/2026): a
+   esquerda escura o bastante para o h1 e o lead, a direita quase limpa para
+   a cirurgia aparecer. ⚠️ É bem mais aberto que os 100%/55% da mentoria de
+   gestão, e os cards da direita são "glass" (rgba branco 0.045 + blur), sem
+   fundo opaco próprio — o blur salva a legibilidade, mas se um dia entrar
+   foto mais clara nesta posição, este é o primeiro número a revisar. */
+.felice-maestria .mzz-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b0b0d;
+  background-image:
+    linear-gradient(to right, rgba(11, 11, 13, 0.8) 0%, rgba(11, 11, 13, 0.2) 100%),
+    /* RODAPÉ — preto subindo do fim da seção, para a foto "aterrar" no fundo */
+    linear-gradient(to top, #0b0b0d 0%, rgba(11, 11, 13, 0.85) 10%, rgba(11, 11, 13, 0) 45%),
+    /* TOPO — escurece a faixa do header fixo. Sem trecho OPACO, ao contrário
+       da Maestria: lá a foto começava 130px abaixo e o preto chapado cobria
+       a folga; aqui ela é full-bleed, e uma faixa opaca no topo de uma foto
+       sangrada lê como tarja, não como sombra. */
+    linear-gradient(to bottom, rgba(11, 11, 13, 0.85) 0px, rgba(11, 11, 13, 0) 200px),
+    url('/images/background-mentoria-zigomatico-hero.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  /* ⚠️ `cover`, e não o `100% auto` que a Maestria e a mentoria de gestão
+     usam. Naquelas o hero é mais alto que a foto renderizada, e a faixa que
+     sobra embaixo é resolvida pelo gradiente do rodapé. Aqui não dava: com
+     o lateral abrindo até 20% na direita, a borda inferior da foto aparecia
+     como uma linha horizontal dura no lado claro. `cover` faz a foto cobrir
+     o hero inteiro em qualquer altura — não há borda para vazar. O preço é
+     cortar ~17% de cada lado, que nesta foto só come a beirada dos aventais:
+     as duas cabeças e o campo cirúrgico ficam inteiros. */
+  background-size: cover;
+  pointer-events: none;
+}
+@media (max-width: 980px) {
+  /* No mobile o hero empilha e o texto passa por cima da foto inteira: o
+     gradiente lateral não protege mais nada, então a foto vira textura. */
+  .felice-maestria .mzz-hero-photo {
+    opacity: 0.45;
+  }
+}
