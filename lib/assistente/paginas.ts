@@ -40,6 +40,7 @@ function limpar(pathname: string): string {
 const BLOQUEADAS = [
   '/plataforma', // protótipo mockado da área do aluno, com dados fictícios
   '/arquitetura-de-paginas', // documento interno de arquitetura
+  '/projecao-trafego', // projeção interna de verba de tráfego
   '/produtos/kitgestaof4/kit-f4', // área de entrega paga: JÁ TEM o chat de RAG do próprio Kit
 ];
 

@@ -8,9 +8,11 @@ export default function robots(): MetadataRoute.Robots {
       /* Áreas que não são conteúdo público:
          - /plataforma: protótipo da área do aluno, com dados fictícios.
          - /produtos/kitgestaof4/kit-f4: entrega paga (já noindex nas metas).
+         - /projecao-trafego: projeção de verba de tráfego, com preços e
+           margens que não são para o público.
          O disallow soma ao noindex das páginas — quem só lê o robots.txt
          também para na porta. */
-      disallow: ['/plataforma', '/produtos/kitgestaof4/kit-f4'],
+      disallow: ['/plataforma', '/produtos/kitgestaof4/kit-f4', '/projecao-trafego'],
     },
     // Canônico do site é o www (o apex responde 308 → www).
     sitemap: 'https://www.feliceacademy.com.br/sitemap.xml',
