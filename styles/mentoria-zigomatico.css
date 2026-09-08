@@ -97,3 +97,67 @@
     opacity: 0.45;
   }
 }
+
+/* ---------- Depoimentos só de texto, 2x2 ----------
+   A grade base .mz-videos é de 3 colunas (foi feita para cards com thumb
+   16:9). São quatro depoimentos aqui: em 3 colunas o quarto ficaria órfão
+   numa segunda linha, sozinho e desalinhado. 2x2 fecha as duas linhas.
+
+   Sem o slot de imagem, o card fica curto e a leitura sofre em coluna larga,
+   daí o teto de 860px. `align-items: stretch` (padrão do grid) mantém os dois
+   cards de cada linha da mesma altura mesmo com citações de tamanhos bem
+   diferentes — a mais longa tem o dobro da mais curta. */
+.felice-maestria .mz-videos--quotes {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* O <blockquote> traz margem do UA e empurraria os cards para dentro da
+   grade, desalinhando as colunas. */
+.felice-maestria .mz-videos--quotes .mz-video {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Empurra a assinatura para o pé do card: com citações de alturas diferentes,
+   os nomes ficam na mesma linha de base em vez de flutuar atrás do texto. */
+.felice-maestria .mz-videos--quotes .mz-video .who {
+  margin-top: auto;
+}
+@media (max-width: 760px) {
+  .felice-maestria .mz-videos--quotes {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+  }
+}
+
+/* ---------- "O diagnóstico": player no lugar da foto ----------
+   `.problem-photo` (felice.css) é compartilhada por OITO landings e serve a
+   uma <img> de altura automática. Este modificador só entra aqui: dá altura
+   ao contêiner para o iframe ter onde se apoiar, sem tocar na regra base.
+
+   ⚠️ 100/54.99334 é o padding-top que veio no snippet do Panda, ou seja
+   1,8184:1 — mais largo que 16:9. Trocar por 16/9 poria tarja preta em cima
+   e embaixo do player. Se um dia o vídeo for outro, confira a proporção no
+   snippet novo antes de reaproveitar este número. */
+.felice-maestria .problem-photo.mzz-problem-video {
+  position: relative;
+  aspect-ratio: 100 / 54.99334;
+  /* `aspect-ratio` vale para a caixa que o `box-sizing` define, e o iframe
+     preenche a de CONTEÚDO. Com o border-box da base (que tem 1px de borda) a
+     proporção saía 1,8226 em vez de 1,8184 — hairline de tarja. Com
+     content-box a medida bate exata; o `max-width` cai de 720 para 718 para
+     que 718 + as duas bordas continuem dando os mesmos 720px de largura
+     total das outras landings. */
+  box-sizing: content-box;
+  max-width: 718px;
+  background: linear-gradient(160deg, #16161b, #0e0e11);
+}
+.felice-maestria .problem-photo.mzz-problem-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

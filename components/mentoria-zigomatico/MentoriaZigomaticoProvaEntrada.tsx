@@ -1,4 +1,4 @@
-/* Depoimentos (vídeo) + "Como funciona a entrada" da Mentoria de Zigomático. */
+/* Depoimentos + "Como funciona a entrada" da Mentoria de Zigomático. */
 
 import { DEPOIMENTOS, ENTRADA, APPLY_URL, FINAL } from './content';
 
@@ -16,39 +16,21 @@ export function MentoriaZigomaticoDepoimentos() {
           </h2>
         </div>
 
-        <div className="mz-videos">
-          {DEPOIMENTOS.map((d, i) => {
-            const inner = (
-              <>
-                <div className="mz-video-thumb">
-                  {d.thumb && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={d.thumb} alt={`Depoimento de ${d.nome}`} loading="lazy" />
-                  )}
-                  <span className="mz-video-play" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                </div>
-                <p>&quot;{d.texto}&quot;</p>
-                <div className="who">
-                  <b>{d.nome}</b>
-                  <small>{d.meta}</small>
-                </div>
-              </>
-            );
-            const cls = `mz-video reveal${i > 0 ? ` d${i}` : ''}`;
-            return d.video ? (
-              <a key={d.nome} className={cls} href={d.video} target="_blank" rel="noopener noreferrer">
-                {inner}
-              </a>
-            ) : (
-              <div key={d.nome} className={cls}>
-                {inner}
+        {/* Só texto, sem vídeo: nada de .mz-video-thumb com botão de play,
+            que é o que este bloco desenhava antes em TODO card, tivesse ou
+            não vídeo por trás. Play que não toca engana o visitante.
+            São quatro depoimentos, e a grade base é de 3 colunas — daí o
+            --quotes, que põe 2x2 e evita o órfão sozinho na segunda linha. */}
+        <div className="mz-videos mz-videos--quotes">
+          {DEPOIMENTOS.map((d, i) => (
+            <blockquote className={`mz-video reveal${i > 0 ? ` d${i % 4}` : ''}`} key={d.nome}>
+              <p>&quot;{d.texto}&quot;</p>
+              <div className="who">
+                <b>{d.nome}</b>
+                <small>{d.meta}</small>
               </div>
-            );
-          })}
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>

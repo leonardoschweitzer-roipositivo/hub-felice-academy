@@ -5,6 +5,7 @@ import {
   HERO_CARD,
   HERO_MARQUEE,
   STATS,
+  DIAGNOSTICO_VIDEO,
   DORES,
   DORES_FECHAMENTO,
   PILARES,
@@ -190,17 +191,15 @@ export function MentoriaZigomaticoProblema() {
             ela vira receio — e oportunidade perdida.
           </p>
         </div>
-        <div className="problem-photo reveal d1">
-          <picture>
-            <source media="(max-width: 720px)" srcSet="/images/dentista-cansado-mobile.jpg" />
-            <img
-              src="/images/dentista-cansado-desktop.jpg"
-              alt="Cirurgião-dentista inseguro diante de um caso complexo"
-              width={1000}
-              height={545}
-              loading="lazy"
-            />
-          </picture>
+        <div className="problem-photo mzz-problem-video reveal d1">
+          <iframe
+            id={DIAGNOSTICO_VIDEO.embedId}
+            src={DIAGNOSTICO_VIDEO.embed}
+            title="O caso de maior valor que passa pela sua cadeira"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
         </div>
         <div className="pains">
           {DORES.map((d, i) => (
