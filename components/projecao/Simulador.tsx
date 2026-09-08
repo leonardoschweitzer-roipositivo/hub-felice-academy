@@ -42,8 +42,6 @@ type Ativos = Record<ProdutoId, boolean>;
 
 const FATOR_INICIAL: Fatores = { 'kit-f4': 1, maestria: 1, mentoria: 1 };
 
-const TICKETS: Record<ProdutoId, number> = { 'kit-f4': 97, maestria: 997, mentoria: 15000 };
-
 function clonar(cen: CenarioId): Estado {
   return {
     'kit-f4': { ...PREMISSAS[cen]['kit-f4'] },
@@ -88,7 +86,16 @@ export function Simulador() {
     mentoria: ativos.mentoria ? resultados[2].resultado.vendas : 0,
   } as Record<ProdutoId, number>;
 
-  const esc = calcularEscada(vendasDiretas, TICKETS, escada);
+  /* Os preços saem do ESTADO, não de constante: mexer no preço de um produto
+     tem de repreçar a escada inteira junto — senão o simulador mostraria uma
+     Mentoria de R$ 30 mil vendendo cross-sell a R$ 15 mil. */
+  const tickets = {
+    'kit-f4': prem['kit-f4'].ticket,
+    maestria: prem.maestria.ticket,
+    mentoria: prem.mentoria.ticket,
+  } as Record<ProdutoId, number>;
+
+  const esc = calcularEscada(vendasDiretas, tickets, escada);
   const receitaTotal = esc.receitaTotal;
 
   const caixa = fluxoDeCaixa(
@@ -113,6 +120,7 @@ export function Simulador() {
           <span className="eyebrow">{SIMULADOR.eyebrow}</span>
           <h2>{SIMULADOR.h2}</h2>
           <p className="lead">{SIMULADOR.lead}</p>
+          <p className="pj-nota">{SIMULADOR.notaPreco}</p>
         </div>
 
         <div className="pj-cenarios" role="group" aria-label="Cenário">
@@ -168,7 +176,11 @@ export function Simulador() {
               key={produto.id}
               nome={produto.nome}
               papel={produto.papel}
-              ticket={produto.ticket}
+              ticket={premissas.ticket}
+              precoMin={produto.precoMin}
+              precoMax={produto.precoMax}
+              precoPasso={produto.precoPasso}
+              precoTabela={produto.ticket}
               objetivo={premissas.objetivo}
               premissas={premissas}
               resultado={resultado}
@@ -275,6 +287,11 @@ function CartaoProduto(props: {
   nome: string;
   papel: string;
   ticket: number;
+  precoMin: number;
+  precoMax: number;
+  precoPasso: number;
+  /** Preço de tabela, para avisar quando o simulado se afastou dele. */
+  precoTabela: number;
   objetivo: Premissas['objetivo'];
   premissas: Premissas;
   resultado: Resultado;
@@ -330,7 +347,12 @@ function CartaoProduto(props: {
       </header>
 
       <div className="pj-tags">
-        <span className="pj-tag">{money(props.ticket)}</span>
+        <span className={`pj-tag${props.ticket !== props.precoTabela ? ' pj-tag--mudado' : ''}`}>
+          {money(props.ticket)}
+          {props.ticket !== props.precoTabela && (
+            <em> · tabela {money(props.precoTabela)}</em>
+          )}
+        </span>
         <span className={`pj-tag pj-tag--${objetivo}`}>
           {whats ? 'objetivo: WhatsApp' : 'objetivo: Purchase'}
         </span>
@@ -354,6 +376,13 @@ function CartaoProduto(props: {
 
       {/* controles */}
       <div className="pj-campos">
+        <Campo
+          rot="Preço do produto" valor={p.ticket} fmt={money}
+          min={props.precoMin} max={props.precoMax} passo={props.precoPasso}
+          bruto={p.ticket}
+          onChange={(v) => props.onEditar('ticket', v)}
+          dica={`faixa da Greenn: ${r.banda.rotulo} (${pct(r.banda.min, 1)}–${pct(r.banda.max, 1)})`}
+        />
         <Campo
           rot="Verba mensal" valor={r.verbaMensal} fmt={money}
           min={0.4} max={4} passo={0.05} bruto={props.fator}
