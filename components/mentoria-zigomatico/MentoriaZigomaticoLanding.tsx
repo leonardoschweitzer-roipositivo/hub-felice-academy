@@ -19,6 +19,7 @@ import {
   MentoriaZigomaticoOferta,
   MentoriaZigomaticoFinal,
 } from './MentoriaZigomaticoSections';
+import { MentoriaZigomaticoAmbiente } from './MentoriaZigomaticoAmbiente';
 import { MentoriaZigomaticoCasos } from './MentoriaZigomaticoCasos';
 import { MentoriaZigomaticoDepoimentos, MentoriaZigomaticoEntrada } from './MentoriaZigomaticoProvaEntrada';
 import { MentoriaZigomaticoFaq } from './MentoriaZigomaticoFaq';
@@ -60,6 +61,7 @@ export function MentoriaZigomaticoLanding() {
         <MentoriaZigomaticoProblema />
         <MentoriaZigomaticoMetodo />
         <MentoriaZigomaticoPresencial />
+        <MentoriaZigomaticoAmbiente />
         <MentoriaZigomaticoEntregas />
 
         <div className="wrap">
