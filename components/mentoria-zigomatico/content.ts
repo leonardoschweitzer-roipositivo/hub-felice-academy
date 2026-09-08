@@ -413,6 +413,27 @@ export const CASOS_HEAD = {
   lead: 'Casos reais de maxila atrófica severa conduzidos pelo Dr. Sócrates — do planejamento digital à reabilitação entregue. É este raciocínio que você acompanha no hands-on e leva para os seus próprios casos.',
 };
 
+/* ---------- Ambiente acadêmico e cirúrgico ----------
+   Galeria da estrutura onde a mentoria acontece. Vem logo depois de "O
+   diferencial", que promete laboratório, centro cirúrgico e encontros
+   teóricos: esta seção é a prova de que o lugar existe e é equipado.
+
+   ⚠️ SLOTS EM ESPERA (08/09/2026). As fotos estão no Drive do Leo e ainda não
+   chegaram ao repo. Enquanto `img` estiver vazio o card mostra o placeholder
+   "Imagem em breve" do carrossel de casos — a seção não quebra e não inventa
+   imagem. Ao preencher, some com o slot que sobrar em vez de deixar buraco.
+
+   `alt` fica vazio de propósito por ora: descrever uma sala que ainda não vi
+   seria chutar. Quando as fotos entrarem, cada uma leva o seu alt real. */
+export type Ambiente = { img?: string; alt?: string };
+export const AMBIENTE_HEAD = {
+  eyebrow: 'Onde você pratica',
+  titlePre: 'Ambiente acadêmico e',
+  titleGold: 'cirúrgico de verdade',
+  lead: 'A mentoria não acontece numa sala emprestada. Laboratório para o hands-on e centro cirúrgico equipado para os casos reais — a mesma estrutura em que o Dr. Sócrates opera todos os dias.',
+};
+export const AMBIENTE: Ambiente[] = [{}, {}, {}, {}, {}, {}];
+
 /* ---------- Depoimentos (vídeo) ----------
    ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais de cada aluno. */
 export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
