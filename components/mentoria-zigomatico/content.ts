@@ -418,13 +418,22 @@ export const CASOS_HEAD = {
    diferencial", que promete laboratório, centro cirúrgico e encontros
    teóricos: esta seção é a prova de que o lugar existe e é equipado.
 
-   ⚠️ SLOTS EM ESPERA (08/09/2026). As fotos estão no Drive do Leo e ainda não
-   chegaram ao repo. Enquanto `img` estiver vazio o card mostra o placeholder
-   "Imagem em breve" do carrossel de casos — a seção não quebra e não inventa
-   imagem. Ao preencher, some com o slot que sobrar em vez de deixar buraco.
+   Fotos do Leo (08/09/2026), tiradas na própria clínica. Vieram SEIS e
+   entraram QUATRO: a IMG_4401 é o mesmo enquadramento da 4400 e a IMG_4404
+   é a mesma sala da 4405 a um passo de distância. Numa fileira curta, foto
+   repetida lê como enchimento e derruba a seção inteira — a estrutura passa
+   a parecer menor do que é, não maior. Se quiser as duas de volta, é só
+   acrescentar as linhas: os arquivos originais estão no Drive.
 
-   `alt` fica vazio de propósito por ora: descrever uma sala que ainda não vi
-   seria chutar. Quando as fotos entrarem, cada uma leva o seu alt real. */
+   A do DEA é a única que não é foto de sala, e é de propósito: numa mentoria
+   em que o aluno opera caso real, desfibrilador à vista diz sobre a
+   estrutura o que nenhuma sala vazia diz.
+
+   As cinco de sala vieram do iPhone em HEIC 4032×3024 — já 4:3, a proporção
+   exata do slot, então foram só convertidas e reamostradas. A do DEA veio em
+   retrato e perdeu 44% da altura: o offset desce até a bolsa caber inteira
+   com o "DEA" legível, que centralizado ficava cortado. Todas em 1000×750
+   JPEG q82 (96–200 KB). */
 export type Ambiente = { img?: string; alt?: string };
 export const AMBIENTE_HEAD = {
   eyebrow: 'Onde você pratica',
@@ -432,7 +441,24 @@ export const AMBIENTE_HEAD = {
   titleGold: 'cirúrgico de verdade',
   lead: 'A mentoria não acontece numa sala emprestada. Laboratório para o hands-on e centro cirúrgico equipado para os casos reais — a mesma estrutura em que o Dr. Sócrates opera todos os dias.',
 };
-export const AMBIENTE: Ambiente[] = [{}, {}, {}, {}, {}, {}];
+export const AMBIENTE: Ambiente[] = [
+  {
+    img: '/images/ambiente-sala-cirurgica.jpg',
+    alt: 'Sala cirúrgica da Felice: cadeira, foco cirúrgico de teto, monitores e bancada de apoio',
+  },
+  {
+    img: '/images/ambiente-consultorio.jpg',
+    alt: 'Consultório com foco cirúrgico, monitor para imagens e bancada de instrumentais',
+  },
+  {
+    img: '/images/ambiente-foco-cirurgico.jpg',
+    alt: 'Sala cirúrgica com foco de teto, cadeira reclinável e bancada montada',
+  },
+  {
+    img: '/images/ambiente-dea.jpg',
+    alt: 'Desfibrilador externo automático (DEA) disponível na estrutura da clínica',
+  },
+];
 
 /* ---------- Depoimentos (vídeo) ----------
    ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais de cada aluno. */
