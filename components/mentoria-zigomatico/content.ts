@@ -460,24 +460,62 @@ export const AMBIENTE: Ambiente[] = [
   },
 ];
 
-/* ---------- Depoimentos (vídeo) ----------
-   ⚠️ Adicionar `video` (URL de embed) e `thumb` (imagem) reais de cada aluno. */
-export type Depoimento = { nome: string; meta: string; texto: string; video?: string; thumb?: string };
+/* ---------- Vídeo da seção "O diagnóstico" ----------
+   Substituiu a `dentista-cansado-*.jpg` (08/09/2026), que esta landing dividia
+   com outras SETE — a foto continua lá, para elas; só esta página troca.
+
+   ⚠️ A proporção NÃO é 16:9. O snippet do Panda veio com padding-top de
+   54,99334%, ou seja 1,8184:1 — mais largo. O wrapper reproduz esse número
+   exato em `aspect-ratio` (ver .mzz-problem-video em mentoria-zigomatico.css);
+   arredondar para 16:9 poria tarja preta em cima e embaixo do player.
+
+   Como no resto do projeto, o <div style="padding-top"> do snippet NÃO entra
+   no JSX: o wrapper já resolve a proporção e posiciona o iframe. Aqui só o
+   src e o `panda-<uuid>` que o player procura para se achar na página. */
+export const DIAGNOSTICO_VIDEO = {
+  embed:
+    'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=2fcc396b-ccb8-452f-8757-cb5dfa85455e',
+  embedId: 'panda-2fcc396b-ccb8-452f-8757-cb5dfa85455e',
+};
+
+/* ---------- Depoimentos ----------
+   Os quatro são REAIS, entregues pelo Leo em 08/09/2026, e substituíram os
+   três textos placeholder que estavam aqui (Dr. João Marcel, Dra. Juliene,
+   Dr. Cristhiano Salustio — sem sobrenome completo e sem origem).
+
+   São SÓ TEXTO, sem vídeo, por decisão do Leo. Daí o tipo ter perdido os
+   campos `video` e `thumb`: enquanto existiam, o render desenhava um botão
+   de play em cima de todo card mesmo sem vídeo nenhum — play que não toca
+   engana o visitante. Sem os campos não há como o play voltar por descuido.
+
+   ⚠️ Os textos são fala de gente real: não reescreva para "melhorar" a copy.
+   Foram transcritos como vieram, mexendo só em acento e pontuação.
+
+   Três destes nomes também aparecem na Masterclass de Zigomático, lá com
+   vídeo e com SOBRENOME DIFERENTE (Emmanuel Bezerra, Paulo Bezerra). Se for
+   a mesma pessoa, um dos dois está errado — vale conferir com o Leo antes de
+   uniformizar, porque corrigir nome de aluno no chute é pior que deixar. */
+export type Depoimento = { nome: string; meta: string; texto: string };
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. João Marcel',
+    nome: 'Dr. Emmanuel Marques',
     meta: 'Aluno · Felice Academy',
-    texto: 'O hands-on presencial mudou meu jogo: o que eu encaminhava, hoje resolvo na minha clínica com segurança.',
+    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
   },
   {
-    nome: 'Dra. Juliene',
-    meta: 'Aluna · Felice Academy',
-    texto: 'Operar ao lado do Dr. Sócrates me deu a confiança que nenhum vídeo deu. Saí pronta para os casos complexos.',
+    nome: 'Dr. Thiago Vinicius',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
   },
   {
-    nome: 'Dr. Cristhiano Salustio',
+    nome: 'Dr. Paulo Maurício',
     meta: 'Aluno · Felice Academy',
-    texto: 'Da teoria na plataforma ao acompanhamento dos meus casos: é a curva de aprendizado encurtada de verdade.',
+    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
+  },
+  {
+    nome: 'Dr. Julierme Ferreira',
+    meta: 'Aluno · Felice Academy',
+    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
   },
 ];
 
