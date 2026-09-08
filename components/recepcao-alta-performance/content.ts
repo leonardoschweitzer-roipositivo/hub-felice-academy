@@ -174,7 +174,15 @@ export const METODO: { n: string; titulo: string; texto: string }[] = [
    ⚠️ M3 aula 3 (Fidelização) — o Conteúdo Programático promete
    "5 aulas cada" mas lista só 4 aulas no Módulo 3. A aula que falta
    existe no Guia do Professor exatamente nessa posição, então ela
-   entra aqui para a promessa de 20 aulas fechar. */
+   entra aqui para a promessa de 20 aulas fechar.
+
+   As 4 artes `rap-modulo-*.jpg` são EXCLUSIVAS desta landing — assim como
+   as `crc-modulo-*.jpg` do Curso de Recepção Comercial, e ao contrário das
+   `modulo-*.jpg`, que a Maestria e a mentoria de zigomático compartilham.
+   Todas normalizadas em 1400x788 JPEG q82 (16:9, a proporcao do
+   .mz-mod-media). O <img> e decorativo (alt="" dentro de um wrapper
+   aria-hidden) e NAO leva width/height: o slot conta com aspect-ratio +
+   object-fit e o atributo height desliga o aspect-ratio, esticando a foto. */
 export type Modulo = {
   n: string;
   titulo: string;
@@ -188,6 +196,7 @@ export const MODULOS: Modulo[] = [
     n: '01',
     titulo: 'Fundamentos do atendimento Disney na recepção',
     resumo: 'A virada de mentalidade: de atendente para anfitriã. Os princípios do encantamento Disney traduzidos para o balcão de uma clínica odontológica, onde o paciente chega com medo.',
+    img: '/images/rap-modulo-acolhimento.jpg',
     blocos: [
       {
         aulas: [
@@ -204,6 +213,7 @@ export const MODULOS: Modulo[] = [
     n: '02',
     titulo: 'Procedimentos operacionais da recepção',
     resumo: 'A rotina que sustenta o encantamento: tarefas de abertura, expediente e fechamento, agenda sem buraco, cadastro em três minutos e prontuário conferido antes de liberar o paciente.',
+    img: '/images/rap-modulo-rotina.jpg',
     blocos: [
       {
         aulas: [
@@ -220,6 +230,7 @@ export const MODULOS: Modulo[] = [
     n: '03',
     titulo: 'Comunicação e relacionamento com pacientes',
     resumo: 'Ouvir além das palavras, traduzir o "dentinês" em benefício e sustentar o relacionamento depois que o paciente vai embora — inclusive no WhatsApp.',
+    img: '/images/rap-modulo-comunicacao.jpg',
     blocos: [
       {
         aulas: [
@@ -236,6 +247,7 @@ export const MODULOS: Modulo[] = [
     n: '04',
     titulo: 'Excelência e melhoria contínua',
     resumo: 'O que separa a recepção boa da recepção de alta performance: recuperar o paciente insatisfeito, andar junto com a equipe clínica, medir o próprio trabalho e ter um plano de evolução.',
+    img: '/images/rap-modulo-indicadores.jpg',
     blocos: [
       {
         aulas: [
