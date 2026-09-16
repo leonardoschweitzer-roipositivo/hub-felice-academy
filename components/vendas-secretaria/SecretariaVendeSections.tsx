@@ -191,16 +191,13 @@ export function SecretariaVendeProblema() {
           </p>
         </div>
         <div className="problem-photo reveal d1">
-          <picture>
-            <source media="(max-width: 720px)" srcSet="/images/dentista-cansado-mobile.jpg" />
-            <img
-              src="/images/dentista-cansado-desktop.jpg"
-              alt="Dono de clínica frustrado com paciente que recebe orçamento e não fecha"
-              width={1000}
-              height={545}
-              loading="lazy"
-            />
-          </picture>
+          <img
+            src="/images/problema-vendas-secretaria.jpeg"
+            alt="Recepcionista tensa ao telefone enquanto o paciente aguarda no balcão com o orçamento em mãos"
+            width={1408}
+            height={768}
+            loading="lazy"
+          />
         </div>
         <div className="pains">
           {DORES.map((d, i) => (

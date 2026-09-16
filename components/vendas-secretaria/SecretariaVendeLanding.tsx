@@ -2,7 +2,7 @@ import '@/styles/felice.css';
 import '@/styles/maestria.css';
 import '@/styles/vendas-secretaria.css';
 
-import { SecretariaVendeHeader } from './SecretariaVendeHeader';
+// import { SecretariaVendeHeader } from './SecretariaVendeHeader';
 import {
   SecretariaVendeHero,
   SecretariaVendeNumeros,
@@ -45,14 +45,18 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 export function SecretariaVendeLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar">
+    <div className="felice felice-maestria has-urgency-bar sv-sem-header">
       <ScarcityBar
         deadlineIso={DEADLINE_ISO}
         label="A oferta deste lote encerra em"
         vagas="Condição do lote atual"
         viewers
       />
-      <SecretariaVendeHeader />
+      {/* Header escondido a pedido do Leo (16/09/2026), mesmo padrão da
+          Masterclass/Maestria. Para trazer de volta: descomente o
+          <SecretariaVendeHeader /> e tire `sv-sem-header` do wrapper —
+          é essa classe que devolve ao hero o espaço do header fixo. */}
+      {/* <SecretariaVendeHeader /> */}
 
       <main>
         <SecretariaVendeHero />
