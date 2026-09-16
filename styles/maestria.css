@@ -55,10 +55,17 @@
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: center, center, center 130px;
   background-size: cover, cover, 100% auto;
-  /* Parallax: a foto (e os dois gradientes que a mascaram, senão "descolam"
-     dela ao rolar) ficam presas ao viewport, não à seção — o conteúdo sobe
-     por cima da imagem parada, em vez de rolar junto. */
-  background-attachment: fixed, fixed, fixed;
+  /* Parallax só na FOTO (3ª camada): fica presa ao viewport, não à seção,
+     então o conteúdo sobe por cima da imagem parada. Os dois gradientes de
+     máscara ficam em `scroll` (padrão, presos à seção) de propósito — como
+     `fixed` também é relativo ao viewport, os stops em % (12%, 38%, 62%)
+     iam acompanhar o SCROLL em vez da ALTURA da seção, e paravam de bater
+     com o rodapé real dela sempre que o hero mudasse de altura (foi o que
+     aconteceu ao aumentar o padding-top: a foto "descolava" do rodapé,
+     16/09/2026). Com `scroll`, cada gradiente é `cover`-dimensionado pela
+     seção atual e sempre termina em preto sólido exatamente no rodapé
+     dela, não importa a altura. */
+  background-attachment: scroll, scroll, fixed;
   pointer-events: none;
 }
 @media (max-width: 980px) {
