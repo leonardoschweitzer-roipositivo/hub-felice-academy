@@ -103,13 +103,13 @@
   color: #231701;
 }
 
-/* Faixa-frase (band) dourada/escura. */
+/* Faixa-frase (band): fundo dourado sólido da paleta, texto escuro — mesmo
+   padrão de contraste do .btn-primary e da .urgency-bar (fundo dourado
+   sempre usa #231701, nunca --text claro). */
 .felice-maestria .mc-band {
-  background:
-    radial-gradient(120% 160% at 50% 0%, rgba(232, 180, 71, 0.1), transparent 60%),
-    var(--ink-2);
-  border-top: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
+  background: var(--grad-gold);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding: clamp(36px, 6vw, 64px) 0;
 }
 .felice-maestria .mc-band-text {
@@ -120,12 +120,12 @@
   line-height: 1.25;
   max-width: 20ch;
   margin: 0 auto;
+  color: #231701;
 }
 .felice-maestria .mc-band-text b {
-  background: var(--grad-gold);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* Sobre fundo dourado, o clip-text dourado antigo ficava invisível —
+     branco é o destaque que sobra com contraste nos dois fundos vizinhos. */
+  color: #fff;
 }
 
 /* "O que você vai aprender" — grid de imagens + segredos. */
