@@ -191,8 +191,9 @@ export function RecepcaoProblema() {
           </p>
         </div>
         <div className="problem-photo reveal d1">
-          {/* Mesma foto do Diagnóstico do CRC (a recepção tensa no balcão), a
-              pedido do Leo em 16/09/2026, até a foto própria do CRC chegar. */}
+          {/* Foto que era do Diagnóstico do CRC (a recepção tensa no balcão);
+              ficou só aqui quando o CRC ganhou a sua (problema-crc.jpg),
+              a pedido do Leo em 16/09/2026. */}
           <img
             src="/images/problema-vendas-secretaria.jpeg"
             alt="Recepcionista tensa ao telefone enquanto o paciente aguarda no balcão com o orçamento em mãos"
