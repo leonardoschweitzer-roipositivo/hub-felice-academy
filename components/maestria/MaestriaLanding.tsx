@@ -46,7 +46,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 export function MaestriaLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar mz-sem-header">
+    <div className="felice felice-maestria mz-page has-urgency-bar mz-sem-header">
       <ScarcityBar
         deadlineIso={DEADLINE_ISO}
         label="As matrículas encerram em"

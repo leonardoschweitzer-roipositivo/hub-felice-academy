@@ -161,25 +161,28 @@
 }
 
 /* ---------- Números (logo após a hero): fundo dourado da paleta ----------
-   .numeros/.numeros-item vêm de felice.css, compartilhados com outras
-   landings — por isso o override mora aqui, escopado em .felice-maestria,
-   em vez de mexer na regra base. Mesmo padrão de contraste do
-   .btn-primary/.urgency-bar: fundo dourado sempre usa texto #231701. */
-.felice-maestria .numeros {
+   .numeros/.numeros-item vêm de felice.css, compartilhados com OUTRAS 6
+   landings que também usam .felice-maestria (vendas-secretaria, recepção,
+   consultoria, mentorias, masterclass) — por isso o override NÃO pode ser
+   escopado em .felice-maestria (bug corrigido em 16/09/2026: vazava fundo
+   dourado pro Numeros da vendas-secretaria). Usa `.mz-page`, uma classe só
+   da Maestria, adicionada no wrapper em MaestriaLanding.tsx. Mesmo padrão
+   de contraste do .btn-primary/.urgency-bar: fundo dourado usa #231701. */
+.mz-page .numeros {
   background: var(--grad-gold);
   border-top-color: rgba(0, 0, 0, 0.15);
   border-bottom-color: rgba(0, 0, 0, 0.15);
 }
-.felice-maestria .numeros-item b {
+.mz-page .numeros-item b {
   /* Sobre fundo dourado, o clip-text dourado (regra base) fica invisível. */
   background: none;
   -webkit-text-fill-color: initial;
   color: #231701;
 }
-.felice-maestria .numeros-item span {
+.mz-page .numeros-item span {
   color: rgba(35, 23, 1, 0.75);
 }
-.felice-maestria .numeros-item:not(:last-child)::after {
+.mz-page .numeros-item:not(:last-child)::after {
   background: rgba(0, 0, 0, 0.18);
 }
 
