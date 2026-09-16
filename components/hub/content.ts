@@ -91,7 +91,7 @@ export const PRODUTOS: Produto[] = [
     cta: 'Acessar',
     // Mesma foto do hero da landing. Puxa o enquadramento para a direita:
     // a atendente fica nesse lado da foto e o centro pegaria só a bancada.
-    imagem: '/images/background-secretaria-vende.jpg',
+    imagem: '/images/crc-hero.jpg',
     imagemPos: '78% 50%',
     detalhes: [
       'Do primeiro contato no WhatsApp ao fechamento',
@@ -114,11 +114,10 @@ export const PRODUTOS: Produto[] = [
     href: '/produtos/recepcao-alta-performance',
     interno: true,
     cta: 'Acessar',
-    // Mesma foto do CRC (é uma recepção de clínica), mas com o enquadramento
-    // do lado OPOSTO: o card 03 corta em 78% (a atendente) e este em 22% (a
-    // área de espera). Os dois ficam lado a lado na vitrine — sem cortes
-    // diferentes, pareceriam o mesmo card.
-    imagem: '/images/background-secretaria-vende.jpg',
+    // Mesma foto do hero da landing (balcão e sala de espera). O corte em 22%
+    // pega a área de espera, o lado "presencial" da cena. Foto própria, não a
+    // do CRC: os dois cards ficam lado a lado na vitrine.
+    imagem: '/images/rap-hero.jpg',
     imagemPos: '22% 50%',
     detalhes: [
       'Método Disney aplicado à recepção odontológica',

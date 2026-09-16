@@ -12,12 +12,14 @@
    compartilhada por 5 landings e aponta para a foto da cirurgia
    zigomática — sem este override, a Recepção herdaria aquela foto.
 
-   A foto é a MESMA do CRC de Alta Performance (é uma recepção de
-   clínica, o tema exato deste curso), mas com ENQUADRAMENTO
-   diferente de propósito: lá o corte fica em ~78% da largura, na
-   atendente; aqui puxa para 18%, a área de espera e a bancada. As
-   duas landings são produtos-par e ficam lado a lado na vitrine —
-   o corte é o que evita que pareçam a mesma página.
+   Foto PRÓPRIA (`rap-hero.jpg`): balcão e sala de espera de uma
+   clínica — o presencial, tema deste curso. O corte em 18% da
+   largura privilegia a área de espera e a bancada.
+   ⚠️ Não volte a apontar para a foto do CRC (`crc-hero.jpg`). Até
+   16/09/2026 as duas landings dividiam UM arquivo, e quando o CRC
+   trocou a foto (PR #105) gravando por cima dele, a Recepção passou
+   a exibir a cena comercial (agenda no computador e telefone) do
+   outro curso. Um arquivo por produto evita a repetição.
 
    ⚠️ Como são 4 camadas e a regra base declara position/size/repeat
    com 3 valores, os valores ciclariam e a FOTO herdaria os da 1ª
@@ -34,7 +36,7 @@
     linear-gradient(to bottom, #0b0b0d 0px, #0b0b0d 120px, rgba(11, 11, 13, 0) 300px),
     /* RODAPÉ */
     linear-gradient(to top, #0b0b0d 0%, #0b0b0d 10%, rgba(11, 11, 13, 0.5) 36%, rgba(11, 11, 13, 0) 62%),
-    url('/images/background-secretaria-vende.jpg');
+    url('/images/rap-hero.jpg');
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   background-position: center, center, center, 18% center;
   background-size: cover, cover, cover, cover;
