@@ -191,16 +191,15 @@ export function RecepcaoProblema() {
           </p>
         </div>
         <div className="problem-photo reveal d1">
-          <picture>
-            <source media="(max-width: 720px)" srcSet="/images/dentista-cansado-mobile.jpg" />
-            <img
-              src="/images/dentista-cansado-desktop.jpg"
-              alt="Dono de clínica preocupado com a experiência que o paciente tem na recepção"
-              width={1000}
-              height={545}
-              loading="lazy"
-            />
-          </picture>
+          {/* Mesma foto do Diagnóstico do CRC (a recepção tensa no balcão), a
+              pedido do Leo em 16/09/2026, até a foto própria do CRC chegar. */}
+          <img
+            src="/images/problema-vendas-secretaria.jpeg"
+            alt="Recepcionista tensa ao telefone enquanto o paciente aguarda no balcão com o orçamento em mãos"
+            width={1408}
+            height={768}
+            loading="lazy"
+          />
         </div>
         <div className="pains">
           {DORES.map((d, i) => (
