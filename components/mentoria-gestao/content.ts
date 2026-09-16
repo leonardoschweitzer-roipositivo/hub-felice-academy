@@ -220,7 +220,7 @@ export const TRILHAS: Trilha[] = [
     n: '01',
     titulo: 'Atendimento',
     resumo: 'A arte de receber: a linha de frente que acolhe e converte cada paciente.',
-    img: '/images/pilar-atendimento.jpg',
+    img: '/images/mg-pilar-atendimento.jpg',
     blocos: [
       {
         aulas: [
@@ -241,7 +241,7 @@ export const TRILHAS: Trilha[] = [
     // objeções, fechamento) já era comercial.
     titulo: 'Comercial',
     resumo: 'A CRC como a voz da clínica: mais agenda cheia, menos faltas.',
-    img: '/images/pilar-comercial.jpg',
+    img: '/images/mg-pilar-comercial.jpg',
     blocos: [
       {
         aulas: [
@@ -258,7 +258,7 @@ export const TRILHAS: Trilha[] = [
     n: '03',
     titulo: 'Marketing',
     resumo: 'Conteúdo e tráfego com método para encher a agenda com o paciente certo.',
-    img: '/images/pilar-marketing.jpg',
+    img: '/images/mg-pilar-marketing.jpg',
     blocos: [
       {
         aulas: [
@@ -275,7 +275,7 @@ export const TRILHAS: Trilha[] = [
     n: '04',
     titulo: 'Gestão',
     resumo: 'O sistema que organiza processos, equipe e finanças — e tira a clínica das suas costas.',
-    img: '/images/pilar-gestao.jpg',
+    img: '/images/mg-pilar-gestao.jpg',
     blocos: [
       {
         sub: 'Parte 1 · Processos e equipe',
