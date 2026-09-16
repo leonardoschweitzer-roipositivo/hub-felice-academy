@@ -1,7 +1,7 @@
 import '@/styles/felice.css';
 import '@/styles/maestria.css';
 
-import { MaestriaHeader } from './MaestriaHeader';
+// import { MaestriaHeader } from './MaestriaHeader';
 import {
   MaestriaHero,
   MaestriaNumeros,
@@ -46,14 +46,17 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 export function MaestriaLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar">
+    <div className="felice felice-maestria has-urgency-bar mz-sem-header">
       <ScarcityBar
         deadlineIso={DEADLINE_ISO}
         label="As matrículas encerram em"
         vagas="Vagas limitadas por turma"
         viewers
       />
-      <MaestriaHeader />
+      {/* Header escondido a pedido do Leo (16/09/2026). Para trazer de volta:
+          descomente o <MaestriaHeader /> e tire `mz-sem-header` do wrapper
+          — é essa classe que devolve ao hero o espaço do header fixo. */}
+      {/* <MaestriaHeader /> */}
 
       <main>
         <MaestriaHero />

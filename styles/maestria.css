@@ -66,6 +66,18 @@
   }
 }
 
+/* Sem o header fixo, o padding-top que reservava espaço pra ele (200px, de
+   .felice.has-urgency-bar .hero em felice.css) sobra como vão vazio entre a
+   barra de escassez e o hero. Mesmo ajuste do mc-sem-header da Masterclass. */
+.felice.has-urgency-bar.mz-sem-header .mz-hero-sec {
+  padding-top: calc(44px + var(--urgency-h));
+}
+@media (max-width: 760px) {
+  .felice.has-urgency-bar.mz-sem-header .mz-hero-sec {
+    padding-top: calc(30px + var(--urgency-h));
+  }
+}
+
 /* ---------- Hero: grade de 2 colunas ---------- */
 .felice-maestria .mz-hero {
   position: relative;
@@ -137,6 +149,29 @@
 /* Ícone no botão fantasma (Ver os módulos) */
 .felice-maestria .mz-hero .btn-ghost svg {
   color: var(--gold);
+}
+
+/* ---------- Números (logo após a hero): fundo dourado da paleta ----------
+   .numeros/.numeros-item vêm de felice.css, compartilhados com outras
+   landings — por isso o override mora aqui, escopado em .felice-maestria,
+   em vez de mexer na regra base. Mesmo padrão de contraste do
+   .btn-primary/.urgency-bar: fundo dourado sempre usa texto #231701. */
+.felice-maestria .numeros {
+  background: var(--grad-gold);
+  border-top-color: rgba(0, 0, 0, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+.felice-maestria .numeros-item b {
+  /* Sobre fundo dourado, o clip-text dourado (regra base) fica invisível. */
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #231701;
+}
+.felice-maestria .numeros-item span {
+  color: rgba(35, 23, 1, 0.75);
+}
+.felice-maestria .numeros-item:not(:last-child)::after {
+  background: rgba(0, 0, 0, 0.18);
 }
 
 /* Selos de confiança: tudo em UMA linha (fonte/gaps menores). */
