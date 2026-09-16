@@ -50,8 +50,13 @@ export const WHATSAPP_URL = whatsappUrl(
   'Olá! Tenho interesse no curso "Recepção de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
 );
 
-/** Fechamento do lote — countdown autêntico. ⚠️ Ajustar para a data real. */
-export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
+/**
+ * Fechamento do lote — alimenta o countdown da <ScarcityBar />.
+ * ⚠️ Vencida, a barra INTEIRA sai do ar (contador, vagas e "pessoas vendo
+ * agora"). Estava em 31/08/2026, já vencida; em 16/09/2026 passou para a
+ * mesma data do CRC de Alta Performance. ⚠️ Ajustar para a data real.
+ */
+export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {

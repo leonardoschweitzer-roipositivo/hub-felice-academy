@@ -2,7 +2,7 @@ import '@/styles/felice.css';
 import '@/styles/maestria.css';
 import '@/styles/recepcao-alta-performance.css';
 
-import { RecepcaoHeader } from './RecepcaoHeader';
+// import { RecepcaoHeader } from './RecepcaoHeader';
 import {
   RecepcaoHero,
   RecepcaoNumeros,
@@ -33,7 +33,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    Par presencial do CRC de Alta Performance (/produtos/vendas-secretaria),
    de quem esta landing é fork estrutural.
 
-   Ordem: ScarcityBar → Header → Hero → Números → Problema →
+   Ordem: ScarcityBar → Hero → Números → Problema →
    Método (4 pilares Disney) → Módulos → Bônus → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
@@ -47,14 +47,18 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 
 export function RecepcaoLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar">
+    <div className="felice felice-maestria has-urgency-bar rap-sem-header">
       <ScarcityBar
         deadlineIso={DEADLINE_ISO}
         label="A oferta deste lote encerra em"
         vagas="Condição do lote atual"
         viewers
       />
-      <RecepcaoHeader />
+      {/* Header escondido a pedido do Leo (16/09/2026), mesmo padrão do CRC.
+          Para trazer de volta: descomente o <RecepcaoHeader /> e tire
+          `rap-sem-header` do wrapper — é essa classe que devolve ao hero o
+          espaço do header fixo. */}
+      {/* <RecepcaoHeader /> */}
 
       <main>
         <RecepcaoHero />

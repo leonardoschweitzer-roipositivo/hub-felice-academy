@@ -7,6 +7,19 @@
    compartilham a camada .felice-maestria.
    ============================================================ */
 
+/* Sem o header fixo, o padding-top que reservava espaço pra ele (200px, de
+   .felice.has-urgency-bar .hero em felice.css) sobra como vão vazio entre a
+   barra de escassez e o hero. Mesmo valor do sv-sem-header do CRC, com
+   classe própria porque o hero reusa a classe compartilhada `.mz-hero-sec`. */
+.felice.has-urgency-bar.rap-sem-header .mz-hero-sec {
+  padding-top: calc(120px + var(--urgency-h));
+}
+@media (max-width: 760px) {
+  .felice.has-urgency-bar.rap-sem-header .mz-hero-sec {
+    padding-top: calc(80px + var(--urgency-h));
+  }
+}
+
 /* ---------- Hero: foto de fundo própria desta landing ----------
    A regra base `.felice-maestria .mz-hero-photo` (maestria.css) é
    compartilhada por 5 landings e aponta para a foto da cirurgia
