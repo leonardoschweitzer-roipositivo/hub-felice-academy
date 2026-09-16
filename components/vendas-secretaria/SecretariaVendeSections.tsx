@@ -192,10 +192,10 @@ export function SecretariaVendeProblema() {
         </div>
         <div className="problem-photo reveal d1">
           <img
-            src="/images/problema-vendas-secretaria.jpeg"
-            alt="Recepcionista tensa ao telefone enquanto o paciente aguarda no balcão com o orçamento em mãos"
-            width={1408}
-            height={768}
+            src="/images/problema-crc.jpg"
+            alt="Consultório odontológico vazio à noite, com a cadeira desocupada"
+            width={1166}
+            height={686}
             loading="lazy"
           />
         </div>
