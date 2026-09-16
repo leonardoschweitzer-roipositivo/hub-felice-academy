@@ -194,16 +194,15 @@ export function MaestriaProblema() {
           </p>
         </div>
         <div className="problem-photo reveal d1">
-          <picture>
-            <source media="(max-width: 720px)" srcSet="/images/dentista-cansado-mobile.jpg" />
-            <img
-              src="/images/dentista-cansado-desktop.jpg"
-              alt="Cirurgião-dentista sobrecarregado, inseguro diante de um caso complexo"
-              width={1000}
-              height={545}
-              loading="lazy"
-            />
-          </picture>
+          {/* Mesma foto da seção equivalente na Masterclass Zigomático — pedido
+              do Leo em 16/09/2026 pra manter as duas landings consistentes. */}
+          <img
+            src="/images/problema-masterclass-zigomatico.jpeg"
+            alt="Dentista em dúvida diante da tomografia de um caso de zigomático, com a pasta 'Refer to Specialist' na mesa"
+            width={1408}
+            height={768}
+            loading="lazy"
+          />
         </div>
         <div className="pains">
           {DORES.map((d, i) => (
