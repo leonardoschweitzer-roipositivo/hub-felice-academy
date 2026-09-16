@@ -151,34 +151,59 @@ export const PRODUTOS: Produto[] = [
     ],
   },
   {
-    /* ÚLTIMO da vitrine por decisão do Leo (13/08/2026): estava no nó 03,
+    /* ÚLTIMOS da vitrine por decisão do Leo (13/08/2026): estava no nó 03,
        espremido entre a Maestria e o CRC, e sumia no meio dos cursos. A
        ordem agora é uma escada de compromisso — Masterclass (entrada),
        Cursos, Consultoria e Mentorias no fim, que é o ticket mais alto e
        a entrada por candidatura. Mover o bloco exige renumerar os `num`,
        porque eles viram o badge dourado do card e não são derivados do
-       índice: fora de sequência, a vitrine lê 01, 02, 04, 05, 06, 03. */
+       índice: fora de sequência, a vitrine lê 01, 02, 04, 05, 06, 03.
+
+       DESMEMBRAMENTO (16/09/2026): o card único "Mentorias" levava para um
+       hub (/produtos/mentorias) onde o usuário escolhia a trilha. Virou
+       dois cards — um por trilha — que já saem direto para a landing de
+       cada mentoria, sem essa etapa intermediária. Os textos/bullets vêm
+       das opções que existiam em components/mentorias/content.ts. */
     num: '06',
-    // Plural: são duas trilhas, e o card leva para o hub /produtos/mentorias.
-    titulo: 'Mentorias',
+    titulo: 'Mentoria de Gestão F4',
     descricao:
-      'Acompanhamento direto do Dr. Sócrates para escalar clínica e carreira. Escolha sua trilha: Gestão F4 ou Zigomático (com encontros presenciais).',
+      'Tire a clínica das suas costas com os 4 pilares: Atendimento, Agendamento, Marketing e Gestão, ao lado do Dr. Sócrates.',
     categoria: 'Mentoria',
     estado: 'disponivel',
     imagem: '/images/card-mentoria.jpg',
-    href: '/produtos/mentorias',
+    href: '/produtos/mentoria-gestao-f4',
     interno: true,
-    cta: 'Ver as mentorias',
+    cta: 'Conhecer a mentoria',
     detalhes: [
-      'Duas trilhas: Gestão F4 e Zigomático',
-      'Plataforma, encontros ao vivo e suporte',
-      'Acompanhamento individual e em grupo',
+      'Plataforma de aulas + encontros ao vivo',
+      'Treinamento da sua equipe nos 4 pilares',
+      'Bônus: acesso ao Felice CRM',
     ],
   },
   {
-    // Era o nó 06; foi para 08 quando Recepção e Consultoria entraram, e
-    // voltou para 07 com a fusão do Gestão F4 na Consultoria.
     num: '07',
+    titulo: 'Mentoria de Zigomático',
+    descricao:
+      'Domine a cirurgia zigomática com prática real: hands-on em laboratório e acompanhamento cirúrgico ao lado do Dr. Sócrates.',
+    categoria: 'Mentoria',
+    estado: 'disponivel',
+    // Foto do hero da landing da mentoria (styles/mentoria-zigomatico.css).
+    imagem: '/images/background-mentoria-zigomatico-hero.jpg',
+    href: '/produtos/mentoria-zigomatico',
+    interno: true,
+    cta: 'Conhecer a mentoria',
+    destaque: true,
+    detalhes: [
+      'Imersão hands-on presencial em laboratório',
+      'Acompanhamento cirúrgico — operando junto',
+      'Plataforma, encontros e acompanhamento de casos',
+    ],
+  },
+  {
+    // Era o nó 06; foi para 08 quando Recepção e Consultoria entraram, voltou
+    // para 07 com a fusão do Gestão F4 na Consultoria, e foi para 08 de novo
+    // em 16/09/2026 quando o card Mentorias virou dois (06 e 07).
+    num: '08',
     titulo: 'Felice CRM',
     descricao:
       'O software que organiza pacientes, agenda, vendas e faturamento — a clínica inteira em um só lugar.',
