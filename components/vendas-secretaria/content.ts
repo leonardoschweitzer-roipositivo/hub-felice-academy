@@ -57,11 +57,12 @@ export const WHATSAPP_URL = whatsappUrl(
  * Fechamento do lote — alimenta o countdown da <ScarcityBar />.
  * ⚠️ Vencida, a barra INTEIRA sai do ar (contador, vagas e "pessoas vendo
  * agora"), e a página perde toda a urgência sem avisar ninguém. Estava em
- * 31/07/2026, no passado, desde antes de 11/08/2026.
- * ⚠️ Ajustar para a data real. Kit F4 à parte, as quatro landings com
- * countdown vencem juntas em 31/08/2026 — renove todas de uma vez.
+ * 31/07/2026, depois 31/08/2026 — as duas já vencidas (a de 31/08 foi o que
+ * motivou esta troca, em 16/09/2026).
+ * ⚠️ Ajustar para a data real. Kit F4 à parte, a Recepção de Alta
+ * Performance ainda está na data de 31/08 vencida — vale renovar junto.
  */
-export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
+export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {
