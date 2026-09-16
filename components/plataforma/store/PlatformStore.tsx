@@ -46,7 +46,8 @@ import {
 // slugs das aulas mudaram todos, então o progresso salvo daquele curso se
 // perde no re-seed — é o comportamento esperado enquanto os data/*.ts são mock.
 // v7: CRC e Recepção deixam de dividir a mesma capa (crc-hero / rap-hero).
-const STORAGE_KEY = 'feliceplat:dataset:v7';
+// v8: as duas capas trocaram de arquivo (crc-hero-headset / rap-hero-balcao).
+const STORAGE_KEY = 'feliceplat:dataset:v8';
 
 type Dataset = {
   cursos: Curso[];

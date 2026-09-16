@@ -164,7 +164,7 @@ export const CURSOS: Curso[] = [
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'novo',
     thumb: ['#3a2c0c', '#E8B447'],
-    imagem: '/images/rap-hero.jpg',
+    imagem: '/images/rap-hero-balcao.jpg',
     modulos: [
       {
         titulo: 'Fundamentos do atendimento Disney na recepção',
@@ -308,7 +308,7 @@ export const CURSOS: Curso[] = [
     instrutor: 'Dr. Sócrates Tavares',
     selo: 'em-alta',
     thumb: ['#3a1f14', '#E8825A'],
-    imagem: '/images/crc-hero.jpg',
+    imagem: '/images/crc-hero-headset.jpg',
     modulos: [
       {
         titulo: 'Sondagem e qualificação de leads',
