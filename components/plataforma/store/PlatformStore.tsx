@@ -45,7 +45,8 @@ import {
 // v6: grade real do CRC (4 módulos × 5 aulas do Conteúdo Programático). Os
 // slugs das aulas mudaram todos, então o progresso salvo daquele curso se
 // perde no re-seed — é o comportamento esperado enquanto os data/*.ts são mock.
-const STORAGE_KEY = 'feliceplat:dataset:v6';
+// v7: CRC e Recepção deixam de dividir a mesma capa (crc-hero / rap-hero).
+const STORAGE_KEY = 'feliceplat:dataset:v7';
 
 type Dataset = {
   cursos: Curso[];

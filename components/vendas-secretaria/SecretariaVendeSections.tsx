@@ -232,7 +232,7 @@ export function SecretariaVendeMetodo() {
             As <span className="gold-grad">4 etapas</span> do funil comercial da recepção
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
-            Atender, Agendar, Fechar e Reativar. Cada etapa vira processo com script — e a soma delas
+            Sondar, Agendar, Fechar e Contornar. Cada etapa vira processo com script — e a soma delas
             transforma atendimento em tratamento fechado.
           </p>
         </div>
