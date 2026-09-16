@@ -55,26 +55,35 @@
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: center, center, center 130px;
   background-size: cover, cover, 100% auto;
+  /* Parallax: a foto (e os dois gradientes que a mascaram, senão "descolam"
+     dela ao rolar) ficam presas ao viewport, não à seção — o conteúdo sobe
+     por cima da imagem parada, em vez de rolar junto. */
+  background-attachment: fixed, fixed, fixed;
   pointer-events: none;
 }
 @media (max-width: 980px) {
-  /* No mobile o conteúdo empilha: a foto vira só uma textura discreta. */
+  /* No mobile o conteúdo empilha: a foto vira só uma textura discreta.
+     `fixed` também é instável em navegadores mobile (Safari iOS ignora e
+     trata como `scroll`) — volta pro comportamento normal, sem parallax. */
   .felice-maestria .mz-hero-photo {
     background-position: center, center, top right;
     background-size: cover, cover, cover;
+    background-attachment: scroll, scroll, scroll;
     opacity: 0.45;
   }
 }
 
 /* Sem o header fixo, o padding-top que reservava espaço pra ele (200px, de
    .felice.has-urgency-bar .hero em felice.css) sobra como vão vazio entre a
-   barra de escassez e o hero. Mesmo ajuste do mc-sem-header da Masterclass. */
+   barra de escassez e o hero. Começou igual ao mc-sem-header da Masterclass
+   (44px/30px) e foi aumentado a pedido do Leo (16/09/2026), pra dar mais
+   respiro entre a barra e o badge/título do hero. */
 .felice.has-urgency-bar.mz-sem-header .mz-hero-sec {
-  padding-top: calc(44px + var(--urgency-h));
+  padding-top: calc(120px + var(--urgency-h));
 }
 @media (max-width: 760px) {
   .felice.has-urgency-bar.mz-sem-header .mz-hero-sec {
-    padding-top: calc(30px + var(--urgency-h));
+    padding-top: calc(80px + var(--urgency-h));
   }
 }
 
