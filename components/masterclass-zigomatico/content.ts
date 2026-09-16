@@ -28,10 +28,11 @@ export const VIDEO_URL =
 /** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
 export const VIDEO_IFRAME_ID = 'panda-f84f70aa-165f-40aa-b882-b5bd37076855';
 
-/** Saída do ar — countdown autêntico. ⚠️ PROVISÓRIA (escolhida em 10/08/2026
- *  para a barra voltar ao ar; a anterior, 15/07, já tinha vencido). Vencida,
- *  a barra inteira sai do DOM — contador E "pessoas vendo agora" somem junto. */
-export const DEADLINE_ISO = '2026-08-31T23:59:59-03:00';
+/** Saída do ar — countdown autêntico. ⚠️ PROVISÓRIA (escolhida em 16/09/2026
+ *  para a barra voltar ao ar; as anteriores, 15/07 e 31/08, já tinham vencido).
+ *  Vencida, a barra inteira sai do DOM — contador E "pessoas vendo agora" somem
+ *  junto — foi o que aconteceu e motivou esta troca. */
+export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /** WhatsApp de dúvidas (botão flutuante). */
 export const WHATSAPP_URL = whatsappUrl(
