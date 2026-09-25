@@ -9,6 +9,7 @@ import {
   RecepcaoProblema,
   RecepcaoMetodo,
   RecepcaoModulos,
+  RecepcaoBonus,
   RecepcaoPlataforma,
   RecepcaoAutoridade,
   RecepcaoOferta,
@@ -33,7 +34,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    de quem esta landing é fork estrutural.
 
    Ordem: ScarcityBar → Hero → Números → Problema →
-   Método (4 pilares Disney) → Módulos → Plataforma →
+   Método (4 pilares Disney) → Módulos → Bônus → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
    ⚠️ `has-urgency-bar` e a <ScarcityBar /> andam juntas: a classe
@@ -70,6 +71,7 @@ export function RecepcaoLanding() {
         </div>
 
         <RecepcaoModulos />
+        <RecepcaoBonus />
         <RecepcaoPlataforma />
         <RecepcaoAutoridade />
         <RecepcaoDepoimentos />
