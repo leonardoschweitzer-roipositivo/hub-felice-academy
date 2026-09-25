@@ -2,7 +2,7 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /* ============================================================
    CURSO "CRC DE ALTA PERFORMANCE" · conteúdo central da landing
-   Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
+   Edite SÓ aqui copy, módulos, preço, FAQ e depoimentos.
 
    O produto se chama "CRC de Alta Performance" desde 10/08/2026 (PR #19),
    mas a copy continuou falando com a persona "secretária" até 13/08/2026 —
@@ -16,8 +16,9 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    do orçamento e ao follow-up.
 
    Posicionamento: CURSO B2B — quem compra é o DONO da clínica para
-   TREINAR a equipe de recepção. Formato: aulas gravadas + bônus ao
-   vivo (encontro de dúvidas). NÃO confundir com:
+   TREINAR a equipe de recepção. Formato: aulas gravadas. Os bônus
+   (seção, encontro ao vivo, itens na oferta) foram removidos em
+   25/09/2026 a pedido do Leo — estão no git log se precisar voltar. NÃO confundir com:
    - Consultoria Gestão F4 (/produtos/consultoria): o Dr. Sócrates
      monta o sistema dos 4 pilares COM o dono, em 4 semanas de
      auditoria (nível estratégico). NÃO é curso — a landing que
@@ -38,7 +39,6 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    ⚠️ TROCAR antes de publicar:
    - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
-   - BONUS: lista sugerida — validar com o cliente o que é entregue de fato.
    ============================================================ */
 
 /** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
@@ -72,13 +72,13 @@ export const HERO = {
   // largura em `ch` nesta Poppins não funciona.
   titlePre: 'Transforme sua recepção num time comercial que',
   titleGold: 'agenda, apresenta e fecha tratamento.',
-  lead: 'Sua equipe atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega a quem fala com o paciente para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas + encontro ao vivo de dúvidas.',
+  lead: 'Sua equipe atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega a quem fala com o paciente para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas, no ritmo da equipe.',
   ctaPrimary: 'Quero treinar minha equipe',
   ctaSecondary: 'Ver os módulos',
   trust: [
     '100% online, no ritmo da equipe',
     'Scripts e planilhas prontos',
-    'Bônus: encontro ao vivo de dúvidas',
+    '4 módulos, 20 aulas',
     'Garantia de 7 dias',
   ],
 };
@@ -92,7 +92,7 @@ export const HERO_CARD = {
     { v: '20', l: 'Aulas' },
     { v: '7 dias', l: 'Garantia' },
   ],
-  pills: { live: 'Acesso imediato', premium: 'Bônus ao vivo' },
+  pills: { live: 'Acesso imediato', premium: '100% online' },
 };
 
 /** Faixa (marquee) de temas — card glass no hero. */
@@ -282,21 +282,6 @@ export const MODULOS: Modulo[] = [
   },
 ];
 
-/* ---------- Bônus ----------
-   `valor` é a ancoragem de valor percebido (em R$). O total é somado
-   automaticamente na seção. ⚠️ Ajuste os valores se quiser. */
-export const BONUS: { titulo: string; texto: string; valor: number }[] = [
-  { titulo: 'Pacote de scripts prontos', texto: 'Roteiros editáveis de primeiro contato, apresentação de orçamento, follow-up, confirmação e reativação — prontos para a equipe usar hoje.', valor: 197 },
-  { titulo: 'Banco de respostas para objeções', texto: 'O "o que dizer quando…" para "tá caro", "vou pensar", "preciso falar em casa" e as objeções mais comuns da recepção.', valor: 147 },
-  { titulo: 'Planilha de controle de orçamentos e follow-up', texto: 'O funil comercial da recepção numa planilha: cada orçamento aberto, o próximo contato e nada mais caindo no esquecimento.', valor: 147 },
-  { titulo: 'Modelos de mensagem (WhatsApp)', texto: 'Templates de confirmação de consulta e de reativação de pacientes, prontos para copiar, personalizar e enviar.', valor: 97 },
-  { titulo: 'Encontro ao vivo de dúvidas', texto: 'Um encontro ao vivo com o time Felice para destravar a aplicação do método na realidade da sua clínica.', valor: 297 },
-  // O Módulo 1 já ensina "ferramentas de anotação e CRM para rastreamento"
-  // de forma genérica; este bônus é a aplicação daquilo dentro do Felice CRM.
-  { titulo: 'Aula bônus: o Módulo 1 dentro do Felice CRM', texto: 'O rastreamento que a aula 4 ensina, aplicado passo a passo no Felice CRM: cada orçamento registrado e o follow-up no automático.', valor: 197 },
-  { titulo: 'Certificado de conclusão', texto: 'Certificado da Felice Academy ao final do curso, que valoriza a profissional e a sua recepção.', valor: 47 },
-];
-
 /* ---------- Plataforma / como funciona ---------- */
 export const PLATAFORMA: { n: string; titulo: string; texto: string }[] = [
   { n: '01', titulo: 'Feito para a equipe', texto: 'Você compra uma vez e treina quem está na recepção hoje e quem entrar amanhã — o padrão da sua clínica não depende mais da rotatividade.' },
@@ -376,8 +361,6 @@ export const OFERTA = {
     'Módulo 2 · Agendamento eficaz',
     'Módulo 3 · Fechamento de vendas e tratamentos',
     'Módulo 4 · Tratativa de objeções e follow-up',
-    'Bônus: scripts, banco de objeções e planilhas prontos',
-    'Bônus ao vivo: encontro de dúvidas com o time Felice',
     'Garantia incondicional de 7 dias',
   ],
   parcela: { vezes: '12x', valor: 'R$ 61,38' },
@@ -411,10 +394,6 @@ export const FAQ: { q: string; a: string }[] = [
        tinha acompanhado, e a página vendia comparação com produto fantasma. */
     q: 'Qual a diferença para a Consultoria Gestão F4?',
     a: 'A Consultoria Gestão F4 é para você, dono(a): o Dr. Sócrates monta o sistema dos 4 pilares da clínica com você, em 4 semanas (nível estratégico). O "CRC de Alta Performance" é o treinamento prático que você entrega à recepção — foco total em atender, agendar, apresentar orçamento e fechar. Uma monta a estrutura; o outro treina a linha de frente.',
-  },
-  {
-    q: 'Como funciona o bônus ao vivo?',
-    a: 'Além das aulas gravadas, a matrícula dá acesso a um encontro ao vivo de dúvidas com o time Felice, para destravar a aplicação do método na realidade da sua clínica. A data e o formato são informados na área do aluno.',
   },
   {
     q: 'Como funciona a garantia e o pagamento?',

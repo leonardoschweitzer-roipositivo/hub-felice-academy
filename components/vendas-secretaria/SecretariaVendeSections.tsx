@@ -9,7 +9,6 @@ import {
   DORES_FECHAMENTO,
   METODO,
   MODULOS,
-  BONUS,
   PLATAFORMA,
   MENTOR,
   OFERTA,
@@ -302,53 +301,6 @@ export function SecretariaVendeModulos() {
               ))}
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Bônus ---------- */
-const brl = (n: number) => `R$ ${n.toLocaleString('pt-BR')}`;
-
-export function SecretariaVendeBonus() {
-  const total = BONUS.reduce((s, b) => s + b.valor, 0);
-  return (
-    <section className="sec">
-      <div className="wrap">
-        <div className="sec-head center reveal">
-          <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            Bônus especiais
-          </span>
-          <h2>
-            E ainda leva <span className="gold-grad">tudo isto junto</span>
-          </h2>
-        </div>
-
-        <div className="mz-bonus">
-          {BONUS.map((b, i) => (
-            <article className={`mz-bonus-card reveal${i ? ` d${i % 4}` : ''}`} key={b.titulo}>
-              <span className="mz-bonus-tag">Bônus {String(i + 1).padStart(2, '0')}</span>
-              <h3>{b.titulo}</h3>
-              <p>{b.texto}</p>
-              <div className="mz-bonus-price">
-                <span className="mz-bonus-price-lbl">Valor</span>
-                <span className="mz-bonus-price-val">{brl(b.valor)}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mz-bonus-total reveal">
-          <div className="mz-bonus-total-row">
-            <span className="mz-bonus-total-lbl">
-              <Check size={18} stroke="currentColor" /> Total em bônus
-            </span>
-            <span className="mz-bonus-total-val">{brl(total)}</span>
-          </div>
-          <p className="mz-bonus-total-note">
-            Tudo isto está <b>incluso gratuitamente</b> na sua matrícula do CRC de Alta Performance.
-          </p>
         </div>
       </div>
     </section>

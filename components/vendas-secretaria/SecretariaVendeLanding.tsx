@@ -9,7 +9,6 @@ import {
   SecretariaVendeProblema,
   SecretariaVendeMetodo,
   SecretariaVendeModulos,
-  SecretariaVendeBonus,
   SecretariaVendePlataforma,
   SecretariaVendeAutoridade,
   SecretariaVendeOferta,
@@ -32,7 +31,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    estrutural do Gestão F4 (ticket com checkout + escassez por deadline).
 
    Ordem: ScarcityBar → Header → Hero → Números → Problema →
-   Método (funil da recepção) → Módulos → Bônus → Plataforma →
+   Método (funil da recepção) → Módulos → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
    ⚠️ O produto se chama "CRC de Alta Performance" na tela desde o rename de
@@ -69,7 +68,6 @@ export function SecretariaVendeLanding() {
         </div>
 
         <SecretariaVendeModulos />
-        <SecretariaVendeBonus />
         <SecretariaVendePlataforma />
         <SecretariaVendeAutoridade />
         <SecretariaVendeDepoimentos />
