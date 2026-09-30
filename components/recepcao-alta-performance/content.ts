@@ -2,7 +2,7 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /* ============================================================
    CURSO "RECEPÇÃO DE ALTA PERFORMANCE" · conteúdo central da landing
-   Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
+   Edite SÓ aqui copy, módulos, preço, FAQ e depoimentos.
    Nome formal no material: "Formação de Recepcionistas de Alta
    Performance em Clínicas Odontológicas" (Felice Academy, 2026).
 
@@ -31,11 +31,12 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    ✅ Checkout e preço já são os reais (Payfast/Greenn, 11/08/2026):
    12x de R$ 61,38 ou R$ 597,00 à vista — o mesmo do CRC, o produto-par.
 
+   Bônus: a seção e os itens de bônus da oferta foram removidos em
+   25/09/2026 a pedido do Leo (estão no git log se precisar voltar).
+
    ⚠️ TROCAR antes de publicar:
    - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
-   - BONUS: confirmar o que é realmente entregue (e os valores de
-     ancoragem) — a lista foi derivada do material do próprio curso.
    ============================================================ */
 
 /** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
@@ -267,24 +268,6 @@ export const MODULOS: Modulo[] = [
   },
 ];
 
-/* ---------- Bônus ----------
-   Derivados do material que o próprio plano de aula descreve — nada
-   inventado. `valor` é a ancoragem de valor percebido (em R$); o
-   total é somado automaticamente na seção.
-
-   São SEIS de propósito: `.mz-bonus` (maestria.css:554) é um grid de
-   2 colunas, então número par fecha as linhas sem card órfão.
-
-   ⚠️ Validar com o cliente o que é de fato entregue como arquivo. */
-export const BONUS: { titulo: string; texto: string; valor: number }[] = [
-  { titulo: 'Checklist visual diário da recepção', texto: 'A lista de conferência do balcão, da sala de espera e do ambiente — abertura, entre pacientes e fechamento — para o padrão não depender da memória de ninguém.', valor: 147 },
-  { titulo: 'Roteiro de confirmação em dois tempos', texto: 'As mensagens de 48h e de 24h antes da consulta, com reforço de valor, mais o script da fila de espera para preencher o horário que abriu hoje.', valor: 197 },
-  { titulo: 'Banco de respostas do "sim criativo"', texto: 'O que dizer quando a agenda está cheia, quando o paciente acha caro e quando a resposta óbvia seria "não" — com alternativa pronta em cada caso.', valor: 147 },
-  { titulo: 'Modelos de WhatsApp: follow-up e recall', texto: 'Templates de acompanhamento no dia seguinte ao procedimento e de resgate do paciente sumido há seis meses, prontos para personalizar e enviar.', valor: 97 },
-  { titulo: 'Painel dos 4 indicadores da recepção', texto: 'NPS, taxa de no-show, taxa de recall e tempo médio de espera: como calcular cada um, que meta perseguir e qual ação da recepção move o ponteiro.', valor: 197 },
-  { titulo: 'Certificado de conclusão', texto: 'Certificado da Felice Academy ao final do curso, que valoriza a profissional e a recepção da sua clínica.', valor: 47 },
-];
-
 /* ---------- Plataforma / como funciona ---------- */
 export const PLATAFORMA: { n: string; titulo: string; texto: string }[] = [
   { n: '01', titulo: 'Feito para a equipe', texto: 'Você compra uma vez e treina quem está na recepção hoje e quem entrar amanhã — o padrão de atendimento da sua clínica deixa de ir embora junto com quem pede demissão.' },
@@ -359,8 +342,6 @@ export const OFERTA = {
     'Módulo 2 · Procedimentos operacionais da recepção',
     'Módulo 3 · Comunicação e relacionamento com pacientes',
     'Módulo 4 · Excelência e melhoria contínua',
-    'Bônus: checklists, roteiros de confirmação e modelos de WhatsApp',
-    'Bônus: painel dos 4 indicadores da recepção',
     'Certificado de conclusão da Felice Academy',
     'Garantia incondicional de 7 dias',
   ],
