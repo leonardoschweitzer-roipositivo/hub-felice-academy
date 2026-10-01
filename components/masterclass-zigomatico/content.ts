@@ -190,8 +190,12 @@ export const DESTAQUE = {
 };
 
 /* ---------- Depoimentos ----------
-   Nomes e textos corrigidos em 01/10/2026 com as falas reais entregues pelo
-   Leo em 08/09/2026 (iguais aos da Maestria). ⚠️ Não reescreva a copy.
+   Trocados em 01/10/2026 (revisão da equipe Felice) pelos depoimentos de
+   dentistas que fizeram a masterclass. Os 4 anteriores (Emmanuel, Thiago,
+   Paulo, Julierme) são da Maestria e seguem lá.
+
+   Os vídeos vieram sem a fala transcrita: o card mostra só o player, o nome
+   e a cidade. Preencha `texto` com a fala real quando tiver (não invente).
 */
 /** `embed`/`embedId`: player do Panda, vertical (9:16), tocado dentro do card.
  *  `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
@@ -199,7 +203,7 @@ export const DESTAQUE = {
 export type Depoimento = {
   nome: string;
   meta: string;
-  texto: string;
+  texto?: string;
   embed?: string;
   embedId?: string;
   video?: string;
@@ -207,39 +211,25 @@ export type Depoimento = {
 };
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Emmanuel Marques',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
+    nome: 'Dr. Marcelo Paiva',
+    meta: 'João Pessoa – PB',
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
-    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=4c4dd4cc-82da-402a-9dc3-e94020656918',
+    embedId: 'panda-4c4dd4cc-82da-402a-9dc3-e94020656918',
   },
   {
-    nome: 'Dr. Thiago Vinicius',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
+    nome: 'Dr. Julio Maciel',
+    meta: 'João Pessoa – PB',
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
-    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=6bc68680-4486-4534-8b8a-8c19ed70868f',
+    embedId: 'panda-6bc68680-4486-4534-8b8a-8c19ed70868f',
   },
   {
-    nome: 'Dr. Paulo Maurício',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
+    nome: 'Prof. Dr. Marcos Paiva',
+    meta: 'João Pessoa – PB',
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
-    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
-  },
-  {
-    nome: 'Dr. Julierme Ferreira',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
-    // O snippet deste veio como iframe fixo de 720x360, sem o div de proporção.
-    // É só a variante de tamanho fixo do Panda: o vídeo é 612x1080, vertical
-    // igual aos outros, e cai no mesmo slot 9:16.
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
-    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=4fc5ee5e-f4e3-4fff-8f2c-e425ac001d0c',
+    embedId: 'panda-4fc5ee5e-f4e3-4fff-8f2c-e425ac001d0c',
   },
 ];
 

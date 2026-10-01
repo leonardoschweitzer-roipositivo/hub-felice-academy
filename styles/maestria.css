@@ -962,6 +962,15 @@
   scroll-snap-align: start;
   margin: 0;
 }
+/* Até 3 depoimentos cabem lado a lado: sem setas, e a fileira centralizada.
+   Margem automática em vez de justify-content para, no celular (onde a
+   fileira transborda), o primeiro card não ficar cortado à esquerda. */
+.felice-maestria .mz-depos.mz-depos--poucos .mz-video:first-child {
+  margin-left: auto;
+}
+.felice-maestria .mz-depos.mz-depos--poucos .mz-video:last-child {
+  margin-right: auto;
+}
 .felice-maestria .mz-depo-video {
   position: relative;
   aspect-ratio: 9 / 16;
