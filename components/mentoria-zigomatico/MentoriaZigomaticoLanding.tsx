@@ -22,6 +22,8 @@ import { MentoriaZigomaticoAmbiente } from './MentoriaZigomaticoAmbiente';
 import { MentoriaZigomaticoCasos } from './MentoriaZigomaticoCasos';
 import { MentoriaZigomaticoEntrada } from './MentoriaZigomaticoProvaEntrada';
 import { MaestriaDepoimentos } from '@/components/maestria/MaestriaProvaGarantia';
+import { DEPOIMENTOS as DEPOIMENTOS_MAESTRIA } from '@/components/maestria/content';
+import { DEPOIMENTOS as DEPOIMENTOS_MASTERCLASS } from '@/components/masterclass-zigomatico/content';
 import { MentoriaZigomaticoFaq } from './MentoriaZigomaticoFaq';
 import { MentoriaZigomaticoFooter } from './MentoriaZigomaticoFooter';
 
@@ -72,7 +74,11 @@ export function MentoriaZigomaticoLanding() {
         <MentoriaZigomaticoAutoridade />
         <MentoriaZigomaticoCasos />
         {/* Mesmos depoimentos em vídeo da Maestria Zigomática. */}
-        <MaestriaDepoimentos publico="Cirurgiões" depoimentos={DEPOIMENTOS} />
+        {/* Os da Masterclass, os da Maestria e os 4 que já eram da mentoria. */}
+        <MaestriaDepoimentos
+          publico="Cirurgiões"
+          depoimentos={[...DEPOIMENTOS_MASTERCLASS, ...DEPOIMENTOS_MAESTRIA, ...DEPOIMENTOS]}
+        />
         <MentoriaZigomaticoOferta />
         <MentoriaZigomaticoEntrada />
         <MentoriaZigomaticoFaq />

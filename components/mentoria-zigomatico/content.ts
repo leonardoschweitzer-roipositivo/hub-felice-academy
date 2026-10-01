@@ -481,9 +481,9 @@ export const DIAGNOSTICO_VIDEO = {
 };
 
 /* ---------- Depoimentos ----------
-   Renderizados pelo <MaestriaDepoimentos /> da Maestria. Até 01/10/2026 a
-   lista era a da própria Maestria; quando a Maestria trocou os vídeos, esta
-   página ficou com os 4 que já mostrava. */
+   Renderizados pelo <MaestriaDepoimentos /> da Maestria, depois dos da
+   Masterclass e dos da Maestria (ver MentoriaZigomaticoLanding). Estes são
+   os 4 que a mentoria já mostrava antes de a Maestria trocar os vídeos. */
 export const DEPOIMENTOS: Depoimento[] = [
   {
     nome: 'Dr. Emmanuel Marques',
