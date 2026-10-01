@@ -27,7 +27,7 @@ import { MentoriaZigomaticoFooter } from './MentoriaZigomaticoFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { WHATSAPP_URL } from './content';
+import { WHATSAPP_URL, DEPOIMENTOS } from './content';
 
 /* ============================================================
    MENTORIA DE ZIGOMÁTICO — landing de vendas (padrão Felice / dourado).
@@ -72,7 +72,7 @@ export function MentoriaZigomaticoLanding() {
         <MentoriaZigomaticoAutoridade />
         <MentoriaZigomaticoCasos />
         {/* Mesmos depoimentos em vídeo da Maestria Zigomática. */}
-        <MaestriaDepoimentos publico="Cirurgiões" />
+        <MaestriaDepoimentos publico="Cirurgiões" depoimentos={DEPOIMENTOS} />
         <MentoriaZigomaticoOferta />
         <MentoriaZigomaticoEntrada />
         <MentoriaZigomaticoFaq />
