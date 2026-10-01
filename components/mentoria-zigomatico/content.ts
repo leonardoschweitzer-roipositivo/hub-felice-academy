@@ -12,7 +12,6 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    Venda por APLICAÇÃO (sem preço): CTAs → /produtos/mentoria-zigomatico/aplicacao.
 
    ⚠️ TROCAR antes de publicar:
-   - DEPOIMENTOS: vídeos (embed) e thumbnails reais dos alunos.
    - PRESENCIAL/ENTREGAS: confirmar datas, locais e formato dos encontros.
    - BONUS.valor: ancoragem de valor percebido — ajuste se quiser.
    ============================================================ */
@@ -479,45 +478,10 @@ export const DIAGNOSTICO_VIDEO = {
 };
 
 /* ---------- Depoimentos ----------
-   Os quatro são REAIS, entregues pelo Leo em 08/09/2026, e substituíram os
-   três textos placeholder que estavam aqui (Dr. João Marcel, Dra. Juliene,
-   Dr. Cristhiano Salustio — sem sobrenome completo e sem origem).
-
-   São SÓ TEXTO, sem vídeo, por decisão do Leo. Daí o tipo ter perdido os
-   campos `video` e `thumb`: enquanto existiam, o render desenhava um botão
-   de play em cima de todo card mesmo sem vídeo nenhum — play que não toca
-   engana o visitante. Sem os campos não há como o play voltar por descuido.
-
-   ⚠️ Os textos são fala de gente real: não reescreva para "melhorar" a copy.
-   Foram transcritos como vieram, mexendo só em acento e pontuação.
-
-   Três destes nomes também aparecem na Masterclass de Zigomático, lá com
-   vídeo e com SOBRENOME DIFERENTE (Emmanuel Bezerra, Paulo Bezerra). Se for
-   a mesma pessoa, um dos dois está errado — vale conferir com o Leo antes de
-   uniformizar, porque corrigir nome de aluno no chute é pior que deixar. */
-export type Depoimento = { nome: string; meta: string; texto: string };
-export const DEPOIMENTOS: Depoimento[] = [
-  {
-    nome: 'Dr. Emmanuel Marques',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
-  },
-  {
-    nome: 'Dr. Thiago Vinicius',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
-  },
-  {
-    nome: 'Dr. Paulo Maurício',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
-  },
-  {
-    nome: 'Dr. Julierme Ferreira',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
-  },
-];
+   Saíram daqui: a landing mostra os vídeos da Maestria Zigomática
+   (DEPOIMENTOS em maestria/content.ts, via <MaestriaDepoimentos />).
+   Os textos que moravam aqui (entregues pelo Leo em 08/09/2026) estão no
+   histórico do git se precisarem voltar. */
 
 /* ---------- Oferta (sem preço — por aplicação) ---------- */
 export const OFERTA = {

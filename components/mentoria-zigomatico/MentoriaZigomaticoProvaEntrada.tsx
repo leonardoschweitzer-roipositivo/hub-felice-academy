@@ -1,41 +1,8 @@
-/* Depoimentos + "Como funciona a entrada" da Mentoria de Zigomático. */
+/* "Como funciona a entrada" da Mentoria de Zigomático.
+   Os depoimentos são os mesmos vídeos da Maestria Zigomática — a landing usa
+   direto o <MaestriaDepoimentos /> (dados em maestria/content.ts). */
 
-import { DEPOIMENTOS, ENTRADA, APPLY_URL, FINAL } from './content';
-
-export function MentoriaZigomaticoDepoimentos() {
-  return (
-    <section className="sec">
-      <div className="wrap">
-        <div className="sec-head center reveal">
-          <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            Quem já fez
-          </span>
-          <h2>
-            Cirurgiões que saíram da insegurança para a{' '}
-            <span className="gold-grad">sala de cirurgia</span>
-          </h2>
-        </div>
-
-        {/* Só texto, sem vídeo: nada de .mz-video-thumb com botão de play,
-            que é o que este bloco desenhava antes em TODO card, tivesse ou
-            não vídeo por trás. Play que não toca engana o visitante.
-            São quatro depoimentos, e a grade base é de 3 colunas — daí o
-            --quotes, que põe 2x2 e evita o órfão sozinho na segunda linha. */}
-        <div className="mz-videos mz-videos--quotes">
-          {DEPOIMENTOS.map((d, i) => (
-            <blockquote className={`mz-video reveal${i > 0 ? ` d${i % 4}` : ''}`} key={d.nome}>
-              <p>&quot;{d.texto}&quot;</p>
-              <div className="who">
-                <b>{d.nome}</b>
-                <small>{d.meta}</small>
-              </div>
-            </blockquote>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+import { ENTRADA, APPLY_URL, FINAL } from './content';
 
 /** Substitui a garantia: 3 passos do processo de aplicação. */
 export function MentoriaZigomaticoEntrada() {
