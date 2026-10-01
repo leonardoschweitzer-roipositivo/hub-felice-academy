@@ -1,5 +1,6 @@
 import '@/styles/felice.css';
 import { Footer } from '@/components/felice/sections/Footer';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 type LegalPageProps = {
   title: string;
@@ -17,10 +18,7 @@ export function LegalPage({ title, updatedAt, children }: LegalPageProps) {
       <header className="legal-topbar">
         <div className="wrap">
           <a className="brand" href="/produtos/kitgestaof4">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo />
           </a>
           <a className="legal-back" href="/produtos/kitgestaof4">
             ← Voltar

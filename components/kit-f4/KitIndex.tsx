@@ -13,6 +13,7 @@ import { SearchModal } from './search/SearchModal';
 import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
 import { ConsultoriaOferta } from '@/components/felice/consultoria/ConsultoriaOferta';
 import { VIDEO_URL, VIDEO_IFRAME_ID } from '@/components/felice/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /** Página índice do Kit F4: 4 cards (um por documento) com progresso. */
 export function KitIndex() {
@@ -23,10 +24,7 @@ export function KitIndex() {
       <header className="kit-topbar">
         <div className="wrap kit-topbar-inner">
           <Link className="brand" href="/">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo height={36} />
           </Link>
           <div className="kit-topbar-actions">
             <button type="button" className="kit-search-trigger" onClick={() => setSearchOpen(true)}>

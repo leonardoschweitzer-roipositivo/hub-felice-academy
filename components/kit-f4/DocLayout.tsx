@@ -20,6 +20,7 @@ import { DocPrevNext } from './DocPrevNext';
 import { DocToolsPanel } from './DocToolsPanel';
 import { SearchModal } from './search/SearchModal';
 import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /** Formata a data ISO (AAAA-MM-DD) em dd/mm/aaaa, sem depender de timezone. */
 function formatUpdatedAt(iso: string): string {
@@ -54,10 +55,7 @@ export function DocLayout({ doc }: { doc: DocModel }) {
       <header className="kit-topbar">
         <div className="wrap kit-topbar-inner">
           <Link className="brand" href={KIT_BASE}>
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo height={36} />
           </Link>
 
           <DocTabs current={doc.id} />

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Icon, type IconName } from './icons';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 type NavItem = {
   href: string;
@@ -101,10 +102,7 @@ export function PlatformSidebar({ open, onClose }: { open: boolean; onClose: () 
   return (
     <aside className={`plat-sidebar${open ? ' open' : ''}`} aria-label="Navegação da plataforma">
       <Link href="/plataforma" className="brand" onClick={onClose}>
-        <span className="badge">F</span>
-        <span>
-          Felice<small>Academy</small>
-        </span>
+        <FeliceLogo />
       </Link>
 
       <nav>

@@ -1,4 +1,5 @@
 import { APLICACAO_URL } from './content';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Rodapé da Consultoria — mesmas classes/legal das demais landings. */
 export function ConsultoriaFooter() {
@@ -7,10 +8,7 @@ export function ConsultoriaFooter() {
       <div className="wrap">
         <div className="foot-top">
           <a className="brand" href="#topo">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo />
           </a>
         </div>
         <div className="foot-links">

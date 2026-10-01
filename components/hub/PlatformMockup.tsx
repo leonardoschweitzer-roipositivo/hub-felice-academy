@@ -1,8 +1,10 @@
 /* ============================================================
    Mockup ilustrativo da PLATAFORMA DE CURSOS Felice — puro
-   markup + CSS (sem imagem). Usado no hero do HUB, abaixo do CTA.
+   markup + CSS (só o logo é imagem). Usado no hero do HUB, abaixo do CTA.
    Decorativo → aria-hidden. Estilos em hub.css (prefixo .pm-).
    ============================================================ */
+
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 const NAV = [
   { label: 'Início', active: true },
@@ -34,10 +36,7 @@ export function PlatformMockup() {
         {/* Sidebar */}
         <aside className="pm-side">
           <div className="pm-brand">
-            <span className="pm-brand-mark">F</span>
-            <span className="pm-brand-name">
-              Felice <small>ACADEMY</small>
-            </span>
+            <FeliceLogo height={30} />
           </div>
           <nav className="pm-nav">
             {NAV.map((item) => (

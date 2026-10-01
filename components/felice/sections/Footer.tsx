@@ -1,4 +1,5 @@
 import { CHECKOUT_URL } from '../config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Rodapé compartilhado por todas as páginas do site.
 
@@ -25,10 +26,7 @@ export function Footer({
       <div className="wrap">
         <div className="foot-top">
           <a className="brand" href="#topo">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo />
           </a>
         </div>
         <div className="foot-links">

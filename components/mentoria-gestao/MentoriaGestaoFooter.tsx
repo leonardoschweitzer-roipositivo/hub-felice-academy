@@ -1,4 +1,5 @@
 import { APPLY_URL } from './content';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Rodapé da Mentoria de Gestão — mesmas classes/legal do Felice. */
 export function MentoriaGestaoFooter() {
@@ -7,10 +8,7 @@ export function MentoriaGestaoFooter() {
       <div className="wrap">
         <div className="foot-top">
           <a className="brand" href="#topo">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo />
           </a>
         </div>
         <div className="foot-links">

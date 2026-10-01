@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Icon, type IconName } from '../icons';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 type Item = { href: string; label: string; icon: IconName };
 
@@ -23,10 +24,7 @@ export function AdminSidebar({ open, onClose }: { open: boolean; onClose: () => 
   return (
     <aside className={`plat-sidebar${open ? ' open' : ''}`} aria-label="Navegação do admin">
       <Link href="/plataforma/admin" className="brand" onClick={onClose}>
-        <span className="badge">F</span>
-        <span>
-          Felice<small>Academy</small>
-        </span>
+        <FeliceLogo />
         <span className="admin-tag">ADMIN</span>
       </Link>
 

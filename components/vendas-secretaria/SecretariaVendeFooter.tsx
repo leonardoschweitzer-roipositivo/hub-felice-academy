@@ -1,4 +1,5 @@
 import { CHECKOUT_URL } from './content';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Rodapé do "CRC de Alta Performance" — mesmas classes/legal do Felice. */
 export function SecretariaVendeFooter() {
@@ -7,10 +8,7 @@ export function SecretariaVendeFooter() {
       <div className="wrap">
         <div className="foot-top">
           <a className="brand" href="#topo">
-            <span className="badge">F</span>
-            <span>
-              Felice<small>Academy</small>
-            </span>
+            <FeliceLogo />
           </a>
         </div>
         <div className="foot-links">

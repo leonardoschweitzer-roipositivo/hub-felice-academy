@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 export function HubHeader() {
   const headerRef = useRef<HTMLElement>(null);
@@ -19,10 +20,7 @@ export function HubHeader() {
     <header className="felice-header" ref={headerRef}>
       <div className="wrap nav">
         <a className="brand" href="#topo">
-          <span className="badge">F</span>
-          <span>
-            Felice<small>Academy</small>
-          </span>
+          <FeliceLogo />
         </a>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <Link href="/produtos" className="btn btn-ghost">

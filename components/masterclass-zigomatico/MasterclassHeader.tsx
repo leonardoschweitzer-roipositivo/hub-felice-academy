@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { OFERTA_ANCHOR } from './content';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 export function MasterclassHeader() {
   const headerRef = useRef<HTMLElement>(null);
@@ -19,10 +20,7 @@ export function MasterclassHeader() {
     <header className="felice-header" ref={headerRef}>
       <div className="wrap nav">
         <a className="brand" href="#topo">
-          <span className="badge">F</span>
-          <span>
-            Felice<small>Academy</small>
-          </span>
+          <FeliceLogo />
         </a>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <a href="#bonus" className="btn btn-ghost">

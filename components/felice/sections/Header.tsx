@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -18,10 +19,7 @@ export function Header() {
     <header className="felice-header" ref={headerRef}>
       <div className="wrap nav">
         <a className="brand" href="#topo">
-          <span className="badge">F</span>
-          <span>
-            Felice<small>Academy</small>
-          </span>
+          <FeliceLogo />
         </a>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <a href="#metodo" className="btn btn-ghost">

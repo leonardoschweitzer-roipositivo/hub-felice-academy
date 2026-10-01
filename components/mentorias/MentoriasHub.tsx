@@ -10,6 +10,7 @@ import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { MentoriaChoiceCard } from './MentoriaChoiceCard';
 import { MENTORIAS } from './content';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* ============================================================
    HUB DE MENTORIAS · página-pivot
@@ -32,10 +33,7 @@ function MentoriasHeader() {
     <header className="felice-header" ref={headerRef}>
       <div className="wrap nav">
         <Link className="brand" href="/">
-          <span className="badge">F</span>
-          <span>
-            Felice<small>Academy</small>
-          </span>
+          <FeliceLogo />
         </Link>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <Link href="/#produtos" className="btn btn-ghost">
@@ -86,10 +84,7 @@ export function MentoriasHub() {
         <div className="wrap">
           <div className="foot-top">
             <Link className="brand" href="/">
-              <span className="badge">F</span>
-              <span>
-                Felice<small>Academy</small>
-              </span>
+              <FeliceLogo />
             </Link>
           </div>
           <div className="foot-links">
