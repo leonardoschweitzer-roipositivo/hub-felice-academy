@@ -344,11 +344,14 @@ export const MENTOR = {
 
    `embed`/`embedId`: player do Panda, 9:16, tocado dentro do card.
    `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
-   mantido porque o componente ainda o renderiza. */
+   mantido porque o componente ainda o renderiza.
+
+   Os 2 últimos (01/10/2026) vieram só com o vídeo, sem nome nem fala: o
+   card mostra só o player. Preencha `nome`/`meta`/`texto` quando tiver. */
 export type Depoimento = {
-  nome: string;
-  meta: string;
-  texto: string;
+  nome?: string;
+  meta?: string;
+  texto?: string;
   embed?: string;
   embedId?: string;
   video?: string;
@@ -386,6 +389,16 @@ export const DEPOIMENTOS: Depoimento[] = [
     embed:
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
     embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
+  },
+  {
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=e9fb53fd-ac46-457e-913d-d116a6bbc957',
+    embedId: 'panda-e9fb53fd-ac46-457e-913d-d116a6bbc957',
+  },
+  {
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=2d068aa7-3c8f-4f5f-8502-02f3c6813a54',
+    embedId: 'panda-2d068aa7-3c8f-4f5f-8502-02f3c6813a54',
   },
 ];
 

@@ -41,6 +41,8 @@ export function MentoriaGestaoDepoimentos() {
 
           <div className="mz-casos-track" ref={trackRef}>
             {DEPOIMENTOS.map((d) => {
+              const label = d.nome ? `Depoimento de ${d.nome}` : 'Depoimento de aluno';
+              const key = d.embedId ?? d.video ?? d.nome;
               const inner = (
                 <>
                   <div className="mz-depo-video">
@@ -48,33 +50,35 @@ export function MentoriaGestaoDepoimentos() {
                       <iframe
                         id={d.embedId}
                         src={d.embed}
-                        title={`Depoimento de ${d.nome}`}
+                        title={label}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         loading="lazy"
                       />
                     ) : d.thumb ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={d.thumb} alt={`Depoimento de ${d.nome}`} loading="lazy" />
+                      <img src={d.thumb} alt={label} loading="lazy" />
                     ) : (
                       <span className="mz-depo-ph">Depoimento em vídeo em breve</span>
                     )}
                   </div>
-                  <p>&quot;{d.texto}&quot;</p>
-                  <div className="who">
-                    <b>{d.nome}</b>
-                    <small>{d.meta}</small>
-                  </div>
+                  {d.texto && <p>&quot;{d.texto}&quot;</p>}
+                  {d.nome && (
+                    <div className="who">
+                      <b>{d.nome}</b>
+                      <small>{d.meta}</small>
+                    </div>
+                  )}
                 </>
               );
               // Com o player embutido o card não pode ser <a>: a âncora
               // engoliria o clique do play.
               return d.video && !d.embed ? (
-                <a key={d.nome} className="mz-video" href={d.video} target="_blank" rel="noopener noreferrer">
+                <a key={key} className="mz-video" href={d.video} target="_blank" rel="noopener noreferrer">
                   {inner}
                 </a>
               ) : (
-                <div key={d.nome} className="mz-video">
+                <div key={key} className="mz-video">
                   {inner}
                 </div>
               );
