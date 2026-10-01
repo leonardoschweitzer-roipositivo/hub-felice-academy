@@ -23,7 +23,7 @@ export const FUNNELS: Record<string, Funnel> = {
   },
   'maestria-zigomatica': {
     slug: 'maestria-zigomatica',
-    offer: '1oWoQi',
+    offer: 'lXSlpd', // R$ 1.599 desde 01/10/2026 (a antiga `1oWoQi` era de R$ 997)
     value: 1599.0,
     contentName: 'Maestria Zigomática',
   },

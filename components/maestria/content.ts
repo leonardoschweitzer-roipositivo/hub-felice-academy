@@ -11,8 +11,9 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    ============================================================ */
 
 /** Checkout do curso (R$ 1.599) na Greenn/Payfast. O código da oferta
- *  (`1oWoQi`) também vive em lib/tracking/funnels.ts — trocar nos dois. */
-export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/1oWoQi?ch_id=142077';
+ *  (`lXSlpd`) também vive em lib/tracking/funnels.ts — trocar nos dois.
+ *  A oferta antiga `1oWoQi` segue ativa na Greenn, mas cobra R$ 997: não use. */
+export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/lXSlpd?ch_id=142077';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
@@ -373,7 +374,7 @@ export const OFERTA = {
     'Módulo 4 · Hands-on guiado (Partes 1 e 2)',
     'Bônus especiais (guias, série “Onde eu furo” e casos reais)',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 164,41' },
+  parcela: { vezes: '12x', valor: 'R$ 164,40' },
   aVista: 'R$ 1.599,00',
   cta: 'Garantir minha vaga',
 };

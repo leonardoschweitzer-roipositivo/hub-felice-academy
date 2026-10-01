@@ -37,7 +37,7 @@ export const PRODUTOS_PUBLICOS: Record<string, ProdutoPublico> = {
     nome: 'Maestria Zigomática',
     categoria: 'Curso',
     href: '/produtos/maestria-zigomatica/',
-    preco: 'R$ 1.599,00 à vista ou 12x de R$ 164,41',
+    preco: 'R$ 1.599,00 à vista ou 12x de R$ 164,40',
   },
   'vendas-secretaria': {
     nome: 'CRC de Alta Performance',
