@@ -61,7 +61,7 @@ export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {
-  eyebrow: 'Curso online · Treinamento da recepção presencial',
+  eyebrow: 'Curso online · Treinamento da recepção',
   titlePre: 'Transforme o balcão da sua clínica no',
   titleGold: 'melhor momento da visita do paciente.',
   lead: 'O paciente decide se confia na sua clínica antes de sentar na cadeira — nos primeiros sete segundos de recepção. O "Recepção de Alta Performance" é o curso pronto que você entrega à sua equipe para aplicar o método de encantamento da Disney na realidade de um consultório odontológico: acolhimento, rotina impecável e paciente que volta e indica.',
@@ -69,7 +69,6 @@ export const HERO = {
   ctaSecondary: 'Ver os módulos',
   trust: [
     '100% online, no ritmo da equipe',
-    'Checklists e roteiros prontos',
     'Método Disney aplicado à odontologia',
     'Garantia de 7 dias',
   ],
@@ -285,7 +284,7 @@ export const MENTOR = {
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
     'Especialista em Periodontia pela FACOP/Bauru',
-    'Especialista em Cirurgias Orofaciais pela FACOP',
+    'Especialista em Harmonização Orofacial pela FACOP',
     'Mestre em Implantodontia pela SLM/SP',
     'Mestre em Periodontia pela SLM/SP',
     'Diretor-Clínico da Felice Odontologia',

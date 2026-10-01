@@ -66,11 +66,11 @@ export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {
-  eyebrow: 'Curso online · Treinamento comercial da recepção',
+  eyebrow: 'Curso online · Treinamento comercial do CRC',
   // ⚠️ `titlePre` tem 45 caracteres, praticamente o mesmo da versão anterior
   // (46): a quebra do H1 não muda. Ao reescrever, meça no navegador — chutar
   // largura em `ch` nesta Poppins não funciona.
-  titlePre: 'Transforme sua recepção num time comercial que',
+  titlePre: 'Transforme seu CRC num time comercial que',
   titleGold: 'agenda, apresenta e fecha tratamento.',
   lead: 'Sua equipe atende com carinho — mas quantos orçamentos saem pela porta sem resposta? O "CRC de Alta Performance" é o curso pronto que você entrega a quem fala com o paciente para transformar a recepção numa máquina de conversão: do primeiro "oi" no WhatsApp ao tratamento fechado. Aulas gravadas, no ritmo da equipe.',
   ctaPrimary: 'Quero treinar minha equipe',
@@ -299,7 +299,7 @@ export const MENTOR = {
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
     'Especialista em Periodontia pela FACOP/Bauru',
-    'Especialista em Cirurgias Orofaciais pela FACOP',
+    'Especialista em Harmonização Orofacial pela FACOP',
     'Mestre em Implantodontia pela SLM/SP',
     'Mestre em Periodontia pela SLM/SP',
     'Diretor-Clínico da Felice Odontologia',
@@ -404,7 +404,7 @@ export const FAQ: { q: string; a: string }[] = [
 /* ---------- CTA final ---------- */
 export const FINAL = {
   eyebrow: 'Comece hoje',
-  titlePre: 'Pare de perder tratamento na recepção.',
+  titlePre: 'Pare de perder tratamento no comercial.',
   titleGold: 'Treine quem fala com o paciente para vender.',
   lead: 'Dê à sua equipe o método que transforma atendimento em agenda cheia e orçamento fechado. Acesso imediato, no ritmo da equipe, com garantia de 7 dias.',
   cta: 'Quero treinar minha equipe',

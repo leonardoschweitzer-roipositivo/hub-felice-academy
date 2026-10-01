@@ -11,8 +11,8 @@ export function SecretariaVendeDepoimentos() {
             Quem já aplicou
           </span>
           <h2>
-            Donos de clínica que transformaram a recepção em{' '}
-            <span className="gold-grad">time comercial</span>
+            Profissionais que aplicaram a metodologia e transformaram{' '}
+            <span className="gold-grad">os resultados da clínica</span>
           </h2>
         </div>
 

@@ -113,7 +113,7 @@ export const MAPA_PUBLICO: NoRota[] = [
             rota: '/produtos/maestria-zigomatica/',
             nome: 'Maestria Zigomática',
             mock: 'landing',
-            tag: { t: 'R$ 997', k: 'ok' },
+            tag: { t: 'R$ 1.599', k: 'ok' },
             funil: funilPago(),
           },
           {

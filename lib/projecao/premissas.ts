@@ -133,7 +133,7 @@ export const PRODUTOS = [
   {
     id: 'maestria',
     nome: 'Maestria Zigomática',
-    ticket: 997,
+    ticket: 1599,
     entrada: 'checkout',
     trilha: 'zigomatico',
     tier: 'meio',

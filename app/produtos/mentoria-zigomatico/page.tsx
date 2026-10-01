@@ -21,7 +21,7 @@ const lato = Lato({
 export const metadata: Metadata = paginaMeta({
   title: 'Mentoria de Zigomático — Dr. Sócrates Tavares | Felice Academy',
   description:
-    'Domine a cirurgia zigomática com prática real: hands-on presencial em laboratório e acompanhamento cirúrgico operando ao lado do Dr. Sócrates, além de plataforma e encontros ao vivo. Entrada por aplicação.',
+    'Domine a cirurgia zigomática com prática real: encontro presencial de teoria e prática e acompanhamento cirúrgico operando ao lado do Dr. Sócrates, além de plataforma e encontros ao vivo. Entrada por aplicação.',
 });
 
 export default function MentoriaZigomaticoPage() {

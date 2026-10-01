@@ -27,7 +27,6 @@ export const MENTORIAS: MentoriaOpcao[] = [
     bullets: [
       'Plataforma de aulas + encontros ao vivo',
       'Treinamento da sua equipe nos 4 pilares',
-      'Bônus: acesso ao Felice CRM',
     ],
     href: '/produtos/mentoria-gestao-f4',
     cta: 'Conhecer a mentoria',
@@ -36,11 +35,11 @@ export const MENTORIAS: MentoriaOpcao[] = [
     formato: 'Clínica · Presencial + online',
     titulo: 'Mentoria de Zigomático',
     subtitulo:
-      'Domine a cirurgia zigomática com prática real: hands-on em laboratório e acompanhamento cirúrgico ao lado do Dr. Sócrates.',
+      'Domine a cirurgia zigomática com prática real: encontro presencial e acompanhamento cirúrgico ao lado do Dr. Sócrates.',
     bullets: [
-      'Imersão hands-on presencial em laboratório',
-      'Acompanhamento cirúrgico — operando junto',
-      'Plataforma, encontros e acompanhamento de casos',
+      'Plataforma com acesso ao curso online e aulas bônus',
+      'Encontro presencial',
+      'Acompanhamento cirúrgico operando junto com o Dr. Sócrates',
     ],
     href: '/produtos/mentoria-zigomatico',
     cta: 'Conhecer a mentoria',

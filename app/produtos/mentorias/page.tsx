@@ -20,7 +20,7 @@ const lato = Lato({
 export const metadata: Metadata = paginaMeta({
   title: 'Mentorias — Felice Academy | Dr. Sócrates Tavares',
   description:
-    'Escolha a sua mentoria com o Dr. Sócrates: Gestão F4 (clínica organizada e lucrativa) ou Zigomático (domínio cirúrgico com hands-on presencial). Entrada por aplicação.',
+    'Escolha a sua mentoria com o Dr. Sócrates: Gestão F4 (clínica organizada e lucrativa) ou Zigomático (domínio cirúrgico com prática presencial). Entrada por aplicação.',
 });
 
 export default function MentoriasPage() {

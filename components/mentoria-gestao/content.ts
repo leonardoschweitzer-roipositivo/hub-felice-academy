@@ -15,7 +15,6 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    ⚠️ TROCAR antes de publicar:
    - DEPOIMENTOS: vídeos (embed) e thumbnails reais dos alunos.
    - STATS / ENTREGAS: confirmar qualquer número antes (não inventar).
-   - BONUS.valor: ancoragem de valor percebido — ajuste se quiser.
    ============================================================ */
 
 /** Destino dos CTAs de matrícula = questionário de aplicação da própria
@@ -53,7 +52,7 @@ export const HERO_CARD = {
   destaque: { num: '4 pilares', label: 'Atendimento · Comercial · Marketing · Gestão' },
   progresso: { label: 'Método validado em clínica real', valor: 100 },
   mini: [
-    { v: '+12', l: 'Cursos' },
+    { v: '2', l: 'Cursos' },
     { v: 'Ao vivo', l: 'Encontros' },
     { v: 'Equipe', l: 'Treinada' },
   ],
@@ -79,7 +78,7 @@ export const HERO_MARQUEE = {
    Apenas fatos verdadeiros da estrutura da mentoria/plataforma. */
 export const STATS: { num: string; label: string }[] = [
   { num: '4 pilares', label: 'Atendimento, Comercial, Marketing e Gestão' },
-  { num: '+12 cursos', label: 'Trilhas por pilar, na plataforma' },
+  { num: '+40 aulas', label: '2 cursos por pilar, na plataforma' },
   { num: 'Encontros ao vivo', label: 'Hot seats e calls com mentores' },
   { num: 'Equipe junto', label: 'Treinamento de toda a sua clínica' },
 ];
@@ -144,7 +143,7 @@ export const ENTREGAS: Entrega[] = [
   {
     tag: 'Plataforma',
     titulo: 'Plataforma de aulas completa',
-    texto: '+12 cursos organizados pelos 4 pilares, em módulos e aulas, com progresso salvo. Acesse no computador ou celular, no seu ritmo.',
+    texto: '2 cursos e +40 aulas organizados pelos 4 pilares, em módulos e aulas, com progresso salvo. Acesse no computador ou celular, no seu ritmo.',
   },
   {
     tag: 'Conteúdo',
@@ -297,18 +296,6 @@ export const TRILHAS: Trilha[] = [
   },
 ];
 
-/* ---------- Bônus ----------
-   `valor` é a ancoragem de valor percebido (em R$). O total é somado
-   automaticamente na seção. ⚠️ Ajuste os valores se quiser. */
-export const BONUS: { titulo: string; texto: string; valor: number }[] = [
-  { titulo: 'Acesso ao Felice CRM', texto: 'O software de gestão da clínica: pacientes, agenda, funil de vendas e faturamento em tempo real — para tirar a clínica da sua cabeça e colocar no processo.', valor: 1997 },
-  { titulo: 'Consultoria 1:1 com o Dr. Sócrates', texto: 'Uma sessão individual de diagnóstico da sua clínica para definir o seu plano de ação dos 4 pilares.', valor: 997 },
-  { titulo: 'Kit Gestão F4 completo', texto: 'POP, Atendimento, CRC e Marketing interativos, com IA e simuladores — o material que sua equipe usa todo dia.', valor: 388 },
-  { titulo: 'Pacote de templates de gestão', texto: 'Contratos, planilhas e fluxos exclusivos de membros, atualizados mensalmente.', valor: 497 },
-  { titulo: 'Scripts e banco de objeções', texto: 'Roteiros prontos de atendimento e agendamento e respostas para as objeções mais comuns.', valor: 297 },
-  { titulo: 'Comunidade e networking Felice', texto: 'Rede de donos de clínica para trocar, se inspirar e crescer junto.', valor: 297 },
-];
-
 /* ---------- Plataforma / como funciona ---------- */
 export const PLATAFORMA: { n: string; titulo: string; texto: string }[] = [
   { n: '01', titulo: 'Não é um curso solto', texto: 'Toda a mentoria organizada na plataforma Felice — trilhas por pilar, encontros ao vivo e materiais, com ordem de estudo e progresso.' },
@@ -326,7 +313,7 @@ export const MENTOR = {
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
     'Especialista em Periodontia pela FACOP/Bauru',
-    'Especialista em Cirurgias Orofaciais pela FACOP',
+    'Especialista em Harmonização Orofacial pela FACOP',
     'Mestre em Implantodontia pela SLM/SP',
     'Mestre em Periodontia pela SLM/SP',
     'Diretor-Clínico da Felice Odontologia',
@@ -339,8 +326,10 @@ export const MENTOR = {
    esta lista repetia os 4 da Masterclass/Maestria (Emmanuel, Thiago, Paulo,
    Julierme), que falam do curso de zigomático — não devem voltar aqui.
 
-   Os 2 atuais vieram só com o vídeo, sem nome nem fala: o card mostra só o
-   player. Preencha `nome`/`meta`/`texto` quando tiver (não invente).
+   Vieram 2 vídeos; a revisão da equipe (01/10/2026) pediu para usar só o
+   segundo (`2d068aa7…`) — o primeiro era `e9fb53fd-ac46-457e-913d-d116a6bbc957`.
+   Veio só o vídeo, sem nome nem fala: o card mostra só o player. Preencha
+   `nome`/`meta`/`texto` quando tiver (não invente).
 
    `embed`/`embedId`: player do Panda, 9:16, tocado dentro do card.
    `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
@@ -357,11 +346,6 @@ export type Depoimento = {
 export const DEPOIMENTOS: Depoimento[] = [
   {
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=e9fb53fd-ac46-457e-913d-d116a6bbc957',
-    embedId: 'panda-e9fb53fd-ac46-457e-913d-d116a6bbc957',
-  },
-  {
-    embed:
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=2d068aa7-3c8f-4f5f-8502-02f3c6813a54',
     embedId: 'panda-2d068aa7-3c8f-4f5f-8502-02f3c6813a54',
   },
@@ -372,12 +356,11 @@ export const OFERTA = {
   ribbon: 'Vagas limitadas · entrada por aplicação',
   titulo: 'Mentoria de Gestão F4 — candidate-se',
   itens: [
-    'Plataforma de aulas completa (4 pilares · +12 cursos)',
+    'Plataforma de aulas completa (4 pilares · 2 cursos · +40 aulas)',
     'Encontros ao vivo individuais e em grupo',
     'Treinamento da sua equipe nos 4 pilares',
     'Kit Gestão F4 interativo (com IA e simuladores)',
     'Materiais, templates e gravações sempre à mão',
-    'Bônus: acesso ao Felice CRM + consultoria 1:1',
   ],
   cta: 'Quero me candidatar',
   nota: 'As vagas são limitadas e a entrada é por aplicação. Responda ao questionário e a nossa equipe entra em contato.',
@@ -407,10 +390,6 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: 'Tem encontros ao vivo ou é tudo gravado?',
     a: 'Os dois. Há encontros ao vivo recorrentes (hot seats e calls com os mentores) e tudo fica gravado na plataforma para você e a sua equipe reverem quando quiserem.',
-  },
-  {
-    q: 'O acesso ao Felice CRM está incluso?',
-    a: 'Sim, como bônus da mentoria. O CRM ajuda a tirar a clínica da sua cabeça e colocar no processo: pacientes, agenda, funil de vendas e faturamento num só lugar.',
   },
   {
     q: 'Como faço para entrar?',
