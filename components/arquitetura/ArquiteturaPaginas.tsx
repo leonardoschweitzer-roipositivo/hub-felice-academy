@@ -108,7 +108,7 @@ const INVENTARIO: Linha[] = [
   },
   {
     produto: 'Maestria Zigomática',
-    meta: 'R$ 997',
+    meta: 'R$ 1.599',
     href: '/produtos/maestria-zigomatica/',
     cels: [
       { t: 'no ar', k: 'ok' },

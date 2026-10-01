@@ -44,9 +44,9 @@ export type OfertaKB = {
   /** Qual rotina de qualificação a Sônia aplica a este produto.
    *
    *  NÃO é derivável do preço, e é por isso que é um campo: a Maestria
-   *  custa R$ 997 e é 'spin'; o CRC custa R$ 597 e é 'media'. O que decide
+   *  custa R$ 1.599 e é 'spin'; o CRC custa R$ 597 e é 'media'. O que decide
    *  é o peso da decisão de compra, não o valor. Deixar o modelo inferir
-   *  isso de R$ 400 de diferença seria pedir ambiguidade.
+   *  isso só pela diferença de preço seria pedir ambiguidade.
    *
    *  'curta' — 1 pergunta, recomenda, entrega o link. Sem pergunta de
    *    número e sem captura: cobrar SPIN de quem vai gastar menos de cem
@@ -343,7 +343,7 @@ export const CATALOGO: OfertaKB[] = [
     aplicacaoHref: mentoriaZigo.APPLY_URL + '/',
     ofertavel: true,
     paraQuem:
-      'cirurgião que quer prática real: hands-on presencial em laboratório e acompanhamento cirúrgico operando ao lado do Dr. Sócrates, além da plataforma e dos encontros ao vivo',
+      'cirurgião que quer prática real: encontro presencial de teoria e prática em laboratório e acompanhamento cirúrgico operando ao lado do Dr. Sócrates, além da plataforma e dos encontros ao vivo',
     naoEhFit:
       'quem ainda está entendendo a técnica (Masterclass) ou quer a formação online completa sem presencial (Maestria Zigomática)',
     gatilhos: [
@@ -381,10 +381,10 @@ export const CATALOGO: OfertaKB[] = [
     rota: 'spin',
     ofertavel: false,
     paraQuem:
-      'clínicas que já são acompanhadas pela Felice — hoje o CRM entra como bônus da Mentoria de Gestão F4, não como produto avulso',
+      'clínicas que já são acompanhadas pela Felice — o CRM é contratado à parte e NÃO é bônus da Mentoria de Gestão F4',
     naoEhFit: 'quem procura um software de gestão para comprar sozinho',
     gatilhos: ['crm', 'software', 'sistema', 'prontuário', 'agenda', 'felice crm'],
-    lead: 'O CRM da Felice, hoje disponível como bônus para quem entra na Mentoria de Gestão F4.',
+    lead: 'O CRM da Felice, contratado à parte — não vem como bônus de nenhuma mentoria.',
     dores: [],
     inclui: [],
     faq: [],

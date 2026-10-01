@@ -10,7 +10,7 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    - STATS: confirmar qualquer número de prova social (não inventar).
    ============================================================ */
 
-/** Checkout do curso (R$ 997) na Greenn/Payfast. O código da oferta
+/** Checkout do curso (R$ 1.599) na Greenn/Payfast. O código da oferta
  *  (`1oWoQi`) também vive em lib/tracking/funnels.ts — trocar nos dois. */
 export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/1oWoQi?ch_id=142077';
 
@@ -297,7 +297,7 @@ export const MENTOR = {
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
     'Especialista em Periodontia pela FACOP/Bauru',
-    'Especialista em Cirurgias Orofaciais pela FACOP',
+    'Especialista em Harmonização Orofacial pela FACOP',
     'Mestre em Implantodontia pela SLM/SP',
     'Mestre em Periodontia pela SLM/SP',
     'Diretor-Clínico da Felice Odontologia',
@@ -373,8 +373,8 @@ export const OFERTA = {
     'Módulo 4 · Hands-on guiado (Partes 1 e 2)',
     'Bônus especiais (guias, série “Onde eu furo” e casos reais)',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 102,51' },
-  aVista: 'R$ 997,00',
+  parcela: { vezes: '12x', valor: 'R$ 164,41' },
+  aVista: 'R$ 1.599,00',
   cta: 'Garantir minha vaga',
 };
 

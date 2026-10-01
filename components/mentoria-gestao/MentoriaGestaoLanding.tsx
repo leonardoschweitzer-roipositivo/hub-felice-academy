@@ -11,7 +11,6 @@ import {
   MentoriaGestaoMetodo,
   MentoriaGestaoEntregas,
   MentoriaGestaoTrilhas,
-  MentoriaGestaoBonus,
   MentoriaGestaoPlataforma,
   MentoriaGestaoAutoridade,
   MentoriaGestaoOferta,
@@ -35,7 +34,7 @@ import { WHATSAPP_URL } from './content';
    Escassez: poucas vagas por turma (sem countdown).
 
    Ordem: TopBar → Header → Hero → Números → Problema → 4 Pilares →
-   Entregas → Trilhas → Bônus → Plataforma → Autoridade →
+   Entregas → Trilhas → Plataforma → Autoridade →
    Depoimentos → Candidatura → Como entrar → FAQ → CTA final → Footer.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): vídeos dos
@@ -60,7 +59,6 @@ export function MentoriaGestaoLanding() {
         </div>
 
         <MentoriaGestaoTrilhas />
-        <MentoriaGestaoBonus />
         <MentoriaGestaoPlataforma />
         <MentoriaGestaoAutoridade />
         <MentoriaGestaoDepoimentos />

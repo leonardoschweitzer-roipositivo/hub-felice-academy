@@ -13,7 +13,6 @@ import {
   MentoriaZigomaticoPresencial,
   MentoriaZigomaticoEntregas,
   MentoriaZigomaticoTrilhas,
-  MentoriaZigomaticoBonus,
   MentoriaZigomaticoPlataforma,
   MentoriaZigomaticoAutoridade,
   MentoriaZigomaticoOferta,
@@ -38,11 +37,11 @@ import { WHATSAPP_URL } from './content';
 
    Venda por APLICAÇÃO (sem preço): CTAs → /produtos/mentoria-zigomatico/aplicacao,
    questionário próprio que abre o WhatsApp com as respostas prontas.
-   Diferencial: encontros PRESENCIAIS (hands-on em laboratório, acompanhamento
+   Diferencial: encontros PRESENCIAIS (prática em laboratório, acompanhamento
    cirúrgico e encontros teóricos). Escassez: turmas pequenas (sem countdown).
 
    Ordem: TopBar → Header → Hero → Números → Problema → Eixos →
-   Presenciais → Entregas → Trilhas → Bônus → Plataforma → Autoridade →
+   Presenciais → Entregas → Trilhas → Plataforma → Autoridade →
    Casos reais → Depoimentos → Candidatura → Como entrar → FAQ →
    CTA final → Footer.
 
@@ -69,7 +68,6 @@ export function MentoriaZigomaticoLanding() {
         </div>
 
         <MentoriaZigomaticoTrilhas />
-        <MentoriaZigomaticoBonus />
         <MentoriaZigomaticoPlataforma />
         <MentoriaZigomaticoAutoridade />
         <MentoriaZigomaticoCasos />

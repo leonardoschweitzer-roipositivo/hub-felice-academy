@@ -19,9 +19,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = paginaMeta({
-  title: 'CRC de Alta Performance — Treinamento comercial para a recepção | Felice Academy',
+  title: 'CRC de Alta Performance — Treinamento comercial do CRC | Felice Academy',
   description:
-    'O curso pronto que você entrega à sua equipe de recepção para transformar atendimento em tratamento fechado. Do primeiro contato no WhatsApp ao follow-up do orçamento, com scripts e planilhas inclusos e bônus ao vivo. Garantia de 7 dias.',
+    'O curso pronto que você entrega ao seu CRC para transformar atendimento em tratamento fechado. Do primeiro contato no WhatsApp ao follow-up do orçamento, com scripts e planilhas inclusos. Garantia de 7 dias.',
 });
 
 export default function VendasSecretariaPage() {

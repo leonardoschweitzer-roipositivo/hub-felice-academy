@@ -176,14 +176,13 @@ export const PRODUTOS: Produto[] = [
     detalhes: [
       'Plataforma de aulas + encontros ao vivo',
       'Treinamento da sua equipe nos 4 pilares',
-      'Bônus: acesso ao Felice CRM',
     ],
   },
   {
     num: '07',
     titulo: 'Mentoria de Zigomático',
     descricao:
-      'Domine a cirurgia zigomática com prática real: hands-on em laboratório e acompanhamento cirúrgico ao lado do Dr. Sócrates.',
+      'Domine a cirurgia zigomática com prática real: encontro presencial e acompanhamento cirúrgico ao lado do Dr. Sócrates.',
     categoria: 'Mentoria',
     estado: 'disponivel',
     // Foto do hero da landing da mentoria (styles/mentoria-zigomatico.css).
@@ -193,9 +192,9 @@ export const PRODUTOS: Produto[] = [
     cta: 'Conhecer a mentoria',
     destaque: true,
     detalhes: [
-      'Imersão hands-on presencial em laboratório',
-      'Acompanhamento cirúrgico — operando junto',
-      'Plataforma, encontros e acompanhamento de casos',
+      'Plataforma com acesso ao curso online e aulas bônus',
+      'Encontro presencial',
+      'Acompanhamento cirúrgico operando junto com o Dr. Sócrates',
     ],
   },
   {

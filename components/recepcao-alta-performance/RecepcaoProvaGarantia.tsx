@@ -11,8 +11,8 @@ export function RecepcaoDepoimentos() {
             Quem já aplicou
           </span>
           <h2>
-            Donos de clínica que transformaram a chegada do paciente em{' '}
-            <span className="gold-grad">motivo para voltar</span>
+            Profissionais que transformaram a chegada do paciente em{' '}
+            <span className="gold-grad">um motivo para ficar</span>
           </h2>
         </div>
 

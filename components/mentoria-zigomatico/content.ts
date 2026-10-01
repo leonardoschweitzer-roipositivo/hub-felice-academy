@@ -2,18 +2,21 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /* ============================================================
    MENTORIA DE ZIGOMÁTICO · conteúdo central da landing de vendas
-   Edite SÓ aqui copy, eixos, presenciais, entregas, bônus e FAQ.
+   Edite SÓ aqui copy, eixos, presenciais, entregas e FAQ.
    Mentoria clínica premium do Dr. Sócrates Tavares.
 
    Diferencial: PRÁTICA REAL. Além da plataforma e dos encontros ao
-   vivo, tem encontros PRESENCIAIS — imersão hands-on em laboratório,
+   vivo, tem encontros PRESENCIAIS — prática em laboratório,
    acompanhamento cirúrgico (operar junto) e encontros teóricos.
+
+   ⚠️ Vocabulário (revisão da equipe, 01/10/2026): o HANDS-ON é online
+   (módulo gravado da Maestria); o que acontece presencialmente é PRÁTICA.
+   Não volte a chamar o presencial de "hands-on".
 
    Venda por APLICAÇÃO (sem preço): CTAs → /produtos/mentoria-zigomatico/aplicacao.
 
    ⚠️ TROCAR antes de publicar:
    - PRESENCIAL/ENTREGAS: confirmar datas, locais e formato dos encontros.
-   - BONUS.valor: ancoragem de valor percebido — ajuste se quiser.
    ============================================================ */
 
 /** Destino dos CTAs = questionário de aplicação da própria mentoria.
@@ -33,12 +36,12 @@ export const WHATSAPP_URL = whatsappUrl(
 export const HERO = {
   eyebrow: 'Mentoria clínica · Implantes zigomáticos',
   titlePre: 'Saia do vídeo solto e domine o zigomático com',
-  titleGold: 'prática real: hands-on presencial e cirurgia ao lado do mentor.',
-  lead: 'Uma mentoria que vai além da tela: plataforma de aulas, encontros ao vivo e — o que muda o jogo — encontros presenciais de hands-on em laboratório e acompanhamento cirúrgico operando junto ao Dr. Sócrates. Para você parar de encaminhar o caso de maior valor e passar a operá-lo com segurança.',
+  titleGold: 'prática real: encontro presencial e cirurgia ao lado do mentor.',
+  lead: 'Uma mentoria que vai além da tela: plataforma de aulas, encontros ao vivo e — o que muda o jogo — encontros presenciais de prática em laboratório e acompanhamento cirúrgico operando junto ao Dr. Sócrates. Para você parar de encaminhar o caso de maior valor e passar a operá-lo com segurança.',
   ctaPrimary: 'Quero me candidatar',
   ctaSecondary: 'Ver os presenciais',
   trust: [
-    'Hands-on presencial em laboratório',
+    'Prática presencial em laboratório',
     'Acompanhamento cirúrgico (operar junto)',
     'Plataforma + encontros ao vivo',
     'Entrada por aplicação',
@@ -47,10 +50,10 @@ export const HERO = {
 
 /** Card de prova "glass" no hero (coluna direita). */
 export const HERO_CARD = {
-  destaque: { num: 'Presencial', label: 'Hands-on + acompanhamento cirúrgico' },
+  destaque: { num: 'Presencial', label: 'Prática + acompanhamento cirúrgico' },
   progresso: { label: 'Protocolo validado em clínica real', valor: 100 },
   mini: [
-    { v: 'Lab', l: 'Hands-on' },
+    { v: 'Lab', l: 'Prática' },
     { v: 'Sala', l: 'Operar junto' },
     { v: '1:1', l: 'Casos' },
   ],
@@ -67,14 +70,14 @@ export const HERO_MARQUEE = {
     'Quadrizigoma',
     'Carga imediata',
     'Zona segura',
-    'Hands-on em laboratório',
+    'Prática em laboratório',
     'Acompanhamento de casos',
   ],
 };
 
 /* ---------- Números / prova ---------- */
 export const STATS: { num: string; label: string }[] = [
-  { num: 'Presencial', label: 'Hands-on em laboratório + sala' },
+  { num: 'Presencial', label: 'Prática em laboratório + sala' },
   { num: 'Operar junto', label: 'Acompanhamento cirúrgico real' },
   { num: 'Plataforma', label: 'Curso completo + encontros ao vivo' },
   { num: 'Casos 1:1', label: 'Acompanhamento individual' },
@@ -88,7 +91,7 @@ export const DORES: { titulo: string; texto: string }[] = [
   },
   {
     titulo: 'Aprendeu só por vídeo, nunca pôs a mão',
-    texto: 'Assistir a um caso no congresso não vira segurança cirúrgica. Sem hands-on e sem operar ao lado de quem domina, cada cirurgia continua sendo um salto no escuro.',
+    texto: 'Assistir a um caso no congresso não vira segurança cirúrgica. Sem prática e sem operar ao lado de quem domina, cada cirurgia continua sendo um salto no escuro.',
   },
   {
     titulo: 'O medo da complicação te trava',
@@ -118,7 +121,7 @@ export const PILARES: { n: string; titulo: string; texto: string }[] = [
   },
   {
     n: '03',
-    titulo: 'Hands-on presencial',
+    titulo: 'Prática presencial',
     texto: 'Treino deliberado em laboratório: acesso, ancoragem e posicionamento do implante na prática, com correção em tempo real — até a mão ficar segura.',
   },
   {
@@ -147,9 +150,9 @@ export type Presencial = { tag: string; titulo: string; texto: string; img?: str
 export const PRESENCIAL: Presencial[] = [
   {
     tag: 'Laboratório',
-    titulo: 'Imersão hands-on em laboratório',
+    titulo: 'Prática presencial em laboratório',
     img: '/images/presencial-laboratorio.jpg',
-    texto: 'Prática presencial em modelo e peça anatômica: acesso, trajetória e posicionamento do implante zigomático, repetindo até dominar a técnica com confiança.',
+    texto: 'Treino em modelo e peça anatômica: acesso, trajetória e posicionamento do implante zigomático, repetindo até dominar a técnica com confiança.',
   },
   {
     tag: 'Centro cirúrgico',
@@ -165,18 +168,32 @@ export const PRESENCIAL: Presencial[] = [
   },
 ];
 
-/* ---------- Tudo que você recebe (entregas) ---------- */
+/* ---------- Tudo que você recebe (entregas) ----------
+   Lista conferida com a equipe em 01/10/2026: encontro presencial, curso
+   online Maestria, Masterclass, materiais de estudo, ebook pré/pós-operatório,
+   miniguia e as 4 aulas bônus, somados aos itens que já existiam. Número par
+   de cards de propósito: o grid é de 2 colunas. */
 export type Entrega = { titulo: string; texto: string; tag?: string };
 export const ENTREGAS: Entrega[] = [
   {
     tag: 'Presencial',
-    titulo: 'Encontros presenciais (3 formatos)',
-    texto: 'Imersão hands-on em laboratório, acompanhamento cirúrgico operando junto e encontros teóricos presenciais. Prática real, não só teoria.',
+    titulo: 'Encontro presencial para teoria e prática',
+    texto: 'Prática em laboratório e encontros teóricos presenciais de discussão de casos. Prática real, não só teoria.',
   },
   {
-    tag: 'Plataforma',
-    titulo: 'Curso de zigomático completo',
-    texto: 'Toda a formação técnica na plataforma — do diagnóstico ao hands-on — organizada em módulos e aulas, no seu ritmo e para rever quando quiser.',
+    tag: 'Centro cirúrgico',
+    titulo: 'Acompanhamento cirúrgico operando junto',
+    texto: 'Você opera casos reais ao lado do Dr. Sócrates, vendo cada decisão na prática e tirando dúvidas na hora.',
+  },
+  {
+    tag: 'Curso online',
+    titulo: 'Curso online Maestria Zigomática',
+    texto: 'A formação técnica completa na plataforma — do diagnóstico ao hands-on guiado — organizada em módulos e aulas, no seu ritmo e para rever quando quiser.',
+  },
+  {
+    tag: 'Curso online',
+    titulo: 'Masterclass Zigomático Descomplicado',
+    texto: 'Os princípios dos implantes zigomáticos em poucas horas: a base para chegar à mentoria já com o raciocínio no lugar.',
   },
   {
     tag: 'Ao vivo',
@@ -189,6 +206,26 @@ export const ENTREGAS: Entrega[] = [
     texto: 'Leve os seus próprios casos: planejamento e decisão acompanhados de perto, do diagnóstico à execução.',
   },
   {
+    tag: 'Materiais',
+    titulo: 'Materiais de estudo',
+    texto: 'Guias de indicação, checklists de planejamento e os protocolos que o Dr. Sócrates usa na própria clínica.',
+  },
+  {
+    tag: 'Ebook',
+    titulo: 'Ebook pré e pós-operatório',
+    texto: 'O cuidado com o paciente antes e depois da cirurgia, num material direto para consultar sempre que precisar.',
+  },
+  {
+    tag: 'Ebook',
+    titulo: 'Miniguia Implante Zigomático',
+    texto: 'Do raciocínio de indicação à conduta segura, num guia curto e fácil de consultar.',
+  },
+  {
+    tag: 'Aulas bônus',
+    titulo: '4 aulas bônus',
+    texto: 'Precificação de casos complexos, planejamento estratégico, primeira consulta e cirurgia real com caso comentado.',
+  },
+  {
     tag: 'Acervo',
     titulo: 'Biblioteca de casos comentados',
     texto: 'Acervo de casos reais para estudar variações, decisões e resultados — e enxergar a trajetória ideal em cada cenário.',
@@ -197,11 +234,6 @@ export const ENTREGAS: Entrega[] = [
     tag: 'Comunidade',
     titulo: 'Networking com cirurgiões',
     texto: 'Comunidade de colegas que operam (ou vão operar) zigomático: troque experiências, discuta casos e cresça em rede.',
-  },
-  {
-    tag: 'Ferramentas',
-    titulo: 'Protocolos e materiais',
-    texto: 'Guias de indicação, checklists de planejamento e os protocolos que o Dr. Sócrates usa na própria clínica.',
   },
   {
     tag: 'Acervo',
@@ -293,14 +325,14 @@ export const TRILHAS: Trilha[] = [
   {
     n: '04',
     titulo: 'Prática presencial guiada',
-    resumo: 'Onde a teoria vira mão: hands-on em laboratório e acompanhamento cirúrgico.',
+    resumo: 'Onde a teoria vira mão: prática em laboratório e acompanhamento cirúrgico.',
     /* Único par em que a arte não repete o título: ela se chama "Hands-on
-       guiado" e ilustra a Parte 1. A trilha tem duas partes (o hands-on e o
+       guiado" e ilustra a Parte 1. A trilha tem duas partes (a prática e o
        acompanhamento cirúrgico), e não existe arte da segunda. */
     img: '/images/modulo-hands-on-guiado.jpg',
     blocos: [
       {
-        sub: 'Parte 1 · Hands-on em laboratório',
+        sub: 'Parte 1 · Prática em laboratório',
         aulas: [
           'Acesso e posicionamento no modelo',
           'Domínio da trajetória e da ancoragem',
@@ -319,20 +351,10 @@ export const TRILHAS: Trilha[] = [
   },
 ];
 
-/* ---------- Bônus ---------- */
-export const BONUS: { titulo: string; texto: string; valor: number }[] = [
-  { titulo: 'Curso Maestria Zigomática completo', texto: 'Acesso à formação técnica completa em implantes zigomáticos na plataforma — a base teórica de toda a mentoria.', valor: 1595 },
-  { titulo: 'Biblioteca de casos reais', texto: 'Acervo de casos comentados para estudar decisões, variações e resultados.', valor: 497 },
-  { titulo: 'Guia completo de indicações', texto: 'O mapa de decisão para indicar (ou contraindicar) o zigomático com segurança em cada cenário.', valor: 297 },
-  { titulo: 'Série especial "Onde eu furo"', texto: 'Leitura anatômica comentada caso a caso, para enxergar a trajetória ideal.', valor: 297 },
-  { titulo: 'Certificado de participação', texto: 'Comprovação da sua formação na mentoria, para o seu currículo e autoridade.', valor: 197 },
-  { titulo: 'Networking presencial', texto: 'Rede de cirurgiões que operam zigomático para trocar e crescer junto.', valor: 297 },
-];
-
 /* ---------- Plataforma / como funciona ---------- */
 export const PLATAFORMA: { n: string; titulo: string; texto: string }[] = [
   { n: '01', titulo: 'Teoria na plataforma', texto: 'O curso completo organizado em módulos e aulas — você chega aos presenciais já com a base, aproveitando a prática ao máximo.' },
-  { n: '02', titulo: 'Prática nos presenciais', texto: 'Hands-on em laboratório e acompanhamento cirúrgico: é onde a técnica vira segurança de verdade, com o mentor do seu lado.' },
+  { n: '02', titulo: 'Prática nos presenciais', texto: 'Prática em laboratório e acompanhamento cirúrgico: é onde a técnica vira segurança de verdade, com o mentor do seu lado.' },
   { n: '03', titulo: 'Acompanhamento contínuo', texto: 'Encontros ao vivo, discussão dos seus casos e canal de dúvidas entre os presenciais — do diagnóstico à execução.' },
 ];
 
@@ -346,7 +368,7 @@ export const MENTOR = {
     'Cirurgião-dentista graduado pela UFPB (2007)',
     'Especialista em Cirurgia e Traumatologia Bucomaxilofacial pela UEPB',
     'Especialista em Periodontia pela FACOP/Bauru',
-    'Especialista em Cirurgias Orofaciais pela FACOP',
+    'Especialista em Harmonização Orofacial pela FACOP',
     'Mestre em Implantodontia pela SLM/SP',
     'Mestre em Periodontia pela SLM/SP',
     'Diretor-Clínico da Felice Odontologia',
@@ -409,7 +431,7 @@ export const CASOS_HEAD = {
   eyebrow: 'Casos reais',
   titlePre: 'Os casos que você vai',
   titleGold: 'aprender a operar ao lado do mentor',
-  lead: 'Casos reais de maxila atrófica severa conduzidos pelo Dr. Sócrates — do planejamento digital à reabilitação entregue. É este raciocínio que você acompanha no hands-on e leva para os seus próprios casos.',
+  lead: 'Casos reais de maxila atrófica severa conduzidos pelo Dr. Sócrates — do planejamento digital à reabilitação entregue. É este raciocínio que você acompanha na prática presencial e leva para os seus próprios casos.',
 };
 
 /* ---------- Ambiente acadêmico e cirúrgico ----------
@@ -438,7 +460,7 @@ export const AMBIENTE_HEAD = {
   eyebrow: 'Onde você pratica',
   titlePre: 'Ambiente acadêmico e',
   titleGold: 'cirúrgico de verdade',
-  lead: 'A mentoria não acontece numa sala emprestada. Laboratório para o hands-on e centro cirúrgico equipado para os casos reais — a mesma estrutura em que o Dr. Sócrates opera todos os dias.',
+  lead: 'A mentoria não acontece numa sala emprestada. Laboratório para a prática e centro cirúrgico equipado para os casos reais — a mesma estrutura em que o Dr. Sócrates opera todos os dias.',
 };
 export const AMBIENTE: Ambiente[] = [
   {
@@ -488,9 +510,11 @@ export const OFERTA = {
   ribbon: 'Vagas limitadas · turma com encontros presenciais',
   titulo: 'Mentoria de Zigomático — candidate-se',
   itens: [
-    'Encontros presenciais: hands-on em laboratório + sala',
-    'Acompanhamento cirúrgico operando junto ao mentor',
-    'Curso de zigomático completo na plataforma',
+    'Encontro presencial para teoria e prática',
+    'Acompanhamento cirúrgico operando junto com o Dr. Sócrates',
+    'Curso online Maestria Zigomática + Masterclass Zigomático Descomplicado',
+    'Materiais de estudo, ebook pré e pós-operatório e miniguia',
+    '4 aulas bônus: precificação, planejamento, primeira consulta e cirurgia comentada',
     'Encontros ao vivo e acompanhamento dos seus casos',
     'Biblioteca de casos, protocolos e gravações',
     'Networking com outros cirurgiões da turma',
@@ -510,15 +534,15 @@ export const ENTRADA: { n: string; titulo: string; texto: string }[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'Preciso já operar zigomático para entrar?',
-    a: 'Não. A mentoria parte dos fundamentos e do raciocínio de indicação, passa pelo planejamento e chega ao hands-on presencial e ao acompanhamento cirúrgico. Atende tanto quem quer começar com segurança quanto quem já opera e busca um protocolo previsível.',
+    a: 'Não. A mentoria parte dos fundamentos e do raciocínio de indicação, passa pelo planejamento e chega à prática presencial e ao acompanhamento cirúrgico. Atende tanto quem quer começar com segurança quanto quem já opera e busca um protocolo previsível.',
   },
   {
     q: 'Como funcionam os encontros presenciais?',
-    a: 'São de três tipos: imersão hands-on em laboratório (prática em modelo/peça), acompanhamento cirúrgico (você opera ao lado do Dr. Sócrates) e encontros teóricos presenciais de discussão de casos. As datas e o local são informados na entrada da turma.',
+    a: 'São de três tipos: prática em laboratório (em modelo/peça), acompanhamento cirúrgico (você opera ao lado do Dr. Sócrates) e encontros teóricos presenciais de discussão de casos. As datas e o local são informados na entrada da turma.',
   },
   {
     q: 'A parte teórica é presencial também?',
-    a: 'A base teórica fica na plataforma (online, no seu ritmo), para você chegar aos presenciais já preparado e aproveitar a prática ao máximo. Os presenciais são focados em mão na massa e discussão de casos.',
+    a: 'A base teórica fica na plataforma (online, no seu ritmo), para você chegar aos presenciais já preparado e aproveitar a prática ao máximo. O encontro presencial junta teoria e prática: discussão de casos e mão na massa em laboratório.',
   },
   {
     q: 'Tem acompanhamento dos meus casos?',
@@ -535,6 +559,6 @@ export const FINAL = {
   eyebrow: 'Comece agora',
   titlePre: 'Pare de encaminhar o caso da sua vida.',
   titleGold: 'Aprenda a operá-lo — com a mão na massa.',
-  lead: 'Candidate-se à Mentoria de Zigomático e domine, com hands-on presencial e cirurgia ao lado do mentor, a reabilitação que coloca você entre as referências em maxila atrófica severa.',
+  lead: 'Candidate-se à Mentoria de Zigomático e domine, com prática presencial e cirurgia ao lado do mentor, a reabilitação que coloca você entre as referências em maxila atrófica severa.',
   cta: 'Quero me candidatar',
 };

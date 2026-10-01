@@ -38,7 +38,7 @@ export function ProdutosLanding() {
                 <span className="arrow">→</span>
               </a>
               <a href="#conteudos" className="btn btn-ghost btn-lg">
-                Materiais gratuitos
+                Materiais práticos
               </a>
             </div>
           </div>
@@ -69,7 +69,7 @@ export function ProdutosLanding() {
                 Materiais para <span className="gold-grad">aplicar hoje</span>
               </h2>
               <p className="lead">
-                Scripts, planilhas, PDFs e checklists gratuitos para organizar a clínica e acelerar
+                Scripts, planilhas, PDFs e checklists práticos para organizar a clínica e acelerar
                 resultados. Novos materiais entram aqui sempre.
               </p>
             </div>
