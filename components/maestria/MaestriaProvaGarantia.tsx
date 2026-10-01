@@ -77,11 +77,11 @@ export function MaestriaDepoimentos({
               // Com o player embutido o card não pode ser <a>: o link engoliria
               // o clique do play. Só o card antigo (externo) vira âncora.
               return d.video && !d.embed ? (
-                <a key={d.nome} className="mz-video" href={d.video} target="_blank" rel="noopener noreferrer">
+                <a key={d.embedId ?? d.nome} className="mz-video" href={d.video} target="_blank" rel="noopener noreferrer">
                   {inner}
                 </a>
               ) : (
-                <div key={d.nome} className="mz-video">
+                <div key={d.embedId ?? d.nome} className="mz-video">
                   {inner}
                 </div>
               );
