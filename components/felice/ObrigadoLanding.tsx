@@ -24,6 +24,7 @@ import { Footer } from './sections/Footer';
 import { RevealOnScroll } from './ui/RevealOnScroll';
 import { WhatsappFloat } from './ui/WhatsappFloat';
 import { WHATSAPP_URL } from './sections/obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* ============================================================
    FELICE ACADEMY · KIT GESTÃO F4 — página de OBRIGADO (pós-compra)
@@ -40,6 +41,9 @@ import { WHATSAPP_URL } from './sections/obrigado/config';
 export function ObrigadoLanding() {
   return (
     <div className="felice obg">
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <main>
         <HeroSucesso />
         <MeusDocumentos />

@@ -6,6 +6,31 @@
    ============================================================ */
 
 /* ---------- Hero de sucesso ---------- */
+/* Logo oficial no topo das páginas de obrigado (e boas-vindas), por cima
+   do hero: absoluto para não empurrar o fundo de pontos para baixo. Cabe
+   no padding-top do hero (mín. 72px no celular). O !important vence o
+   height inline do <FeliceLogo>. */
+.felice.obg {
+  position: relative;
+}
+.felice .obg-logo {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.felice .obg-logo img {
+  height: 34px !important;
+}
+@media (min-width: 761px) {
+  .felice .obg-logo {
+    top: 28px;
+  }
+  .felice .obg-logo img {
+    height: 44px !important;
+  }
+}
 .felice .obg-hero {
   position: relative;
   /* padding-bottom reserva espaço p/ a esteira fixa no rodapé não cobrir o conteúdo */

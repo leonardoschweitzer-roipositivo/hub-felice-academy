@@ -15,6 +15,7 @@ import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { WHATSAPP_URL } from './config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* ============================================================
    FELICE ACADEMY · MAESTRIA ZIGOMÁTICA — página de OBRIGADO (pós-compra)
@@ -29,6 +30,9 @@ import { WHATSAPP_URL } from './config';
 export function ObrigadoLanding() {
   return (
     <div className="felice obg">
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <main>
         <HeroSucesso />
         <Prova />

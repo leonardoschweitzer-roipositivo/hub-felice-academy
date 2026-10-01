@@ -3,6 +3,7 @@ import { Footer } from '@/components/felice/sections/Footer';
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import type { BoasVindasContent } from './types';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Página de boas-vindas dos produtos por candidatura — o link é enviado
    pela equipe DEPOIS do fechamento no WhatsApp.
@@ -19,6 +20,9 @@ import type { BoasVindasContent } from './types';
 export function BoasVindas({ c }: { c: BoasVindasContent }) {
   return (
     <div className="felice obg">
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <header className="obg-hero">
         <div className="obg-hero-bg" aria-hidden />
         <div className="wrap obg-hero-inner">
