@@ -2,11 +2,18 @@
 'use client';
 
 import { useRef } from 'react';
-import { DEPOIMENTOS } from './content';
+import { DEPOIMENTOS, type Depoimento } from './content';
 
-/** Também usado na Mentoria de Zigomático (mesmos vídeos); `publico` troca
- *  só o começo do título — "Dentistas" aqui, "Cirurgiões" na mentoria. */
-export function MaestriaDepoimentos({ publico = 'Dentistas' }: { publico?: string }) {
+/** Também usado na Mentoria de Zigomático, que passa a própria lista em
+ *  `depoimentos`; `publico` troca só o começo do título — "Dentistas" aqui,
+ *  "Cirurgiões" na mentoria. */
+export function MaestriaDepoimentos({
+  publico = 'Dentistas',
+  depoimentos = DEPOIMENTOS,
+}: {
+  publico?: string;
+  depoimentos?: Depoimento[];
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: number) => {
@@ -40,7 +47,7 @@ export function MaestriaDepoimentos({ publico = 'Dentistas' }: { publico?: strin
           </button>
 
           <div className="mz-casos-track" ref={trackRef}>
-            {DEPOIMENTOS.map((d) => {
+            {depoimentos.map((d) => {
               const inner = (
                 <>
                   <div className="mz-depo-video">
@@ -60,7 +67,7 @@ export function MaestriaDepoimentos({ publico = 'Dentistas' }: { publico?: strin
                       <span className="mz-depo-ph">Depoimento em vídeo em breve</span>
                     )}
                   </div>
-                  <p>&quot;{d.texto}&quot;</p>
+                  {d.texto && <p>&quot;{d.texto}&quot;</p>}
                   <div className="who">
                     <b>{d.nome}</b>
                     <small>{d.meta}</small>

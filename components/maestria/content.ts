@@ -307,14 +307,10 @@ export const MENTOR = {
 };
 
 /* ---------- Depoimentos (vídeo vertical) ----------
-   Os mesmos 4 depoimentos da Masterclass (ver masterclass-zigomatico/content.ts):
-   são alunos da Felice falando do professor e do método, e o `meta` fica
-   genérico de propósito — não afirma de qual curso cada um veio.
-   Também aparecem na Mentoria de Zigomático (mesmo componente).
-
-   Nomes e textos corrigidos em 01/10/2026 com as falas reais entregues pelo
-   Leo em 08/09/2026 — os anteriores eram transcrição com erro (sobrenomes
-   trocados, frases inventadas). ⚠️ Não reescreva para "melhorar" a copy.
+   Trocados em 01/10/2026 pelos depoimentos indicados pela equipe Felice.
+   Os vídeos vieram sem a fala transcrita: o card mostra só o player, o nome
+   e a cidade. Os 4 anteriores seguem na Mentoria de Zigomático
+   (DEPOIMENTOS em mentoria-zigomatico/content.ts).
 
    `embed`/`embedId`: player do Panda, 9:16, tocado dentro do card.
    `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
@@ -322,7 +318,7 @@ export const MENTOR = {
 export type Depoimento = {
   nome: string;
   meta: string;
-  texto: string;
+  texto?: string;
   embed?: string;
   embedId?: string;
   video?: string;
@@ -330,36 +326,25 @@ export type Depoimento = {
 };
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Emmanuel Marques',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
+    nome: 'Dr. Ewerton Bem',
+    meta: 'João Pessoa – PB',
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
-    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
-  },
-  {
-    nome: 'Dr. Thiago Vinicius',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
-    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
-  },
-  {
-    nome: 'Dr. Paulo Maurício',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
-    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=2b1af324-ee0d-4ac1-b4c8-fb3409d45bae',
+    embedId: 'panda-2b1af324-ee0d-4ac1-b4c8-fb3409d45bae',
   },
   {
     nome: 'Dr. Julierme Ferreira',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
+    meta: 'Patos – PB',
     embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
-    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=5d2b40f9-ccc0-46e9-9e84-1a9aaebbd3ed',
+    embedId: 'panda-5d2b40f9-ccc0-46e9-9e84-1a9aaebbd3ed',
+  },
+  {
+    nome: 'Dr. Cristhiano Saboia',
+    meta: 'Baturité – CE',
+    embed:
+      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=9078c33e-fa26-402b-971a-ff136fdcd64a',
+    embedId: 'panda-9078c33e-fa26-402b-971a-ff136fdcd64a',
   },
 ];
 
