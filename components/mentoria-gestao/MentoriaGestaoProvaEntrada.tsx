@@ -6,6 +6,8 @@ import { DEPOIMENTOS, ENTRADA, APPLY_URL, FINAL } from './content';
 
 export function MentoriaGestaoDepoimentos() {
   const trackRef = useRef<HTMLDivElement>(null);
+  // Até 3 cards cabem lado a lado no desktop: sem setas, e centralizados.
+  const comSetas = DEPOIMENTOS.length > 3;
 
   const scroll = (dir: number) => {
     const el = trackRef.current;
@@ -32,12 +34,14 @@ export function MentoriaGestaoDepoimentos() {
             e num card de 460px o vídeo sozinho passaria de 800px de altura.
             `.mz-depos` vive em maestria.css, compartilhado com Masterclass e
             Maestria — as três landings usam o mesmo card. */}
-        <div className="mz-casos mz-depos reveal">
-          <button type="button" className="mz-casos-nav mz-casos-prev" onClick={() => scroll(-1)} aria-label="Depoimentos anteriores">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
+        <div className={`mz-casos mz-depos reveal${comSetas ? '' : ' mg-depos-poucos'}`}>
+          {comSetas && (
+            <button type="button" className="mz-casos-nav mz-casos-prev" onClick={() => scroll(-1)} aria-label="Depoimentos anteriores">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+          )}
 
           <div className="mz-casos-track" ref={trackRef}>
             {DEPOIMENTOS.map((d) => {
@@ -85,11 +89,13 @@ export function MentoriaGestaoDepoimentos() {
             })}
           </div>
 
-          <button type="button" className="mz-casos-nav mz-casos-next" onClick={() => scroll(1)} aria-label="Próximos depoimentos">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
+          {comSetas && (
+            <button type="button" className="mz-casos-nav mz-casos-next" onClick={() => scroll(1)} aria-label="Próximos depoimentos">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -89,3 +89,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Depoimentos com poucos vídeos ----------
+   Com até 3 cards o carrossel não tem setas e centraliza os cards. Margem
+   auto nas pontas em vez de justify-content: center, que cortaria o
+   primeiro card quando a faixa rola (celular). */
+.felice-maestria .mz-depos.mg-depos-poucos .mz-video:first-child {
+  margin-left: auto;
+}
+.felice-maestria .mz-depos.mg-depos-poucos .mz-video:last-child {
+  margin-right: auto;
+}
