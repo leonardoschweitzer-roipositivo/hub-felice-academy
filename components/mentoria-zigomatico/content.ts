@@ -1,5 +1,4 @@
 import { whatsappUrl } from '@/lib/whatsapp/contato';
-import type { Depoimento } from '@/components/maestria/content';
 
 /* ============================================================
    MENTORIA DE ZIGOMÁTICO · conteúdo central da landing de vendas
@@ -479,45 +478,6 @@ export const DIAGNOSTICO_VIDEO = {
     'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=2fcc396b-ccb8-452f-8757-cb5dfa85455e',
   embedId: 'panda-2fcc396b-ccb8-452f-8757-cb5dfa85455e',
 };
-
-/* ---------- Depoimentos ----------
-   Renderizados pelo <MaestriaDepoimentos /> da Maestria, depois dos da
-   Masterclass e dos da Maestria (ver MentoriaZigomaticoLanding). Estes são
-   os 4 que a mentoria já mostrava antes de a Maestria trocar os vídeos. */
-export const DEPOIMENTOS: Depoimento[] = [
-  {
-    nome: 'Dr. Emmanuel Marques',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
-    embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
-  },
-  {
-    nome: 'Dr. Thiago Vinicius',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
-    embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
-  },
-  {
-    nome: 'Dr. Paulo Maurício',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
-    embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
-  },
-  {
-    nome: 'Dr. Julierme Ferreira',
-    meta: 'Aluno · Felice Academy',
-    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
-    embed:
-      'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=738dddd5-f486-4a4a-b502-daaea7f17220',
-    embedId: 'panda-738dddd5-f486-4a4a-b502-daaea7f17220',
-  },
-];
 
 /* ---------- Oferta (sem preço — por aplicação) ---------- */
 export const OFERTA = {
