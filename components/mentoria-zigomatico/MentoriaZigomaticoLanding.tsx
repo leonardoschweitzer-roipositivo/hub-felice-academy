@@ -21,7 +21,8 @@ import {
 } from './MentoriaZigomaticoSections';
 import { MentoriaZigomaticoAmbiente } from './MentoriaZigomaticoAmbiente';
 import { MentoriaZigomaticoCasos } from './MentoriaZigomaticoCasos';
-import { MentoriaZigomaticoDepoimentos, MentoriaZigomaticoEntrada } from './MentoriaZigomaticoProvaEntrada';
+import { MentoriaZigomaticoEntrada } from './MentoriaZigomaticoProvaEntrada';
+import { MaestriaDepoimentos } from '@/components/maestria/MaestriaProvaGarantia';
 import { MentoriaZigomaticoFaq } from './MentoriaZigomaticoFaq';
 import { MentoriaZigomaticoFooter } from './MentoriaZigomaticoFooter';
 
@@ -45,8 +46,7 @@ import { WHATSAPP_URL } from './content';
    Casos reais → Depoimentos → Candidatura → Como entrar → FAQ →
    CTA final → Footer.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): vídeos dos depoimentos,
-      datas/locais dos encontros presenciais. Imagens de trilhas opcionais.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): datas/locais dos encontros presenciais. Imagens de trilhas opcionais.
    ============================================================ */
 
 export function MentoriaZigomaticoLanding() {
@@ -73,7 +73,8 @@ export function MentoriaZigomaticoLanding() {
         <MentoriaZigomaticoPlataforma />
         <MentoriaZigomaticoAutoridade />
         <MentoriaZigomaticoCasos />
-        <MentoriaZigomaticoDepoimentos />
+        {/* Mesmos depoimentos em vídeo da Maestria Zigomática. */}
+        <MaestriaDepoimentos publico="Cirurgiões" />
         <MentoriaZigomaticoOferta />
         <MentoriaZigomaticoEntrada />
         <MentoriaZigomaticoFaq />

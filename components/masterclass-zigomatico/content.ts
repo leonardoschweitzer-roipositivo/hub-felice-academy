@@ -190,7 +190,9 @@ export const DESTAQUE = {
 };
 
 /* ---------- Depoimentos ----------
-   ⚠️ Adicionar `video` (embed) e `thumb` reais de cada aluno. */
+   Nomes e textos corrigidos em 01/10/2026 com as falas reais entregues pelo
+   Leo em 08/09/2026 (iguais aos da Maestria). ⚠️ Não reescreva a copy.
+*/
 /** `embed`/`embedId`: player do Panda, vertical (9:16), tocado dentro do card.
  *  `video`/`thumb`: card antigo que abre o vídeo em outra aba — sem uso hoje,
  *  mantido porque `MasterclassDepoimentos` ainda o renderiza. */
@@ -205,33 +207,33 @@ export type Depoimento = {
 };
 export const DEPOIMENTOS: Depoimento[] = [
   {
-    nome: 'Dr. Emmanuel Bezerra',
+    nome: 'Dr. Emmanuel Marques',
     meta: 'Aluno · Felice Academy',
-    texto: 'Curso excepcional. Aprendi a tirar a equipe sob a cadeira e a indicar com critério. Mudou meu jogo.',
+    texto: 'Curso excepcional. Agradecer a toda a equipe pelo cuidado em todos os detalhes. Agradecer ao Sócrates por passar todo o conhecimento de forma simples e didática.',
     embed:
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
     embedId: 'panda-ad9090d8-dcbe-46e9-b0c7-4725772f2fee',
   },
   {
-    nome: 'Dr. Thiago Vinícius',
+    nome: 'Dr. Thiago Vinicius',
     meta: 'Aluno · Felice Academy',
-    texto: 'Professor a curva da primeira. Conteúdo, organizado, didático. Obrigado mesmo!',
+    texto: 'Obrigado pelos ensinamentos, aprendi muito e estou muito mais confiante.',
     embed:
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
     embedId: 'panda-00ecbcee-1689-4a49-989a-ba4f0f5be1f6',
   },
   {
-    nome: 'Dr. Paulo Bezerra',
+    nome: 'Dr. Paulo Maurício',
     meta: 'Aluno · Felice Academy',
-    texto: 'Conteúdo direto ao ponto. Saí com clareza do passo a passo dos casos zigomáticos.',
+    texto: 'Professor, o curso é de primeira. Conteúdo, organização, didática. Obrigado mesmo.',
     embed:
       'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
     embedId: 'panda-0c6ed468-d354-41c1-89ca-1c9345f5b0b0',
   },
   {
-    nome: 'Dr. Juliano Nunes',
+    nome: 'Dr. Julierme Ferreira',
     meta: 'Aluno · Felice Academy',
-    texto: 'Os casos comentados pelo professor qualificaram muito como eu penso cada decisão. Vale demais.',
+    texto: 'Parabéns Dr. Sócrates. O curso era exatamente como eu procurava, professor qualificado que ensina tudo que sabe. Valeu por tudo!',
     // O snippet deste veio como iframe fixo de 720x360, sem o div de proporção.
     // É só a variante de tamanho fixo do Panda: o vídeo é 612x1080, vertical
     // igual aos outros, e cai no mesmo slot 9:16.

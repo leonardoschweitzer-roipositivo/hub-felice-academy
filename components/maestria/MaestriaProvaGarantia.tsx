@@ -4,7 +4,9 @@
 import { useRef } from 'react';
 import { DEPOIMENTOS } from './content';
 
-export function MaestriaDepoimentos() {
+/** Também usado na Mentoria de Zigomático (mesmos vídeos); `publico` troca
+ *  só o começo do título — "Dentistas" aqui, "Cirurgiões" na mentoria. */
+export function MaestriaDepoimentos({ publico = 'Dentistas' }: { publico?: string }) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: number) => {
@@ -23,7 +25,7 @@ export function MaestriaDepoimentos() {
             Quem já fez
           </span>
           <h2>
-            Dentistas que saíram da insegurança para a{' '}
+            {publico} que saíram da insegurança para a{' '}
             <span className="gold-grad">sala de cirurgia</span>
           </h2>
         </div>
