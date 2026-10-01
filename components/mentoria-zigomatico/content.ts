@@ -170,21 +170,16 @@ export const PRESENCIAL: Presencial[] = [
 ];
 
 /* ---------- Tudo que você recebe (entregas) ----------
-   Lista conferida com a equipe em 01/10/2026: encontro presencial, curso
-   online Maestria, Masterclass, materiais de estudo, ebook pré/pós-operatório,
-   miniguia e as 4 aulas bônus, somados aos itens que já existiam. Número par
-   de cards de propósito: o grid é de 2 colunas. */
+   Exatamente a lista enviada pela equipe Felice (01/10/2026) — não acrescente
+   itens fora dela: encontro presencial, curso online Maestria, Masterclass,
+   materiais de estudo, ebook pré/pós-operatório, miniguia e as 4 aulas bônus.
+   Número par de cards de propósito: o grid é de 2 colunas. */
 export type Entrega = { titulo: string; texto: string; tag?: string };
 export const ENTREGAS: Entrega[] = [
   {
     tag: 'Presencial',
     titulo: 'Encontro presencial para teoria e prática',
     texto: 'Prática em laboratório e encontros teóricos presenciais de discussão de casos. Prática real, não só teoria.',
-  },
-  {
-    tag: 'Centro cirúrgico',
-    titulo: 'Acompanhamento cirúrgico operando junto',
-    texto: 'Você opera casos reais ao lado do Dr. Sócrates, vendo cada decisão na prática e tirando dúvidas na hora.',
   },
   {
     tag: 'Curso online',
@@ -195,16 +190,6 @@ export const ENTREGAS: Entrega[] = [
     tag: 'Curso online',
     titulo: 'Masterclass Zigomático Descomplicado',
     texto: 'Os princípios dos implantes zigomáticos em poucas horas: a base para chegar à mentoria já com o raciocínio no lugar.',
-  },
-  {
-    tag: 'Ao vivo',
-    titulo: 'Encontros ao vivo online',
-    texto: 'Sessões recorrentes de discussão de casos e tira-dúvidas com o mentor entre os encontros presenciais.',
-  },
-  {
-    tag: 'Casos 1:1',
-    titulo: 'Acompanhamento individual de casos',
-    texto: 'Leve os seus próprios casos: planejamento e decisão acompanhados de perto, do diagnóstico à execução.',
   },
   {
     tag: 'Materiais',
@@ -222,29 +207,24 @@ export const ENTREGAS: Entrega[] = [
     texto: 'Do raciocínio de indicação à conduta segura, num guia curto e fácil de consultar.',
   },
   {
-    tag: 'Aulas bônus',
-    titulo: '4 aulas bônus',
-    texto: 'Precificação de casos complexos, planejamento estratégico, primeira consulta e cirurgia real com caso comentado.',
+    tag: 'Aula bônus',
+    titulo: 'Precificação de casos complexos',
+    texto: 'Como precificar os casos de maior complexidade da sua agenda.',
   },
   {
-    tag: 'Acervo',
-    titulo: 'Biblioteca de casos comentados',
-    texto: 'Acervo de casos reais para estudar variações, decisões e resultados — e enxergar a trajetória ideal em cada cenário.',
+    tag: 'Aula bônus',
+    titulo: 'Planejamento estratégico',
+    texto: 'O planejamento para levar o zigomático para dentro da sua clínica.',
   },
   {
-    tag: 'Comunidade',
-    titulo: 'Networking com cirurgiões',
-    texto: 'Comunidade de colegas que operam (ou vão operar) zigomático: troque experiências, discuta casos e cresça em rede.',
+    tag: 'Aula bônus',
+    titulo: 'Primeira consulta',
+    texto: 'Como conduzir a primeira consulta do paciente candidato ao zigomático.',
   },
   {
-    tag: 'Acervo',
-    titulo: 'Gravações dos encontros',
-    texto: 'Os encontros ao vivo ficam gravados na plataforma para você revisar a teoria antes e depois da prática.',
-  },
-  {
-    tag: 'Suporte',
-    titulo: 'Suporte e acompanhamento',
-    texto: 'Canal de dúvidas com a equipe entre os encontros — você não fica sozinho na curva de aprendizado.',
+    tag: 'Aula bônus',
+    titulo: 'Cirurgia real com caso comentado',
+    texto: 'Uma cirurgia real, comentada passo a passo pelo Dr. Sócrates.',
   },
 ];
 
