@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, DOCS_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../sections/obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Questionário de qualificação do lead. Não pergunta faturamento —
    as perguntas (consultórios, dentistas, volume de pacientes, equipe,
@@ -151,6 +152,9 @@ export function ConsultoriaQuiz() {
   return (
     <main className="cons-page">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap cons-inner">
         <div className="cons-head reveal">
           <span className="eyebrow">Consultoria gratuita · Kit Gestão F4</span>

@@ -1,5 +1,6 @@
 import { Check } from '@/components/felice/ui/icons';
 import type { ConfirmacaoContent } from './types';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Página pós-envio da candidatura, compartilhada pelos 3 produtos de
    aplicação. Antes era só um hero pedindo "aperte enviar no WhatsApp" e
@@ -11,6 +12,9 @@ import type { ConfirmacaoContent } from './types';
 export function ConfirmacaoAplicacao({ c }: { c: ConfirmacaoContent }) {
   return (
     <div className="felice obg">
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <header className="obg-hero">
         <div className="obg-hero-bg" aria-hidden />
         <div className="wrap obg-hero-inner">

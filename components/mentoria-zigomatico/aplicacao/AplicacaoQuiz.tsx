@@ -10,6 +10,7 @@ import {
   TRACKING_SLUG,
   WHATSAPP_NUMERO,
 } from './config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Questionário de candidatura da Mentoria de Zigomático.
 
@@ -202,6 +203,9 @@ export function AplicacaoQuiz() {
   return (
     <main className="cons-page">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap cons-inner">
         <div className="cons-head reveal">
           <span className="eyebrow">Candidatura · Mentoria de Zigomático</span>

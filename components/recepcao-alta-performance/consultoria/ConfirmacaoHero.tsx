@@ -1,4 +1,5 @@
 import { WHATSAPP_URL } from '../obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Confirmação do agendamento: o quiz abriu o WhatsApp numa aba nova com
    tudo preenchido, então esta página pede o ENVIO da mensagem em vez de
@@ -9,6 +10,9 @@ export function ConfirmacaoHero() {
   return (
     <header className="obg-hero cons-confirma">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap obg-hero-inner">
         <span className="obg-badge reveal">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

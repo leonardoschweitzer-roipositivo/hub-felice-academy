@@ -6,7 +6,8 @@
    ============================================================ */
 
 /* ---------- Hero de sucesso ---------- */
-/* Logo oficial no topo das páginas de obrigado (e boas-vindas), por cima
+/* Logo oficial no topo das páginas de obrigado, boas-vindas, questionários
+   (aplicação/consultoria) e confirmação, por cima
    do hero: absoluto para não empurrar o fundo de pontos para baixo. Cabe
    no padding-top do hero (mín. 72px no celular). O !important vence o
    height inline do <FeliceLogo>. */

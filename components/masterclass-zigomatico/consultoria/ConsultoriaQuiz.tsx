@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, ACESSO_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Questionário de qualificação do lead vindo da Masterclass Zigomático
    Descomplicado. As perguntas mapeiam a experiência com implantes, o
@@ -155,6 +156,9 @@ export function ConsultoriaQuiz() {
   return (
     <main className="cons-page">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap cons-inner">
         <div className="cons-head reveal">
           <span className="eyebrow">Consultoria gratuita · Zigomático Descomplicado</span>

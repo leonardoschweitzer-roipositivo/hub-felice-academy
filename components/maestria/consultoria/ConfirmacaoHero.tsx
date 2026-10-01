@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { WHATSAPP_URL, CURSO_URL } from '../obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Página de confirmação (só HERO): recebemos os dados, o Dr. Sócrates
    entra em contato em breve. Reusa o fundo de pontinhos do hero da
@@ -8,6 +9,9 @@ export function ConfirmacaoHero() {
   return (
     <header className="obg-hero cons-confirma">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap obg-hero-inner">
         <span className="obg-badge reveal">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

@@ -6,7 +6,9 @@
 .felice .cons-page {
   position: relative;
   min-height: 100vh;
-  padding: clamp(56px, 9vw, 96px) 0 clamp(64px, 9vw, 110px);
+  /* Topo maior que o original (56–96px) p/ caber o logo (.obg-logo, em
+     obrigado.css) acima do cabeçalho do questionário. */
+  padding: clamp(84px, 10vw, 112px) 0 clamp(64px, 9vw, 110px);
   overflow: hidden;
 }
 .felice .cons-inner {

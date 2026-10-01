@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { fireApplication } from '@/components/tracking/application';
 import { CONFIRMACAO_URL, ORIGEM_LABEL, WHATSAPP_NUMERO } from '../obrigado/config';
+import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /* Questionário de qualificação do lead pós-compra do CRC de Alta
    Performance. Parte das 8 perguntas de porte de clínica já usadas no
@@ -162,6 +163,9 @@ export function ConsultoriaQuiz() {
   return (
     <main className="cons-page">
       <div className="obg-hero-bg" aria-hidden />
+      <div className="obg-logo">
+        <FeliceLogo />
+      </div>
       <div className="wrap cons-inner">
         <div className="cons-head reveal">
           <span className="eyebrow">Consultoria gratuita · CRC de Alta Performance</span>
