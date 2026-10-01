@@ -322,7 +322,7 @@ export const MENTOR = {
 export type Depoimento = {
   nome: string;
   meta: string;
-  texto?: string;
+  texto: string;
   embed?: string;
   embedId?: string;
   video?: string;

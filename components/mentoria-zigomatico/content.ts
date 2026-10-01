@@ -500,9 +500,8 @@ export const DIAGNOSTICO_VIDEO = {
 };
 
 /* ---------- Depoimentos ----------
-   Saíram daqui: a landing mostra todos os vídeos de zigomático — os da
-   Maestria e os da Masterclass (DEPOIMENTOS de cada content.ts), via
-   <MaestriaDepoimentos depoimentos={...} /> no MentoriaZigomaticoLanding.
+   Saíram daqui: a landing mostra os vídeos da Maestria Zigomática
+   (DEPOIMENTOS em maestria/content.ts, via <MaestriaDepoimentos />).
    Os textos que moravam aqui (entregues pelo Leo em 08/09/2026) estão no
    histórico do git se precisarem voltar. */
 
