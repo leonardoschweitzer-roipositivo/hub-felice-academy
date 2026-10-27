@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { funnelBySlug } from '@/lib/tracking/funnels';
+import { randomId } from '@/lib/tracking/cookies';
 
 // Chaves prováveis do id da transação no redirect do Green.
 // `id` genérico foi deixado de fora de propósito (um ?id= qualquer dispararia
@@ -13,8 +14,12 @@ const TX_KEYS = ['transaction_id', 'transactionId', 'tx', 'sale_id', 'saleId'];
 /* Purchase do browser na página de obrigado (domínio próprio).
    Só dispara se houver transaction_id na URL — usando o mesmo event_id do
    servidor (purchase_{tx}) p/ o Meta deduplicar. Sem tx, o Purchase fica só
-   no servidor (não duplica). */
-export function PurchasePixel({ slug }: { slug: string }) {
+   no servidor (não duplica).
+
+   `always` dispara mesmo sem tx, com event_id aleatório. Troca a garantia de
+   não duplicar por garantir o evento no browser: se o servidor também enviar
+   o Purchase dessa venda, o Meta pode contar duas vezes. */
+export function PurchasePixel({ slug, always = false }: { slug: string; always?: boolean }) {
   const fired = useRef(false);
   useEffect(() => {
     if (fired.current) return;
@@ -27,7 +32,8 @@ export function PurchasePixel({ slug }: { slug: string }) {
         break;
       }
     }
-    if (!tx) return; // sem id → servidor cobre
+    if (!tx && !always) return; // sem id → servidor cobre
+    if (!tx) tx = `nt_${randomId()}`;
     fired.current = true;
     const f = funnelBySlug(slug);
     window.fbq?.(
