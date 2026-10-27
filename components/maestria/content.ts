@@ -13,7 +13,7 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
 /** Checkout do curso (R$ 1.599) na Greenn/Payfast. O código da oferta
  *  (`lXSlpd`) também vive em lib/tracking/funnels.ts — trocar nos dois.
  *  A oferta antiga `1oWoQi` segue ativa na Greenn, mas cobra R$ 997: não use. */
-export const CHECKOUT_URL = 'https://payfast.greenn.com.br/redirect/807646';
+export const CHECKOUT_URL = 'https://payfast.greenn.com.br/146837/offer/lXSlpd?ch_id=140311&b_id_1=43u7fdg&b_offer_1=XbOj2n&b_id_2=nwktnth&b_offer_2=4iIlqU&b_id_3=tgzs73v&b_offer_3=2OQBZG';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
