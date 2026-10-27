@@ -21,9 +21,9 @@ import { MaestriaFooter } from './MaestriaFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { UrgencyBar } from '@/components/felice/ui/UrgencyBar';
 import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
-import { DEADLINE_ISO, WHATSAPP_URL } from './content';
+import { WHATSAPP_URL } from './content';
 
 /* ============================================================
    MAESTRIA ZIGOMÁTICA — landing de vendas (padrão Felice / dourado).
@@ -31,7 +31,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    Fork estrutural da Gestão F4, ticket alto + escassez por deadline
    real de turma (DEADLINE_ISO em ./content.ts).
 
-   Ordem: ScarcityBar → Header → Hero → Números → Problema →
+   Ordem: UrgencyBar → Header → Hero → Números → Problema →
    Método → Módulos → Bônus → Plataforma → Autoridade →
    Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
@@ -47,12 +47,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 export function MaestriaLanding() {
   return (
     <div className="felice felice-maestria mz-page has-urgency-bar mz-sem-header">
-      <ScarcityBar
-        deadlineIso={DEADLINE_ISO}
-        label="As matrículas encerram em"
-        vagas="Vagas limitadas por turma"
-        viewers
-      />
+      <UrgencyBar />
       {/* Header escondido a pedido do Leo (16/09/2026). Para trazer de volta:
           descomente o <MaestriaHeader /> e tire `mz-sem-header` do wrapper
           — é essa classe que devolve ao hero o espaço do header fixo. */}

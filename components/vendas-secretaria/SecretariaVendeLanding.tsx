@@ -20,9 +20,9 @@ import { SecretariaVendeFooter } from './SecretariaVendeFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { UrgencyBar } from '@/components/felice/ui/UrgencyBar';
 import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
-import { DEADLINE_ISO, WHATSAPP_URL } from './content';
+import { WHATSAPP_URL } from './content';
 
 /* ============================================================
    "A SECRETÁRIA QUE VENDE" — landing de vendas (padrão Felice / dourado).
@@ -30,7 +30,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    vender: do primeiro contato ao fechamento do orçamento. Fork
    estrutural do Gestão F4 (ticket com checkout + escassez por deadline).
 
-   Ordem: ScarcityBar → Header → Hero → Números → Problema →
+   Ordem: UrgencyBar → Header → Hero → Números → Problema →
    Método (funil da recepção) → Módulos → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
@@ -45,12 +45,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 export function SecretariaVendeLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar sv-sem-header">
-      <ScarcityBar
-        deadlineIso={DEADLINE_ISO}
-        label="A oferta deste lote encerra em"
-        vagas="Condição do lote atual"
-        viewers
-      />
+      <UrgencyBar />
       {/* Header escondido a pedido do Leo (16/09/2026), mesmo padrão da
           Masterclass/Maestria. Para trazer de volta: descomente o
           <SecretariaVendeHeader /> e tire `sv-sem-header` do wrapper —
