@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function ObrigadoPage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
-      <PurchasePixel slug="maestria-zigomatica" />
+      <PurchasePixel slug="maestria-zigomatica" always />
       <ObrigadoLanding />
     </div>
   );
