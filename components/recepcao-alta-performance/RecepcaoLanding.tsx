@@ -20,9 +20,9 @@ import { RecepcaoFooter } from './RecepcaoFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { ScarcityBar } from '@/components/felice/ui/ScarcityBar';
+import { UrgencyBar } from '@/components/felice/ui/UrgencyBar';
 import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
-import { DEADLINE_ISO, WHATSAPP_URL } from './content';
+import { WHATSAPP_URL } from './content';
 
 /* ============================================================
    "RECEPÇÃO DE ALTA PERFORMANCE" — landing de vendas (padrão Felice).
@@ -32,11 +32,11 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
    Par presencial do CRC de Alta Performance (/produtos/vendas-secretaria),
    de quem esta landing é fork estrutural.
 
-   Ordem: ScarcityBar → Hero → Números → Problema →
+   Ordem: UrgencyBar → Hero → Números → Problema →
    Método (4 pilares Disney) → Módulos → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
-   ⚠️ `has-urgency-bar` e a <ScarcityBar /> andam juntas: a classe
+   ⚠️ `has-urgency-bar` e a <UrgencyBar /> andam juntas: a classe
       reserva `--urgency-h` de espaço no topo. Se tirar a barra, tire a
       classe também, senão sobra um vão de 53px acima do hero.
 
@@ -47,12 +47,7 @@ import { DEADLINE_ISO, WHATSAPP_URL } from './content';
 export function RecepcaoLanding() {
   return (
     <div className="felice felice-maestria has-urgency-bar rap-sem-header">
-      <ScarcityBar
-        deadlineIso={DEADLINE_ISO}
-        label="A oferta deste lote encerra em"
-        vagas="Condição do lote atual"
-        viewers
-      />
+      <UrgencyBar />
       {/* Header escondido a pedido do Leo (16/09/2026), mesmo padrão do CRC.
           Para trazer de volta: descomente o <RecepcaoHeader /> e tire
           `rap-sem-header` do wrapper — é essa classe que devolve ao hero o
