@@ -43,7 +43,7 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
 
 /** Link de checkout (pagamento) — Payfast/Greenn, oferta oficial do curso. */
 export const CHECKOUT_URL =
-  'https://payfast.greenn.com.br/tgzs73v/offer/PpTfLq?ch_id=140311';
+  'https://payfast.greenn.com.br/tgzs73v/offer/PpTfLq?ch_id=140311&b_id_1=43u7fdg&b_offer_1=XbOj2n&b_id_2=nwktnth&b_offer_2=4iIlqU';
 
 /** Âncora interna para os CTAs de "rolar até a oferta". */
 export const OFERTA_ANCHOR = '#oferta';
