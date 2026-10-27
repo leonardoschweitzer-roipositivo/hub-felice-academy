@@ -7,7 +7,7 @@
 
 /** Checkout do Kit na Greenn/Payfast. O código da oferta (`4iIlqU`)
  *  também vive em lib/tracking/funnels.ts — trocar nos dois. */
-export const CHECKOUT_URL = 'https://payfast.greenn.com.br/nwktnth/offer/4iIlqU?ch_id=140311';
+export const CHECKOUT_URL = 'https://payfast.greenn.com.br/nwktnth/offer/4iIlqU?ch_id=140311&b_id_1=tgzs73v&b_offer_1=2OQBZG&b_id_2=43u7fdg&b_offer_2=XbOj2n';
 
 /** Preço da oferta. `aVista` é a âncora usada em toda a copy da landing
  *  ("Liberar Acesso por R$ 97"); `parcela` é o que o checkout oferece. */
