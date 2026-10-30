@@ -185,6 +185,12 @@ export const MAPA_PUBLICO: NoRota[] = [
         mock: 'doc',
         nota: 'noindex · sem link em lugar nenhum',
       },
+      {
+        rota: '/design-system/',
+        nome: 'Design System',
+        mock: 'doc',
+        nota: 'guia de marca web + Instagram · noindex · sem link',
+      },
     ],
   },
 ];

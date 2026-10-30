@@ -1,0 +1,1297 @@
+/* ============================================================
+   /design-system — guia interno da marca.
+
+   Só o que o felice.css não tem. Tudo escopado em `.felice-ds`, com as
+   classes prefixadas `ds-` (a página) e `ig-` (os modelos de Instagram),
+   porque o wrapper `.felice` é compartilhado por todas as landings do
+   site — regra sem prefixo aqui vazaria para elas.
+
+   Cores, fontes, .wrap, .eyebrow, .gold-grad, .btn, .divider e os
+   componentes mostrados como exemplo vêm do felice.css.
+
+   Os modelos de Instagram (`.ig-*`) usam valores LITERAIS (hex e px de uma
+   arte de 1080) de propósito: o PNG é gerado do elemento e o design não
+   depende de variável nem de breakpoint.
+   ============================================================ */
+
+.felice-ds {
+  --ds-display: var(--font-felice-display), 'Poppins', sans-serif;
+  --ds-body: var(--font-felice-body), 'Lato', sans-serif;
+  --ds-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  .felice-ds {
+    scroll-behavior: auto;
+  }
+}
+.felice-ds code {
+  font-family: var(--ds-mono);
+  font-size: 0.82em;
+  color: var(--gold-bright);
+  background: rgba(232, 180, 71, 0.08);
+  padding: 1px 6px;
+  border-radius: 5px;
+  word-break: break-word;
+}
+
+/* ---------- capa ---------- */
+.felice-ds .ds-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 88px) 0 clamp(36px, 5vw, 56px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-ds .ds-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(760px 300px at 12% -10%, rgba(232, 180, 71, 0.13), transparent 62%);
+  pointer-events: none;
+}
+.felice-ds .ds-hero .wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.felice-ds .ds-hero h1 {
+  font-size: clamp(2.1rem, 5.1vw, 3.75rem);
+}
+.felice-ds .ds-portas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 8px;
+}
+.felice-ds .ds-porta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 24px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  border: 1px solid var(--line-soft);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.felice-ds .ds-porta:hover {
+  transform: translateY(-3px);
+  border-color: var(--line);
+}
+.felice-ds .ds-porta b {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--cream);
+}
+.felice-ds .ds-porta small {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* ---------- layout: índice + conteúdo ---------- */
+.felice-ds .ds-layout {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.felice-ds .ds-aside {
+  position: sticky;
+  top: 24px;
+  padding-top: 40px;
+}
+.felice-ds .ds-indice {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-left: 1px solid var(--line-soft);
+}
+.felice-ds .ds-indice a {
+  display: block;
+  padding: 7px 14px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 0.86rem;
+  color: var(--muted);
+  transition: color 0.2s, border-color 0.2s;
+}
+.felice-ds .ds-indice a span {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+  margin-right: 6px;
+}
+.felice-ds .ds-indice a:hover {
+  color: var(--cream);
+}
+.felice-ds .ds-indice a.is-on {
+  color: var(--gold);
+  border-left-color: var(--gold);
+}
+.felice-ds .ds-main {
+  min-width: 0;
+  padding-bottom: 80px;
+}
+
+/* ---------- seção ---------- */
+.felice-ds .ds-sec {
+  padding: clamp(48px, 6vw, 72px) 0 8px;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: clamp(40px, 5vw, 64px);
+  scroll-margin-top: 12px;
+}
+.felice-ds .ds-sec:last-child {
+  border-bottom: none;
+}
+.felice-ds .ds-sec-head {
+  max-width: 720px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.felice-ds .ds-sec-head h2 {
+  margin: 0;
+}
+.felice-ds .ds-sub {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin: 40px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.felice-ds .ds-mut {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 10px 0;
+}
+.felice-ds small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ---------- blocos básicos ---------- */
+.felice-ds .ds-grid {
+  display: grid;
+  gap: 16px;
+  margin: 14px 0;
+}
+.felice-ds .ds-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.felice-ds .ds-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.felice-ds .ds-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.felice-ds .ds-card {
+  padding: 22px 24px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  border: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 14px 0;
+}
+.felice-ds .ds-grid > .ds-card {
+  margin: 0;
+}
+.felice-ds .ds-card p {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.felice-ds .ds-card--no {
+  border-color: rgba(224, 88, 79, 0.35);
+}
+.felice-ds .ds-card--no .eyebrow {
+  color: #e0584f;
+}
+.felice-ds .ds-card--no .eyebrow::before {
+  background: #e0584f;
+}
+.felice-ds .ds-big {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--cream);
+}
+.felice-ds .ds-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.felice-ds .ds-steps {
+  list-style: none;
+  counter-reset: ds;
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+.felice-ds .ds-steps li {
+  counter-increment: ds;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.felice-ds .ds-steps li::before {
+  content: counter(ds);
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--gold);
+  color: #231701;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.felice-ds .ds-steps--lg {
+  gap: 12px;
+  max-width: 760px;
+}
+.felice-ds .ds-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  width: 100%;
+}
+.felice-ds .ds-list li {
+  position: relative;
+  padding-left: 20px;
+}
+.felice-ds .ds-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.felice-ds .ds-list--warn li::before {
+  background: #e0584f;
+}
+.felice-ds .ds-check {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.felice-ds .ds-check li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.felice-ds .ds-check li::before {
+  content: '';
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--gold);
+  border-radius: 4px;
+  transform: translateY(2px);
+}
+.felice-ds .ds-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.felice-ds .ds-chips span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--gold-bright);
+  font-size: 0.86rem;
+}
+.felice-ds .ds-pre {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: var(--ds-mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.felice-ds .ds-validar {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--gold);
+  background: rgba(232, 180, 71, 0.08);
+  font-family: var(--ds-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* ---------- tabelas ---------- */
+.felice-ds .ds-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  margin: 10px 0;
+}
+.felice-ds .ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.felice-ds .ds-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.felice-ds .ds-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  color: var(--text);
+}
+.felice-ds .ds-table tr:last-child td {
+  border-bottom: none;
+}
+.felice-ds .ds-table td b {
+  color: var(--cream);
+  font-weight: 700;
+}
+.felice-ds .ds-table td small {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--ds-mono);
+  font-size: 0.72rem;
+}
+.felice-ds .ds-table td.is-no {
+  color: #e0584f;
+}
+
+/* ---------- copiar ---------- */
+.felice-ds .ds-copy {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-soft);
+  color: var(--cream);
+  font-family: var(--ds-mono);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.felice-ds .ds-copy:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+.felice-ds .ds-copy--sm {
+  font-family: var(--ds-body);
+  font-size: 0.72rem;
+  padding: 3px 9px;
+}
+.felice-ds .ds-btn-sm {
+  cursor: pointer;
+  font-family: var(--ds-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: none;
+  background: var(--grad-gold);
+  color: #231701;
+}
+.felice-ds .ds-btn-sm--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-soft);
+}
+.felice-ds .ds-btn-sm:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.felice-ds .ds-btn-sm:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.felice-ds .ds-erro {
+  color: #e0584f;
+}
+
+/* ---------- specimen ---------- */
+.felice-ds .ds-spec {
+  margin: 18px 0 28px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  overflow: hidden;
+}
+.felice-ds .ds-spec figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-ds .ds-spec figcaption b {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  color: var(--cream);
+}
+.felice-ds .ds-spec-stage {
+  padding: clamp(24px, 4vw, 40px) clamp(18px, 3vw, 32px);
+  background: var(--ink);
+}
+.felice-ds .ds-spec-stage.is-ink2 {
+  background: var(--ink-2);
+}
+.felice-ds .ds-spec-code {
+  position: relative;
+  border-top: 1px solid var(--line-soft);
+  background: #0e0e11;
+}
+.felice-ds .ds-spec-code pre {
+  padding: 16px 20px;
+  overflow-x: auto;
+  font-family: var(--ds-mono);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.felice-ds .ds-spec-code .ds-copy {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}
+.felice-ds .ds-spec-src {
+  display: block;
+  padding: 10px 20px 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---------- logo ---------- */
+.felice-ds .ds-logo-stage {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: radial-gradient(420px 200px at 50% 0%, rgba(232, 180, 71, 0.12), transparent 70%), var(--ink-2);
+}
+.felice-ds .ds-logo-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 24px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--ink-2);
+}
+.felice-ds .ds-logo-sizes > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* ---------- cor ---------- */
+.felice-ds .ds-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.felice-ds .ds-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-soft);
+  background: var(--card);
+}
+.felice-ds .ds-swatch-chip {
+  width: 100%;
+  height: 76px;
+  border-radius: var(--r);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.felice-ds .ds-swatch b {
+  color: var(--cream);
+  font-family: var(--ds-display);
+}
+.felice-ds .ds-grad {
+  margin-top: 14px;
+  height: 64px;
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.felice-ds .ds-grad span {
+  color: #231701;
+  font-family: var(--ds-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.felice-ds .ds-strike {
+  text-decoration: line-through;
+  margin-right: 6px;
+  color: var(--muted);
+}
+.felice-ds .ds-prop {
+  display: flex;
+  height: 56px;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+.felice-ds .ds-prop > div {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  background: var(--card-2);
+  border-right: 1px solid var(--line-soft);
+}
+.felice-ds .ds-prop > div:last-child {
+  border-right: none;
+}
+.felice-ds .ds-prop span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cream);
+  padding: 0 8px;
+  text-align: center;
+}
+.felice-ds .ds-contrast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+}
+.felice-ds .ds-contrast-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 4px 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--card);
+  font-size: 0.86rem;
+}
+.felice-ds .ds-contrast-chip {
+  grid-row: span 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.felice-ds .ds-contrast-row .is-ok {
+  color: #57c97f;
+}
+.felice-ds .ds-contrast-row .is-warn {
+  color: #f0b45a;
+}
+
+/* ---------- tipografia ---------- */
+.felice-ds .ds-font {
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--cream);
+}
+.felice-ds .ds-font--display,
+.felice-ds .ds-t-h1,
+.felice-ds .ds-t-h1hero,
+.felice-ds .ds-t-h2,
+.felice-ds .ds-t-h3 {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  color: var(--cream);
+}
+.felice-ds .ds-font--body {
+  font-family: var(--ds-body);
+}
+.felice-ds .ds-alfabeto {
+  font-size: 1.25rem;
+  color: var(--gold);
+}
+.felice-ds .ds-escala {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+}
+.felice-ds .ds-escala-row {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.felice-ds .ds-escala-row:last-child {
+  border-bottom: none;
+}
+.felice-ds .ds-escala-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.felice-ds .ds-escala-meta b {
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.felice-ds .ds-t-h1 {
+  font-size: clamp(2.1rem, 5.2vw, 4rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+.felice-ds .ds-t-h1hero {
+  font-size: clamp(1.8rem, 4.4vw, 3.3rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+.felice-ds .ds-t-h2 {
+  font-size: clamp(1.8rem, 3.8vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+.felice-ds .ds-t-h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.15;
+}
+.felice-ds .ds-t-lead {
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  color: var(--muted);
+  max-width: 60ch;
+}
+.felice-ds .ds-t-body {
+  font-size: 1rem;
+}
+.felice-ds .ds-assinatura {
+  padding: 28px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: var(--card);
+}
+.felice-ds .ds-rotulo {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.felice-ds .ds-pequenos {
+  display: grid;
+  gap: 8px;
+}
+.felice-ds .ds-pequenos > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--card);
+}
+
+/* ---------- forma ---------- */
+.felice-ds .ds-raio {
+  width: 64px;
+  height: 64px;
+  background: rgba(232, 180, 71, 0.12);
+  border: 1.5px solid var(--gold);
+}
+.felice-ds .ds-espacos {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.felice-ds .ds-espacos > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.felice-ds .ds-espacos span {
+  display: block;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.felice-ds .ds-sombra {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 22px;
+  border-radius: var(--r-lg);
+  background: var(--card-2);
+}
+.felice-ds .ds-fundo {
+  height: 120px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+.felice-ds .ds-fundo--pontos {
+  background: radial-gradient(rgba(232, 180, 71, 0.16) 1.3px, transparent 1.3px) 0 0 / 26px 26px, var(--ink);
+}
+.felice-ds .ds-fundo--brilho {
+  background: radial-gradient(circle at 30% 30%, rgba(232, 180, 71, 0.16), transparent 60%), var(--ink);
+}
+.felice-ds .ds-fundo--alterna {
+  background: linear-gradient(180deg, var(--ink), #0d0c0a);
+}
+.felice-ds .ds-fundo--ouro {
+  background: var(--grad-gold);
+}
+.felice-ds .ds-fundo--ouro small {
+  color: #231701;
+  font-weight: 700;
+}
+
+/* ---------- página nova / voz / provas ---------- */
+.felice-ds .ds-anatomia {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+.felice-ds .ds-anatomia li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--card);
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.felice-ds .ds-anatomia li span {
+  font-family: var(--ds-display);
+  color: var(--gold);
+  font-size: 0.78rem;
+}
+.felice-ds .ds-formulas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.felice-ds .ds-formula {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 22px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(165deg, var(--card-2), var(--card));
+  border: 1px solid var(--line-soft);
+}
+.felice-ds .ds-formula p {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--cream);
+}
+.felice-ds .ds-formula small {
+  font-family: var(--ds-mono);
+  font-size: 0.7rem;
+}
+.felice-ds .ds-prova {
+  padding: 26px 28px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, #17140d, #101013);
+  box-shadow: var(--glow);
+}
+.felice-ds .ds-prova-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 10px;
+}
+.felice-ds .ds-prova-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.felice-ds .ds-prova-grid b {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  line-height: 1.1;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.felice-ds .ds-prova-grid span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* ---------- Instagram: galeria e moldura ---------- */
+.felice-ds .ds-ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 14px 0 22px;
+}
+.felice-ds .ds-ig-grid--vert {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.felice-ds .ds-ig-modelo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.felice-ds .ds-ig-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+}
+.felice-ds .ds-ig-art,
+.felice-ds .ds-ig-seguro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+.felice-ds .ds-ig-art {
+  background: #0b0b0d;
+  color: #f4efe4;
+  font-family: var(--ds-body);
+  overflow: hidden;
+}
+.felice-ds .ds-ig-art.is-sem-texto .ig-txt {
+  visibility: hidden;
+}
+.felice-ds .ds-ig-seguro {
+  pointer-events: none;
+}
+.felice-ds .ds-ig-seguro i {
+  position: absolute;
+  border: 3px dashed #e8b447;
+  background: rgba(232, 180, 71, 0.04);
+}
+.felice-ds .ds-ig-seguro.is-feed i {
+  inset: 80px;
+}
+.felice-ds .ds-ig-seguro.is-vertical i {
+  inset: 250px 80px 340px;
+}
+.felice-ds .ds-ig-seguro.is-vertical {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.14) 0 250px,
+    transparent 250px calc(100% - 340px),
+    rgba(255, 255, 255, 0.14) calc(100% - 340px)
+  );
+}
+.felice-ds .ds-ig-modelo figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.felice-ds .ds-ig-modelo figcaption b {
+  color: var(--cream);
+  font-family: var(--ds-display);
+}
+.felice-ds .ds-ig-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.felice-ds .ds-ig-check input {
+  accent-color: #e8b447;
+}
+
+/* ---------- Instagram: modelos (arte de 1080px, valores literais) ---------- */
+.felice-ds .ig-feed,
+.felice-ds .ig-vert {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.felice-ds .ig-feed {
+  padding: 80px;
+}
+.felice-ds .ig-vert {
+  padding: 250px 80px 340px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+.felice-ds .ig-pontos {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(rgba(232, 180, 71, 0.16) 1.3px, transparent 1.3px) 0 0 / 26px 26px,
+    radial-gradient(900px 600px at 15% 0%, rgba(232, 180, 71, 0.16), transparent 62%);
+  pointer-events: none;
+}
+.felice-ds .ig-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 44px;
+}
+.felice-ds .ig-foot {
+  position: relative;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.felice-ds .ig-logo {
+  position: relative;
+  height: 70px;
+  width: auto;
+}
+.felice-ds .ig-eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e8b447;
+}
+.felice-ds .ig-eyebrow::before {
+  content: '';
+  width: 64px;
+  height: 2px;
+  background: #e8b447;
+  opacity: 0.6;
+}
+.felice-ds .ig-h {
+  position: relative;
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 92px;
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  color: #f4efe4;
+}
+.felice-ds .ig-h em {
+  display: block;
+  font-style: normal;
+  color: #e8b447;
+}
+.felice-ds .ig-h--m {
+  font-size: 78px;
+}
+.felice-ds .ig-h--g {
+  font-size: 112px;
+}
+.felice-ds .ig-small {
+  position: relative;
+  font-weight: 400;
+  font-size: 34px;
+  color: #9c9aa0;
+}
+.felice-ds .ig-p {
+  position: relative;
+  margin: 0;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.4;
+  color: #edeae2;
+}
+.felice-ds .ig-p--l {
+  font-size: 46px;
+}
+.felice-ds .ig-gigante {
+  position: relative;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 300px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #e8b447;
+}
+.felice-ds .ig-lista {
+  position: relative;
+  list-style: none;
+  display: grid;
+  gap: 18px;
+  font-weight: 400;
+  font-size: 40px;
+  color: #edeae2;
+}
+.felice-ds .ig-lista b {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  color: #e8b447;
+}
+.felice-ds .ig-aspas {
+  position: relative;
+  height: 110px;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 240px;
+  line-height: 0.8;
+  color: #e8b447;
+}
+.felice-ds .ig-cit {
+  position: relative;
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 1.2;
+  color: #f4efe4;
+}
+.felice-ds .ig-aviso {
+  position: relative;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.35;
+  color: #9c9aa0;
+  border: 2px dashed rgba(232, 180, 71, 0.4);
+  border-radius: 10px;
+  padding: 18px 24px;
+}
+.felice-ds .ig-preco {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1em;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 260px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #e8b447;
+}
+.felice-ds .ig-preco small {
+  font-size: 0.32em;
+  color: #e8b447;
+}
+.felice-ds .ig-cta {
+  position: relative;
+  align-self: flex-start;
+  background: #e8b447;
+  color: #231701;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  padding: 30px 56px;
+  border-radius: 999px;
+}
+.felice-ds .ig-pill {
+  position: relative;
+  border: 2px solid rgba(232, 180, 71, 0.5);
+  color: #e8b447;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: 34px;
+  padding: 14px 34px;
+  border-radius: 999px;
+}
+.felice-ds .ig-num {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8b447;
+  color: #231701;
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 84px;
+}
+.felice-ds .ig-sticker {
+  position: relative;
+  width: 760px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  border: 3px dashed rgba(232, 180, 71, 0.5);
+  border-radius: 24px;
+  color: #9c9aa0;
+  font-weight: 400;
+  font-size: 32px;
+}
+.felice-ds .ig-feed--foto {
+  gap: 36px;
+}
+.felice-ds .ig-feed--foto > .ig-eyebrow,
+.felice-ds .ig-feed--foto > .ig-h {
+  position: relative;
+  z-index: 2;
+}
+.felice-ds .ig-foto {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  height: auto;
+}
+.felice-ds .ig-foto-fade {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  height: 697px;
+  background: linear-gradient(90deg, #0b0b0d 0, transparent 35%),
+    linear-gradient(0deg, #0b0b0d 0, transparent 20%),
+    linear-gradient(180deg, #0b0b0d 0, transparent 22%);
+}
+.felice-ds .ig-foot--abs {
+  position: absolute;
+  left: 80px;
+  bottom: 80px;
+  width: auto;
+  z-index: 2;
+}
+.felice-ds .ig-foot--abs > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.felice-ds .ig-nome {
+  font-family: var(--ds-display);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
+  color: #f4efe4;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 980px) {
+  .felice-ds .ds-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .felice-ds .ds-anatomia {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .felice-ds .ds-ig-grid,
+  .felice-ds .ds-ig-grid--vert {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .felice-ds .ds-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .felice-ds .ds-aside {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 10px 0;
+    margin: 0 calc(var(--pad) * -1);
+    background: rgba(11, 11, 13, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .felice-ds .ds-indice {
+    flex-direction: row;
+    gap: 4px;
+    overflow-x: auto;
+    border-left: none;
+    padding: 0 var(--pad);
+    scrollbar-width: none;
+  }
+  .felice-ds .ds-indice::-webkit-scrollbar {
+    display: none;
+  }
+  .felice-ds .ds-indice a {
+    flex: none;
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    margin-left: 0;
+    padding: 6px 10px;
+  }
+  .felice-ds .ds-indice a.is-on {
+    border-bottom-color: var(--gold);
+  }
+  .felice-ds .ds-portas,
+  .felice-ds .ds-grid--2,
+  .felice-ds .ds-grid--3,
+  .felice-ds .ds-formulas,
+  .felice-ds .ds-check {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .felice-ds .ds-prova-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .felice-ds .ds-escala-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .felice-ds .ds-anatomia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .felice-ds .ds-ig-grid,
+  .felice-ds .ds-ig-grid--vert {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .felice-ds .ds-grid--4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

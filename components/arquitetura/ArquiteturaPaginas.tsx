@@ -37,9 +37,10 @@ const MOSTRAR_DIAGNOSTICO: boolean = false;
    numa segunda linha. Quem abre para 5 colunas é a regra `.felice-arq
    .numeros-grid` do arquitetura.css — só nesta página.
 
-   As contagens saem de `find app -name "page.tsx" | wc -l`: 64 no total,
-   44 do site público (landings, questionários, confirmações, obrigados,
-   área do Kit F4, home, vitrine, termos, privacidade e esta página) e 20
+   As contagens saem de `find app -name "page.tsx" | wc -l`: 66 no total,
+   46 do site público (landings, questionários, confirmações, obrigados,
+   área do Kit F4, home, vitrine, termos, privacidade, esta página e o
+   /design-system) e 20
    da plataforma do aluno e do admin, que ainda é protótipo com dados
    mockados — por isso os dois números aparecem separados, somar um
    protótipo ao que está vendendo confundiria as duas coisas.
@@ -58,7 +59,7 @@ const NUMEROS = [
      faixa contradizia a própria tabela da mesma página.
      O "(eram 6)" segue certo: era o estado antes do PR #61. */
   { n: '8 de 9', l: 'produtos com página de obrigado (eram 6)' },
-  { n: '44', l: 'páginas no site — da home às confirmações' },
+  { n: '46', l: 'páginas no site — da home às confirmações' },
   { n: '20', l: 'páginas da plataforma do aluno, em desenvolvimento' },
 ];
 
@@ -318,6 +319,7 @@ const ROTAS: Rota[] = [
   { t: '/produtos', a: 'mesmo catálogo da home' },
   { t: '/crm', a: 'card oculto · botão de oferta morto', k: 'atencao' },
   { t: '/arquitetura-de-paginas', a: 'esta página · noindex, sem link' },
+  { t: '/design-system', a: 'guia de marca · noindex, sem link' },
   { t: '/privacidade  /termos' },
   { t: '' },
   { t: '/produtos/mentorias', a: 'escolha entre as 2 mentorias' },
@@ -621,7 +623,7 @@ export function ArquiteturaPaginas() {
                 por causa de uma só que não coubesse. */}
             <div className="arq-bloco">
               <div className="arq-flow-tag">
-                <span className="arq-pill ok">Site público · 44 páginas</span>
+                <span className="arq-pill ok">Site público · 46 páginas</span>
                 <span>o que está vendendo hoje</span>
               </div>
               <ArqMapa arvore={MAPA_PUBLICO} />
