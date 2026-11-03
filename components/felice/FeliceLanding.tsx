@@ -6,7 +6,6 @@ import { Hero } from './sections/Hero';
 import { Numeros } from './sections/Numeros';
 import { Problema } from './sections/Problema';
 import { Assistente } from './sections/Assistente';
-import { Metodo } from './sections/Metodo';
 import { Componentes } from './sections/Componentes';
 import { Plataforma } from './sections/Plataforma';
 import { Autoridade } from './sections/Autoridade';
@@ -47,7 +46,6 @@ export function FeliceLanding() {
         <Numeros />
         <Problema />
         <Assistente />
-        <Metodo />
 
         <div className="wrap">
           <div className="divider" />
@@ -64,7 +62,8 @@ export function FeliceLanding() {
       </main>
 
       {/* Única página onde os dois links extras do rodapé se aplicam: é a
-          landing do Kit, tem a seção #metodo e é aqui que se compra. */}
+          landing do Kit, tem a seção #metodo (as 4 entregas, em
+          Componentes) e é aqui que se compra. */}
       <Footer checkoutUrl={CHECKOUT_URL} metodoAnchor="#metodo" />
 
       {/* Flutuantes / urgência */}
