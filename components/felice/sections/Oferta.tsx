@@ -67,8 +67,6 @@ export function Oferta() {
 
             <a
               href={CHECKOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="btn btn-primary btn-lg btn-block"
               style={{ marginTop: 8 }}
             >

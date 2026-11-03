@@ -32,9 +32,7 @@ export function Footer({
         <div className="foot-links">
           {metodoAnchor && <a href={metodoAnchor}>O método</a>}
           {checkoutUrl && (
-            <a href={checkoutUrl} target="_blank" rel="noopener noreferrer">
-              {checkoutLabel}
-            </a>
+            <a href={checkoutUrl}>{checkoutLabel}</a>
           )}
           <a href="/privacidade">Política de Privacidade</a>
           <a href="/termos">Termos de Uso</a>
