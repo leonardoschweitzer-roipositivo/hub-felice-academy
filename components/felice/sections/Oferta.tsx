@@ -1,9 +1,11 @@
-import { CHECKOUT_URL, PRECO } from '../config';
-const ITENS = [
-  'Procedimento Operacional Padrão',
-  'Scripts de Atendimento',
-  'Scripts de Agendamento',
-  'Calendário Editorial de Marketing',
+import { CHECKOUT_URL, PRECO, VALOR_AVULSO } from '../config';
+import type { KitMockupId } from './KitMockup';
+
+const ITENS: { nome: string; id: KitMockupId }[] = [
+  { nome: 'Procedimento Operacional Padrão', id: 'pop' },
+  { nome: 'Scripts de Atendimento', id: 'atendimento' },
+  { nome: 'Scripts de Agendamento', id: 'crc' },
+  { nome: 'Calendário Editorial de Marketing', id: 'marketing' },
 ];
 
 const ItemCheck = () => (
@@ -33,18 +35,18 @@ export function Oferta() {
             
             <ul className="stack-list">
               {ITENS.map((item) => (
-                <li key={item}>
+                <li key={item.id}>
                   <span className="it">
-                    <ItemCheck /> {item}
+                    <ItemCheck /> {item.nome}
                   </span>
-                  <span className="pr">R$ 97</span>
+                  <span className="pr">{VALOR_AVULSO[item.id]}</span>
                 </li>
               ))}
               <li>
                 <span className="it">
-                  <ItemCheck /> Busca, IA e simuladores na plataforma
+                  <ItemCheck /> Assistente F4 + busca e simuladores
                 </span>
-                <span className="pr">Grátis</span>
+                <span className="pr">Incluso</span>
               </li>
             </ul>
             <div className="total-row">

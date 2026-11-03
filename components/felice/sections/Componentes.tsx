@@ -1,5 +1,6 @@
 import { check } from '../ui/icons';
 import { KitMockup, type KitMockupId } from './KitMockup';
+import { VALOR_AVULSO } from '../config';
 
 /* Entregas do kit. Para incluir/remover um item, edite este array. */
 type Entrega = {
@@ -9,11 +10,8 @@ type Entrega = {
   bullets: string[];
   /* posição do quadrado aceso no selo F4 (0..3) */
   marca: 0 | 1 | 2 | 3;
-  /* mídia invertida (mockup à direita) */
-  rev?: boolean;
   /* qual tela da plataforma exibir no mockup */
   mock: KitMockupId;
-  valor?: string;
 };
 
 const ENTREGAS: Entrega[] = [
@@ -29,7 +27,6 @@ const ENTREGAS: Entrega[] = [
     ],
     marca: 0,
     mock: 'pop',
-    valor: 'R$ 97',
   },
   {
     tag: '02 · Scripts de Atendimento',
@@ -42,9 +39,7 @@ const ENTREGAS: Entrega[] = [
       'Padroniza a experiência e eleva a percepção de valor',
     ],
     marca: 1,
-    rev: true,
     mock: 'atendimento',
-    valor: 'R$ 97',
   },
   {
     tag: '03 · Scripts de Agendamento',
@@ -58,7 +53,6 @@ const ENTREGAS: Entrega[] = [
     ],
     marca: 2,
     mock: 'crc',
-    valor: 'R$ 97',
   },
   {
     tag: '04 · Calendário Editorial',
@@ -71,9 +65,7 @@ const ENTREGAS: Entrega[] = [
       'Mantém presença constante e constrói autoridade',
     ],
     marca: 3,
-    rev: true,
     mock: 'marketing',
-    valor: 'R$ 97',
   },
 ];
 
@@ -91,7 +83,7 @@ export function Componentes() {
         </div>
 
         {ENTREGAS.map((e) => (
-          <div key={e.titulo} className={`comp reveal${e.rev ? ' rev' : ''}`}>
+          <div key={e.titulo} className="comp reveal">
             <div className="comp-media">
               <KitMockup id={e.mock} />
             </div>
@@ -106,11 +98,9 @@ export function Componentes() {
                   </li>
                 ))}
               </ul>
-              {e.valor && (
-                <p className="val">
-                  Valor avulso: <b>{e.valor}</b>
-                </p>
-              )}
+              <p className="val">
+                Valor avulso: <b>{VALOR_AVULSO[e.mock]}</b>
+              </p>
             </div>
           </div>
         ))}

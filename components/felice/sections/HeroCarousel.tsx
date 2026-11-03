@@ -6,22 +6,70 @@ import { useEffect, useState, type ReactNode } from 'react';
    Carrossel do HERO (somente desktop — vive dentro de .hero-visual,
    que é display:none no mobile, onde a imagem de fundo continua).
 
-   4 telas verticais (formato retangular portrait) da plataforma do
+   5 telas verticais (formato retangular portrait) da plataforma do
    Kit, com mais detalhe que os outros mockups por ser o herói:
-   chrome do navegador + sidebar com os 4 docs + área de conteúdo
-   rica. Auto-avança, pausa no hover/foco, respeita reduced-motion.
+   chrome do navegador + sidebar com o Assistente e os 4 docs + área
+   de conteúdo rica. A 1ª tela é o Assistente F4 (protagonista), com
+   as mensagens entrando em sequência (.heroc-seq). Auto-avança, pausa
+   no hover/foco, respeita reduced-motion.
    Estilos no bloco ".heroc-*" de felice.css.
    ============================================================ */
 
-const DOCS = ['POP — Gestão', 'Atendimento', 'CRC — Agendamento', 'Marketing'];
+const DOCS = ['Assistente F4', 'POP — Gestão', 'Atendimento', 'CRC — Agendamento', 'Marketing'];
 
-type Slide = { label: string; url: string; active: number; body: ReactNode };
+/* ms: quanto tempo a tela fica (padrão 4600) — a do Assistente precisa
+   de mais, para a conversa terminar de entrar antes de avançar. */
+type Slide = { label: string; url: string; active: number; ms?: number; body: ReactNode };
+
+const DEFAULT_MS = 4600;
 
 const SLIDES: Slide[] = [
   {
+    label: 'Assistente',
+    url: 'kit-f4',
+    active: 0,
+    ms: 8000,
+    body: (
+      <>
+        <span className="heroc-eyebrow">Assistente F4 · IA</span>
+        <h4 className="heroc-h">Seu mentor de implementação</h4>
+        <div className="heroc-chat heroc-seq">
+          <div className="heroc-bubble user">Comprei hoje. Por onde começo na minha clínica?</div>
+          {/* "digitando" e a resposta dividem o mesmo espaço: um some, o outro entra */}
+          <div className="heroc-seq-slot">
+            <div className="heroc-typing">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="heroc-bubble ai">
+              <span className="heroc-ai">✦</span>
+              <div>
+                Comece pela Linha de Frente:
+                <ol className="heroc-ol">
+                  <li>Gere o POP da recepção e da CRC</li>
+                  <li>Entregue os scripts de atendimento</li>
+                  <li>Treine a equipe no simulador</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div className="heroc-src">
+            <span>POP · Gerador</span>
+            <span>CRC · Roadmap</span>
+          </div>
+        </div>
+        <div className="heroc-replies heroc-seq-last">
+          <span>Onde está o script de objeção?</span>
+          <span>Como treino a CRC?</span>
+        </div>
+      </>
+    ),
+  },
+  {
     label: 'POP',
     url: 'kit-f4/pop',
-    active: 0,
+    active: 1,
     body: (
       <>
         <span className="heroc-eyebrow">Procedimento Operacional Padrão</span>
@@ -62,7 +110,7 @@ const SLIDES: Slide[] = [
   {
     label: 'Atendimento',
     url: 'kit-f4/atendimento',
-    active: 1,
+    active: 2,
     body: (
       <>
         <span className="heroc-eyebrow">Simulador de atendimento · IA</span>
@@ -97,7 +145,7 @@ const SLIDES: Slide[] = [
   {
     label: 'CRC',
     url: 'kit-f4/crc',
-    active: 2,
+    active: 3,
     body: (
       <>
         <span className="heroc-eyebrow">A chamada perfeita</span>
@@ -139,7 +187,7 @@ const SLIDES: Slide[] = [
   {
     label: 'Marketing',
     url: 'kit-f4/marketing',
-    active: 3,
+    active: 4,
     body: (
       <>
         <span className="heroc-eyebrow">Calculadora de conteúdo</span>
@@ -194,7 +242,7 @@ export function HeroCarousel() {
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
-    const id = window.setTimeout(() => setI((p) => (p + 1) % COUNT), 4600);
+    const id = window.setTimeout(() => setI((p) => (p + 1) % COUNT), SLIDES[i].ms ?? DEFAULT_MS);
     return () => window.clearTimeout(id);
   }, [i, paused]);
 
@@ -225,12 +273,12 @@ export function HeroCarousel() {
             <span className="heroc-side-eyebrow">Kit F4</span>
             {DOCS.map((d, idx) => (
               <span className={`heroc-side-item${cur.active === idx ? ' is-active' : ''}`} key={d}>
-                <i>{`0${idx + 1}`}</i>
+                <i>{idx === 0 ? '✦' : `0${idx}`}</i>
                 {d}
               </span>
             ))}
             <div className="heroc-side-prog">
-              <span style={{ width: `${(cur.active + 1) * 22}%` }} />
+              <span style={{ width: `${((cur.active + 1) / DOCS.length) * 100}%` }} />
             </div>
           </aside>
 
