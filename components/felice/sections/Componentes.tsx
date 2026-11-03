@@ -71,7 +71,9 @@ const ENTREGAS: Entrega[] = [
 
 export function Componentes() {
   return (
-    <section className="sec">
+    /* id "metodo": destino do "O método" do Header e do Footer — as 4
+       entregas são os 4 pilares do Método F4. */
+    <section className="sec" id="metodo">
       <div className="wrap">
         <div className="sec-head center reveal">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
