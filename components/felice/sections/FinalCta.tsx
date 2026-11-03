@@ -16,8 +16,6 @@ export function FinalCta() {
         </p>
         <a
           href={CHECKOUT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
           className="btn btn-primary btn-lg"
         >
           Liberar Acesso por R$ 97 <span className="arrow">→</span>
