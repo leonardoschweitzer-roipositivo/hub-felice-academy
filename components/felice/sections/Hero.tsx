@@ -4,12 +4,12 @@ import { HeroCarousel } from './HeroCarousel';
 /* Itens que desfilam na esteira do rodapé do hero. */
 const MARQUEE_ITEMS = [
   'Kit Gestão F4',
+  'Assistente F4',
   'POPs',
   'Scripts de Atendimento',
   'Scripts de Agendamento',
   'Calendário de Marketing',
   'Busca instantânea',
-  'IA do Kit',
   'Simulador de treino',
 ];
 
@@ -28,7 +28,7 @@ export function Hero() {
               <span />
               <span />
             </span>
-            Método Gestão F4 · para dentistas
+            Mais que um PDF · um mentor de IA ao seu lado
           </span>
           <h1 className="reveal d1">
             Saia da operação e deixe sua clínica{' '}
@@ -36,13 +36,14 @@ export function Hero() {
           </h1>
           {/* lead junto do título: no mobile fica acima do carrossel. */}
           <p className="lead reveal d2">
-            Uma plataforma interativa com{' '}
+            Os 4 pilares do Método F4 —{' '}
             <b style={{ color: 'var(--cream)' }}>POPs</b>,{' '}
             <b style={{ color: 'var(--cream)' }}>scripts de atendimento</b>,{' '}
             <b style={{ color: 'var(--cream)' }}>scripts de agendamento</b> e{' '}
-            <b style={{ color: 'var(--cream)' }}>calendário de marketing</b> — com busca instantânea,
-            IA que responde sobre o material e simulador para treinar sua equipe. Você sai da
-            operação; a clínica ganha método.
+            <b style={{ color: 'var(--cream)' }}>calendário de marketing</b> — com o{' '}
+            <b style={{ color: 'var(--cream)' }}>Assistente F4</b>: uma IA treinada no método do Dr.
+            Sócrates que encontra qualquer coisa em segundos, tira suas dúvidas e te orienta na
+            implementação, passo a passo. Você sai da operação; a clínica ganha método.
           </p>
         </div>
 
@@ -56,7 +57,7 @@ export function Hero() {
             <span>{check} Acesso imediato</span>
             <span>{check} Garantia de 7 dias</span>
             <span>{check} Pagamento seguro</span>
-            <span>{check} Busca + IA inclusas</span>
+            <span>{check} Assistente F4 incluso</span>
           </div>
         </div>
 

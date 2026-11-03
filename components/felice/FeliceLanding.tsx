@@ -5,6 +5,7 @@ import { Header } from './sections/Header';
 import { Hero } from './sections/Hero';
 import { Numeros } from './sections/Numeros';
 import { Problema } from './sections/Problema';
+import { Assistente } from './sections/Assistente';
 import { Metodo } from './sections/Metodo';
 import { Componentes } from './sections/Componentes';
 import { Plataforma } from './sections/Plataforma';
@@ -45,6 +46,7 @@ export function FeliceLanding() {
         <Hero />
         <Numeros />
         <Problema />
+        <Assistente />
         <Metodo />
 
         <div className="wrap">

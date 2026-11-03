@@ -31,8 +31,9 @@ const RECURSOS: Recurso[] = [
     ),
   },
   {
-    titulo: 'IA que conhece o Kit',
-    descricao: 'Pergunte em linguagem natural e receba a resposta tirada do próprio material.',
+    titulo: 'Assistente F4',
+    descricao:
+      'Pergunte em linguagem natural e receba a resposta tirada do próprio material, com a fonte.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" {...stroke}>
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -88,7 +89,7 @@ export function Plataforma() {
       <div className="wrap">
         <div className="sec-head center reveal">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
-            Não é um PDF
+            A plataforma
           </span>
           <h2>
             Seu Kit vive numa <span className="gold-grad">plataforma interativa</span>

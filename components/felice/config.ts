@@ -25,3 +25,13 @@ export const VIDEO_URL =
 
 /** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
 export const VIDEO_IFRAME_ID = 'panda-eb0081db-a729-42a2-b0f2-ff395e13d75d';
+
+/** Valor avulso de cada entrega ("O que você recebe" e a pilha da Oferta).
+ *  A soma precisa fechar os R$ 388,00 riscados na Oferta (e o "economize
+ *  R$ 291" = 388 − 97). Trocar um valor aqui exige compensar em outro. */
+export const VALOR_AVULSO = {
+  pop: 'R$ 127',
+  atendimento: 'R$ 97',
+  crc: 'R$ 107',
+  marketing: 'R$ 57',
+} as const;

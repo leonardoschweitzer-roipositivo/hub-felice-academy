@@ -26,7 +26,7 @@ const lato = Lato({
 export const metadata: Metadata = paginaMeta({
   title: 'Kit Sistema de Gestão F4 — Felice Academy',
   description:
-    'A plataforma interativa de gestão para dentistas: POPs, scripts de atendimento, scripts de agendamento e calendário de marketing — com busca instantânea, IA que responde sobre o material e simulador de treino para a equipe. Acesso imediato.',
+    'A plataforma interativa de gestão para dentistas: POPs, scripts de atendimento, scripts de agendamento e calendário de marketing — com busca instantânea, Assistente F4, a IA que tira dúvidas e orienta a implementação e simulador de treino para a equipe. Acesso imediato.',
 });
 
 export default function GestaoPage() {
