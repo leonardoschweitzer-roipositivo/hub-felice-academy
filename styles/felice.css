@@ -342,10 +342,17 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  /* minmax(0, …): sem isso a coluna cresce até a largura mínima do conteúdo,
+     e cada tela do carrossel (largura diferente) empurrava o título. */
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: 28px 54px;
   align-items: center;
   text-align: left;
+}
+.felice .hero-head,
+.felice .hero-copy,
+.felice .hero-visual {
+  min-width: 0;
 }
 /* Desktop: head (eyebrow+título+lead) e copy (CTA+trust) empilhados na
    coluna 1; carrossel na coluna 2, centralizado abrangendo as 2 linhas. */
@@ -421,7 +428,7 @@
     margin-top: 14px;
   }
   .felice .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 26px;
     justify-items: center;
     text-align: center;
@@ -3201,9 +3208,20 @@
     max-width: 520px;
     margin: 0 auto;
   }
+  /* Altura FIXA: as telas têm alturas diferentes e, com altura automática,
+     o CTA logo abaixo subia e descia a cada troca. O que passar do limite
+     é cortado dentro da janela, sem mexer no resto do hero. A tela mais alta
+     (Assistente) pede ~420px em 375px de largura e ~470px em 320px. */
   .felice .heroc-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     min-height: 0;
+    height: 430px;
+    overflow: hidden;
+  }
+  @media (max-width: 359px) {
+    .felice .heroc-body {
+      height: 480px;
+    }
   }
   .felice .heroc-side {
     display: none;
