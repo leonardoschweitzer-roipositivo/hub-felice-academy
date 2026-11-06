@@ -12,7 +12,7 @@ import { KitDocCard } from './KitDocCard';
 import { SearchModal } from './search/SearchModal';
 import { ConsultoriaCtaSection } from '@/components/felice/consultoria/ConsultoriaCtaSection';
 import { ConsultoriaOferta } from '@/components/felice/consultoria/ConsultoriaOferta';
-import { VIDEO_URL, VIDEO_IFRAME_ID } from '@/components/felice/config';
+import { KIT_VIDEO_URL, KIT_VIDEO_IFRAME_ID } from '@/components/felice/config';
 import { FeliceLogo } from '@/components/felice/ui/FeliceLogo';
 
 /** Página índice do Kit F4: 4 cards (um por documento) com progresso. */
@@ -53,14 +53,12 @@ export function KitIndex() {
               Academy.
             </p>
 
-            {/* Mesmo vídeo da página de obrigado (fonte única em felice/config):
-                explica como usar os documentos, então também serve quem volta
-                aqui direto, sem passar pela pós-compra. */}
-            {VIDEO_URL ? (
+            {/* Vídeo próprio da área do Kit (KIT_VIDEO_URL em felice/config). */}
+            {KIT_VIDEO_URL ? (
               <div className="kit-hero-video reveal d3">
                 <iframe
-                  id={VIDEO_IFRAME_ID}
-                  src={VIDEO_URL}
+                  id={KIT_VIDEO_IFRAME_ID}
+                  src={KIT_VIDEO_URL}
                   title="Como usar os documentos do Kit Gestão F4"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

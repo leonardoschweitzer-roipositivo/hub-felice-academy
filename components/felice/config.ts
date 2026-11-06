@@ -16,15 +16,21 @@ export const PRECO = {
   parcela: { vezes: '12x', valor: 'R$ 9,97' },
 };
 
-/** Vídeo de "como usar os documentos", no Panda. Aparece na página de obrigado
- *  E na área do Kit — por isso mora aqui, e não no config da obrigado. Vazio
- *  esconde os dois slots. Os wrappers (`.obg-video` e `.kit-hero-video`) já são
+/** Vídeo de "como usar os documentos", no Panda, da página de obrigado. Vazio
+ *  esconde o slot. Os wrappers (`.obg-video` e `.kit-hero-video`) já são
  *  16:9, então do snippet do Panda entra só o src e o id. */
 export const VIDEO_URL =
   'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=eb0081db-a729-42a2-b0f2-ff395e13d75d';
 
 /** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
 export const VIDEO_IFRAME_ID = 'panda-eb0081db-a729-42a2-b0f2-ff395e13d75d';
+
+/** Vídeo da área do Kit (/produtos/kitgestaof4/kit-f4). Desde 06/11/2026 é
+ *  diferente do da obrigado. Vazio esconde o slot. */
+export const KIT_VIDEO_URL =
+  'https://player-vz-90784769-874.tv.pandavideo.com.br/embed/?v=3c262d64-11db-47af-8645-dcc25b221f03';
+
+export const KIT_VIDEO_IFRAME_ID = 'panda-3c262d64-11db-47af-8645-dcc25b221f03';
 
 /** Valor avulso de cada entrega ("O que você recebe" e a pilha da Oferta).
  *  A soma precisa fechar os R$ 388,00 riscados na Oferta (e o "economize
