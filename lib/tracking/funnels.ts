@@ -17,7 +17,7 @@ export type Funnel = {
 export const FUNNELS: Record<string, Funnel> = {
   kitgestaof4: {
     slug: 'kitgestaof4',
-    offer: '4iIlqU',
+    offer: 'gBBy3H',
     value: 97.0,
     contentName: 'Kit Sistema de Gestão F4',
   },
