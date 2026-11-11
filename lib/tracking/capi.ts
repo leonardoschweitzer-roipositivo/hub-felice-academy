@@ -156,6 +156,37 @@ export function buildLeadEvent(args: {
   };
 }
 
+/* ViewContent da landing de um curso — par de servidor do evento do Pixel.
+   Existe para cobrir o diagnóstico do Events Manager ("melhore a cobertura
+   da API de Conversões para ViewContent"): o mesmo event_id do browser
+   ('vc_<uuid>') faz o Meta deduplicar. Na landing ainda não há e-mail nem
+   telefone, então a identidade é fbp/fbc/visitor_id + IP + user-agent. */
+export function buildViewContentEvent(args: {
+  eventId: string;
+  slug: string;
+  eventSourceUrl: string;
+  value: number;
+  contentName: string;
+  identity: IdentityInput;
+  eventTime?: number;
+}): CapiEvent {
+  return {
+    event_name: 'ViewContent',
+    event_time: args.eventTime ?? nowSec(),
+    event_id: args.eventId,
+    action_source: 'website',
+    event_source_url: args.eventSourceUrl,
+    user_data: buildUserData(args.identity),
+    custom_data: {
+      currency: 'BRL',
+      value: args.value,
+      content_name: args.contentName,
+      content_ids: [args.slug],
+      content_type: 'product',
+    },
+  };
+}
+
 /** Envia um evento ao CAPI. Nunca lança fatal — devolve o resultado p/ log. */
 export async function sendCapiEvent(event: CapiEvent): Promise<CapiResult> {
   if (!META_CAPI_TOKEN) {

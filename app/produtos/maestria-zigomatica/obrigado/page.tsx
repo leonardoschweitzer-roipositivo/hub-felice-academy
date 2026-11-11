@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins, Lato } from 'next/font/google';
 import { ObrigadoLanding } from '@/components/maestria/obrigado/ObrigadoLanding';
-import { PurchasePixel } from '@/components/tracking/PurchasePixel';
 
 // Mesmas fontes da landing de vendas (Poppins display / Lato body).
 const poppins = Poppins({
@@ -29,7 +28,9 @@ export const metadata: Metadata = {
 export default function ObrigadoPage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
-      <PurchasePixel slug="maestria-zigomatica" always />
+      {/* Sem Purchase do site: a fonte única de InitiateCheckout e Purchase
+          é a integração Pixel + Conversions API da Greenn. Disparar aqui
+          também contaria a venda em dobro (event_ids diferentes). */}
       <ObrigadoLanding />
     </div>
   );
