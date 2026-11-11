@@ -19,8 +19,6 @@ import { CHECKOUT_URL } from './config';
 
 import { RevealOnScroll } from './ui/RevealOnScroll';
 import { WhatsappFloat } from './ui/WhatsappFloat';
-import { PurchaseToasts } from './ui/PurchaseToasts';
-import { UrgencyBar } from './ui/UrgencyBar';
 
 /* ============================================================
    FELICE ACADEMY · KIT GESTÃO F4 — página de vendas (protótipo)
@@ -37,8 +35,13 @@ import { UrgencyBar } from './ui/UrgencyBar';
 
 export function FeliceLanding() {
   return (
-    <div className="felice has-urgency-bar">
-      <UrgencyBar />
+    // Sem barra de urgência nesta página: `has-urgency-bar` fica só porque é ela
+    // que define o padding-top do hero no mobile (felice.css); `--urgency-h: 0px`
+    // faz header e hero ficarem como numa página sem barra.
+    <div
+      className="felice has-urgency-bar"
+      style={{ '--urgency-h': '0px' } as React.CSSProperties}
+    >
       <Header />
 
       <main>
@@ -66,13 +69,12 @@ export function FeliceLanding() {
           Componentes) e é aqui que se compra. */}
       <Footer checkoutUrl={CHECKOUT_URL} metodoAnchor="#metodo" />
 
-      {/* Flutuantes / urgência */}
+      {/* Flutuantes */}
       <WhatsappFloat
         href={whatsappUrl(
           'Olá! Tudo bem? Gostaria de mais informações sobre o Kit Gestão F4, por favor.',
         )}
       />
-      <PurchaseToasts />
 
       {/* Ativa as animações de scroll em todos os .reveal */}
       <RevealOnScroll />
