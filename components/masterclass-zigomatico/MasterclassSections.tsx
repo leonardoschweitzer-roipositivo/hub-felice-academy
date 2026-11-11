@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Check } from '@/components/felice/ui/icons';
+import { MasterclassVsl } from './MasterclassVsl';
 import {
   HERO,
   VIDEO_URL,
@@ -34,30 +35,24 @@ export function MasterclassHero() {
     <section className="hero mz-hero-sec mc-hero" id="topo">
       <div className="hero-bg" />
       <div className="wrap mc-hero-inner">
-        <div className="mz-badge reveal" style={{ margin: '0 auto' }}>
+        <div className="mz-badge" style={{ margin: '0 auto' }}>
           <span>{HERO.eyebrow}</span>
           <svg className="mz-badge-star" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z" />
           </svg>
         </div>
 
-        <h1 className="mz-h1 reveal d1" style={{ textAlign: 'center' }}>
+        <h1 className="mz-h1" style={{ textAlign: 'center' }}>
           {HERO.titlePre} <span className="gold-grad">{HERO.titleGold}</span>
         </h1>
 
-        <p className="lead reveal d2" style={{ margin: '0 auto', textAlign: 'center' }}>
+        <p className="lead" style={{ margin: '0 auto', textAlign: 'center' }}>
           {HERO.lead}
         </p>
 
-        <div className="mc-video reveal d3">
+        <div className="mc-video">
           {VIDEO_URL ? (
-            <iframe
-              id={VIDEO_IFRAME_ID}
-              src={VIDEO_URL}
-              title={HERO.videoTitle}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            <MasterclassVsl src={VIDEO_URL} iframeId={VIDEO_IFRAME_ID} title={HERO.videoTitle} />
           ) : (
             <div className="mc-video-ph" aria-hidden="true">
               <span className="mc-video-play">
@@ -70,9 +65,9 @@ export function MasterclassHero() {
           )}
         </div>
 
-        <p className="mc-hero-note reveal d3">{HERO.abaixoVideo}</p>
+        <p className="mc-hero-note">{HERO.abaixoVideo}</p>
 
-        <div className="hero-cta reveal d3" style={{ justifyContent: 'center' }}>
+        <div className="hero-cta" style={{ justifyContent: 'center' }}>
           <a href={OFERTA_ANCHOR} className="btn btn-primary btn-lg">
             {HERO.ctaPrimary} <span className="arrow">→</span>
           </a>
@@ -110,12 +105,12 @@ export function MasterclassProblema() {
           <p className="lead" style={{ margin: '0 auto' }}>{PROBLEMA.lead}</p>
         </div>
         <div className="problem-photo reveal d1">
-          <img
+          <Image
             src="/images/problema-masterclass-zigomatico.jpeg"
             alt="Dentista em dúvida diante da tomografia de um caso de zigomático, com a pasta 'Refer to Specialist' na mesa"
             width={1408}
             height={768}
-            loading="lazy"
+            sizes="(max-width: 760px) 100vw, 720px"
           />
         </div>
         <div className="pains">
@@ -155,8 +150,13 @@ export function MasterclassAprendizado() {
           {APRENDIZADO_IMGS.map((a) => (
             <figure className="mc-aprender-img" key={a.legenda}>
               {a.img ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={a.img} alt={a.legenda} loading="lazy" />
+                <Image
+                  src={a.img}
+                  alt={a.legenda}
+                  width={941}
+                  height={941}
+                  sizes="(max-width: 760px) 50vw, 280px"
+                />
               ) : (
                 <span className="mc-aprender-ph" aria-hidden="true">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">

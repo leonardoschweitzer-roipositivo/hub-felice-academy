@@ -54,6 +54,20 @@
 .felice-maestria .mc-hero .hero-cta {
   margin-top: 28px;
 }
+/* Celular: o botão vem logo depois do vídeo e o texto de apoio desce para
+   baixo dele — assim o CTA cabe na primeira tela (375x667) sem mexer na copy. */
+@media (max-width: 760px) {
+  .felice-maestria .mc-hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .felice-maestria .mc-hero .hero-cta {
+    order: 1;
+  }
+  .felice-maestria .mc-hero-note {
+    order: 2;
+  }
+}
 
 /* Container do vídeo (VSL) — self-contained, não depende de obrigado.css. */
 .felice-maestria .mc-video {
@@ -74,6 +88,37 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Fachada da VSL (MasterclassVsl.tsx): miniatura + play até o toque. */
+.felice-maestria .mc-video-facade {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
+}
+.felice-maestria .mc-video-thumb {
+  object-fit: cover;
+}
+.felice-maestria .mc-video-facade .mc-video-play {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 12px 34px -8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease;
+}
+.felice-maestria .mc-video-facade:hover .mc-video-play,
+.felice-maestria .mc-video-facade:focus-visible .mc-video-play {
+  transform: scale(1.08);
+}
+.felice-maestria .mc-video-facade:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -4px;
 }
 
 /* Placeholder do vídeo quando ainda não há VIDEO_URL. */
@@ -146,6 +191,8 @@
 .felice-maestria .mc-aprender-img > img,
 .felice-maestria .mc-aprender-ph {
   width: 100%;
+  /* o <Image> traz height="941": sem o auto, ele valeria mais que o aspect-ratio */
+  height: auto;
   aspect-ratio: 1 / 1;
   border-radius: var(--r);
   object-fit: cover;

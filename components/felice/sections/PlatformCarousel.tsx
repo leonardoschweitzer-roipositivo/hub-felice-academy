@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /* ============================================================
    Carrossel de mockups da plataforma do Kit F4.
@@ -8,7 +8,10 @@ import { useEffect, useState, type ReactNode } from 'react';
    Cinco "telas" em HTML/CSS (sem screenshot externo): a home do
    Kit (índice dos 4 docs) + cada um dos 4 documentos com o seu
    conteúdo/ferramenta característica. Avança sozinho e tem
-   setas + dots. Estilos no bloco ".plat-*" de felice.css.
+   setas + dots. Só anda enquanto está na tela (fora dela não há
+   por que re-renderizar a cada 4s) e a janela tem altura fixa, para
+   a troca de tela não empurrar o resto da página.
+   Estilos no bloco ".plat-*" de felice.css.
    ============================================================ */
 
 const SearchBar = () => (
@@ -152,22 +155,40 @@ const COUNT = SLIDES.length;
 export function PlatformCarousel() {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  // auto-avanço (pausa no hover/foco e respeita prefers-reduced-motion)
+  // só avança com o carrossel visível
   useEffect(() => {
-    if (paused) return;
+    const el = rootRef.current;
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) {
+      setOnScreen(true);
+      return;
+    }
+    const io = new IntersectionObserver(([entry]) => setOnScreen(entry.isIntersecting), {
+      threshold: 0.15,
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // auto-avanço (pausa no hover/foco, fora da tela e respeita prefers-reduced-motion)
+  useEffect(() => {
+    if (paused || !onScreen) return;
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
     const id = window.setTimeout(() => setI((p) => (p + 1) % COUNT), 4200);
     return () => window.clearTimeout(id);
-  }, [i, paused]);
+  }, [i, paused, onScreen]);
 
   const go = (n: number) => setI((n + COUNT) % COUNT);
   const current = SLIDES[i];
 
   return (
     <div
+      ref={rootRef}
       className="plat-mock reveal d1"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

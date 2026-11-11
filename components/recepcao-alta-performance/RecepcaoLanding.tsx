@@ -19,6 +19,7 @@ import { RecepcaoFaq } from './RecepcaoFaq';
 import { RecepcaoFooter } from './RecepcaoFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
+import { PandaPreconnect } from '@/components/felice/ui/PandaPreconnect';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { WHATSAPP_URL } from './content';
 
@@ -78,6 +79,7 @@ export function RecepcaoLanding() {
       <RecepcaoFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PandaPreconnect />
       <RevealOnScroll />
     </div>
   );

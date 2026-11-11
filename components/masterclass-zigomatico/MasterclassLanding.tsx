@@ -22,6 +22,7 @@ import { MasterclassFaq } from './MasterclassFaq';
 import { MasterclassFooter } from './MasterclassFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
+import { PandaPreconnect } from '@/components/felice/ui/PandaPreconnect';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { WHATSAPP_URL } from './content';
 
@@ -74,6 +75,7 @@ export function MasterclassLanding() {
       <MasterclassFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PandaPreconnect />
       <RevealOnScroll />
     </div>
   );

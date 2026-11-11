@@ -28,25 +28,39 @@ export function RecepcaoHero() {
   return (
     <section className="hero mz-hero-sec" id="topo">
       <div className="hero-bg" />
-      <div className="mz-hero-photo rap-hero-photo" aria-hidden="true" />
+      {/* Foto em next/image (AVIF/WebP no tamanho da tela, com prioridade);
+          as máscaras em gradiente ficam no ::after do .mz-hero-photo. */}
+      <div className="mz-hero-photo rap-hero-photo" aria-hidden="true">
+        <div className="mz-hero-photo-frame">
+          <Image
+            src="/images/rap-hero-balcao.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={60}
+            className="mz-hero-photo-img"
+          />
+        </div>
+      </div>
 
       <div className="wrap mz-hero">
         {/* LEFT */}
         <div className="mz-hero-left">
-          <div className="mz-badge reveal">
+          <div className="mz-badge">
             <span>{HERO.eyebrow}</span>
             <svg className="mz-badge-star" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z" />
             </svg>
           </div>
 
-          <h1 className="mz-h1 reveal d1">
+          <h1 className="mz-h1">
             {HERO.titlePre} <span className="gold-grad">{HERO.titleGold}</span>
           </h1>
 
-          <p className="lead reveal d2">{HERO.lead}</p>
+          <p className="lead">{HERO.lead}</p>
 
-          <div className="hero-cta reveal d3">
+          <div className="hero-cta">
             <a href={OFERTA_ANCHOR} className="btn btn-primary btn-lg">
               {HERO.ctaPrimary} <span className="arrow">→</span>
             </a>
@@ -58,7 +72,7 @@ export function RecepcaoHero() {
             </a>
           </div>
 
-          <div className="hero-trust reveal d4">
+          <div className="hero-trust">
             {HERO.trust.map((t) => (
               <span key={t}>
                 {check} {t}
@@ -70,7 +84,7 @@ export function RecepcaoHero() {
         {/* RIGHT */}
         <div className="mz-hero-right">
           {/* Card de stats (glass) */}
-          <div className="mz-card mz-card--stats reveal d2">
+          <div className="mz-card mz-card--stats">
             <span className="mz-card-glow" aria-hidden="true" />
             <div className="mz-card-in">
               <div className="mz-card-head">
@@ -127,7 +141,7 @@ export function RecepcaoHero() {
           </div>
 
           {/* Card marquee (glass) */}
-          <div className="mz-card mz-card--marq reveal d3">
+          <div className="mz-card mz-card--marq">
             <h3 className="mz-marq-title">{HERO_MARQUEE.titulo}</h3>
             <div className="mz-marq-mask">
               <div className="mz-marq-track">
@@ -145,7 +159,7 @@ export function RecepcaoHero() {
         </div>
       </div>
 
-      <a href="#prova" className="hero-scroll reveal d4" aria-label="Role para baixo">
+      <a href="#prova" className="hero-scroll" aria-label="Role para baixo">
         <span>Role para descobrir</span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
           <path d="m6 9 6 6 6-6" />
@@ -193,12 +207,12 @@ export function RecepcaoProblema() {
           {/* Foto que era do Diagnóstico do CRC (a recepção tensa no balcão);
               ficou só aqui quando o CRC ganhou a sua (problema-crc.jpg),
               a pedido do Leo em 16/09/2026. */}
-          <img
+          <Image
             src="/images/problema-vendas-secretaria.jpeg"
             alt="Recepcionista tensa ao telefone enquanto o paciente aguarda no balcão com o orçamento em mãos"
             width={1408}
             height={768}
-            loading="lazy"
+            sizes="(max-width: 760px) 100vw, 720px"
           />
         </div>
         <div className="pains">
@@ -276,8 +290,7 @@ export function RecepcaoModulos() {
             <article className={`mz-mod reveal${i ? ` d${i % 4}` : ''}`} key={mod.n}>
               <div className="mz-mod-media" aria-hidden="true">
                 {mod.img ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={mod.img} alt="" loading="lazy" />
+                  <Image src={mod.img} alt="" fill sizes="(max-width: 820px) 100vw, 560px" />
                 ) : (
                   <span className="mz-mod-media-ph">Módulo {mod.n}</span>
                 )}

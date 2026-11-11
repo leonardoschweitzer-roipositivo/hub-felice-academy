@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef } from 'react';
 import { CASOS } from './content';
 
@@ -47,8 +48,7 @@ export function MaestriaCasos() {
               <figure className="mz-caso" key={c.titulo}>
                 <div className="mz-caso-img">
                   {c.img ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={c.img} alt={c.titulo} loading="lazy" />
+                    <Image src={c.img} alt={c.titulo} fill sizes="(max-width: 760px) 80vw, 360px" />
                   ) : (
                     <span className="mz-caso-ph" aria-hidden="true">
                       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
