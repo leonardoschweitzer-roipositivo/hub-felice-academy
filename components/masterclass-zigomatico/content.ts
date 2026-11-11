@@ -6,7 +6,6 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    Edite SÓ aqui copy, segredos, bônus, planos, depoimentos e FAQ.
 
    ⚠️ TROCAR antes de publicar:
-   - DEADLINE_ISO: data real de saída do ar (a de hoje é provisória).
    - DEPOIMENTOS: conferir se o nome de cada item bate com quem aparece
      no vídeo — os embeds entraram na ordem em que foram enviados.
    ============================================================ */
@@ -28,12 +27,6 @@ export const VIDEO_URL =
 /** id que o player do Panda usa para se achar na página (`panda-<uuid>`). */
 export const VIDEO_IFRAME_ID = 'panda-f84f70aa-165f-40aa-b882-b5bd37076855';
 
-/** Saída do ar — countdown autêntico. ⚠️ PROVISÓRIA (escolhida em 16/09/2026
- *  para a barra voltar ao ar; as anteriores, 15/07 e 31/08, já tinham vencido).
- *  Vencida, a barra inteira sai do DOM — contador E "pessoas vendo agora" somem
- *  junto — foi o que aconteceu e motivou esta troca. */
-export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
-
 /** WhatsApp de dúvidas (botão flutuante). */
 export const WHATSAPP_URL = whatsappUrl(
   'Olá! Tenho interesse na Masterclass Zigomático Descomplicado e gostaria de tirar uma dúvida.',
@@ -44,13 +37,12 @@ export const HERO = {
   eyebrow: 'Masterclass',
   titlePre: 'Zigomático',
   titleGold: 'Descomplicado.',
-  lead: 'Domine os princípios dos implantes zigomáticos em poucas horas e descubra como transformar casos impossíveis em faturamento real — sem precisar encaminhar o paciente para outro profissional.',
-  ctaPrimary: 'Assistir a masterclass e baixar os bônus',
+  lead: 'Entenda os princípios dos implantes zigomáticos numa aula direta e veja como indicar e planejar os casos de maxila atrófica severa com mais segurança — em vez de encaminhar o paciente para outro profissional.',
+  ctaPrimary: 'Garantir acesso por R$ 67',
   videoTitle: 'Masterclass Zigomático Descomplicado',
   /** Texto ao redor do vídeo (abaixo). */
   abaixoVideo:
     'Uma Masterclass exclusiva com o Dr. Sócrates Tavares, referência nacional em implantodontia, que vai te mostrar o caminho simples, seguro e direto para essa jornada rumo à elite dos zigomáticos.',
-  countdownLabel: 'Essa aula sairá do ar em',
 };
 
 /* ---------- Faixa-frase (após o hero) ---------- */
@@ -241,7 +233,7 @@ export const BONUS: { tag: string; titulo: string; texto: string; valor: number 
   { tag: 'Aula bônus', titulo: 'Como precificar casos complexos', texto: 'Saia do achismo: critérios práticos para precificar reabilitações de alto valor com segurança e margem.', valor: 297 },
   { tag: 'Ebook · Check-list', titulo: 'Pré e pós-operatório', texto: 'Um check-list direto e objetivo de tudo que você precisa antes, durante e depois da cirurgia, para reduzir intercorrências.', valor: 197 },
   { tag: 'Acesso exclusivo', titulo: 'Grupo do WhatsApp', texto: 'Durante 9 meses, você terá acesso a um grupo fechado e exclusivo para tirar dúvidas e trocar com colegas e com a equipe.', valor: 307 },
-  { tag: 'Voucher', titulo: 'R$ 500 de desconto no Guia da Maestria', texto: 'Um voucher de desconto exclusivo para você dar o próximo passo e entrar na Maestria Zigomática (o curso completo).', valor: 1500 },
+  { tag: 'Voucher', titulo: 'R$ 500 de desconto no Guia da Maestria', texto: 'Um voucher de desconto exclusivo para você dar o próximo passo e entrar na Maestria Zigomática (o curso completo).', valor: 500 },
 ];
 
 /* ---------- Acesso único (R$ 67) ----------
@@ -324,7 +316,7 @@ export const STATS: { num: string; label: string }[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'A masterclass é gravada ou ao vivo?',
-    a: 'É gravada e fica disponível por tempo limitado (veja o contador). Com o acesso você garante também todos os bônus e o material para consultar quando quiser.',
+    a: 'É gravada: você assiste no seu ritmo. Com o acesso você garante também todos os bônus e o material para consultar quando quiser.',
   },
   {
     q: 'Preciso já operar zigomático para aproveitar?',
@@ -342,7 +334,7 @@ export const FAQ: { q: string; a: string }[] = [
 
 /* ---------- CTA final ---------- */
 export const FINAL = {
-  eyebrow: 'Última chamada',
+  eyebrow: 'Comece hoje',
   titlePre: 'Pare de encaminhar o caso da sua vida.',
   titleGold: 'Aprenda a operá-lo — descomplicado.',
   lead: 'Assista à Masterclass Zigomático Descomplicado e dê o primeiro passo para se tornar referência em maxila atrófica severa na sua região.',

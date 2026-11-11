@@ -440,7 +440,7 @@ export function MaestriaOferta() {
             A matrícula
           </span>
           <h2>
-            Garanta sua vaga na <span className="gold-grad">Maestria Zigomática</span>
+            Garanta seu acesso à <span className="gold-grad">Maestria Zigomática</span>
           </h2>
         </div>
 
@@ -466,7 +466,9 @@ export function MaestriaOferta() {
                 <span className="cur">R$</span>
                 <span className="amount">{OFERTA.parcela.valor.replace(/^R\$\s*/, '')}</span>
               </div>
-              <div className="note">ou {OFERTA.aVista} à vista · acesso imediato</div>
+              <div className="note">
+                total de {OFERTA.parcela.total} no cartão · ou {OFERTA.aVista} à vista · acesso imediato
+              </div>
             </div>
 
             <a

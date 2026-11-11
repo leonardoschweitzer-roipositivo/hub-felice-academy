@@ -31,7 +31,7 @@ export function MaestriaFaq() {
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
             Dúvidas frequentes
           </span>
-          <h2>Antes de garantir sua vaga</h2>
+          <h2>Antes de garantir seu acesso</h2>
         </div>
         <div className="faq" ref={listRef}>
           {FAQ.map((item, i) => {

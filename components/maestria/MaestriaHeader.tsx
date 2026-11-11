@@ -27,7 +27,7 @@ export function MaestriaHeader() {
             Módulos
           </a>
           <a href={OFERTA_ANCHOR} className="btn btn-primary">
-            Garantir minha vaga
+            Quero meu acesso
           </a>
         </div>
       </div>

@@ -27,15 +27,15 @@ import { WHATSAPP_URL } from './content';
 /* ============================================================
    MAESTRIA ZIGOMÁTICA — landing de vendas (padrão Felice / dourado).
    Curso premium do Dr. Sócrates Tavares (implantes zigomáticos).
-   Fork estrutural da Gestão F4, ticket alto + escassez por deadline
-   real de turma (DEADLINE_ISO em ./content.ts).
+   Fork estrutural da Gestão F4, ticket alto. Curso gravado, acesso
+   imediato: sem escassez de turma, vaga ou prazo.
 
    Ordem: Header → Hero → Números → Problema →
    Método → Módulos → Bônus → Plataforma → Autoridade →
    Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): link de checkout,
-      vídeos dos depoimentos, data real da turma. Foto de hero opcional.
+      vídeos dos depoimentos. Foto de hero opcional.
    ============================================================ */
 
 export function MaestriaLanding() {
