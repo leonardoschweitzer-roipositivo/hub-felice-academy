@@ -436,7 +436,9 @@
     margin: 0 auto;
   }
   /* zera o posicionamento explícito do desktop; usa order na coluna única.
-     Ordem no mobile: eyebrow + título → carrossel → restante da copy/CTA. */
+     Ordem no mobile: eyebrow + título + lead → CTA/selos → carrossel. O CTA
+     vem antes do carrossel para caber na primeira tela do celular (antes
+     ficava a ~1.100px do topo, depois do mockup). */
   .felice .hero-head,
   .felice .hero-copy,
   .felice .hero-visual {
@@ -449,16 +451,27 @@
     order: 1;
     margin: 0 auto;
   }
-  .felice .hero-visual {
-    order: 2;
-  }
   .felice .hero-copy {
-    order: 3;
+    order: 2;
     margin: 0 auto;
+  }
+  .felice .hero-visual {
+    order: 3;
   }
   .felice .hero .lead {
     margin-left: auto;
     margin-right: auto;
+  }
+  /* Espaçamento mais curto entre título, lead e CTA, para o botão caber na
+     primeira tela de um celular de 375x667 sem mexer na copy. */
+  .felice .hero-grid {
+    row-gap: 14px;
+  }
+  .felice .hero-head h1 {
+    margin-bottom: 14px;
+  }
+  .felice .hero .hero-head .lead {
+    margin-bottom: 0;
   }
   .felice .hero-cta,
   .felice .hero-trust {
@@ -2004,14 +2017,30 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Altura FIXA (mesmo padrão do .heroc-body do hero): as telas têm alturas
+   diferentes e, com altura automática, a página abaixo subia e descia a cada
+   troca. Valores = a tela mais alta (Início do Kit) em cada faixa de largura;
+   o que passar é cortado dentro da janela. */
 .felice .plat-body {
   display: grid;
   grid-template-columns: 220px 1fr;
-  min-height: 320px;
+  height: 336px;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .felice .plat-body {
+    height: 380px;
+  }
 }
 @media (max-width: 640px) {
+  /* Coluna única: o índice fica em cima e só a área da tela tem altura fixa. */
   .felice .plat-body {
     grid-template-columns: 1fr;
+    height: auto;
+  }
+  .felice .plat-main {
+    height: 380px;
+    overflow: hidden;
   }
   .felice .plat-side {
     display: none;

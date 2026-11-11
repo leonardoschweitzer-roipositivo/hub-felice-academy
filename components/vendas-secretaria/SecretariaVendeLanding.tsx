@@ -19,6 +19,7 @@ import { SecretariaVendeFaq } from './SecretariaVendeFaq';
 import { SecretariaVendeFooter } from './SecretariaVendeFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
+import { PandaPreconnect } from '@/components/felice/ui/PandaPreconnect';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { WHATSAPP_URL } from './content';
 
@@ -77,6 +78,7 @@ export function SecretariaVendeLanding() {
       <SecretariaVendeFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PandaPreconnect />
       <RevealOnScroll />
     </div>
   );

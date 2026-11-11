@@ -20,6 +20,7 @@ import { MaestriaFaq } from './MaestriaFaq';
 import { MaestriaFooter } from './MaestriaFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
+import { PandaPreconnect } from '@/components/felice/ui/PandaPreconnect';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
 import { WHATSAPP_URL } from './content';
 
@@ -75,6 +76,7 @@ export function MaestriaLanding() {
       <MaestriaFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
+      <PandaPreconnect />
       <RevealOnScroll />
     </div>
   );

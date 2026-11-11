@@ -1,3 +1,27 @@
+import { getImageProps } from 'next/image';
+
+/* Foto com direção de arte (recorte próprio no celular): o <picture> recebe
+   os srcset otimizados do next/image (AVIF/WebP, vários tamanhos) via
+   getImageProps, já com loading="lazy". */
+const FOTO_ALT = 'Dentista cansado e sobrecarregado com a gestão da clínica';
+const FOTO_SIZES = '(max-width: 760px) 100vw, 720px';
+const {
+  props: { srcSet: fotoMobile },
+} = getImageProps({
+  src: '/images/dentista-cansado-mobile.jpg',
+  alt: FOTO_ALT,
+  width: 800,
+  height: 537,
+  sizes: FOTO_SIZES,
+});
+const { props: fotoDesktop } = getImageProps({
+  src: '/images/dentista-cansado-desktop.jpg',
+  alt: FOTO_ALT,
+  width: 1000,
+  height: 545,
+  sizes: FOTO_SIZES,
+});
+
 export function Problema() {
   return (
     <section className="sec problem">
@@ -16,17 +40,9 @@ export function Problema() {
         </div>
         <div className="problem-photo reveal d1">
           <picture>
-            <source
-              media="(max-width: 720px)"
-              srcSet="/images/dentista-cansado-mobile.jpg"
-            />
-            <img
-              src="/images/dentista-cansado-desktop.jpg"
-              alt="Dentista cansado e sobrecarregado com a gestão da clínica"
-              width={1000}
-              height={545}
-              loading="lazy"
-            />
+            <source media="(max-width: 720px)" srcSet={fotoMobile} sizes={FOTO_SIZES} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img {...fotoDesktop} />
           </picture>
         </div>
         <div className="pains">

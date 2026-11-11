@@ -62,6 +62,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        {/* O base code do Pixel (abaixo) busca o fbevents.js nesse host logo no
+            início do <body>: o preconnect adianta DNS + TLS. */}
+        {META_PIXEL_ID && <link rel="preconnect" href="https://connect.facebook.net" />}
+      </head>
       <body>
         {META_PIXEL_ID && (
           <script id="meta-pixel-base" dangerouslySetInnerHTML={{ __html: PIXEL_BASE }} />
