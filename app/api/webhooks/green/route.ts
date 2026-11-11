@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { GREEN_WEBHOOK_TOKEN } from '@/lib/tracking/config';
+import { GREEN_WEBHOOK_TOKEN, META_PURCHASE_VIA_WEBHOOK } from '@/lib/tracking/config';
 import { funnelByOffer } from '@/lib/tracking/funnels';
 import { buildPurchaseEvent, sendCapiEvent, type IdentityInput } from '@/lib/tracking/capi';
 
@@ -119,6 +119,12 @@ export async function POST(req: Request) {
       tx: sale.transactionId,
     });
   }
+  // 5a. Fonte única do Purchase = integração Pixel + CAPI da Greenn. Sem a
+  //     flag, o webhook só registra a venda (log acima, sem dado pessoal).
+  if (!META_PURCHASE_VIA_WEBHOOK) {
+    return NextResponse.json({ ok: true, ignored: 'purchase_via_greenn', _debug });
+  }
+
   const value = funnel?.value ?? sale.value ?? 0;
   const contentName = funnel?.contentName ?? 'Produto Felice';
 

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function PrivacidadePage() {
   return (
     <div className={`${poppins.variable} ${lato.variable}`}>
-      <LegalPage title="Política de Privacidade" updatedAt="19 de junho de 2026">
+      <LegalPage title="Política de Privacidade" updatedAt="11 de novembro de 2026">
         <p>
           A <strong>Felice Academy</strong> (CNPJ 25.307.550/0001-89) respeita a sua privacidade e
           está comprometida com a proteção dos dados pessoais que você compartilha conosco. Esta
@@ -85,8 +85,8 @@ export default function PrivacidadePage() {
           <strong>Não vendemos nem compartilhamos seu e-mail ou demais dados pessoais com
           terceiros para fins de marketing.</strong>{' '}
           Compartilhamos informações apenas com prestadores de serviço essenciais à operação (como
-          plataformas de pagamento, hospedagem e e-mail) e quando exigido por lei ou por autoridade
-          competente.
+          plataformas de pagamento, hospedagem e e-mail), com a Meta para medir o resultado dos
+          nossos anúncios (ver a seção 4) e quando exigido por lei ou por autoridade competente.
         </p>
 
         <h2>4. Cookies</h2>
@@ -94,6 +94,20 @@ export default function PrivacidadePage() {
           Utilizamos cookies e tecnologias semelhantes para lembrar suas preferências e medir o
           desempenho das páginas. Você pode desativar os cookies nas configurações do seu navegador,
           ciente de que isso pode afetar algumas funcionalidades.
+        </p>
+        <p>
+          Usamos o Meta Pixel e a API de Conversões da Meta (Facebook e Instagram) para medir e
+          melhorar os nossos anúncios. Eles registram eventos como visitas às páginas, início de
+          compra e compras, junto com identificadores do navegador (cookies como <code>_fbp</code> e{' '}
+          <code>_fbc</code>), endereço IP e tipo de navegador. Quando você informa e-mail ou
+          telefone (em um formulário ou na compra), esses dados são enviados à Meta de forma
+          criptografada (hash), sem o conteúdo legível. A Meta trata essas informações conforme a
+          própria{' '}
+          <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">
+            Política de Privacidade
+          </a>
+          . Você pode limitar o uso desses dados para anúncios nas configurações de anúncios da sua
+          conta Meta ou bloqueando cookies de terceiros no navegador.
         </p>
 
         <h2>5. Armazenamento e segurança</h2>
