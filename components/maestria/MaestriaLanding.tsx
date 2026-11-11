@@ -21,8 +21,6 @@ import { MaestriaFooter } from './MaestriaFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { UrgencyBar } from '@/components/felice/ui/UrgencyBar';
-import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
 import { WHATSAPP_URL } from './content';
 
 /* ============================================================
@@ -31,14 +29,9 @@ import { WHATSAPP_URL } from './content';
    Fork estrutural da Gestão F4, ticket alto + escassez por deadline
    real de turma (DEADLINE_ISO em ./content.ts).
 
-   Ordem: UrgencyBar → Header → Hero → Números → Problema →
+   Ordem: Header → Hero → Números → Problema →
    Método → Módulos → Bônus → Plataforma → Autoridade →
    Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
-
-   ⚠️ O contador, o "X pessoas vendo agora" e os toasts de compra são os
-      mesmos recursos do Kit F4 e da Masterclass. Os toasts trazem nomes e
-      cidades FICTÍCIOS, fixos em PurchaseToasts.tsx — vale saber disso ao
-      falar de prova social nesta página.
 
    ⚠️ TROCAR antes de publicar (em ./content.ts): link de checkout,
       vídeos dos depoimentos, data real da turma. Foto de hero opcional.
@@ -46,8 +39,12 @@ import { WHATSAPP_URL } from './content';
 
 export function MaestriaLanding() {
   return (
-    <div className="felice felice-maestria mz-page has-urgency-bar mz-sem-header">
-      <UrgencyBar />
+    <div
+      className="felice felice-maestria mz-page has-urgency-bar mz-sem-header"
+      style={{ '--urgency-h': '0px' } as React.CSSProperties}
+    >
+      {/* Sem barra de urgência: `has-urgency-bar` fica só porque o padding-top do hero
+          depende dela; `--urgency-h: 0px` deixa o hero como numa página sem barra. */}
       {/* Header escondido a pedido do Leo (16/09/2026). Para trazer de volta:
           descomente o <MaestriaHeader /> e tire `mz-sem-header` do wrapper
           — é essa classe que devolve ao hero o espaço do header fixo. */}
@@ -78,7 +75,6 @@ export function MaestriaLanding() {
       <MaestriaFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
-      <PurchaseToasts produto="a Maestria Zigomática" />
       <RevealOnScroll />
     </div>
   );

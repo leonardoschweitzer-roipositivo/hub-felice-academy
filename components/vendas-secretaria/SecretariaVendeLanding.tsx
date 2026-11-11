@@ -20,8 +20,6 @@ import { SecretariaVendeFooter } from './SecretariaVendeFooter';
 
 import { RevealOnScroll } from '@/components/felice/ui/RevealOnScroll';
 import { WhatsappFloat } from '@/components/felice/ui/WhatsappFloat';
-import { UrgencyBar } from '@/components/felice/ui/UrgencyBar';
-import { PurchaseToasts } from '@/components/felice/ui/PurchaseToasts';
 import { WHATSAPP_URL } from './content';
 
 /* ============================================================
@@ -30,7 +28,7 @@ import { WHATSAPP_URL } from './content';
    vender: do primeiro contato ao fechamento do orçamento. Fork
    estrutural do Gestão F4 (ticket com checkout + escassez por deadline).
 
-   Ordem: UrgencyBar → Header → Hero → Números → Problema →
+   Ordem: Header → Hero → Números → Problema →
    Método (funil da recepção) → Módulos → Plataforma →
    Autoridade → Depoimentos → Oferta → Garantia → FAQ → CTA final → Footer.
 
@@ -44,8 +42,12 @@ import { WHATSAPP_URL } from './content';
 
 export function SecretariaVendeLanding() {
   return (
-    <div className="felice felice-maestria has-urgency-bar sv-sem-header">
-      <UrgencyBar />
+    <div
+      className="felice felice-maestria has-urgency-bar sv-sem-header"
+      style={{ '--urgency-h': '0px' } as React.CSSProperties}
+    >
+      {/* Sem barra de urgência: `has-urgency-bar` fica só porque o padding-top do hero
+          depende dela; `--urgency-h: 0px` deixa o hero como numa página sem barra. */}
       {/* Header escondido a pedido do Leo (16/09/2026), mesmo padrão da
           Masterclass/Maestria. Para trazer de volta: descomente o
           <SecretariaVendeHeader /> e tire `sv-sem-header` do wrapper —
@@ -75,7 +77,6 @@ export function SecretariaVendeLanding() {
       <SecretariaVendeFooter />
 
       <WhatsappFloat href={WHATSAPP_URL} />
-      <PurchaseToasts produto="o CRC de Alta Performance" />
       <RevealOnScroll />
     </div>
   );
