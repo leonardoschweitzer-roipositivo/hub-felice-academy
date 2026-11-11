@@ -37,7 +37,6 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    que é o produto-par (/produtos/recepcao-alta-performance). Ver MODULOS.
 
    ⚠️ TROCAR antes de publicar:
-   - DEADLINE_ISO: data real do lote/fechamento.
    - DEPOIMENTOS: URLs de vídeo (embed) e thumbnails reais.
    ============================================================ */
 
@@ -52,17 +51,6 @@ export const OFERTA_ANCHOR = '#oferta';
 export const WHATSAPP_URL = whatsappUrl(
   'Olá! Tenho interesse no curso "CRC de Alta Performance" e gostaria de tirar uma dúvida antes de matricular minha equipe.',
 );
-
-/**
- * Fechamento do lote — alimenta o countdown da <ScarcityBar />.
- * ⚠️ Vencida, a barra INTEIRA sai do ar (contador, vagas e "pessoas vendo
- * agora"), e a página perde toda a urgência sem avisar ninguém. Estava em
- * 31/07/2026, depois 31/08/2026 — as duas já vencidas (a de 31/08 foi o que
- * motivou esta troca, em 16/09/2026).
- * ⚠️ Ajustar para a data real. Kit F4 à parte, a Recepção de Alta
- * Performance ainda está na data de 31/08 vencida — vale renovar junto.
- */
-export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {

@@ -9,7 +9,6 @@ import { Assistente } from './sections/Assistente';
 import { Componentes } from './sections/Componentes';
 import { Plataforma } from './sections/Plataforma';
 import { Autoridade } from './sections/Autoridade';
-import { Depoimentos } from './sections/Depoimentos';
 import { Oferta } from './sections/Oferta';
 import { Garantia } from './sections/Garantia';
 import { Faq } from './sections/Faq';
@@ -28,9 +27,11 @@ import { WhatsappFloat } from './ui/WhatsappFloat';
    Para incluir, remover ou reordenar uma seção, basta editar a
    composição abaixo.
 
-   ⚠️ TROCAR: os DEPOIMENTOS de sections/Depoimentos.tsx são FICTÍCIOS —
-      nomes e clínicas inventados, no ar como provisório. Trocar pelos
-      reais (com autorização de uso) antes de escalar tráfego.
+   ⚠️ DEPOIMENTOS fora do ar: os de sections/Depoimentos.tsx são
+      FICTÍCIOS (nomes e clínicas inventados) e saíram da composição
+      para não rodar anúncio com prova social falsa. Quando chegarem os
+      reais (com autorização de uso), troque o conteúdo do arquivo e
+      volte com <Depoimentos /> entre <Autoridade /> e <Oferta />.
    ============================================================ */
 
 export function FeliceLanding() {
@@ -57,7 +58,6 @@ export function FeliceLanding() {
         <Componentes />
         <Plataforma />
         <Autoridade />
-        <Depoimentos />
         <Oferta />
         <Garantia />
         <Faq />

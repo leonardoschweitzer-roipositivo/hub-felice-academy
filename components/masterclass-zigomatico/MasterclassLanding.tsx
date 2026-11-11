@@ -29,16 +29,13 @@ import { WHATSAPP_URL } from './content';
 /* ============================================================
    MASTERCLASS ZIGOMÁTICO DESCOMPLICADO — landing de vendas.
    Padrão dourado/escuro Felice (fork da Maestria). Ticket baixo com
-   checkout: acesso único de R$ 67. Hero em VSL + countdown.
+   checkout: acesso único de R$ 67. Hero em VSL, sem contador.
 
    Ordem (espelha a página antiga, no nosso visual):
    Header → Hero(VSL) → Faixa-frase → Quem é o Dr.Sócrates →
    O que vai aprender → Faixa-CTA → Casos → Destaque → Depoimentos →
    Bônus → Investimento → Garantia → Sobre mim → Stats →
    FAQ → CTA final → Footer.
-
-   ⚠️ TROCAR antes de publicar (em ./content.ts): DEADLINE_ISO — a data de
-      hoje é provisória.
    ============================================================ */
 
 export function MasterclassLanding() {

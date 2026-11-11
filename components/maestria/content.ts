@@ -5,9 +5,10 @@ import { whatsappUrl } from '@/lib/whatsapp/contato';
    Edite SÓ aqui copy, módulos, bônus, preço, FAQ e depoimentos.
    Curso premium do Dr. Sócrates Tavares (implantes zigomáticos).
 
-   ⚠️ TROCAR antes de publicar:
-   - DEADLINE_ISO: data real de fechamento da turma/lote.
-   - STATS: confirmar qualquer número de prova social (não inventar).
+   Curso gravado, com acesso imediato: sem turma, vaga ou prazo de
+   fechamento — não use esse tipo de urgência na copy.
+
+   ⚠️ STATS: confirmar qualquer número de prova social (não inventar).
    ============================================================ */
 
 /** Checkout do curso (R$ 1.599) na Greenn/Payfast. O código da oferta
@@ -22,18 +23,6 @@ export const OFERTA_ANCHOR = '#oferta';
 export const WHATSAPP_URL = whatsappUrl(
   'Olá! Tenho interesse na Maestria Zigomática e gostaria de tirar uma dúvida antes de me inscrever.',
 );
-
-/**
- * Fechamento da turma — alimenta o countdown da <ScarcityBar />.
- * ⚠️ Vencida, a barra INTEIRA sai do ar (contador, vagas e "pessoas vendo
- * agora"), e a página perde toda a urgência sem avisar ninguém. Estava em
- * 15/07/2026, depois 31/08/2026 — as duas já vencidas (a de 31/08 foi o que
- * motivou esta troca, em 16/09/2026).
- * ⚠️ Ajustar para a data real. Kit F4 à parte, as outras landings com
- * countdown (vendas-secretaria, recepção) ainda estão na data de 31/08
- * vencida — vale renovar todas juntas.
- */
-export const DEADLINE_ISO = '2026-10-07T23:59:59-03:00';
 
 /* ---------- Hero ---------- */
 export const HERO = {
@@ -60,7 +49,7 @@ export const HERO_CARD = {
     { v: 'Hands-on', l: 'em modelo' },
     { v: '7 dias', l: 'Garantia' },
   ],
-  pills: { live: 'Turma aberta', premium: 'Premium' },
+  pills: { live: 'Acesso imediato', premium: 'Premium' },
 };
 
 /** Faixa (marquee) de temas dominados — card glass no hero. */
@@ -350,7 +339,7 @@ export const DEPOIMENTOS: Depoimento[] = [
 
 /* ---------- Oferta ---------- */
 export const OFERTA = {
-  ribbon: 'Turma com vagas limitadas',
+  ribbon: 'Curso gravado · acesso imediato',
   titulo: 'Maestria Zigomática — curso completo',
   itens: [
     'Módulo 1 · Fundamentos e decisões críticas',
@@ -359,9 +348,10 @@ export const OFERTA = {
     'Módulo 4 · Hands-on guiado (Partes 1 e 2)',
     'Bônus especiais (guias, série “Onde eu furo” e casos reais)',
   ],
-  parcela: { vezes: '12x', valor: 'R$ 164,40' },
+  /** `total`: soma das 12 parcelas no cartão (confirmado com a oferta). */
+  parcela: { vezes: '12x', valor: 'R$ 164,40', total: 'R$ 1.972,80' },
   aVista: 'R$ 1.599,00',
-  cta: 'Garantir minha vaga',
+  cta: 'Quero meu acesso',
 };
 
 /* ---------- FAQ ---------- */
@@ -398,5 +388,5 @@ export const FINAL = {
   titlePre: 'Pare de encaminhar o caso da sua vida.',
   titleGold: 'Aprenda a operá-lo.',
   lead: 'Entre para a Maestria Zigomática e domine, com método guiado e hands-on, a cirurgia que coloca você entre as referências em maxila atrófica severa.',
-  cta: 'Garantir minha vaga',
+  cta: 'Quero meu acesso',
 };

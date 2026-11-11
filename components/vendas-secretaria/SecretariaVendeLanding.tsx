@@ -27,7 +27,7 @@ import { WHATSAPP_URL } from './content';
    "A SECRETÁRIA QUE VENDE" — landing de vendas (padrão Felice / dourado).
    Curso em vídeo (Dr. Sócrates) que treina a recepção da clínica a
    vender: do primeiro contato ao fechamento do orçamento. Fork
-   estrutural do Gestão F4 (ticket com checkout + escassez por deadline).
+   estrutural do Gestão F4 (ticket com checkout, sem escassez por prazo).
 
    Ordem: Header → Hero → Números → Problema →
    Método (funil da recepção) → Módulos → Plataforma →
@@ -37,8 +37,8 @@ import { WHATSAPP_URL } from './content';
       10/08/2026, mas a rota e os componentes seguem com o nome antigo — é o
       nome novo que vai no toast de compra.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): data do lote e
-      depoimentos. Checkout e preço já são os reais.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): depoimentos.
+      Checkout e preço já são os reais.
    ============================================================ */
 
 export function SecretariaVendeLanding() {

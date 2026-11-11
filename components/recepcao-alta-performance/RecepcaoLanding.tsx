@@ -38,8 +38,8 @@ import { WHATSAPP_URL } from './content';
    ⚠️ Sem barra de urgência: `has-urgency-bar` fica só pelo padding-top do
       hero, com `--urgency-h: 0px` no wrapper.
 
-   ⚠️ TROCAR antes de publicar (em ./content.ts): data do lote e
-      depoimentos reais. Checkout e preço já são os reais.
+   ⚠️ TROCAR antes de publicar (em ./content.ts): depoimentos reais.
+      Checkout e preço já são os reais.
    ============================================================ */
 
 export function RecepcaoLanding() {
