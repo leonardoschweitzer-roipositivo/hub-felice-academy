@@ -11,7 +11,7 @@
 
 - **SEM Supabase nesta fase** (decisão do Leo). Híbrido = Pixel no browser + webhook do Green → CAPI no servidor, deduplicados pelo `event_id` compartilhado (o Meta funde os dois). Banco (stitching de identidade / idempotência própria / retry / dashboard) fica pra fase futura **se** o match exigir.
 - **Aplicação de consultoria = `SubmitApplication`** (não `Lead`), porque quem compra o Kit e preenche é comprador + prospect qualificado. Diferencia no `custom_data`: `lead_type` (`post_purchase` | `cold`) + `source` = slug. `Lead` reservado pra captura leve futura (trial CRM).
-- **Pixel** `1608754590127302` ("masterclass pixel"), o mesmo no browser e no CAPI.
+- **Pixel** `1455702499350996` (dataset novo, 11/2026), o mesmo no browser e no CAPI. O anterior, `1608754590127302` ("masterclass pixel"), foi aposentado: ficou restrito pela Meta como categoria saúde.
 
 ## 2. Eventos e dedup
 
