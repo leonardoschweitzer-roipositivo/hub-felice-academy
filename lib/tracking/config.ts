@@ -2,9 +2,10 @@
 // Segredos vivem só no servidor — NUNCA prefixar com NEXT_PUBLIC_.
 // O único valor exposto ao browser é o ID do Pixel (que é público mesmo).
 
-/** ID do Pixel — público; o mesmo no browser e no CAPI. ("masterclass pixel") */
+/** ID do Pixel — público; o mesmo no browser e no CAPI. (dataset novo de
+ *  11/2026; o "masterclass pixel" 1608754590127302 ficou restrito como saúde) */
 export const META_PIXEL_ID =
-  process.env.NEXT_PUBLIC_META_PIXEL_ID || '1608754590127302';
+  process.env.NEXT_PUBLIC_META_PIXEL_ID || '1455702499350996';
 
 /** Versão da Graph API usada no CAPI (que é Marketing API). v25.0 é a
  *  vigente nas duas tabelas da Meta em 11/2026; a v21.0 de antes já tinha
