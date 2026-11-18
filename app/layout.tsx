@@ -45,6 +45,10 @@ export const metadata: Metadata = {
     description: DESCRICAO,
     images: ['/images/og-felice-academy.jpg'],
   },
+  // Verificação do domínio no Gerenciador de Negócios da Meta (11/2026).
+  verification: {
+    other: { 'facebook-domain-verification': 'ag107c8c7j8qdy6w4h60yfhz905k5p' },
+  },
   icons: {
     icon: [{ url: '/favicon.png', type: 'image/png', sizes: '32x32' }],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
